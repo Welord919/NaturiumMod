@@ -1,10 +1,10 @@
-﻿using ModdingGang.Content.Items.Materials;
-using ModdingGang.Content.Items.Projectiles;
+﻿using NaturiumMod.Content.Items.Materials;
+using NaturiumMod.Content.Items.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
 	public class LeodrakesYoyo : ModItem
 	{

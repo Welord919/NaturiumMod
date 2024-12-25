@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.ID;
 
-namespace ModdingGang.Content.Tiles
+namespace NaturiumMod.Content.Tiles
 {
 	internal class NaturiumOreTile : ModTile
 	{

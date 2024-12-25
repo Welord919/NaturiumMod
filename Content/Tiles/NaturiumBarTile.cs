@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ObjectData;
 using Terraria.Localization;
 
-namespace ModdingGang.Content.Tiles
+namespace NaturiumMod.Content.Tiles
 {
     internal class NaturiumBarTile : ModTile
     {

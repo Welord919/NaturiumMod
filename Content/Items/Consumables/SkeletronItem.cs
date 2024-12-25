@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Consumables
+namespace NaturiumMod.Content.Items.Consumables
 {
     public class SkeletronItem : ModItem
     {

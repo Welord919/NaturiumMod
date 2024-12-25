@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Projectiles
+namespace NaturiumMod.Content.Items.Projectiles
 {
     public class AnvilLProj : ModProjectile
     {

@@ -1,9 +1,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
     public class BarkionsBlaster: ModItem
     {

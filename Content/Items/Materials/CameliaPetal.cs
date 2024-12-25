@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
 
-namespace ModdingGang.Content.Items.Materials 
+namespace NaturiumMod.Content.Items.Materials 
 {
     public class CameliaPetal : ModItem 
     {

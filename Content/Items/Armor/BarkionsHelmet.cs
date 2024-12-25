@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Armor
+namespace NaturiumMod.Content.Items.Armor
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class BarkionsHelmet : ModItem

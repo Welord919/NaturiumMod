@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
 	public class EmpressFS : ModItem
 	{

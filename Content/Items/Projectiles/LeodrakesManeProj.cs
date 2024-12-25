@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace ModdingGang.Content.Items.Projectiles
+namespace NaturiumMod.Content.Items.Projectiles
 {
 	public class LeodrakesManeProj : ModProjectile
 	{

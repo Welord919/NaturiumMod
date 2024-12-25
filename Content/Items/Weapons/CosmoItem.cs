@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
     public class CosmoItem : ModItem
     {

@@ -1,4 +1,4 @@
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 
-namespace ModdingGang.Content.NPCs
+namespace NaturiumMod.Content.NPCs
 {
     internal class NaturiumSlime : ModNPC
     {

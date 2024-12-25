@@ -3,7 +3,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Tiles
+namespace NaturiumMod.Content.Tiles
 {
     internal class DaltonPainting : ModItem
     {

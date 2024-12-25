@@ -1,9 +1,9 @@
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Consumables
+namespace NaturiumMod.Content.Items.Consumables
 {
     public class MktPotion : ModItem
     {

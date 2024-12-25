@@ -1,9 +1,9 @@
-﻿using ModdingGang.Content.Items.Accessories;
-using ModdingGang.Content.Items.Materials;
+﻿using NaturiumMod.Content.Items.Accessories;
+using NaturiumMod.Content.Items.Materials;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Common.Global
+namespace NaturiumMod.Common.Global
 {
 	class ExampleNPCShop : GlobalNPC
 	{

@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
     public class AnvilL : ModItem
     {

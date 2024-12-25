@@ -1,11 +1,11 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 {
     public class LeodrakesLeafstorm : ModItem
     {

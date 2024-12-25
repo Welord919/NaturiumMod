@@ -2,9 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
-using ModdingGang.Content.Tiles;
+using NaturiumMod.Content.Tiles;
 
-namespace ModdingGang.Content.NPCs
+namespace NaturiumMod.Content.NPCs
 {
     internal class NPCLOOT : GlobalNPC
     {

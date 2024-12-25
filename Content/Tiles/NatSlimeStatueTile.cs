@@ -1,11 +1,11 @@
-﻿using ModdingGang.Content.NPCs;
+﻿using NaturiumMod.Content.NPCs;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace ModdingGang.Content.Tiles
+namespace NaturiumMod.Content.Tiles
 {
 	// ExampleStatue shows off correctly using wiring to spawn items and NPC.
 	// See StatueWorldGen to see how ExampleStatue is added as an option for naturally spawning statues during world-gen.

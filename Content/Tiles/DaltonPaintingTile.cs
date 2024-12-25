@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace ModdingGang.Content.Tiles
+namespace NaturiumMod.Content.Tiles
 {
     public class DaltonPaintingTile : ModTile
     {

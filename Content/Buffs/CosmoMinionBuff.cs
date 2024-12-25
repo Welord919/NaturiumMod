@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Buffs
+namespace NaturiumMod.Content.Buffs
 {
     public class CosmoMinionBuff : ModBuff
     {

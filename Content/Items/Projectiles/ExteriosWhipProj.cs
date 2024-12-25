@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace ModdingGang.Content.Items.Projectiles
+namespace NaturiumMod.Content.Items.Projectiles
 {
     public class ExteriosWhipProj : ModProjectile
     {

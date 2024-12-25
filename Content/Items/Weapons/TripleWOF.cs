@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
-using ModdingGang.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials;
 
-namespace ModdingGang.Content.Items.Weapons
+namespace NaturiumMod.Content.Items.Weapons
 { 
 	public class TripleWOF : ModItem
 	{

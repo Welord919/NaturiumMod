@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Tools
+namespace NaturiumMod.Content.Items.Tools
 {
     public class NaturiumPickaxe : ModItem
     {

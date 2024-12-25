@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ModdingGang.Content.Items.Projectiles
+namespace NaturiumMod.Content.Items.Projectiles
 {
     public class NaturiumClumpProj : ModProjectile
     {

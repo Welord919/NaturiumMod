@@ -1,9 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using ModdingGang.Content.Items.Weapons;
+using NaturiumMod.Content.Items.Weapons;
 
-namespace ModdingGang.Content.Items.Accessories
+namespace NaturiumMod.Content.Items.Accessories
 {
     internal class BarkionsMedallion : ModItem
     {
