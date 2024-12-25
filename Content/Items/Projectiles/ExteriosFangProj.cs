@@ -1,29 +1,28 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Projectiles
+namespace NaturiumMod.Content.Items.Projectiles;
+
+public class ExteriosFangProj : ModProjectile
 {
-	public class ExteriosFangProj : ModProjectile
-	{
-        public override void SetDefaults()
-        {
-            Projectile.width = 24;
-            Projectile.height = 24;
-            Projectile.aiStyle = 1;
-            Projectile.light = 2.0f;
+    public override void SetDefaults()
+    {
+        Projectile.width = 24;
+        Projectile.height = 24;
+        Projectile.aiStyle = 1;
+        Projectile.light = 2.0f;
 
-            Projectile.friendly = true;
-            Projectile.hostile = false;
+        Projectile.friendly = true;
+        Projectile.hostile = false;
 
-            //Projectile.DamageType = DamageClass.Ranged;
+        //Projectile.DamageType = DamageClass.Ranged;
 
-            Projectile.penetrate = 5;
-            Projectile.timeLeft = 300;
+        Projectile.penetrate = 5;
+        Projectile.timeLeft = 300;
 
-            Projectile.ignoreWater = true;
-            Projectile.tileCollide = true;
+        Projectile.ignoreWater = true;
+        Projectile.tileCollide = true;
 
-            Projectile.extraUpdates = 1;
-        }
+        Projectile.extraUpdates = 1;
     }
 }
