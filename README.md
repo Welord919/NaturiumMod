@@ -17,3 +17,6 @@ The Archetype system uses the name of a piece of armor or a weapon to classify i
 ## Editors Notes
 
 I hope you enjoy my little mod! Feel free to leave a comment if you encounter any issues, or have any suggestions to better the mod!
+
+![dotnet_zaF2ghDiRq](https://github.com/user-attachments/assets/1ded32c6-2d59-4337-b1ef-1225f0b8a954)
+![dotnet_M37cvLuaCJ](https://github.com/user-attachments/assets/196839cc-84d4-4f75-824a-18b1ed03db1c)
