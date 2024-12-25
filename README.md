@@ -6,4 +6,4 @@ Naturium Ore/Bars to make almost everything else with, which you need the respec
 The "Archetype" system uses the name of the Armor or Weapon to classify it into an Archetype to be able to buff these Items with its respective medallion. You will get the first from the Druid, which these can be upgraded into the better-tier medallions.
 
 Other notes: There are currently two items that are Post-Mech, the enemy is found in the Undergroud, and Please use the Guide to see the crafting recipes for both Barkion's Bark and Naturium (this helps a lot). Also made some discussion posts to put in your input.
-Developed By Welord
+Developed By Welord & I-Spitfire-U
