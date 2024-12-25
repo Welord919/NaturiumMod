@@ -1,0 +1,194 @@
+Mods: {
+	NaturiumMod: {
+		Projectiles: {
+			RoseWhipProj.DisplayName: Rose Whip Proj
+			NaturiumClumpProj.DisplayName: Naturium Clump Proj
+			LeodrakesYoyoProj.DisplayName: Leodrakes Yoyo Proj
+			LeodrakesManeProj.DisplayName: Leodrakes Mane Proj
+			ExteriosWhipProj.DisplayName: Exterios Whip Proj
+			ExteriosFangProj.DisplayName: Exterios Fang Proj
+			CosmoMinionProj.DisplayName: Cosmo Minion Proj
+			BarkionsBarkProj.DisplayName: Barkions Bark Proj
+			AnvilLProj.DisplayName: Anvil L Proj
+		}
+
+		NPCs.NaturiumSlime.DisplayName: Naturium Slime
+
+		Items: {
+			NatSlimeStatue: {
+				Tooltip: Used for testing LUL
+				DisplayName: Naturium Slime Statue
+			}
+
+			DaltonPainting: {
+				Tooltip: Dalton Vegeta ahh hair goofy ahh hair
+				DisplayName: A Painting of Dalton
+			}
+
+			TripleWOS: {
+				Tooltip: A Wand of Sparking that has been combined with two other Wands of Sparking. This works?
+				DisplayName: Triple Wand of Sparking
+			}
+
+			TripleWOF: {
+				Tooltip: A Wand of Frost that has been combined with two other Wands of Frost. Chilly!
+				DisplayName: Triple Wand of Frost
+			}
+
+			RoseWhip: {
+				Tooltip: A whip crafted from tangled vines and thorns. Seemingly derived from roses based at the sacred tree. Barkion Approved!
+				DisplayName: Barkion's Rose Whip
+			}
+
+			RocketSword: {
+				Tooltip: Shoots rockets out of the tip of the sword. Don't stand too close!
+				DisplayName: Rocket Sword
+			}
+
+			LeodrakesYoyo: {
+				Tooltip: A yoyo that releases Leodrake's Projectiles periodically.
+				DisplayName: Leodrake's Yoyo
+			}
+
+			LeodrakesLeafstorm: {
+				Tooltip: A gemstone imbued with the essence of the Forest Lion, Leodrake, channeling its power.
+				DisplayName: Leodrake's Leafstorm
+			}
+
+			ExteriosWhip: {
+				Tooltip: A whip made for those who follow Exterio. Watch out for the point!
+				DisplayName: Exterio's Whip
+			}
+
+			ExteriosCannon: {
+				Tooltip: A cannon that shoots Exterio's Fangs. Very powerful!
+				DisplayName: Exterio's Cannon
+			}
+
+			EmpressFS: {
+				Tooltip: A wand that has been crafted from the remains of the Empress herself. Le Rainbows..!
+				DisplayName: The Empresses Falling Stars
+			}
+
+			CosmoItem: {
+				Tooltip: Summons a Cosmobeet to float and protect the user. Frien!
+				DisplayName: Barkion's Beet Stick
+			}
+
+			BarkionsTB: {
+				Tooltip: A sword imbued with the power of the Wooden Dragon. Pokey.
+				DisplayName: Barkion's Thorn Blade
+			}
+
+			BarkionsSS: {
+				Tooltip: Shoots splinters infused with the power of Barkion, the wooden dragon!
+				DisplayName: Barkion's Splint Shooter
+			}
+
+			BarkionsBlaster: {
+				Tooltip: A versatile firearm capable of launching clumps of Naturium, as well as standard bullets if needed.
+				DisplayName: Barkion's Blaster
+			}
+
+			AnvilL: {
+				Tooltip: Le anvil shooting device!
+				DisplayName: Anvil Launcher
+			}
+
+			NaturiumPickaxe: {
+				Tooltip: A pickaxe forged from Naturium crystals and infused with Barkion’s essence. Has gold on top!
+				DisplayName: Naturium Pickaxe
+			}
+
+			NaturiumOre: {
+				Tooltip: Raw Naturium to be smelted into something greater. Wonder what the bar is called...
+				DisplayName: Naturium Ore
+			}
+
+			NaturiumBar: {
+				Tooltip: A bar crafted from pure Naturium, radiating with the essence of nature. Yippie green!
+				DisplayName: Naturium Bar
+			}
+
+			ExteriosFang: {
+				Tooltip: A Fang that contains Exterio's Power. Use wisely...
+				DisplayName: Exterio's Fang
+			}
+
+			CameliaPetal: {
+				Tooltip: A petal dropped from Camelia Flowers.
+				DisplayName: Camelia Petal
+			}
+
+			BarkionsBark: {
+				Tooltip: A fragment of Barkion, imbued with his ancient wooden essence. Penetrates through one point of armor.
+				DisplayName: Barkion's Bark
+			}
+
+			SkeletronItem: {
+				Tooltip: Summons Skeletron :P
+				DisplayName: A Weird Skull
+			}
+
+			MktPotion: {
+				Tooltip: Reduces incoming damage and grants gradual healing. Efficient!
+				DisplayName: Barkion's Mosquito Potion
+			}
+
+			BarkionsLeggings: {
+				Tooltip: Increases Magic Knockback by 5%
+				DisplayName: Barkion's Leggings
+			}
+
+			BarkionsHelmet: {
+				Tooltip: Increases Ranged Knockback by 5%
+				DisplayName: Barkion's Helmet
+			}
+
+			BarkionsChestplate: {
+				Tooltip: Increases Melee and Summon Knockback by 5%
+				DisplayName: Barkion's Chestplate
+			}
+
+			NaturiumClump: {
+				Tooltip: A clump of naturium, designed to be launched at foes. Has homing precision!
+				DisplayName: Naturium Clump
+			}
+
+			LeodrakesMedallion: {
+				Tooltip: A medallion that boosts the stats of Leodrake's Weapons.
+				DisplayName: Leodrake's Medallion
+			}
+
+			ExteriosMedallion: {
+				Tooltip: A medallion that boosts the stats of Exterio's Weapons. No way!
+				DisplayName: Exterio's Medallion
+			}
+
+			BarkionsMedallion: {
+				Tooltip: A medallion that boosts the stats of Barkion's Weapons.
+				DisplayName: Barkion's Medallion
+			}
+		}
+
+		Buffs: {
+			MktPotionBuff: {
+				Description: Absorb a portion of incoming damage and unleash it back upon your enemies!
+				DisplayName: Mosquito Potion Buff
+			}
+
+			CosmoMinionBuff: {
+				Description: Awesome cosmo beat friend!
+				DisplayName: Cosmo Minion Buff
+			}
+
+			BarkionsBuff: {
+				Description: A blessing bestowed by the Wooden Dragon itself.
+				DisplayName: Barkion's Buff
+			}
+		}
+
+		WorldGen.ExampleOrePassMessage: Breathing Naturium
+		Tiles.DaltonPaintingTile.MapEntry: Dalton Painting Tile
+	}
+}
