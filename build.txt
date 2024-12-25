@@ -1,4 +1,4 @@
 displayName = Naturium Mod
 author = Welord, I SpiTfire U
-version = 1.0.04
+version = 1.0.05
 
