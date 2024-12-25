@@ -17,5 +17,7 @@ namespace ModdingGang.Content.Buffs
         {
             player.GetDamage(DamageClass.Generic) *= 1 + (MultiplicativeDamageBonus / 100f);
         }
+
+        private void Nothing() { }
     }
 }
