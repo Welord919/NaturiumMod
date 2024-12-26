@@ -12,7 +12,10 @@ Mods: {
 			AnvilLProj.DisplayName: Anvil L Proj
 		}
 
-		NPCs.NaturiumSlime.DisplayName: Naturium Slime
+		NPCs: {
+			NaturiumSlime.DisplayName: Naturium Slime
+			ExampleCritterNPC.DisplayName: Example Critter N P C
+		}
 
 		Items: {
 			NatSlimeStatue: {
@@ -168,6 +171,11 @@ Mods: {
 			BarkionsMedallion: {
 				Tooltip: A medallion that boosts the stats of Barkion's Weapons.
 				DisplayName: Barkion's Medallion
+			}
+
+			ExampleCritterItem: {
+				DisplayName: Example Critter Item
+				Tooltip: ""
 			}
 		}
 
