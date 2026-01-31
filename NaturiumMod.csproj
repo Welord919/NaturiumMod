@@ -1,36 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-	<!-- Import tModLoader mod properties -->
-	<Import Project="..\tModLoader.targets" />
-
-	<!-- General -->
-	<PropertyGroup>
-		
-	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="Content\Items\Placeable\Camelia.cs" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Content\Items\Accessories\LeodrakesMedallion.png" />
-	  <None Remove="Content\Items\Testing\TestingGun - Copy (2).png" />
-	  <None Remove="Content\Items\Testing\TestingGun - Copy (3).png" />
-	  <None Remove="Content\Items\Testing\TestingGun - Copy.png" />
-	  <None Remove="Content\Items\Weapons\BarkionsTB.png" />
-	  <None Remove="Content\Items\Weapons\LeodrakesLeafstorm.png" />
-	</ItemGroup>
-    
-	<ItemGroup>
-	  <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
-	</ItemGroup>
-    
-	<ItemGroup>
-	  <Folder Include="Content\Items\Projectiles\PreHardmodeProj\" />
-	</ItemGroup>
-    
-	<ItemGroup>
-	  <None Include="Content\Items\Placeable\Camelia.cs" />
-	</ItemGroup>
-
-	<!-- References -->
-
+    <!-- Import tModLoader mod properties -->
+    <!-- Windows (relative to repo) -->
+    <Import Project="..\tModLoader.targets"
+            Condition="'$(OS)' == 'Windows_NT' and Exists('..\tModLoader.targets')" />
+    <!-- Linux (This stinky ass path because Alexis's system is different) -->
+    <Import Project="/mnt/secondary/SteamLibrary/steamapps/common/tModLoader/tMLMod.targets"
+            Condition="'$(OS)' != 'Windows_NT' and Exists('/mnt/secondary/SteamLibrary/steamapps/common/tModLoader/tMLMod.targets')" />
+    <!-- General -->
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove="Content\Items\Placeable\Camelia.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Content\Items\Accessories\LeodrakesMedallion.png" />
+        <None Remove="Content\Items\Testing\TestingGun - Copy (2).png" />
+        <None Remove="Content\Items\Testing\TestingGun - Copy (3).png" />
+        <None Remove="Content\Items\Testing\TestingGun - Copy.png" />
+        <None Remove="Content\Items\Weapons\BarkionsTB.png" />
+        <None Remove="Content\Items\Weapons\LeodrakesLeafstorm.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CloudinaryDotNet"
+                          Version="1.26.2" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Content\Items\Projectiles\PreHardmodeProj\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Content\Items\Placeable\Camelia.cs" />
+    </ItemGroup>
+    <!-- References -->
 </Project>
