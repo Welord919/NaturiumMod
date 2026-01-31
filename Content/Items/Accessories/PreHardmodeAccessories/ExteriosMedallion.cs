@@ -24,10 +24,7 @@ internal class ExteriosMedallion : ModItem
 
         if (player.HeldItem.type == ModContent.ItemType<ExteriosCannon>())
         {
-            //player.GetAttackSpeed(DamageClass.Melee) += 0.2f; 
             player.GetKnockback(DamageClass.Ranged) += 0.7f;
-            //player.manaCost -= 0.2f;
-            //player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 1f;
         }
     }
 
@@ -37,8 +34,8 @@ internal class ExteriosMedallion : ModItem
         recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<LeodrakesMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 5)], TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeUtils.GetNewRecipe(recipe1, [(ModContent.ItemType<BarkionsMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 10)], TileID.Anvils);
-        recipe1.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 10)], TileID.Anvils);
+        recipe.Register();
     }
 }

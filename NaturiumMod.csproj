@@ -12,17 +12,6 @@
         <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Remove="Content\Items\Placeable\Camelia.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Remove="Content\Items\Accessories\LeodrakesMedallion.png" />
-        <None Remove="Content\Items\Testing\TestingGun - Copy (2).png" />
-        <None Remove="Content\Items\Testing\TestingGun - Copy (3).png" />
-        <None Remove="Content\Items\Testing\TestingGun - Copy.png" />
-        <None Remove="Content\Items\Weapons\BarkionsTB.png" />
-        <None Remove="Content\Items\Weapons\LeodrakesLeafstorm.png" />
-    </ItemGroup>
-    <ItemGroup>
         <PackageReference Include="CloudinaryDotNet"
                           Version="1.26.2" />
     </ItemGroup>

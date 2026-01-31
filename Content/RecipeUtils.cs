@@ -1,6 +1,6 @@
 using Terraria;
 
-namespace NaturiumMod;
+namespace NaturiumMod.Content;
 
 public static class RecipeUtils
 {
@@ -13,9 +13,9 @@ public static class RecipeUtils
 
     public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients)
     {
-        foreach ((int itemId, int stack) ingredient in ingredients)
+        foreach ((int itemId, int stack) in ingredients)
         {
-            recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+            recipe.AddIngredient(itemId, stack);
         }
         
         return recipe;
@@ -43,9 +43,9 @@ public static class RecipeUtils
 
     public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients, int tile)
     {
-        foreach ((int itemId, int stack) ingredient in ingredients)
+        foreach ((int itemId, int stack) in ingredients)
         {
-            recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+            recipe.AddIngredient(itemId, stack);
         }
 
         recipe.AddTile(tile);
@@ -55,9 +55,9 @@ public static class RecipeUtils
 
     public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients, int[] tiles)
     {
-        foreach ((int itemId, int stack) ingredient in ingredients)
+        foreach ((int itemId, int stack) in ingredients)
         {
-            recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+            recipe.AddIngredient(itemId, stack);
         }
 
         foreach (int tile in tiles)

@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using NaturiumMod.Content.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using NaturiumMod.Content.Tiles;
 
 namespace NaturiumMod.Content.Items.Placeable;
 
@@ -28,17 +26,21 @@ public class CameliaSeeds : ModItem
     // Only allow planting on valid soil (jungle grass / grass / mud)
     public override bool CanUseItem(Player player)
     {
-        if (!base.CanUseItem(player)) return false;
+        if (!base.CanUseItem(player))
+        {
+            return false;
+        }
 
         int i = Player.tileTargetX;
         int j = Player.tileTargetY;
 
         // the tile we place occupies (i,j) so we check the tile below (j+1)
-        if (j + 1 >= Main.maxTilesY || i < 0 || i >= Main.maxTilesX) return false;
+        if (j + 1 >= Main.maxTilesY || i < 0 || i >= Main.maxTilesX)
+        {
+            return false;
+        }
 
         Tile tileBelow = Framing.GetTileSafely(i, j + 1);
-        if (!tileBelow.HasTile) return false;
-
-        return tileBelow.TileType == TileID.JungleGrass || tileBelow.TileType == TileID.Grass || tileBelow.TileType == TileID.Mud;
+        return tileBelow.HasTile && tileBelow.TileType is TileID.JungleGrass or TileID.Grass or TileID.Mud;
     }
 }

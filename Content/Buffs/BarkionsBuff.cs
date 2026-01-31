@@ -5,7 +5,7 @@ namespace NaturiumMod.Content.Buffs;
 
 public class BarkionsBuff : ModBuff
 {
-    public float MultiplicativeDamageBonus { get; private set; }
+    public float MultiplicativeDamageBonus { get; init; }
 
     public override void SetStaticDefaults()
     {

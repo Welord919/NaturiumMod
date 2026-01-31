@@ -43,25 +43,27 @@ public class SkeletronItem : ModItem
 
     public override bool? UseItem(Player player)
     {
-        if (player.whoAmI == Main.myPlayer)
+        if (player.whoAmI != Main.myPlayer)
         {
-            // If the player using the item is the client
-            // (explicitly excluded server-side here)
-            SoundEngine.PlaySound(SoundID.Roar, player.position);
+            return true;
+        }
 
-            int type = NPCID.SkeletronHead;
+        // If the player using the item is the client
+        // (explicitly excluded server-side here)
+        SoundEngine.PlaySound(SoundID.Roar, player.position);
+        
+        int type = NPCID.SkeletronHead;
 
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                // If the player is not in multiplayer, spawn directly
-                NPC.SpawnOnPlayer(player.whoAmI, type);
-            }
-            else
-            {
-                // If the player is in multiplayer, request a spawn
-                // This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in this class above
-                NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
-            }
+        if (Main.netMode != NetmodeID.MultiplayerClient)
+        {
+            // If the player is not in multiplayer, spawn directly
+            NPC.SpawnOnPlayer(player.whoAmI, type);
+        }
+        else
+        {
+            // If the player is in multiplayer, request a spawn
+            // This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in this class above
+            NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
         }
 
         return true;

@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Projectiles;
@@ -9,7 +10,7 @@ public class BarkionsBarkProj : ModProjectile
     {
         Projectile.width = 20;
         Projectile.height = 20;
-        Projectile.aiStyle = 1;
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
 
         Projectile.friendly = true;
         Projectile.hostile = false;

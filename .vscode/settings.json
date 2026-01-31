@@ -6,6 +6,7 @@
         "Barkions",
         "Bladeof",
         "Chestplate",
+        "chik",
         "Chlorophyte",
         "Cosmobeet",
         "Crimtane",
@@ -17,21 +18,29 @@
         "Exterios",
         "Frien",
         "genpass",
+        "Hardmode",
         "Knockback",
         "Leafstorm",
         "Leodrake",
         "Leodrakes",
         "Mythril",
         "Naturium",
+        "Netmode",
         "NPCID",
         "NPCLOOT",
         "Regen",
         "Shinies",
         "Skeletron",
         "Soulof",
+        "terrarian",
         "Vegeta",
         "Wandof",
         "Welord",
-        "Yoyo"
+        "Yoyo",
+        "Yoyos"
+    ],
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "/home/alexis/Code/Projects/Mods/NaturiumMod/NaturiumMod.sln",
+        "/home/alexis/Code/Projects/Mods/NaturiumMod/NaturiumMod.csproj"
     ]
 }

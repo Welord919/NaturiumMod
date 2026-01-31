@@ -3,26 +3,39 @@ using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Common.Global;
+namespace NaturiumMod.Content.Global;
 
-class ExampleNPCShop : GlobalNPC
+public class ExampleNPCShop : GlobalNPC
 {
     public override void ModifyShop(NPCShop shop)
     {
-        if (shop.NpcType == NPCID.Dryad)
+        int[] itemsToAdd = GetItemsToAdd(shop.NpcType);
+        foreach (int item in itemsToAdd)
         {
-            shop.Add(ModContent.ItemType<BarkionsBark>());
-            shop.Add(ModContent.ItemType<BarkionsMedallion>());
-            shop.Add(ItemID.Vine);
+            shop.Add(item);
         }
-        else if (shop.NpcType == NPCID.Demolitionist)
+    }
+
+    private int[] GetItemsToAdd(int npcID)
+    {
+        return npcID switch
         {
-            shop.Add(ItemID.Diamond);
-            shop.Add(ItemID.Ruby);
-            shop.Add(ItemID.Emerald);
-            shop.Add(ItemID.Sapphire);
-            shop.Add(ItemID.Topaz);
-            shop.Add(ItemID.Amethyst);
-        }
+            NPCID.Dryad =>
+            [
+                ModContent.ItemType<BarkionsBark>(),
+                ModContent.ItemType<BarkionsMedallion>(),
+                ItemID.Vine
+            ],
+            NPCID.Demolitionist =>
+            [
+                ItemID.Diamond,
+                ItemID.Ruby,
+                ItemID.Emerald,
+                ItemID.Sapphire,
+                ItemID.Topaz,
+                ItemID.Amethyst
+            ],
+            _ => []
+        };
     }
 }

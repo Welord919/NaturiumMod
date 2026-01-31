@@ -37,16 +37,10 @@ public class CosmoMinionProj : ModProjectile
     }
 
     // Here you can decide if your minion breaks things like grass or pots
-    public override bool? CanCutTiles()
-    {
-        return false;
-    }
+    public override bool? CanCutTiles() => false;
 
     // This is mandatory if your minion deals contact damage (further related stuff in AI() in the Movement region)
-    public override bool MinionContactDamage()
-    {
-        return true;
-    }
+    public override bool MinionContactDamage() => true;
 
     // The AI of this minion is split into multiple methods to avoid bloat. This method just passes values between calls actual parts of the AI.
     public override void AI()
@@ -197,18 +191,8 @@ public class CosmoMinionProj : ModProjectile
         }
 
         // Minion doesn't have a target: return to player and idle
-        if (distanceToIdlePosition > 600f)
-        {
-            // Speed up the minion if it's away from the player
-            speed = 12f;
-            inertia = 60f;
-        }
-        else
-        {
-            // Slow down the minion if closer to the player
-            speed = 4f;
-            inertia = 80f;
-        }
+        (speed, inertia) = distanceToIdlePosition > 600f
+            ? (12f, 60f) : (4f, 80f);
 
         if (distanceToIdlePosition > 20f)
         {

@@ -7,7 +7,6 @@ namespace NaturiumMod.Content.Items.Placeable;
 
 public class Camelia : ModItem
 {
-
 	public override void SetDefaults()
 	{
 		Item.width = 16;

@@ -7,11 +7,12 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Tools.PlatformCreators;
 
-public class PlatformCreator2 : ModItem
+public class PlatformCreatorBase : ModItem
 {
-    private bool _InReplaceMode = false;
-    private readonly int _PlatformCount = 50;
-    private readonly int _CraftingBarAmount = 10;
+    protected bool InReplaceMode = false;
+    protected int PlatformPlacementCount;
+    protected int CraftingBarAmount;
+    protected BuyPrice BuyPrice;
 
     public override void SetDefaults()
     {
@@ -20,7 +21,7 @@ public class PlatformCreator2 : ModItem
         Item.useTime = 12;
         Item.useAnimation = 12;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.value = Item.buyPrice(silver: 110);
+        Item.value = Item.buyPrice(BuyPrice.Platinum, BuyPrice.Gold, BuyPrice.Silver, BuyPrice.Copper);
         Item.rare = ItemRarityID.Green;
         Item.UseSound = SoundID.Item1;
 
@@ -40,10 +41,7 @@ public class PlatformCreator2 : ModItem
     }
 
     // Enable alternate use (right-click).
-    public override bool AltFunctionUse(Player player)
-    {
-        return true;
-    }
+    public override bool AltFunctionUse(Player player) => true;
 
     // Handle right-click toggling of modes.
     public override bool CanUseItem(Player player)
@@ -54,9 +52,10 @@ public class PlatformCreator2 : ModItem
         }
 
         // Right-click toggles modes without performing placement.
-        _InReplaceMode = !_InReplaceMode;
+        InReplaceMode = !InReplaceMode;
 
-        (string newText, byte r, byte g, byte b) = _InReplaceMode
+        // Inform the player of the new mode.
+        (string newText, byte r, byte g, byte b) = InReplaceMode
             ? ("Replace Mode: Will overwrite through blocks and enemies.", (byte)255, (byte)150, (byte)50)
             : ("Safe Mode: Will avoid overwriting blocks and enemies.", (byte)50, (byte)200, (byte)150);
 
@@ -64,12 +63,10 @@ public class PlatformCreator2 : ModItem
 
         SoundEngine.PlaySound(SoundID.MenuTick);
 
-        // Do not perform the normal left-click action when toggling.
         return false;
-
     }
 
-    // Places 50 platform tiles in a horizontal row starting at the mouse position,
+    // Places 25 platform tiles in a horizontal row starting at the mouse position,
     // extending in the direction the player is looking (determined by mouse position relative to player).
     public override bool? UseItem(Player player)
     {
@@ -93,13 +90,16 @@ public class PlatformCreator2 : ModItem
         {
             // If exactly aligned, fall back to player's facing direction, then default to right.
             dir = player.direction;
-            if (dir == 0) dir = 1;
+            if (dir == 0)
+            {
+                dir = 1;
+            }
         }
 
         int platformTileType = TileID.Platforms; // generic platforms tile
         bool placedAny = false;
 
-        for (int i = 0; i < _PlatformCount; i++)
+        for (int i = 0; i < PlatformPlacementCount; i++)
         {
             int x = startX + i * dir;
             int y = startY;
@@ -109,14 +109,14 @@ public class PlatformCreator2 : ModItem
             {
                 continue;
             }
-
-            if (_InReplaceMode && Main.tile[x, y].HasTile)
+            
+            if (InReplaceMode && Main.tile[x, y].HasTile)
             {
                 // In Replace mode, remove any blocking tile first (no item drop).
                 Terraria.WorldGen.KillTile(x, y, fail: false, effectOnly: false, noItem: true);
             }
-
-            if (Terraria.WorldGen.PlaceTile(x, y, platformTileType, mute: true, forced: false, -1, style: 0))
+            
+            if (Terraria.WorldGen.PlaceTile(x, y, platformTileType, mute: true, forced: true, -1, style: 0))
             {
                 placedAny = true;
             }
@@ -125,7 +125,7 @@ public class PlatformCreator2 : ModItem
         // Sync placed tiles to other clients if anything was placed
         if (placedAny && Main.netMode == NetmodeID.MultiplayerClient)
         {
-            int radius = _PlatformCount / 2; // radius used for SendTileSquare; covers a square of (2*radius+1) tiles
+            int radius = PlatformPlacementCount / 2; // 12 => covers 25 tiles (2*12+1)
             int centerX = startX + dir * radius;
             NetMessage.SendTileSquare(-1, centerX, startY, radius);
         }
@@ -136,30 +136,13 @@ public class PlatformCreator2 : ModItem
     // Show current mode in the tooltip so players can see it while hovering the item.
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        string modeText = _InReplaceMode
+        string modeText = InReplaceMode
             ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
 
         TooltipLine line = new(Mod, "PlatformCreatorMode", modeText)
         {
-            OverrideColor = _InReplaceMode ? new Color(255, 150, 50) : new Color(50, 200, 150)
+            OverrideColor = InReplaceMode ? new Color(255, 150, 50) : new Color(50, 200, 150)
         };
         tooltips.Add(line);
-    }
-
-    public override void AddRecipes()
-    {
-        // Recipe for Crimtane worlds
-        Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformCount);
-        recipe.AddIngredient(ItemID.CrimtaneBar, _CraftingBarAmount);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
-
-        // Recipe for Demonite worlds
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformCount);
-        recipe.AddIngredient(ItemID.DemoniteBar, _CraftingBarAmount);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
     }
 }

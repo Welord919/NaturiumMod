@@ -37,8 +37,8 @@ internal class LeodrakesMedallion : ModItem
         recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 5)], TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeUtils.GetNewRecipe(recipe1, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
-        recipe1.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
+        recipe.Register();
     }
 }
