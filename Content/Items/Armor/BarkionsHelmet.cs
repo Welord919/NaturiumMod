@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

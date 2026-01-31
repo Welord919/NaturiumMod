@@ -1,15 +1,15 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.Creative;
 
-namespace NaturiumMod.Content.Items.Ammo;
+namespace NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
 
-public class NaturiumClump : ModItem
+public class BarkionsBark : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Item.ResearchUnlockCount = 99;
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()
@@ -24,17 +24,15 @@ public class NaturiumClump : ModItem
         Item.maxStack = 9999;
         Item.consumable = true;
 
-        Item.value = 50;
-        Item.shoot = Mod.Find<ModProjectile>("NaturiumClumpProj").Type;
-
-        Item.shootSpeed = 14f; // The speed of the projectile.
         Item.ammo = Item.type;
-        Item.ammo = AmmoID.Bullet; // The ammo class this ammo belongs to.
+        Item.shoot = Mod.Find<ModProjectile>("BarkionsBarkProj").Type;
+        Item.value = 5;
     }
+
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(15);
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<NaturiumBar>(), 1), TileID.Anvils);
+        recipe = RecipeUtils.GetNewRecipe(recipe, [(ItemID.Wood, 25), (ItemID.Acorn, 3)], TileID.LivingLoom);
         recipe.Register();
     }
 }

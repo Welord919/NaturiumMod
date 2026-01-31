@@ -12,7 +12,7 @@ internal class NPCLOOT : GlobalNPC
     {
         if (npc.type == NPCID.MourningWood)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 4, 1, 1));
+            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 4, 1, 1));
         }
     }
 }

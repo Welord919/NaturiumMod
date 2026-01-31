@@ -15,6 +15,7 @@ Mods: {
 		NPCs: {
 			NaturiumSlime.DisplayName: Naturium Slime
 			ExampleCritterNPC.DisplayName: Example Critter N P C
+			AntjawCritterNPC.DisplayName: Antjaw Critter N P C
 		}
 
 		Items: {
@@ -24,8 +25,8 @@ Mods: {
 			}
 
 			DaltonPainting: {
-				Tooltip: Dalton Vegeta ahh hair goofy ahh hair
-				DisplayName: A Painting of Dalton
+				Tooltip: Dalton Vegeta ahh hair
+				DisplayName: A Painting of Dalton... Don't tell him...
 			}
 
 			TripleWOS: {
@@ -39,7 +40,7 @@ Mods: {
 			}
 
 			RoseWhip: {
-				Tooltip: A whip crafted from tangled vines and thorns. Seemingly derived from roses based at the sacred tree. Barkion Approved!
+				Tooltip: A whip crafted from tangled vines and thorns. Barkion Approved!
 				DisplayName: Barkion's Rose Whip
 			}
 
@@ -123,18 +124,23 @@ Mods: {
 				DisplayName: Camelia Petal
 			}
 
+			Camelia: {
+				DisplayName: Camelia
+				Tooltip: A flower that grew sentience from being infused with Barkion's power.
+			}
+
 			BarkionsBark: {
 				Tooltip: A fragment of Barkion, imbued with his ancient wooden essence. Penetrates through one point of armor.
 				DisplayName: Barkion's Bark
 			}
 
 			SkeletronItem: {
-				Tooltip: Summons Skeletron :P
+				Tooltip: Summons Skeletron. That's all.
 				DisplayName: A Weird Skull
 			}
 
 			MktPotion: {
-				Tooltip: Reduces incoming damage and grants gradual healing. Efficient!
+				Tooltip: Increases defense by 6 and life regeneration by 1.8 for 4 minutes.
 				DisplayName: Barkion's Mosquito Potion
 			}
 
@@ -164,7 +170,7 @@ Mods: {
 			}
 
 			ExteriosMedallion: {
-				Tooltip: A medallion that boosts the stats of Exterio's Weapons. No way!
+				Tooltip: A medallion that boosts the stats of Exterio's Weapons.
 				DisplayName: Exterio's Medallion
 			}
 
@@ -174,24 +180,59 @@ Mods: {
 			}
 
 			ExampleCritterItem: {
-				DisplayName: Example Critter Item
+				DisplayName: Antjaw
+				Tooltip: Creature...
+			}
+
+			PlatformCreator: {
+				DisplayName: Platform Creator
+				Tooltip: Creates 25 platforms at the players cursor. Right click to enter Safe or Replace mode.
+			}
+
+			PlatformCreator2: {
+				DisplayName: Platform Creator +1
+				Tooltip: Creates 50 platforms at the players cursor. Right click to enter Safe or Replace mode.
+			}
+
+			PlatformCreator3: {
+				DisplayName: Platform Creator +2
+				Tooltip: Creates 100 platforms at the players cursor. Right click to enter Safe or Replace mode.
+			}
+
+			PlatformCreator4: {
+				DisplayName: Platform Creator +3
+				Tooltip: Creates 200 platforms at the players cursor. Right click to enter Safe or Replace mode.
+			}
+
+			PlatformCreatorFinal: {
+				DisplayName: Platform Creator Final
+				Tooltip: Right click to enter a menu to choose 25-400 platforms. Change from Safe or Replace by pressing the center.
+			}
+
+			CameliaSeeds: {
+				DisplayName: Camelia Seeds
+				Tooltip: Seeds of a Camelia flower. Be careful!
+			}
+
+			AntjawCritter: {
+				DisplayName: Antjaw Critter
 				Tooltip: ""
 			}
 		}
 
 		Buffs: {
 			MktPotionBuff: {
-				Description: Absorb a portion of incoming damage and unleash it back upon your enemies!
+				Description: Increases life regeneration and defense.
 				DisplayName: Mosquito Potion Buff
 			}
 
 			CosmoMinionBuff: {
-				Description: Awesome cosmo beat friend!
+				Description: A Cosmo Beat friend!
 				DisplayName: Cosmo Minion Buff
 			}
 
 			BarkionsBuff: {
-				Description: A blessing bestowed by the Wooden Dragon itself.
+				Description: A blessing bestowed by the Wooden Dragon himself.
 				DisplayName: Barkion's Buff
 			}
 		}

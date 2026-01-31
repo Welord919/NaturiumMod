@@ -21,13 +21,13 @@ public class SkeletronItem : ModItem
     {
         Item.width = 20;
         Item.height = 20;
-        Item.maxStack = 20;
+        Item.maxStack = 1;
         Item.value = 100;
         Item.rare = ItemRarityID.Blue;
         Item.useAnimation = 30;
         Item.useTime = 30;
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.consumable = true;
+        Item.consumable = false;
     }
 
     public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)

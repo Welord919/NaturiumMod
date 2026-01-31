@@ -7,7 +7,7 @@ public class MktPotionBuff : ModBuff
 {
     public override void Update(Player player, ref int buffIndex)
     {
-        player.endurance += 0.05f;
-        player.lifeRegen += 1 * 2;
+        player.statDefense += 6;
+        player.lifeRegen += (int)1.8;
     }
 }

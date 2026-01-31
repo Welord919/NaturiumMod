@@ -1,4 +1,5 @@
-using NaturiumMod.Content.Items.Materials;
+using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Placeable;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -47,6 +48,8 @@ internal class NaturiumSlime : ModNPC
         }
 
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaturiumOre>(), 1, 1, 6));
+        // Make DaltonPainting a 1/1000 drop chance
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -56,7 +59,7 @@ internal class NaturiumSlime : ModNPC
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
-        IBestiaryInfoElement[] bestiaryInfoElements = [new FlavorTextBestiaryInfoElement("This is SIGMA slime")];
+        IBestiaryInfoElement[] bestiaryInfoElements = [new FlavorTextBestiaryInfoElement("This slime has taken in enough nature energy to start developing Naturium Ore inside of its body.")];
         bestiaryEntry.Info.AddRange(bestiaryInfoElements);
     }
 }
