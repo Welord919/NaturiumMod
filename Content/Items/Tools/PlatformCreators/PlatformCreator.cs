@@ -9,10 +9,10 @@ namespace NaturiumMod.Content.Items.Tools.PlatformCreators;
 
 public class PlatformCreator : ModItem
 {
-    protected bool InReplaceMode = false;
-    protected int PlatformPlacementCount = 25;
-    protected int CraftingBarAmount = 10;
-    protected BuyPrice BuyPrice = new(0, 0, 100, 0);
+    private bool _InReplaceMode = false;
+    private readonly int _PlatformPlacementCount = 25;
+    private readonly int _CraftingBarAmount = 10;
+    private readonly BuyPrice BuyPrice = new(0, 0, 100, 0);
 
     public override void SetDefaults()
     {
@@ -52,10 +52,10 @@ public class PlatformCreator : ModItem
         }
 
         // Right-click toggles modes without performing placement.
-        InReplaceMode = !InReplaceMode;
+        _InReplaceMode = !_InReplaceMode;
 
         // Inform the player of the new mode.
-        (string newText, byte r, byte g, byte b) = InReplaceMode
+        (string newText, byte r, byte g, byte b) = _InReplaceMode
             ? ("Replace Mode: Will overwrite through blocks and enemies.", (byte)255, (byte)150, (byte)50)
             : ("Safe Mode: Will avoid overwriting blocks and enemies.", (byte)50, (byte)200, (byte)150);
 
@@ -99,7 +99,7 @@ public class PlatformCreator : ModItem
         int platformTileType = TileID.Platforms; // generic platforms tile
         bool placedAny = false;
 
-        for (int i = 0; i < PlatformPlacementCount; i++)
+        for (int i = 0; i < _PlatformPlacementCount; i++)
         {
             int x = startX + i * dir;
             int y = startY;
@@ -110,7 +110,7 @@ public class PlatformCreator : ModItem
                 continue;
             }
             
-            if (InReplaceMode && Main.tile[x, y].HasTile)
+            if (_InReplaceMode && Main.tile[x, y].HasTile)
             {
                 // In Replace mode, remove any blocking tile first (no item drop).
                 Terraria.WorldGen.KillTile(x, y, fail: false, effectOnly: false, noItem: true);
@@ -125,7 +125,7 @@ public class PlatformCreator : ModItem
         // Sync placed tiles to other clients if anything was placed
         if (placedAny && Main.netMode == NetmodeID.MultiplayerClient)
         {
-            int radius = PlatformPlacementCount / 2; // 12 => covers 25 tiles (2*12+1)
+            int radius = _PlatformPlacementCount / 2; // 12 => covers 25 tiles (2*12+1)
             int centerX = startX + dir * radius;
             NetMessage.SendTileSquare(-1, centerX, startY, radius);
         }
@@ -136,13 +136,23 @@ public class PlatformCreator : ModItem
     // Show current mode in the tooltip so players can see it while hovering the item.
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        string modeText = InReplaceMode
+        string modeText = _InReplaceMode
             ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
 
         TooltipLine line = new(Mod, "PlatformCreatorMode", modeText)
         {
-            OverrideColor = InReplaceMode ? new Color(255, 150, 50) : new Color(50, 200, 150)
+            OverrideColor = _InReplaceMode
+                ? new Color(255, 150, 50) : new Color(50, 200, 150)
         };
         tooltips.Add(line);
+    }
+
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformPlacementCount);
+        recipe.AddIngredient(ItemID.PlatinumBar, _CraftingBarAmount);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
     }
 }
