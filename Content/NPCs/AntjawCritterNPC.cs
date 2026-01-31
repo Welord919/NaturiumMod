@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Critters;
+﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.General.Critters;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;

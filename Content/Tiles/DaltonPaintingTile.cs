@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Placeable;
+using NaturiumMod.Content.Items.General.Placeable;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

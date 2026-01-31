@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using NaturiumMod.Content.Items.Placeable;
+using NaturiumMod.Content.Items.General.Placeable;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -28,7 +28,7 @@ namespace NaturiumMod.Content.Tiles
             Main.tileNoFail[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch); // herb-like behaviour
-            TileObjectData.newTile.CoordinateHeights = new[] { 16 };
+            TileObjectData.newTile.CoordinateHeights = [16];
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(90, 180, 80), Language.GetText("Camelia"));

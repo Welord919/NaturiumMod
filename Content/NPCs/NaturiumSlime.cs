@@ -1,5 +1,5 @@
-using NaturiumMod.Content.Items.Materials.PreHardmode;
-using NaturiumMod.Content.Items.Placeable;
+using NaturiumMod.Content.Items.General.Placeable;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;

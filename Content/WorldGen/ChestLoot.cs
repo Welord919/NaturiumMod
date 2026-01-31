@@ -1,7 +1,7 @@
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using NaturiumMod.Content.Items.Materials.PreHardmode;
 
 namespace NaturiumMod.Content.WorldGen;
 

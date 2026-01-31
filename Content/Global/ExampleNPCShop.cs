@@ -1,5 +1,5 @@
-﻿using NaturiumMod.Content.Items.Accessories.PreHardmodeAccessories;
-using NaturiumMod.Content.Items.Materials.PreHardmode;
+﻿using NaturiumMod.Content.Items.PreHardmode.Accessories;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria.ID;
 using Terraria.ModLoader;
 
