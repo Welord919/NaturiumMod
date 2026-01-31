@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Generation;
+namespace NaturiumMod.Content.Generation.Chests;
 
 public readonly struct ChestInfo(Chest chest, int dropItemID)
 {

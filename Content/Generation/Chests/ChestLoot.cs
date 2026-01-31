@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Generation;
+namespace NaturiumMod.Content.Generation.Chests;
 
 public class ChestItemWorldGen : ModSystem
 {

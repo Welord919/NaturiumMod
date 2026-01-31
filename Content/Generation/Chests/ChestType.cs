@@ -1,6 +1,6 @@
 using Terraria.ID;
 
-namespace NaturiumMod.Content.Generation;
+namespace NaturiumMod.Content.Generation.Chests;
 
 public enum ChestType
 {
