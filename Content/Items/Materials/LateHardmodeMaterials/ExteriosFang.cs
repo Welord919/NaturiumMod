@@ -15,8 +15,7 @@ public class ExteriosFang : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 12;
-        Item.height = 12;
+        Item.Size = new(12, 12);
 
         Item.damage = 12;
         Item.DamageType = DamageClass.Ranged;

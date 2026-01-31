@@ -9,8 +9,7 @@ internal class BarkionsMedallion : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.rare = ItemRarityID.Green;
         Item.accessory = true;
         Item.value = 100000;
@@ -18,7 +17,7 @@ internal class BarkionsMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetDamage(DamageClass.Generic) += 0.05f; // Increase all damage by 5% for all weapons
+        player.GetDamage(DamageClass.Generic) += 0.05f;
 
         if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
             && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
@@ -28,9 +27,9 @@ internal class BarkionsMedallion : ModItem
             return;
         }
 
-        player.GetArmorPenetration(DamageClass.Generic) += 1f; // Increases Armour Penetration by 1 points
-        player.GetKnockback(DamageClass.Melee) += 0.1f;        // Increases melee knockback by 10%
-        player.GetAttackSpeed(DamageClass.Ranged) += 0.15f;    // Increases ranged attack speed by 15%
+        player.GetArmorPenetration(DamageClass.Generic) += 1f;
+        player.GetKnockback(DamageClass.Melee) += 0.1f;
+        player.GetAttackSpeed(DamageClass.Ranged) += 0.15f;
         player.manaCost -= 0.2f;
         player.GetDamage(DamageClass.Summon) += 0.1f;
     }

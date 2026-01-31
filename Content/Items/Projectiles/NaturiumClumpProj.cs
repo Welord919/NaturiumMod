@@ -15,8 +15,7 @@ public class NaturiumClumpProj : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 8;
-        Projectile.height = 8;
+        Projectile.Size = new(8, 8);
         Projectile.aiStyle = ProjAIStyleID.Arrow;
         Projectile.friendly = true; // Can the projectile deal damage to enemies?
         Projectile.hostile = false; // Can the projectile deal damage to the player?

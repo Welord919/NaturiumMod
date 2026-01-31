@@ -29,8 +29,7 @@ public class LeodrakesYoyoProj : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 16;
-        Projectile.height = 16;
+        Projectile.Size = new(16, 16);
 
         Projectile.aiStyle = ProjAIStyleID.Yoyo; // Projectile's AI style. Yoyos use aiStyle 99 (ProjAIStyleID.Yoyo). A lot of yoyo code checks for this aiStyle to work properly.
 

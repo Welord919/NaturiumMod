@@ -10,8 +10,7 @@ internal class LeodrakesMedallion : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.rare = ItemRarityID.Green;
         Item.accessory = true;
         Item.value = 100000;
@@ -22,13 +21,15 @@ internal class LeodrakesMedallion : ModItem
         player.moveSpeed += 0.5f;
         player.GetDamage(DamageClass.Generic) += 0.05f; // Increase all damage by 5% for all weapons
 
-        if (player.HeldItem.type == ModContent.ItemType<LeodrakesLeafstorm>() || player.HeldItem.type == ModContent.ItemType<LeodrakesYoyo>())
+        if (player.HeldItem.type != ModContent.ItemType<LeodrakesLeafstorm>() && player.HeldItem.type != ModContent.ItemType<LeodrakesYoyo>())
         {
-            player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
-            player.GetKnockback(DamageClass.Ranged) += 0.4f;
-            player.manaCost -= 0.2f;
-            player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 1f;
+            return;
         }
+
+        player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
+        player.GetKnockback(DamageClass.Ranged) += 0.4f;
+        player.manaCost -= 0.2f;
+        player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 1f;
     }
 
     public override void AddRecipes()

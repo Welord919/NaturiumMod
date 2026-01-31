@@ -14,11 +14,10 @@ public class NaturiumOre : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 12;
-        Item.height = 12;
+        Item.Size = new(12, 12);
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.value = Item.buyPrice(copper: 50);
+        Item.value = Item.buyPrice(0, 0, 0, 50);
 
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;

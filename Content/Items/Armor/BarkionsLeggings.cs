@@ -12,8 +12,7 @@ public class BarkionsLeggings : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.value = 2000;
         Item.rare = ItemRarityID.Blue;
         Item.defense = 4;

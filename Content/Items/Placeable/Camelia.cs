@@ -9,10 +9,9 @@ public class Camelia : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 16;
-		Item.height = 16;
+		Item.Size = new(16, 16);
 		Item.maxStack = 99;
-		Item.value = Item.buyPrice(silver: 2);
+		Item.value = Item.buyPrice(0, 0, 2, 0);
 		Item.rare = ItemRarityID.White;
 		Item.consumable = false;
 	}

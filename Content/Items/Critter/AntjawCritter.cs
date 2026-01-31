@@ -14,6 +14,7 @@ public class AntjawCritter : ModItem
 
     public override void SetDefaults()
     {
+        Item.Size = new(12, 12);
         Item.useStyle = ItemUseStyleID.Swing;
         Item.autoReuse = true;
         Item.useTurn = true;
@@ -21,8 +22,6 @@ public class AntjawCritter : ModItem
         Item.useTime = 10;
         Item.maxStack = 99;
         Item.consumable = true;
-        Item.width = 12;
-        Item.height = 12;
         Item.makeNPC = 361;
         Item.noUseGraphic = true;
 

@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Projectiles;
@@ -7,9 +8,8 @@ public class ExteriosFangProj : ModProjectile
 {
     public override void SetDefaults()
     {
-        Projectile.width = 24;
-        Projectile.height = 24;
-        Projectile.aiStyle = 1;
+        Projectile.Size = new(24, 24);
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
         Projectile.light = 2.0f;
 
         Projectile.friendly = true;

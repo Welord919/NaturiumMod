@@ -15,8 +15,7 @@ internal class DaltonPainting : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 48;
-        Item.height = 80;
+        Item.Size = new(48, 80);
 
         Item.useTime = 15;
         Item.useAnimation = 15;
