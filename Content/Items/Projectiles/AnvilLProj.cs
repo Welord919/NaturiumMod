@@ -8,8 +8,7 @@ public class AnvilLProj : ModProjectile
     public override void SetDefaults()
     {
         // Set projectile properties
-        Projectile.width = 16;
-        Projectile.height = 16;
+        Projectile.Size = new(16, 16);
         Projectile.friendly = true; // Determines if it can damage players
         Projectile.penetrate = 1; // How many enemies it can hit before disappearing
         Projectile.timeLeft = 600; // Time in ticks (60 ticks = 1 second)

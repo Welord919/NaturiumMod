@@ -78,6 +78,7 @@ public static class PlatformCreatorHelpers
             OverrideColor = inReplaceMode
                 ? new Color(255, 150, 50) : new Color(50, 200, 150)
         };
+        
         tooltips.Add(line);
     }
 }

@@ -14,11 +14,10 @@ public class CameliaPetal : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.value = Item.buyPrice(copper: 75);
+        Item.value = Item.buyPrice(0, 0, 0, 75);
     }
 
     public override void AddRecipes()

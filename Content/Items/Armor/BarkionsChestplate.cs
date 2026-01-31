@@ -12,8 +12,7 @@ public class BarkionsChestplate : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.value = 2500;
         Item.rare = ItemRarityID.Blue;
         Item.defense = 6;

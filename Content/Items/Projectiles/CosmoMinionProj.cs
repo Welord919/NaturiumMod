@@ -1,5 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,8 +24,7 @@ public class CosmoMinionProj : ModProjectile
 
     public sealed override void SetDefaults()
     {
-        Projectile.width = 18;
-        Projectile.height = 28;
+        Projectile.Size = new(18, 28);
         Projectile.tileCollide = false; // Makes the minion go through tiles freely
 
         // These below are needed for a minion weapon
@@ -141,23 +140,25 @@ public class CosmoMinionProj : ModProjectile
             // This code is required either way, used for finding a target
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (npc.CanBeChasedBy())
+                if (!npc.CanBeChasedBy())
                 {
-                    float between = Vector2.Distance(npc.Center, Projectile.Center);
-                    bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
-                    bool inRange = between < distanceFromTarget;
-                    bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
+                    continue;
+                }
 
-                    // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-                    // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-                    bool closeThroughWall = between < 100f;
+                float between = Vector2.Distance(npc.Center, Projectile.Center);
+                bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
+                bool inRange = between < distanceFromTarget;
+                bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
 
-                    if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
-                    {
-                        distanceFromTarget = between;
-                        targetCenter = npc.Center;
-                        foundTarget = true;
-                    }
+                // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
+                // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
+                bool closeThroughWall = between < 100f;
+
+                if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
+                {
+                    distanceFromTarget = between;
+                    targetCenter = npc.Center;
+                    foundTarget = true;
                 }
             }
         }

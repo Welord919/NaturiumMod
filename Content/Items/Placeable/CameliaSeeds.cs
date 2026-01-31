@@ -9,8 +9,7 @@ public class CameliaSeeds : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 14;
-        Item.height = 14;
+        Item.Size = new(14, 14);
         Item.maxStack = 999;
         Item.rare = ItemRarityID.White;
         Item.useStyle = ItemUseStyleID.Swing;

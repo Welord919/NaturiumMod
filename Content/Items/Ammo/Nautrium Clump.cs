@@ -14,8 +14,7 @@ public class NaturiumClump : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 12;
-        Item.height = 12;
+        Item.Size = new(12, 12);
 
         Item.damage = 6;
         Item.DamageType = DamageClass.Ranged;
@@ -28,7 +27,6 @@ public class NaturiumClump : ModItem
         Item.shoot = Mod.Find<ModProjectile>("NaturiumClumpProj").Type;
 
         Item.shootSpeed = 14f;
-        Item.ammo = Item.type;
         Item.ammo = AmmoID.Bullet; // The ammo class this ammo belongs to.
     }
     public override void AddRecipes()

@@ -19,8 +19,7 @@ public class SkeletronItem : ModItem
 
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.maxStack = 1;
         Item.value = 100;
         Item.rare = ItemRarityID.Blue;

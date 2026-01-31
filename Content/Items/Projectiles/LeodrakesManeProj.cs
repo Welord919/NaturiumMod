@@ -9,8 +9,7 @@ public class LeodrakesManeProj : ModProjectile
 {
     public override void SetDefaults()
     {
-        Projectile.width = 20;
-        Projectile.height = 20;
+        Projectile.Size = new(20, 20);
         Projectile.aiStyle = ProjAIStyleID.Arrow;
 
         Projectile.friendly = true;

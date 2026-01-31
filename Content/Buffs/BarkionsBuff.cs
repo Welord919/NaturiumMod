@@ -15,6 +15,6 @@ public class BarkionsBuff : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetDamage(DamageClass.Generic) *= 1 + (MultiplicativeDamageBonus / 100f);
+        player.GetDamage(DamageClass.Generic) *= 1 + MultiplicativeDamageBonus / 100f;
     }
 }

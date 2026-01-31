@@ -10,8 +10,7 @@ internal class ExteriosMedallion : ModItem
 {
     public override void SetDefaults()
     {
-        Item.width = 20;
-        Item.height = 20;
+        Item.Size = new(20, 20);
         Item.rare = ItemRarityID.Green;
         Item.accessory = true;
         Item.value = 100000;
@@ -20,7 +19,7 @@ internal class ExteriosMedallion : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.moveSpeed += 0.5f;
-        player.GetDamage(DamageClass.Generic) += 0.1f; // Increase all damage by 10% for all weapons
+        player.GetDamage(DamageClass.Generic) += 0.1f;
 
         if (player.HeldItem.type == ModContent.ItemType<ExteriosCannon>())
         {
