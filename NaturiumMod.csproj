@@ -10,11 +10,5 @@
         <PackageReference Include="CloudinaryDotNet"
                           Version="1.26.2" />
     </ItemGroup>
-    <ItemGroup>
-        <Folder Include="Content\Items\Projectiles\PreHardmodeProj\" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="Content\Items\Placeable\Camelia.cs" />
-    </ItemGroup>
     <!-- References -->
 </Project>
