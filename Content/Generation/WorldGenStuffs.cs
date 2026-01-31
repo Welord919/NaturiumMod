@@ -5,7 +5,7 @@ using Terraria.WorldBuilding;
 using Terraria.IO;
 using Terraria.Localization;
 
-namespace NaturiumMod;
+namespace NaturiumMod.Content.Generation;
 
 public class ExampleOreSystem : ModSystem
 {

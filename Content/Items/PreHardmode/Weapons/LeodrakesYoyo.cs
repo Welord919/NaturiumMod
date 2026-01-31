@@ -3,6 +3,7 @@ using NaturiumMod.Content.Items.General.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -50,7 +51,7 @@ public class LeodrakesYoyo : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 15), (ItemID.JungleYoyo, 1), (ItemID.Ruby, 12)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 15), (ItemID.JungleYoyo, 1), (ItemID.Ruby, 12)], TileID.Anvils);
         recipe.Register();
     }
 }

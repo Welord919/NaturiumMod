@@ -4,6 +4,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -41,7 +42,7 @@ public class LeodrakesLeafstorm : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 8), (ItemID.Ruby, 24), (ItemID.IronBar, 10)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 8), (ItemID.Ruby, 24), (ItemID.IronBar, 10)], TileID.Anvils);
         recipe.Register();
     }
 

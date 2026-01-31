@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
@@ -33,7 +34,7 @@ public class BarkionsBark : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(15);
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ItemID.Wood, 25), (ItemID.Acorn, 3)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.Wood, 25), (ItemID.Acorn, 3)], TileID.LivingLoom);
         recipe.Register();
     }
 }

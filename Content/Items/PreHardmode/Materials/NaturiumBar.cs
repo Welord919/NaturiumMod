@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
@@ -34,11 +35,11 @@ public class NaturiumBar : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(1);
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.CrimtaneBar, 5)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.CrimtaneBar, 5)], TileID.LivingLoom);
         recipe.Register();
 
         recipe = CreateRecipe(1);
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.DemoniteBar, 5)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.DemoniteBar, 5)], TileID.LivingLoom);
         recipe.Register();
     }
 }

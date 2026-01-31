@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Consumables;
 
@@ -73,7 +74,7 @@ public class SkeletronItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ItemID.ClothierVoodooDoll, 1), (ItemID.Bone, 99)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.ClothierVoodooDoll, 1), (ItemID.Bone, 99)], TileID.Anvils);
         recipe.Register();
     }
 }

@@ -2,6 +2,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Ammo;
 
@@ -34,7 +35,7 @@ public class NaturiumClump : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(15);
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<NaturiumBar>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<NaturiumBar>(), 1), TileID.Anvils);
         recipe.Register();
     }
 }

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using NaturiumMod.Content.Items.General.Projectiles;
 using NaturiumMod.Content.Items.PostHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Weapons;
 
@@ -22,7 +23,7 @@ public class ExteriosWhip : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<ExteriosFang>(), 1), (ModContent.ItemType<NaturiumBar>(), 15)], TileID.MythrilAnvil);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<ExteriosFang>(), 1), (ModContent.ItemType<NaturiumBar>(), 15)], TileID.MythrilAnvil);
         recipe.Register();
     }
 

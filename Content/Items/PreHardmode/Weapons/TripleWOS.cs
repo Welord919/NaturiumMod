@@ -5,6 +5,7 @@ using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -62,7 +63,7 @@ public class TripleWOS : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ItemID.WandofSparking, 3), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.Topaz, 3)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.WandofSparking, 3), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.Topaz, 3)], TileID.Anvils);
         recipe.AddRecipeGroup("Wood", 30);
         recipe.Register();
     }

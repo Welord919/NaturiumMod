@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using NaturiumMod.Content.Items.General.Projectiles;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -63,7 +64,7 @@ public class CosmoItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<NaturiumOre>(), 5), (ItemID.Vine, 5), (ItemID.Stinger, 3)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<NaturiumOre>(), 5), (ItemID.Vine, 5), (ItemID.Stinger, 3)], TileID.Anvils);
         recipe.Register();
     }
 }

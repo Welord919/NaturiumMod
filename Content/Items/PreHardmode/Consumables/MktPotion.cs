@@ -2,6 +2,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Consumables;
 
@@ -28,7 +29,7 @@ public class MktPotion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 4), (ModContent.ItemType<CameliaPetal>(), 2), (ItemID.BottledWater, 1)], TileID.AlchemyTable);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 4), (ModContent.ItemType<CameliaPetal>(), 2), (ItemID.BottledWater, 1)], TileID.AlchemyTable);
         recipe.Register();
     }
 }

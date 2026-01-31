@@ -3,7 +3,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Global;
+namespace NaturiumMod.Content.NPCs;
 
 public class ExampleNPCShop : GlobalNPC
 {

@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -40,11 +41,11 @@ public class BarkionsSS : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.IronBar, 5)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.IronBar, 5)], TileID.Anvils);
         recipe.Register();
 
         Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeUtils.GetNewRecipe(recipe1, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.LeadBar, 5)], TileID.Anvils);
+        recipe1 = RecipeHelper.GetNewRecipe(recipe1, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.LeadBar, 5)], TileID.Anvils);
         recipe1.Register();
     }
 }

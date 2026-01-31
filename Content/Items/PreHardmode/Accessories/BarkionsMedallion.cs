@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
 
@@ -39,11 +40,11 @@ internal class BarkionsMedallion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<LeodrakesMedallion>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<LeodrakesMedallion>(), 1), TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
         recipe.Register();
     }
 }

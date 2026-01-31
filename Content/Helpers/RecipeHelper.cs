@@ -1,8 +1,8 @@
 using Terraria;
 
-namespace NaturiumMod.Content;
+namespace NaturiumMod.Content.Helpers;
 
-public static class RecipeUtils
+public static class RecipeHelper
 {
     public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack) ingredient)
     {

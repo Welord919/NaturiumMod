@@ -2,6 +2,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Weapons;
 
@@ -40,7 +41,7 @@ public class ExteriosCannon : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 50), (ItemID.HallowedBar, 15)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 50), (ItemID.HallowedBar, 15)], TileID.Anvils);
         recipe.Register();
     }
 }

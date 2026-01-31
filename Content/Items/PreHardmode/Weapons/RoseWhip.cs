@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using NaturiumMod.Content.Items.General.Projectiles;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -28,7 +29,7 @@ public class RoseWhip : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 36), (ItemID.Vine, 7)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 36), (ItemID.Vine, 7)], TileID.Anvils);
         recipe.Register();
     }
 

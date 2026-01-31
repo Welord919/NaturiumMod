@@ -2,6 +2,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Tools;
 
@@ -32,11 +33,11 @@ public class NaturiumPickaxe : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.NightmarePickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.NightmarePickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
         recipe.Register();
 
         Recipe recipe2 = CreateRecipe();
-        recipe2 = RecipeUtils.GetNewRecipe(recipe2, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.DeathbringerPickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
+        recipe2 = RecipeHelper.GetNewRecipe(recipe2, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.DeathbringerPickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
         recipe2.Register();
     }
 }

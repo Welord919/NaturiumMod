@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Weapons;
 
@@ -39,7 +40,7 @@ public class EmpressFS : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeUtils.GetNewRecipe(recipe, [(ItemID.FairyQueenMagicItem, 1), (ItemID.PiercingStarlight, 1), (ItemID.RainbowRod, 1)], TileID.MythrilAnvil);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.FairyQueenMagicItem, 1), (ItemID.PiercingStarlight, 1), (ItemID.RainbowRod, 1)], TileID.MythrilAnvil);
         recipe.Register();
     }
 }
