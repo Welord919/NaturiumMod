@@ -33,5 +33,9 @@
         "Wandof",
         "Welord",
         "Yoyo"
+    ],
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "/home/alexis/Code/Projects/Mods/NaturiumMod/NaturiumMod.sln",
+        "/home/alexis/Code/Projects/Mods/NaturiumMod/NaturiumMod.csproj"
     ]
 }

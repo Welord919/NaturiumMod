@@ -1,16 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using NaturiumMod.Content.Items.Placeable;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.Enums;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.GameContent;
-using NaturiumMod.Content.Items.Placeable;
 
 namespace NaturiumMod.Content.Tiles
 {
@@ -84,7 +83,9 @@ namespace NaturiumMod.Content.Tiles
                 {
                     tile.TileFrameX = (short)((stage + 1) * 18);
                     if (Main.netMode == NetmodeID.Server)
+                    {
                         NetMessage.SendTileSquare(-1, i, j, 1);
+                    }
                 }
             }
         }
