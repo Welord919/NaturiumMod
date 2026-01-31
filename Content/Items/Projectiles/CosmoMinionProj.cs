@@ -8,6 +8,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class CosmoMinionProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/CosmoMinionProj";
+
     public override void SetStaticDefaults()
     {
         // Sets the amount of frames this minion has on its spritesheet

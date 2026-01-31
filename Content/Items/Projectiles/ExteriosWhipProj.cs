@@ -10,6 +10,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class ExteriosWhipProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/ExteriosWhipProj";
+
     public override void SetStaticDefaults()
     {
         // This makes the projectile use whip collision detection and allows flasks to be applied to it.

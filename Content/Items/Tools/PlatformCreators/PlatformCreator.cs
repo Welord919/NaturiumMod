@@ -10,6 +10,7 @@ public class PlatformCreator : ModItem
 {
     private bool _InReplaceMode = false;
     private const int PlatformPlacementCount = 25;
+    public override string Texture => "NaturiumMod/Assets/Items/Tools/PlatformCreators/PlatformCreator";
 
     public override void SetDefaults()
     {

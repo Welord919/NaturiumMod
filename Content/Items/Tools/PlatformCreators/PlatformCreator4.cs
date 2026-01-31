@@ -1,4 +1,4 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -11,6 +11,7 @@ public class PlatformCreator4 : ModItem
 {
     private bool _InReplaceMode = false;
     private const int _PlatformPlacementCount = 50;
+    public override string Texture => "NaturiumMod/Assets/Items/Tools/PlatformCreators/PlatformCreator4";
 
     public override void SetDefaults()
     {

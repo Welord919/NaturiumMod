@@ -7,6 +7,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class LeodrakesManeProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/LeodrakesManeProj";
+
     public override void SetDefaults()
     {
         Projectile.Size = new(20, 20);

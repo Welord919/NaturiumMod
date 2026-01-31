@@ -6,6 +6,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class BarkionsBarkProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/BarkionsBarkProj";
+
     public override void SetDefaults()
     {
         Projectile.Size = new(20, 20);

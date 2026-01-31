@@ -1,4 +1,4 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
 using NaturiumMod.Content.Items.Placeable;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -11,6 +11,8 @@ namespace NaturiumMod.Content.NPCs;
 
 internal class NaturiumSlime : ModNPC
 {
+    public override string Texture => "NaturiumMod/Assets/NPCs/NaturiumSlime";
+
     public override void SetStaticDefaults()
     {
         Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.BlueSlime];

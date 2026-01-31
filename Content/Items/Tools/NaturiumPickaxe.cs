@@ -1,4 +1,4 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,6 +7,8 @@ namespace NaturiumMod.Content.Items.Tools;
 
 public class NaturiumPickaxe : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Tools/NaturiumPickaxe";
+    
     public override void SetDefaults()
     {
         Item.damage = 20;

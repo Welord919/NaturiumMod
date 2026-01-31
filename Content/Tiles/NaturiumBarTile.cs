@@ -8,6 +8,8 @@ namespace NaturiumMod.Content.Tiles;
 
 internal class NaturiumBarTile : ModTile
 {
+    public override string Texture => "NaturiumMod/Assets/Tiles/NaturiumBarTile";
+
     public override void SetStaticDefaults()
     {
         Main.tileSolid[Type] = true;

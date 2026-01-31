@@ -10,6 +10,8 @@ namespace NaturiumMod.Content.Tiles;
 
 public class DaltonPaintingTile : ModTile
 {
+    public override string Texture => "NaturiumMod/Assets/Tiles/DaltonPaintingTile";
+
     public override void SetStaticDefaults()
     {
         Main.tileFrameImportant[Type] = true;

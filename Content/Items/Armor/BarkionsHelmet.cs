@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,6 +9,8 @@ namespace NaturiumMod.Content.Items.Armor;
 [AutoloadEquip(EquipType.Head)]
 public class BarkionsHelmet : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Armor/BarkionsHelmet";
+
     public override void SetStaticDefaults() { }
 
     public override void SetDefaults()

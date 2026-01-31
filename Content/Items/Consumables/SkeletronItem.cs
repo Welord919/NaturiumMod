@@ -7,6 +7,8 @@ namespace NaturiumMod.Content.Items.Consumables;
 
 public class SkeletronItem : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Consumables/SkeletronItem";
+
     public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 3;

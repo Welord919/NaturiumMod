@@ -11,6 +11,7 @@ public class PlatformCreatorFinal : ModItem
 {
     internal static bool ReplaceModeStatic = false;
     internal static int SelectedCountStatic = 25;
+    public override string Texture => "NaturiumMod/Assets/Items/Tools/PlatformCreators/PlatformCreatorFinal";
 
     public override void SetDefaults()
     {

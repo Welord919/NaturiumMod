@@ -7,6 +7,8 @@ namespace NaturiumMod.Content.Items.Placeable;
 
 public class Camelia : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Placeable/Camelia";
+
 	public override void SetDefaults()
 	{
 		Item.Size = new(16, 16);

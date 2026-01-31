@@ -11,6 +11,8 @@ namespace NaturiumMod.Content.Tiles;
 // See StatueWorldGen to see how ExampleStatue is added as an option for naturally spawning statues during world-gen.
 public class NatSlimeStatueTile : ModTile
 {
+    public override string Texture => "NaturiumMod/Assets/Tiles/NatSlimeStatueTile";
+
     public override void SetStaticDefaults()
     {
         Main.tileFrameImportant[Type] = true;

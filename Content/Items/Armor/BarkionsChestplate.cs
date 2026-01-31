@@ -1,4 +1,4 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +8,8 @@ namespace NaturiumMod.Content.Items.Armor;
 [AutoloadEquip(EquipType.Body)]
 public class BarkionsChestplate : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Armor/BarkionsChestplate";
+
     public override void SetStaticDefaults() { }
 
     public override void SetDefaults()

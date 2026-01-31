@@ -17,6 +17,7 @@ namespace NaturiumMod.Content.Tiles
     {
         // Number of growth stages (0 .. MaxStage-1). Each stage is one tile frame column (assumes 16px frames).
         private const int MaxStage = 4;
+        public override string Texture => "NaturiumMod/Assets/Tiles/CameliaTile";
 
         public override void SetStaticDefaults()
         {

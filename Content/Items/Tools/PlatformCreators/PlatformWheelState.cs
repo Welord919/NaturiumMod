@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using NaturiumMod.Content.UI;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;

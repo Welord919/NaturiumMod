@@ -8,6 +8,8 @@ namespace NaturiumMod.Content.Items.Placeable;
 
 internal class DaltonPainting : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Placeable/DaltonPainting";
+
     public override void SetStaticDefaults()
     {
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

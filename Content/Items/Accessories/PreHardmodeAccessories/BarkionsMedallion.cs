@@ -1,12 +1,14 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using NaturiumMod.Content.Items.Weapons.PreHardmodeWeapons;
+using NaturiumMod.Content.Items.Weapons.PreHardmode;
 
 namespace NaturiumMod.Content.Items.Accessories.PreHardmodeAccessories;
 
 internal class BarkionsMedallion : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Accessories/PreHardmode/BarkionsMedallion";
+
     public override void SetDefaults()
     {
         Item.Size = new(20, 20);

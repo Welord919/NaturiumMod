@@ -6,6 +6,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class ExteriosFangProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/ExteriosFangProj";
+
     public override void SetDefaults()
     {
         Projectile.Size = new(24, 24);

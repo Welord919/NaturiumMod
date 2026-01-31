@@ -1,13 +1,15 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
-using NaturiumMod.Content.Items.Weapons.PreHardmodeWeapons;
+using NaturiumMod.Content.Items.Materials.PreHardmode;
+using NaturiumMod.Content.Items.Weapons.PreHardmode;
 
 namespace NaturiumMod.Content.Items.Accessories.PreHardmodeAccessories;
 
 internal class LeodrakesMedallion : ModItem
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Accessories/PreHardmode/LeodrakesMedallion";
+
     public override void SetDefaults()
     {
         Item.Size = new(20, 20);

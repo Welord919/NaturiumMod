@@ -5,6 +5,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class AnvilLProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/AnvilLProj";
+
     public override void SetDefaults()
     {
         // Set projectile properties

@@ -5,6 +5,8 @@ namespace NaturiumMod.Content.Buffs;
 
 public class CosmoMinionBuff : ModBuff
 {
+    public override string Texture => "NaturiumMod/Assets/Buffs/CosmoMinionBuff";
+
     public override void SetStaticDefaults()
     {
         Main.buffNoSave[Type] = true;        // Buff won't save when you exit the world

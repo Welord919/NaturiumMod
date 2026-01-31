@@ -9,6 +9,7 @@ namespace NaturiumMod.Content.Items.Projectiles;
 public class LeodrakesYoyoProj : ModProjectile
 {
     private int shootTimer;
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/LeodrakesYoyoProj";
 
     public override void SetStaticDefaults()
     {

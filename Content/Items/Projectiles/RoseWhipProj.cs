@@ -10,6 +10,7 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class RoseWhipProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/RoseWhipProj";
 
     public override void SetStaticDefaults()
     {

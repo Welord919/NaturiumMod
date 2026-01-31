@@ -7,6 +7,8 @@ namespace NaturiumMod.Content.Items.Projectiles;
 
 public class NaturiumClumpProj : ModProjectile
 {
+    public override string Texture => "NaturiumMod/Assets/Items/Projectiles/NaturiumClumpProj";
+
     public override void SetStaticDefaults()
     {
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; // The length of old position to be recorded
