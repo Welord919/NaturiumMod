@@ -10,8 +10,9 @@ namespace NaturiumMod.Content.Items.Tools.PlatformCreators;
 public class PlatformCreator2 : ModItem
 {
     private bool _InReplaceMode = false;
-    private readonly int _PlatformCount = 50;
+    private readonly int _PlatformPlacementCount = 50;
     private readonly int _CraftingBarAmount = 10;
+    private readonly BuyPrice _BuyPrice = new(0, 0, 110, 0);
 
     public override void SetDefaults()
     {
@@ -20,7 +21,7 @@ public class PlatformCreator2 : ModItem
         Item.useTime = 12;
         Item.useAnimation = 12;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.value = Item.buyPrice(silver: 110);
+        Item.value = Item.buyPrice(_BuyPrice.Platinum, _BuyPrice.Gold, _BuyPrice.Silver, _BuyPrice.Copper);
         Item.rare = ItemRarityID.Green;
         Item.UseSound = SoundID.Item1;
 
@@ -69,95 +70,30 @@ public class PlatformCreator2 : ModItem
 
     }
 
-    // Places 50 platform tiles in a horizontal row starting at the mouse position,
-    // extending in the direction the player is looking (determined by mouse position relative to player).
     public override bool? UseItem(Player player)
     {
-        // Determine starting tile coordinates from the mouse world position
-        Vector2 mouseWorld = Main.MouseWorld;
-        int startX = (int)(mouseWorld.X / 16f);
-        int startY = (int)(mouseWorld.Y / 16f);
-
-        // Determine placement direction based on mouse position relative to player center.
-        // This ensures looking left (mouse left of player) places to the left and vice versa.
-        int dir;
-        if (mouseWorld.X < player.Center.X)
-        {
-            dir = -1;
-        }
-        else if (mouseWorld.X > player.Center.X)
-        {
-            dir = 1;
-        }
-        else
-        {
-            // If exactly aligned, fall back to player's facing direction, then default to right.
-            dir = player.direction;
-            if (dir == 0) dir = 1;
-        }
-
-        int platformTileType = TileID.Platforms; // generic platforms tile
-        bool placedAny = false;
-
-        for (int i = 0; i < _PlatformCount; i++)
-        {
-            int x = startX + i * dir;
-            int y = startY;
-
-            // Bounds check to avoid out-of-range errors.
-            if (x < 10 || x > Main.maxTilesX - 10 || y < 10 || y > Main.maxTilesY - 10)
-            {
-                continue;
-            }
-
-            if (_InReplaceMode && Main.tile[x, y].HasTile)
-            {
-                // In Replace mode, remove any blocking tile first (no item drop).
-                Terraria.WorldGen.KillTile(x, y, fail: false, effectOnly: false, noItem: true);
-            }
-
-            if (Terraria.WorldGen.PlaceTile(x, y, platformTileType, mute: true, forced: false, -1, style: 0))
-            {
-                placedAny = true;
-            }
-        }
-
-        // Sync placed tiles to other clients if anything was placed
-        if (placedAny && Main.netMode == NetmodeID.MultiplayerClient)
-        {
-            int radius = _PlatformCount / 2; // radius used for SendTileSquare; covers a square of (2*radius+1) tiles
-            int centerX = startX + dir * radius;
-            NetMessage.SendTileSquare(-1, centerX, startY, radius);
-        }
-
+        PlatformCreatorHelpers.UseItem(player, _PlatformPlacementCount, _InReplaceMode);
         return true;
     }
 
     // Show current mode in the tooltip so players can see it while hovering the item.
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        string modeText = _InReplaceMode
-            ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
-
-        TooltipLine line = new(Mod, "PlatformCreatorMode", modeText)
-        {
-            OverrideColor = _InReplaceMode ? new Color(255, 150, 50) : new Color(50, 200, 150)
-        };
-        tooltips.Add(line);
+        PlatformCreatorHelpers.ModifyTooltips(tooltips, Mod, _InReplaceMode);
     }
 
     public override void AddRecipes()
     {
         // Recipe for Crimtane worlds
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformCount);
+        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformPlacementCount);
         recipe.AddIngredient(ItemID.CrimtaneBar, _CraftingBarAmount);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
 
         // Recipe for Demonite worlds
         recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformCount);
+        recipe.AddIngredient(ItemID.WoodPlatform, _PlatformPlacementCount);
         recipe.AddIngredient(ItemID.DemoniteBar, _CraftingBarAmount);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
