@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace NaturiumMod.Content.Items.Projectiles;
 
@@ -10,7 +11,7 @@ public class LeodrakesManeProj : ModProjectile
     {
         Projectile.width = 20;
         Projectile.height = 20;
-        Projectile.aiStyle = 1;
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
 
         Projectile.friendly = true;
         Projectile.hostile = false;
@@ -29,12 +30,12 @@ public class LeodrakesManeProj : ModProjectile
 
     public override void AI()
     {
-        float maxDetectRadius = 400f; // The maximum radius at which the projectile can detect a target
-        float projSpeed = 10f; // The speed at which the projectile moves
+        float maxDetectRadius = 400f;   // The maximum radius at which the projectile can detect a target
+        float projSpeed = 10f;          // The speed at which the projectile moves
         float trackingStrength = 0.05f; // Adjust this value to control the tracking strength
 
         NPC closestNPC = FindClosestNPC(maxDetectRadius);
-        if (closestNPC == null)
+        if (closestNPC is null)
         {
             return;
         }

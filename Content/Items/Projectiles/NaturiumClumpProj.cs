@@ -15,14 +15,14 @@ public class NaturiumClumpProj : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 8; // The width of projectile hitbox
-        Projectile.height = 8; // The height of projectile hitbox
-        Projectile.aiStyle = 1; // The ai style of the projectile, please reference the source code of Terraria
+        Projectile.width = 8;
+        Projectile.height = 8;
+        Projectile.aiStyle = ProjAIStyleID.Arrow;
         Projectile.friendly = true; // Can the projectile deal damage to enemies?
         Projectile.hostile = false; // Can the projectile deal damage to the player?
-        Projectile.DamageType = DamageClass.Ranged; // Is the projectile shoot by a ranged weapon?
+        Projectile.DamageType = DamageClass.Ranged;
         Projectile.penetrate = 2; // How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-        Projectile.timeLeft = 300; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+        Projectile.timeLeft = 300; // Ticks (60 = 1 second, so 600 is 10 seconds)
         Projectile.light = 0.1f; // How much light emit around the projectile
         Projectile.ignoreWater = true; // Does the projectile's speed be influenced by water?
         Projectile.tileCollide = true; // Can the projectile collide with tiles?
@@ -31,22 +31,21 @@ public class NaturiumClumpProj : ModProjectile
 
     public override void AI()
     {
-        float maxDetectRadius = 400f; // The maximum radius at which the projectile can detect a target
-        float projSpeed = 10f; // The speed at which the projectile moves
+        float maxTargetDetectRadius = 400f;
+        float projectileMoveSpeed = 10f;
 
-        NPC closestNPC = FindClosestNPC(maxDetectRadius);
+        NPC closestNPC = FindClosestNPC(maxTargetDetectRadius);
         if (closestNPC == null)
         {
             return;
         }
 
-        // Calculate the direction to the target
-        Vector2 direction = closestNPC.Center - Projectile.Center;
-        direction.Normalize();
-        direction *= projSpeed;
+        Vector2 targetDirection = closestNPC.Center - Projectile.Center;
+        targetDirection.Normalize();
+        targetDirection *= projectileMoveSpeed;
 
         // Adjust the projectile's velocity to home in on the target
-        Projectile.velocity = (Projectile.velocity * 19f + direction) / 20f;
+        Projectile.velocity = (Projectile.velocity * 19f + targetDirection) / 20f;
     }
 
     private NPC FindClosestNPC(float maxDetectDistance)

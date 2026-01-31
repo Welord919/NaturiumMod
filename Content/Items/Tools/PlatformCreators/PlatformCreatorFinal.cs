@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -16,9 +15,7 @@ namespace NaturiumMod.Content.Items.Tools.PlatformCreators
         internal static bool ReplaceModeStatic = false;
         internal static int SelectedCountStatic = 25;
 
-        public override void SetStaticDefaults()
-        {
-        }
+        public override void SetStaticDefaults() { }
 
         public override void SetDefaults()
         {
@@ -86,20 +83,23 @@ namespace NaturiumMod.Content.Items.Tools.PlatformCreators
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            string modeText = ReplaceModeStatic ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
-            TooltipLine modeLine = new TooltipLine(Mod, "PlatformCreatorMode", modeText)
+            string modeText = ReplaceModeStatic
+                ? "Mode: Replace (overwrites blocks)"
+                : "Mode: Safe (avoids overwriting)";
+
+            TooltipLine modeLine = new(Mod, "PlatformCreatorMode", modeText)
             {
                 OverrideColor = ReplaceModeStatic ? new Color(255, 150, 50) : new Color(50, 200, 150)
             };
             tooltips.Add(modeLine);
 
-            TooltipLine countLine = new TooltipLine(Mod, "PlatformCreatorCount", $"Selected: {SelectedCountStatic}")
+            TooltipLine countLine = new(Mod, "PlatformCreatorCount", $"Selected: {SelectedCountStatic}")
             {
                 OverrideColor = new Color(200, 200, 200)
             };
             tooltips.Add(countLine);
 
-            TooltipLine hint = new TooltipLine(Mod, "PlatformCreatorHint", "Right-click to open wheel. Left-click to place.")
+            TooltipLine hint = new(Mod, "PlatformCreatorHint", "Right-click to open wheel. Left-click to place.")
             {
                 OverrideColor = new Color(180, 180, 180)
             };

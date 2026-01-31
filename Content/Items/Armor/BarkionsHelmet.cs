@@ -28,7 +28,6 @@ public class BarkionsHelmet : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "Summons a Cosmobeet to fight with you";
-        //player.GetDamage(DamageClass.Generic) += 0.05f;
 
         if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.CosmoMinionProj>()] < 1)
         {
@@ -36,10 +35,8 @@ public class BarkionsHelmet : ModItem
         }
     }
 
-    public override bool IsArmorSet(Item head, Item body, Item legs)
-    {
-        return body.type == Mod.Find<ModItem>("BarkionsChestplate").Type && legs.type == Mod.Find<ModItem>("BarkionsLeggings").Type;
-    }
+    public override bool IsArmorSet(Item head, Item body, Item legs) =>
+        body.type == Mod.Find<ModItem>("BarkionsChestplate").Type && legs.type == Mod.Find<ModItem>("BarkionsLeggings").Type;
 
     public override void AddRecipes()
     {

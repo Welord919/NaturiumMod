@@ -20,14 +20,17 @@ internal class BarkionsMedallion : ModItem
     {
         player.GetDamage(DamageClass.Generic) += 0.05f; // Increase all damage by 5% for all weapons
 
-        if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>() && player.HeldItem.type != ModContent.ItemType<RoseWhip>() && player.HeldItem.type != ModContent.ItemType<CosmoItem>() && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
+        if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
+            && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
+            && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
+            && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
         {
             return;
         }
 
         player.GetArmorPenetration(DamageClass.Generic) += 1f; // Increases Armour Penetration by 1 points
-        player.GetKnockback(DamageClass.Melee) += 0.1f; // Increases melee knockback by 10%
-        player.GetAttackSpeed(DamageClass.Ranged) += 0.15f; // Increases ranged attack speed by 15%
+        player.GetKnockback(DamageClass.Melee) += 0.1f;        // Increases melee knockback by 10%
+        player.GetAttackSpeed(DamageClass.Ranged) += 0.15f;    // Increases ranged attack speed by 15%
         player.manaCost -= 0.2f;
         player.GetDamage(DamageClass.Summon) += 0.1f;
     }
@@ -38,8 +41,8 @@ internal class BarkionsMedallion : ModItem
         recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<LeodrakesMedallion>(), 1), TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeUtils.GetNewRecipe(recipe1, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
-        recipe1.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
+        recipe.Register();
     }
 }
