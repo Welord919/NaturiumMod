@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Creative;
+using NaturiumMod.Content.Items.Placeable;
 
 namespace NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
 
@@ -23,8 +24,8 @@ public class CameliaPetal : ModItem
 
     public override void AddRecipes()
     {
-        Recipe recipe = CreateRecipe(1);
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ItemID.Daybloom, 2), TileID.WorkBenches);
+        Recipe recipe = CreateRecipe(4);
+        recipe = RecipeUtils.GetNewRecipe(recipe, (ModContent.ItemType<Camelia>(), 1), TileID.WorkBenches);
         recipe.Register();
     }
 }
