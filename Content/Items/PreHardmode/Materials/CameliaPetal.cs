@@ -26,7 +26,7 @@ public class CameliaPetal : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(1);
-        recipe = RecipeUtils.GetNewRecipe(recipe, (ItemID.Daybloom, 2), TileID.WorkBenches);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ItemID.Daybloom, 2)], TileID.WorkBenches);
         recipe.Register();
     }
 }
