@@ -21,11 +21,11 @@ internal class BarkionsMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetDamage(DamageClass.Generic) += 0.05f;
 
         if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
         && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
         && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
+        && player.HeldItem.type != ModContent.ItemType<BarkionsBlaster>()
         && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
         {
             return;
@@ -33,8 +33,8 @@ internal class BarkionsMedallion : ModItem
         
         player.GetArmorPenetration(DamageClass.Generic) += 1f;
         player.GetKnockback(DamageClass.Melee) += 0.1f;
-        player.GetAttackSpeed(DamageClass.Ranged) += 0.15f;
-        player.manaCost -= 0.2f;
+        player.GetCritChance(DamageClass.Ranged) += 5;
+        player.manaRegenBonus += 2;
         player.GetDamage(DamageClass.Summon) += 0.1f;
     }
 

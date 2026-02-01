@@ -176,7 +176,7 @@ Mods: {
 			}
 
 			BarkionsMedallion: {
-				Tooltip: A medallion that boosts the stats of Barkion's Weapons.
+				Tooltip: A medallion that boosts the stats of Barkion's Weapons per diffrent weapon class. All: Increases Armor Penetration by 1. Melee: Increases knockback by 10%. Ranged: Increases critical strike chance by 5%. Magic: Increases mana regeneration rate by 10%. Summon: Increases minion damage by 10%.
 				DisplayName: Barkion's Medallion
 			}
 
