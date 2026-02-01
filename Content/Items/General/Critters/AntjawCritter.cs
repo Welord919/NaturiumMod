@@ -16,6 +16,8 @@ public class AntjawCritter : ModItem
 
     public override void SetDefaults()
     {
+        Item.CloneDefaults(ItemID.Frog);
+        
         Item.Size = new(12, 12);
         Item.useStyle = ItemUseStyleID.Swing;
         Item.autoReuse = true;
@@ -27,7 +29,6 @@ public class AntjawCritter : ModItem
         Item.makeNPC = 361;
         Item.noUseGraphic = true;
 
-        Item.CloneDefaults(ItemID.Frog);
         Item.makeNPC = ModContent.NPCType<AntjawCritterNPC>();
         Item.value += Item.buyPrice(0, 0, 30, 0);
         Item.rare = ItemRarityID.Blue;
