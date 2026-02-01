@@ -35,7 +35,7 @@ public class AntjawCritterNPC : ModNPC
 
     public override void SetDefaults()
     {
-        NPC.Size = new(18, 12);
+        NPC.Size = new(18, 13);
         NPC.aiStyle = NPCAIStyleID.Passive;
         NPC.damage = 0;
         NPC.defense = 0;
@@ -76,7 +76,7 @@ public class AntjawCritterNPC : ModNPC
 
         SpriteEffects direction = NPC.direction == 1
             ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            
+
         spriteBatch.Draw(critterTexture, drawPosition, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, direction, 0f);
         return false;
     }

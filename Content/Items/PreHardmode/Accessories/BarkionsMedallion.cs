@@ -23,6 +23,13 @@ internal class BarkionsMedallion : ModItem
     {
         player.GetDamage(DamageClass.Generic) += 0.05f;
 
+        if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
+        && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
+        && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
+        && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
+        {
+            return;
+        }
         
         player.GetArmorPenetration(DamageClass.Generic) += 1f;
         player.GetKnockback(DamageClass.Melee) += 0.1f;
