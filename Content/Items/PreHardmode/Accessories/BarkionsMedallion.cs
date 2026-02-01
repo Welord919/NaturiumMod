@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PostHardmode.Accessories;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
 
@@ -22,10 +23,7 @@ internal class BarkionsMedallion : ModItem
     {
         player.GetDamage(DamageClass.Generic) += 0.05f;
 
-        if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
-        && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
-        && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
-        && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
+        if (!BarkionItemTags.IsBarkionItem(player.HeldItem))
         {
             return;
         }

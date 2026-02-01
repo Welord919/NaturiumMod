@@ -4,6 +4,7 @@ using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PostHardmode.Accessories;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
 

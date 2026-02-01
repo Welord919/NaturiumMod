@@ -4,8 +4,9 @@ using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PostHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.Accessories;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
+namespace NaturiumMod.Content.Items.PostHardmode.Accessories;
 
 internal class ExteriosMedallion : ModItem
 {

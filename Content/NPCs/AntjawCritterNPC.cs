@@ -47,8 +47,8 @@ public class AntjawCritterNPC : ModNPC
 
         NPC.lavaImmune = false;
 
-        AIType = ClonedNPCID;
-        AnimationType = ClonedNPCID;
+        //AIType = ClonedNPCID;
+        //AnimationType = ClonedNPCID;
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

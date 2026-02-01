@@ -33,6 +33,8 @@ public class BarkionsBlaster : ModItem
         Item.shoot = ProjectileID.PurificationPowder;
         Item.useAmmo = Mod.Find<ModItem>("NaturiumClump").Type;
         Item.useAmmo = AmmoID.Bullet;
+
+        Item.GetGlobalItem<BarkionItemTags>().IsBarkion = true;
     }
 
     public override void AddRecipes()

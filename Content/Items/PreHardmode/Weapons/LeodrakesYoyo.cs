@@ -49,7 +49,7 @@ public class LeodrakesYoyo : ModItem
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<NaturiumBar>(), 15),
             new(ItemID.JungleYoyo, 1),
-            new(ItemID.Ruby, 12)
+            new(ModContent.ItemType<CameliaPetal>(), 12)
         ], TileID.Anvils);
         recipe.Register();
     }

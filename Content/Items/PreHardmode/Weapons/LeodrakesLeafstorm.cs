@@ -44,7 +44,7 @@ public class LeodrakesLeafstorm : ModItem
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<NaturiumBar>(), 8),
-            new(ItemID.Ruby, 24),
+            new(ModContent.ItemType<CameliaPetal>(), 12),
             new(ItemID.IronBar, 10)
         ], TileID.Anvils);
         recipe.Register();

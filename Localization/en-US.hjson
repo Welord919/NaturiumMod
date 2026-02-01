@@ -10,6 +10,7 @@ Mods: {
 			CosmoMinionProj.DisplayName: Cosmo Minion Proj
 			BarkionsBarkProj.DisplayName: Barkions Bark Proj
 			AnvilLProj.DisplayName: Anvil L Proj
+			CosmoArmorSetVer.DisplayName: Cosmo Armor Set Ver
 		}
 
 		NPCs: {
@@ -234,6 +235,11 @@ Mods: {
 			BarkionsBuff: {
 				Description: A blessing bestowed by the Wooden Dragon himself.
 				DisplayName: Barkion's Buff
+			}
+
+			CosmoArmorSetVerBuff: {
+				DisplayName: Cosmo Armor Set Ver Buff
+				Description: Mods.NaturiumMod.Buffs.CosmoArmorSetVerBuff.Description
 			}
 		}
 

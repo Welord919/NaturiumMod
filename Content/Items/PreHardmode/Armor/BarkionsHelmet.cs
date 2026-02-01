@@ -26,18 +26,20 @@ public class BarkionsHelmet : ModItem
         player.GetKnockback(DamageClass.Ranged) += 0.1f;
     }
 
-    public override void UpdateArmorSet(Player player)
-    {
-        player.setBonus = "Summons a Cosmobeet to fight with you";
-
-        if (player.ownedProjectileCounts[ModContent.ProjectileType<CosmoMinionProj>()] < 1)
-        {
-            Projectile.NewProjectile(player.GetSource_Misc("SetBonus"), player.Center, new Vector2(0, 0), ModContent.ProjectileType<CosmoMinionProj>(), 11, 2f, player.whoAmI);
-        }
-    }
-
     public override bool IsArmorSet(Item head, Item body, Item legs) =>
         body.type == Mod.Find<ModItem>("BarkionsChestplate").Type && legs.type == Mod.Find<ModItem>("BarkionsLeggings").Type;
+
+    public override void UpdateArmorSet(Player player)
+    {
+        // Set bonus description shown in the player's equipment UI
+        player.setBonus = "Holding a Barkion weapon grants +5 defense";
+
+        // If the player is holding any Barkion-related item, grant +5 defense
+        if (!BarkionItemTags.IsBarkionItem(player.HeldItem))
+        {
+            player.statDefense += 5;
+        }
+    }
 
     public override void AddRecipes()
     {
