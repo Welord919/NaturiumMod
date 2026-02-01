@@ -22,8 +22,6 @@ internal class LeodrakesMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.moveSpeed += 0.5f;
-        player.GetDamage(DamageClass.Generic) += 0.05f;
 
         if (player.HeldItem.type != ModContent.ItemType<LeodrakesLeafstorm>() && player.HeldItem.type != ModContent.ItemType<LeodrakesYoyo>())
         {
@@ -41,12 +39,9 @@ internal class LeodrakesMedallion : ModItem
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<BarkionsMedallion>(), 1),
-            new(ModContent.ItemType<NaturiumBar>(), 5)
+            new(ModContent.ItemType<NaturiumBar>(), 15)
         ], TileID.Anvils);
         recipe.Register();
 
-        recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ModContent.ItemType<ExteriosMedallion>(), 1)], TileID.Anvils);
-        recipe.Register();
     }
 }
