@@ -1,29 +1,32 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Numerics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Items.General.Critters;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace NaturiumMod.Content.NPCs;
 
 public class AntjawCritterNPC : ModNPC
 {
-    private const int ClonedNPCID = NPCID.Butterfly; // Use the vanilla butterfly for AI and animations
     public override string Texture => "NaturiumMod/Assets/NPCs/AntjawCritterNPC";
 
     public override void SetStaticDefaults()
     {
-        Main.npcFrameCount[Type] = Main.npcFrameCount[ClonedNPCID];
-
+        Main.npcFrameCount[Type] = 10;
         Main.npcCatchable[Type] = true;
+
         NPCID.Sets.CountsAsCritter[Type] = true;
         NPCID.Sets.TakesDamageFromHostilesWithoutBeingFriendly[Type] = true;
         NPCID.Sets.TownCritter[Type] = true;
 
         // Place in bestiary priority near vanilla butterfly
-        int index = NPCID.Sets.NormalGoldCritterBestiaryPriority.IndexOf(ClonedNPCID);
+        int index = NPCID.Sets.NormalGoldCritterBestiaryPriority.IndexOf(NPCID.Butterfly);
         if (index >= 0)
         {
             NPCID.Sets.NormalGoldCritterBestiaryPriority.Insert(index + 1, Type);
@@ -32,8 +35,7 @@ public class AntjawCritterNPC : ModNPC
 
     public override void SetDefaults()
     {
-        NPC.width = 18;
-        NPC.height = 18;
+        NPC.Size = new(18, 12);
         NPC.aiStyle = NPCAIStyleID.Passive;
         NPC.damage = 0;
         NPC.defense = 0;
@@ -41,14 +43,42 @@ public class AntjawCritterNPC : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
 
-        NPC.CloneDefaults(NPCID.Frog);
-
         NPC.catchItem = ModContent.ItemType<AntjawCritter>();
 
         NPC.lavaImmune = false;
 
-        //AIType = ClonedNPCID;
-        //AnimationType = ClonedNPCID;
+        NPC.CloneDefaults(NPCID.Butterfly);
+    }
+
+    public override void FindFrame(int frameHeight)
+    {
+        NPC.frameCounter += 1.0;
+        if (NPC.frameCounter > 3)
+        {
+            NPC.frameCounter = 0.0;
+            NPC.frame.Y += frameHeight;
+        }
+
+        if (NPC.frame.Y > frameHeight * 9)
+        {
+            NPC.frame.Y = 0;
+        }
+
+        base.FindFrame(frameHeight);
+    }
+
+    public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+    {
+        Texture2D critterTexture = TextureAssets.Npc[NPC.type].Value;
+
+        Vector2 drawPosition = NPC.Center - screenPos + Vector2.UnitY;
+        drawPosition.Y += DrawOffsetY;
+
+        SpriteEffects direction = NPC.direction == 1
+            ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            
+        spriteBatch.Draw(critterTexture, drawPosition, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, direction, 0f);
+        return false;
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -58,7 +88,6 @@ public class AntjawCritterNPC : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         SpawnCondition.OverworldDay.Chance * 0.06f;
-
 
     public override Color? GetAlpha(Color drawColor)
     {
