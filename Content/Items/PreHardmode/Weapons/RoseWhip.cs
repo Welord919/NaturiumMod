@@ -25,7 +25,6 @@ public class RoseWhip : ModItem
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.rare = ItemRarityID.Green;
 
-        Item.GetGlobalItem<BarkionItemTags>().IsBarkion = true;
     }
 
     public override void AddRecipes()

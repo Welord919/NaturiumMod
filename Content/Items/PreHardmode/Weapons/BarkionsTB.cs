@@ -30,7 +30,6 @@ public class BarkionsTB : ModItem
         Item.shootSpeed = 12f;
         Item.shoot = ProjectileID.ChlorophyteOrb;
 
-        Item.GetGlobalItem<BarkionItemTags>().IsBarkion = true;
     }
 
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

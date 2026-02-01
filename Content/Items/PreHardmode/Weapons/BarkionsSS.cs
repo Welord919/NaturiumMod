@@ -37,7 +37,6 @@ public class BarkionsSS : ModItem
         Item.shootSpeed = 9f;
         Item.useAmmo = Mod.Find<ModItem>("BarkionsBark").Type;
 
-        Item.GetGlobalItem<BarkionItemTags>().IsBarkion = true;
     }
 
     public override void AddRecipes()

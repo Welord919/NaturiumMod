@@ -23,11 +23,7 @@ internal class BarkionsMedallion : ModItem
     {
         player.GetDamage(DamageClass.Generic) += 0.05f;
 
-        if (!BarkionItemTags.IsBarkionItem(player.HeldItem))
-        {
-            return;
-        }
-
+        
         player.GetArmorPenetration(DamageClass.Generic) += 1f;
         player.GetKnockback(DamageClass.Melee) += 0.1f;
         player.GetAttackSpeed(DamageClass.Ranged) += 0.15f;

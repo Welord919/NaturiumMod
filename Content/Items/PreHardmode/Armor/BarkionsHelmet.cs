@@ -31,14 +31,7 @@ public class BarkionsHelmet : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        // Set bonus description shown in the player's equipment UI
-        player.setBonus = "Holding a Barkion weapon grants +5 defense";
-
-        // If the player is holding any Barkion-related item, grant +5 defense
-        if (!BarkionItemTags.IsBarkionItem(player.HeldItem))
-        {
-            player.statDefense += 5;
-        }
+        
     }
 
     public override void AddRecipes()
