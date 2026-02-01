@@ -8,6 +8,8 @@ namespace NaturiumMod.Content.Tiles;
 
 internal class NaturiumOreTile : ModTile
 {
+    public override string Texture => "NaturiumMod/Assets/Tiles/NaturiumOreTile";
+
     public override void SetStaticDefaults()
     {
         TileID.Sets.Ore[Type] = true;

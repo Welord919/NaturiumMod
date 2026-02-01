@@ -1,5 +1,5 @@
-using NaturiumMod.Content.Items.Materials.PreHardmodeMaterials;
-using NaturiumMod.Content.Items.Placeable;
+using NaturiumMod.Content.Items.General.Placeable;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -11,6 +11,8 @@ namespace NaturiumMod.Content.NPCs;
 
 internal class NaturiumSlime : ModNPC
 {
+    public override string Texture => "NaturiumMod/Assets/NPCs/NaturiumSlime";
+
     public override void SetStaticDefaults()
     {
         Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.BlueSlime];
@@ -52,10 +54,8 @@ internal class NaturiumSlime : ModNPC
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return SpawnCondition.Cavern.Chance * 0.2f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        SpawnCondition.Cavern.Chance * 0.2f;
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
