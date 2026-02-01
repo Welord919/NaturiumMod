@@ -25,7 +25,7 @@ public class PlatformCreatorFinal : ModItem
         Item.UseSound = SoundID.Item1;
 
         Item.noMelee = true;
-        Item.createTile = TileID.Platforms;
+        Item.createTile = -1;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.tileBoost = 2;
@@ -38,7 +38,7 @@ public class PlatformCreatorFinal : ModItem
     public override bool CanUseItem(Player player)
     {
         PlatformWheelSystem sys = PlatformWheelSystem.Instance;
-        return (sys is null || !sys.IsOpen && !sys.BlockLeftClick || player.altFunctionUse == 2) && base.CanUseItem(player);
+        return (sys is null || (!sys.IsOpen && !sys.BlockLeftClick) || player.altFunctionUse == 2) && base.CanUseItem(player);
     }
 
     // Prevent left clicks while the wheel requests blocking; right click toggles wheel.
