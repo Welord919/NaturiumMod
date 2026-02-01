@@ -22,7 +22,7 @@ public class RocketSword : ModItem
         Item.crit = 8;
         Item.UseSound = SoundID.Item1;
 
-        Item.value = Item.buyPrice(gold: 3);
+        Item.value = Item.buyPrice(0, 3, 0, 0);
         Item.rare = ItemRarityID.Green;
         Item.autoReuse = true;
 
@@ -34,7 +34,11 @@ public class RocketSword : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.IronBar, 25), (ItemID.Wire, 10), (ItemID.ExplosivePowder, 15)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.IronBar, 25),
+            new(ItemID.Wire, 10),
+            new(ItemID.ExplosivePowder, 15)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

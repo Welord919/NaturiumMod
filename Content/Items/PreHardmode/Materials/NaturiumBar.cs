@@ -35,11 +35,19 @@ public class NaturiumBar : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(1);
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.CrimtaneBar, 5)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumOre>(), 5),
+            new(ModContent.ItemType<BarkionsBark>(), 15),
+            new(ItemID.CrimtaneBar, 5)
+        ], TileID.LivingLoom);
         recipe.Register();
 
         recipe = CreateRecipe(1);
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 5), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.DemoniteBar, 5)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumOre>(), 5),
+            new(ModContent.ItemType<BarkionsBark>(), 15),
+            new(ItemID.DemoniteBar, 5)
+        ], TileID.LivingLoom);
         recipe.Register();
     }
 }

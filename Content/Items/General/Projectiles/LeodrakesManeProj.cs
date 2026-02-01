@@ -31,11 +31,11 @@ public class LeodrakesManeProj : ModProjectile
 
     public override void AI()
     {
-        float maxDetectRadius = 400f;   // The maximum radius at which the projectile can detect a target
-        float projSpeed = 10f;          // The speed at which the projectile moves
-        float trackingStrength = 0.05f; // Adjust this value to control the tracking strength
+        float maximumDetectionRadius = 400f;
+        float projectileSpeed = 10f;
+        float trackingStrength = 0.05f;
 
-        NPC closestNPC = FindClosestNPC(maxDetectRadius);
+        NPC closestNPC = FindClosestNPC(maximumDetectionRadius);
         if (closestNPC is null)
         {
             return;
@@ -44,7 +44,7 @@ public class LeodrakesManeProj : ModProjectile
         // Calculate the direction to the target
         Vector2 direction = closestNPC.Center - Projectile.Center;
         direction.Normalize();
-        direction *= projSpeed;
+        direction *= projectileSpeed;
 
         // Adjust the projectile's velocity to home in on the target more gradually
         Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction, trackingStrength);

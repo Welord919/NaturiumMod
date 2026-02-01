@@ -23,7 +23,7 @@ public class BarkionsBlaster : ModItem
         Item.damage = 35;
 
         Item.noMelee = true;
-        Item.value = Item.buyPrice(0, 20);
+        Item.value = Item.buyPrice(0, 20, 0, 0);
         Item.knockBack = 8f;
         Item.rare = ItemRarityID.Yellow;
         Item.DamageType = DamageClass.Ranged;
@@ -38,11 +38,17 @@ public class BarkionsBlaster : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 25), (ItemID.LeadBar, 15)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 25),
+            new(ItemID.LeadBar, 15)
+        ], TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeHelper.GetNewRecipe(recipe1, [(ModContent.ItemType<NaturiumBar>(), 25), (ItemID.IronBar, 15)], TileID.Anvils);
-        recipe1.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 25),
+            new(ItemID.IronBar, 15)
+        ], TileID.Anvils);
+        recipe.Register();
     }
 }

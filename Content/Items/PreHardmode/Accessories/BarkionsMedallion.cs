@@ -23,9 +23,9 @@ internal class BarkionsMedallion : ModItem
         player.GetDamage(DamageClass.Generic) += 0.05f;
 
         if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
-            && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
-            && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
-            && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
+        && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
+        && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
+        && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
         {
             return;
         }
@@ -40,11 +40,11 @@ internal class BarkionsMedallion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<LeodrakesMedallion>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ModContent.ItemType<LeodrakesMedallion>(), 1)], TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<ExteriosMedallion>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ModContent.ItemType<ExteriosMedallion>(), 1)], TileID.Anvils);
         recipe.Register();
     }
 }

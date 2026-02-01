@@ -4,34 +4,34 @@ namespace NaturiumMod.Content.Helpers;
 
 public static class RecipeHelper
 {
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack) ingredient)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient ingredient)
     {
-        recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+        recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         
         return recipe;
     }
 
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient[] ingredients)
     {
-        foreach ((int itemId, int stack) in ingredients)
+        foreach (Ingredient ingredient in ingredients)
         {
-            recipe.AddIngredient(itemId, stack);
+            recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         }
         
         return recipe;
     }
 
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack) ingredient, int tile)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient ingredient, int tile)
     {
-        recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+        recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         recipe.AddTile(tile);
         
         return recipe;
     }
 
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack) ingredient, int[] tiles)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient ingredient, int[] tiles)
     {
-        recipe.AddIngredient(ingredient.itemId, ingredient.stack);
+        recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         
         foreach (int tile in tiles)
         {
@@ -41,11 +41,11 @@ public static class RecipeHelper
         return recipe;
     }
 
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients, int tile)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient[] ingredients, int tile)
     {
-        foreach ((int itemId, int stack) in ingredients)
+        foreach (Ingredient ingredient in ingredients)
         {
-            recipe.AddIngredient(itemId, stack);
+            recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         }
 
         recipe.AddTile(tile);
@@ -53,11 +53,11 @@ public static class RecipeHelper
         return recipe;
     }
 
-    public static Recipe GetNewRecipe(Recipe recipe, (int itemId, int stack)[] ingredients, int[] tiles)
+    public static Recipe GetNewRecipe(Recipe recipe, Ingredient[] ingredients, int[] tiles)
     {
-        foreach ((int itemId, int stack) in ingredients)
+        foreach (Ingredient ingredient in ingredients)
         {
-            recipe.AddIngredient(itemId, stack);
+            recipe.AddIngredient(ingredient.ItemID, ingredient.Count);
         }
 
         foreach (int tile in tiles)

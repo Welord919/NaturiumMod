@@ -35,7 +35,12 @@ public class ExteriosFang : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(20);
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 10), (ItemID.SoulofLight, 1), (ItemID.SoulofNight, 1), (ItemID.SoulofMight, 1)], TileID.MythrilAnvil);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 10),
+            new(ItemID.SoulofLight, 1),
+            new(ItemID.SoulofNight, 1),
+            new(ItemID.SoulofMight, 1)
+        ], TileID.MythrilAnvil);
         recipe.Register();
     }
 }

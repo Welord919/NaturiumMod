@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -68,42 +69,36 @@ public class PlatformCreatorFinal : ModItem
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        string modeText = ReplaceModeStatic
-            ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
+        PlatformCreatorHelpers.AddTooltip(
+            "PlatformCreatorMode", $"Mode: {(ReplaceModeStatic ? "Replace (overwrites blocks)" : "Safe (avoids overwriting)")}",
+            ReplaceModeStatic ? new(255, 150, 50) : new(50, 200, 150),
+            Mod, tooltips
+        );
 
-        TooltipLine modeLine = new(Mod, "PlatformCreatorMode", modeText)
-        {
-            OverrideColor = ReplaceModeStatic
-                ? new Color(255, 150, 50) : new Color(50, 200, 150)
-        };
-        tooltips.Add(modeLine);
+        PlatformCreatorHelpers.AddTooltip(
+            "PlatformCreatorCount", $"Selected: {SelectedCountStatic}",
+            new(200, 200, 200),
+            Mod, tooltips
+        );
 
-        TooltipLine countLine = new(Mod, "PlatformCreatorCount", $"Selected: {SelectedCountStatic}")
-        {
-            OverrideColor = new Color(200, 200, 200)
-        };
-        tooltips.Add(countLine);
-
-        TooltipLine hint = new(Mod, "PlatformCreatorHint", "Right-click to open wheel. Left-click to place.")
-        {
-            OverrideColor = new Color(180, 180, 180)
-        };
-        tooltips.Add(hint);
+        PlatformCreatorHelpers.AddTooltip(
+            "PlatformCreatorHint", "Right-click to open wheel. Left-click to place.",
+            new(180, 180, 180),
+            Mod, tooltips
+        );
     }
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-
-        recipe.AddTile(TileID.Anvils);
-
-        recipe.AddIngredient(ModContent.ItemType<PlatformCreator>(), 1);
-        recipe.AddIngredient(ModContent.ItemType<PlatformCreator2>(), 1);
-        recipe.AddIngredient(ModContent.ItemType<PlatformCreator3>(), 1);
-        recipe.AddIngredient(ModContent.ItemType<PlatformCreator4>(), 1);
-        recipe.AddIngredient(ItemID.SoulofLight, 5);
-        recipe.AddIngredient(ItemID.SoulofNight, 5);
-
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<PlatformCreator>(), 1),
+            new(ModContent.ItemType<PlatformCreator2>(), 1),
+            new(ModContent.ItemType<PlatformCreator3>(), 1),
+            new(ModContent.ItemType<PlatformCreator4>(), 1),
+            new(ItemID.SoulofLight, 5),
+            new(ItemID.SoulofNight, 5),
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

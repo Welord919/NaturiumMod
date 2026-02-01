@@ -18,11 +18,10 @@ public class EmpressFS : ModItem
 
     public override void SetDefaults()
     {
+        Item.Size = new(20, 30);
         Item.damage = 165;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 8;
-        Item.width = 20;
-        Item.height = 30;
         Item.useTime = 5;
         Item.useAnimation = 5;
         Item.shootSpeed = 18f;
@@ -40,7 +39,11 @@ public class EmpressFS : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.FairyQueenMagicItem, 1), (ItemID.PiercingStarlight, 1), (ItemID.RainbowRod, 1)], TileID.MythrilAnvil);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.FairyQueenMagicItem, 1),
+            new(ItemID.PiercingStarlight, 1),
+            new(ItemID.RainbowRod, 1)
+        ], TileID.MythrilAnvil);
         recipe.Register();
     }
 }

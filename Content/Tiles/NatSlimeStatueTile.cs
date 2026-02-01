@@ -7,8 +7,6 @@ using Terraria.ObjectData;
 
 namespace NaturiumMod.Content.Tiles;
 
-// ExampleStatue shows off correctly using wiring to spawn items and NPC.
-// See StatueWorldGen to see how ExampleStatue is added as an option for naturally spawning statues during world-gen.
 public class NatSlimeStatueTile : ModTile
 {
     public override string Texture => "NaturiumMod/Assets/Tiles/NatSlimeStatueTile";
@@ -55,7 +53,7 @@ public class NatSlimeStatueTile : ModTile
         // There is a 95% chance for item spawn and a 5% chance for npc spawn
         // If you want to make a item spawning statue, see below.
 
-        var entitySource = new EntitySource_TileUpdate(xCoordinate, yCoordinate, context: "NatSlimeStatue");
+        EntitySource_TileUpdate entitySource = new(xCoordinate, yCoordinate, context: "NatSlimeStatue");
 
         // If you want to make an NPC spawning statue, see below.
         int npcIndex = -1;
@@ -70,7 +68,7 @@ public class NatSlimeStatueTile : ModTile
 
         if (npcIndex >= 0)
         {
-            var npc = Main.npc[npcIndex];
+            NPC npc = Main.npc[npcIndex];
 
             npc.value = 0f;
             npc.npcSlots = 0f;

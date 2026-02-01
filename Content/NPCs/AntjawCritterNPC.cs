@@ -15,10 +15,8 @@ public class AntjawCritterNPC : ModNPC
 
     public override void SetStaticDefaults()
     {
-        // Copy animation frames from the vanilla butterfly
         Main.npcFrameCount[Type] = Main.npcFrameCount[ClonedNPCID];
 
-        // Critter settings
         Main.npcCatchable[Type] = true;
         NPCID.Sets.CountsAsCritter[Type] = true;
         NPCID.Sets.TakesDamageFromHostilesWithoutBeingFriendly[Type] = true;
@@ -36,20 +34,17 @@ public class AntjawCritterNPC : ModNPC
     {
         NPC.width = 18;
         NPC.height = 18;
-        NPC.aiStyle = 7; // critter AI, will be replaced by CloneDefaults below
+        NPC.aiStyle = NPCAIStyleID.Passive;
         NPC.damage = 0;
         NPC.defense = 0;
         NPC.lifeMax = 5;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
 
-        // Clone vanilla butterfly defaults (animation, AI, etc.)
         NPC.CloneDefaults(NPCID.Frog);
 
-        // The item the butterfly becomes when caught
         NPC.catchItem = ModContent.ItemType<AntjawCritter>();
 
-        // Butterflies are not lava-immune
         NPC.lavaImmune = false;
 
         AIType = ClonedNPCID;
@@ -58,16 +53,11 @@ public class AntjawCritterNPC : ModNPC
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
-        bestiaryEntry.AddTags(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
-            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-            new FlavorTextBestiaryInfoElement("Le Antjaw"));
+        bestiaryEntry.AddTags(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime, BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface, new FlavorTextBestiaryInfoElement("Le Antjaw"));
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        // Spawn on the surface during the day, low chance
-        return SpawnCondition.OverworldDay.Chance * 0.06f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        SpawnCondition.OverworldDay.Chance * 0.06f;
 
 
     public override Color? GetAlpha(Color drawColor)
@@ -82,10 +72,5 @@ public class AntjawCritterNPC : ModNPC
         };
     }
 
-    public override bool PreAI()
-    {
-        // Butterflies die if they touch water or lava; preserve vanilla behavior for liquids by letting the game handle it.
-        // Keep default AI running.
-        return true;
-    }
+    public override bool PreAI() => true;
 }

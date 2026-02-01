@@ -38,7 +38,7 @@ internal class DaltonPainting : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ItemID.SpookyWood, 69), TileID.WorkBenches);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ItemID.SpookyWood, 69)], TileID.WorkBenches);
         recipe.Register();
     }
 }

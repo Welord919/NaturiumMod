@@ -14,13 +14,12 @@ public class NaturiumPickaxe : ModItem
     {
         Item.damage = 20;
         Item.DamageType = DamageClass.Melee;
-        Item.width = 40;
-        Item.height = 40;
+        Item.Size = new(40, 40);
         Item.useTime = 12;
         Item.useAnimation = 12;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 9;
-        Item.value = Item.buyPrice(gold: 1);
+        Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.rare = ItemRarityID.Green;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
@@ -33,11 +32,19 @@ public class NaturiumPickaxe : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.NightmarePickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 5),
+            new(ItemID.NightmarePickaxe, 1),
+            new(ItemID.GoldBar, 10)
+        ], TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe2 = CreateRecipe();
-        recipe2 = RecipeHelper.GetNewRecipe(recipe2, [(ModContent.ItemType<NaturiumBar>(), 5), (ItemID.DeathbringerPickaxe, 1), (ItemID.GoldBar, 10)], TileID.Anvils);
-        recipe2.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 5),
+            new(ItemID.DeathbringerPickaxe, 1),
+            new(ItemID.GoldBar, 10)
+        ], TileID.Anvils);
+        recipe.Register();
     }
 }

@@ -54,10 +54,8 @@ internal class NaturiumSlime : ModNPC
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return SpawnCondition.Cavern.Chance * 0.2f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        SpawnCondition.Cavern.Chance * 0.2f;
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {

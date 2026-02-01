@@ -15,17 +15,17 @@ public class DaltonPaintingTile : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileFrameImportant[Type] = true;
-        Main.tileNoAttach[Type] = false; // Doesn't attach to other tiles
+        Main.tileNoAttach[Type] = false;
         Main.tileLavaDeath[Type] = true;
 
-        TileID.Sets.DisableSmartCursor[Type] = true; // Disables smart cursor interaction 
+        TileID.Sets.DisableSmartCursor[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
         TileObjectData.newTile.Width = 3;
         TileObjectData.newTile.Height = 5;
-        TileObjectData.newTile.Origin = new Point16(0, 0); // Origin of the tile 
+        TileObjectData.newTile.Origin = new Point16(0, 0);
         TileObjectData.newTile.AnchorWall = true; // Ensures the tile can attach to walls, not sure if does anything
-        TileObjectData.newTile.UsesCustomCanPlace = true; // Use the default place behavior, not sure if does anything
-        TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16, 6]; // 16 Pixel high rows
+        TileObjectData.newTile.UsesCustomCanPlace = true;
+        TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16, 6];
 
         TileObjectData.addTile(Type);
 

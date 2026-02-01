@@ -11,7 +11,7 @@ public class AntjawCritter : ModItem
 
     public override void SetStaticDefaults()
     {
-        ItemID.Sets.IsLavaBait[Type] = true; // While this item is not bait, this will require a lava bug net to catch.
+        ItemID.Sets.IsLavaBait[Type] = true;
     }
 
     public override void SetDefaults()
@@ -27,10 +27,9 @@ public class AntjawCritter : ModItem
         Item.makeNPC = 361;
         Item.noUseGraphic = true;
 
-        //Cloning ItemID.Frog sets the preceding values
         Item.CloneDefaults(ItemID.Frog);
         Item.makeNPC = ModContent.NPCType<AntjawCritterNPC>();
-        Item.value += Item.buyPrice(0, 0, 30, 0); // Make this critter worth slightly more than the frog
+        Item.value += Item.buyPrice(0, 0, 30, 0);
         Item.rare = ItemRarityID.Blue;
     }
 }

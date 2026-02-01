@@ -34,7 +34,7 @@ public class TripleWOF : ModItem
         Item.crit = 8;
         Item.UseSound = SoundID.Item8;
 
-        Item.value = Item.buyPrice(silver: 95);
+        Item.value = Item.buyPrice(0, 0, 95, 0);
         Item.rare = ItemRarityID.Green;
         Item.autoReuse = true;
         Item.noMelee = true;
@@ -63,12 +63,19 @@ public class TripleWOF : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.WandofFrosting, 3), (ModContent.ItemType<BarkionsBark>(), 15), (ItemID.Topaz, 3)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.WandofFrosting, 3),
+            new(ModContent.ItemType<BarkionsBark>(), 15),
+            new(ItemID.Topaz, 3)
+        ], TileID.Anvils);
         recipe.AddRecipeGroup("Wood", 30);
         recipe.Register();
 
-        Recipe recipe2 = CreateRecipe();
-        recipe2 = RecipeHelper.GetNewRecipe(recipe2, [(ItemID.IceTorch, 297), (ModContent.ItemType<TripleWOS>(), 1)]);
-        recipe2.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.IceTorch, 297),
+            new(ModContent.ItemType<TripleWOS>(), 1)
+        ]);
+        recipe.Register();
     }
 }

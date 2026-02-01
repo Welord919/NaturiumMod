@@ -23,7 +23,7 @@ public class BarkionsTB : ModItem
         Item.UseSound = SoundID.Item1;
         Item.useStyle = ItemUseStyleID.Swing;
 
-        Item.value = Item.buyPrice(gold: 3);
+        Item.value = Item.buyPrice(0, 3, 0, 0);
         Item.rare = ItemRarityID.Green;
         Item.autoReuse = true;
 
@@ -41,7 +41,10 @@ public class BarkionsTB : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 15), (ItemID.BladeofGrass, 1)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 15),
+            new(ItemID.BladeofGrass, 1)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

@@ -30,12 +30,12 @@ public class NaturiumClump : ModItem
         Item.shoot = Mod.Find<ModProjectile>("NaturiumClumpProj").Type;
 
         Item.shootSpeed = 14f;
-        Item.ammo = AmmoID.Bullet; // The ammo class this ammo belongs to.
+        Item.ammo = AmmoID.Bullet;
     }
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(15);
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<NaturiumBar>(), 1), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ModContent.ItemType<NaturiumBar>(), 1)], TileID.Anvils);
         recipe.Register();
     }
 }

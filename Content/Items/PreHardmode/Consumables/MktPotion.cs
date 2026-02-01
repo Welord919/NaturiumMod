@@ -29,7 +29,11 @@ public class MktPotion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumOre>(), 4), (ModContent.ItemType<CameliaPetal>(), 2), (ItemID.BottledWater, 1)], TileID.AlchemyTable);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumOre>(), 4),
+            new(ModContent.ItemType<CameliaPetal>(), 2),
+            new(ItemID.BottledWater, 1)
+        ], TileID.AlchemyTable);
         recipe.Register();
     }
 }

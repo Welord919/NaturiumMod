@@ -23,12 +23,13 @@ public class ExteriosWhip : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<ExteriosFang>(), 1), (ModContent.ItemType<NaturiumBar>(), 15)], TileID.MythrilAnvil);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<BarkionsBark>(), 25),
+            new(ModContent.ItemType<ExteriosFang>(), 1),
+            new(ModContent.ItemType<NaturiumBar>(), 15)
+        ], TileID.MythrilAnvil);
         recipe.Register();
     }
 
-    public override bool MeleePrefix()
-    {
-        return true;
-    }
+    public override bool MeleePrefix() => true;
 }

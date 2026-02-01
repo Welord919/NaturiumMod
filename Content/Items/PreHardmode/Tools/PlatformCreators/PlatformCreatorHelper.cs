@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,10 +31,13 @@ public static class PlatformCreatorHelpers
         {
             // If exactly aligned, fall back to player's facing direction, then default to right.
             dir = player.direction;
-            if (dir == 0) dir = 1;
+            if (dir == 0)
+            {
+                dir = 1;
+            }
         }
 
-        int platformTileType = TileID.Platforms; // generic platforms tile
+        int platformTileType = TileID.Platforms;
         bool placedAny = false;
 
         for (int i = 0; i < platformPlacementCount; i++)
@@ -49,7 +53,6 @@ public static class PlatformCreatorHelpers
 
             if (inReplaceMode && Main.tile[x, y].HasTile)
             {
-                // In Replace mode, remove any blocking tile first (no item drop).
                 Terraria.WorldGen.KillTile(x, y, fail: false, effectOnly: false, noItem: true);
             }
 
@@ -68,17 +71,23 @@ public static class PlatformCreatorHelpers
         }
     }
 
-    public static void ModifyTooltips(List<TooltipLine> tooltips, Mod mod, bool inReplaceMode)
+    public static void AddTooltip(string name, string text, Color color, Mod mod, List<TooltipLine> tooltips)
     {
-        string modeText = inReplaceMode
-            ? "Mode: Replace (overwrites blocks)" : "Mode: Safe (avoids overwriting)";
-
-        TooltipLine line = new(mod, "PlatformCreatorMode", modeText)
+        TooltipLine tooltip = new(mod, name, text)
         {
-            OverrideColor = inReplaceMode
-                ? new Color(255, 150, 50) : new Color(50, 200, 150)
+            OverrideColor = color
         };
-        
-        tooltips.Add(line);
+        tooltips.Add(tooltip);
+    }
+
+    public static void CanUseItemMessage(bool inReplaceMode)
+    {
+        (string newText, byte r, byte g, byte b) = inReplaceMode
+            ? ("Replace Mode: Will overwrite through blocks and enemies.", (byte)255, (byte)150, (byte)50)
+            : ("Safe Mode: Will avoid overwriting blocks and enemies.", (byte)50, (byte)200, (byte)150);
+
+        Main.NewText(newText, r, g, b);
+
+        SoundEngine.PlaySound(SoundID.MenuTick);
     }
 }

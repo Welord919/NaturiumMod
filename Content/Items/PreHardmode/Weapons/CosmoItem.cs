@@ -30,7 +30,7 @@ public class CosmoItem : ModItem
         Item.useTime = 36;
         Item.useAnimation = 36;
         Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
-        Item.value = Item.sellPrice(gold: 30);
+        Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.rare = ItemRarityID.Cyan;
         Item.UseSound = SoundID.Item44; // What sound should play when using the item
 
@@ -53,7 +53,7 @@ public class CosmoItem : ModItem
         player.AddBuff(Item.buffType, 2);
 
         // Minions have to be spawned manually, then have originalDamage assigned to the damage of the summon item
-        var projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer);
+        Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer);
         projectile.originalDamage = Item.damage;
 
         // Since we spawned the projectile manually already, we do not need the game to spawn it for ourselves anymore, so return false
@@ -64,7 +64,12 @@ public class CosmoItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 25), (ModContent.ItemType<NaturiumOre>(), 5), (ItemID.Vine, 5), (ItemID.Stinger, 3)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<BarkionsBark>(), 25),
+            new(ModContent.ItemType<NaturiumOre>(), 5),
+            new(ItemID.Vine, 5),
+            new(ItemID.Stinger, 3)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

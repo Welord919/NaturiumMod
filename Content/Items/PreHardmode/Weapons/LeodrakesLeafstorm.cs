@@ -28,7 +28,7 @@ public class LeodrakesLeafstorm : ModItem
         Item.crit = 8;
         Item.UseSound = SoundID.Item8;
 
-        Item.value = Item.buyPrice(silver: 95);
+        Item.value = Item.buyPrice(0, 0, 95, 0);
         Item.rare = ItemRarityID.Green;
         Item.autoReuse = true;
         Item.noMelee = true;
@@ -42,7 +42,11 @@ public class LeodrakesLeafstorm : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 8), (ItemID.Ruby, 24), (ItemID.IronBar, 10)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 8),
+            new(ItemID.Ruby, 24),
+            new(ItemID.IronBar, 10)
+        ], TileID.Anvils);
         recipe.Register();
     }
 

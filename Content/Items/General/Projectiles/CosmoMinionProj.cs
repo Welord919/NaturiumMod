@@ -137,31 +137,34 @@ public class CosmoMinionProj : ModProjectile
             }
         }
 
-        if (!foundTarget)
+        if (foundTarget)
         {
-            // This code is required either way, used for finding a target
-            foreach (var npc in Main.ActiveNPCs)
+            Projectile.friendly = foundTarget;
+            return;
+        }
+
+        // This code is required either way, used for finding a target
+        foreach (NPC npc in Main.ActiveNPCs)
+        {
+            if (!npc.CanBeChasedBy())
             {
-                if (!npc.CanBeChasedBy())
-                {
-                    continue;
-                }
+                continue;
+            }
 
-                float between = Vector2.Distance(npc.Center, Projectile.Center);
-                bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
-                bool inRange = between < distanceFromTarget;
-                bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
+            float between = Vector2.Distance(npc.Center, Projectile.Center);
+            bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
+            bool inRange = between < distanceFromTarget;
+            bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
 
-                // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-                // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-                bool closeThroughWall = between < 100f;
+            // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
+            // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
+            bool closeThroughWall = between < 100f;
 
-                if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
-                {
-                    distanceFromTarget = between;
-                    targetCenter = npc.Center;
-                    foundTarget = true;
-                }
+            if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
+            {
+                distanceFromTarget = between;
+                targetCenter = npc.Center;
+                foundTarget = true;
             }
         }
 

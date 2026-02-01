@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using NaturiumMod.Content.Helpers;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -43,39 +43,33 @@ public class PlatformCreator : ModItem
 
         // Right-click toggles modes without performing placement.
         _InReplaceMode = !_InReplaceMode;
-
-        // Inform the player of the new mode.
-        (string newText, byte r, byte g, byte b) = _InReplaceMode
-            ? ("Replace Mode: Will overwrite through blocks and enemies.", (byte)255, (byte)150, (byte)50)
-            : ("Safe Mode: Will avoid overwriting blocks and enemies.", (byte)50, (byte)200, (byte)150);
-
-        Main.NewText(newText, r, g, b);
-
-        SoundEngine.PlaySound(SoundID.MenuTick);
+        PlatformCreatorHelpers.CanUseItemMessage(_InReplaceMode);
 
         return false;
     }
 
-    // Places 25 platform tiles in a horizontal row starting at the mouse position,
-    // extending in the direction the player is looking (determined by mouse position relative to player).
     public override bool? UseItem(Player player)
     {
         PlatformCreatorHelpers.UseItem(player, PlatformPlacementCount, _InReplaceMode);
         return true;
     }
 
-    // Show current mode in the tooltip so players can see it while hovering the item.
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        PlatformCreatorHelpers.ModifyTooltips(tooltips, Mod, _InReplaceMode);
+        PlatformCreatorHelpers.AddTooltip(
+            "PlatformCreatorMode", $"Mode: {(_InReplaceMode ? "Replace (overwrites blocks)" : "Safe (avoids overwriting)")}",
+            _InReplaceMode ? new(255, 150, 50) : new(50, 200, 150),
+            Mod, tooltips
+        );
     }
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.WoodPlatform, PlatformPlacementCount);
-        recipe.AddIngredient(ItemID.PlatinumBar, 10);
-        recipe.AddTile(TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.WoodPlatform, PlatformPlacementCount),
+            new(ItemID.PlatinumBar, 10)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

@@ -22,19 +22,19 @@ public class RoseWhip : ModItem
         Item.width = 40;
         Item.height = 40;
 
-        Item.value = Item.buyPrice(gold: 1);
+        Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.rare = ItemRarityID.Green;
     }
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 36), (ItemID.Vine, 7)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<BarkionsBark>(), 36),
+            new(ItemID.Vine, 7)
+        ], TileID.Anvils);
         recipe.Register();
     }
 
-    public override bool MeleePrefix()
-    {
-        return true;
-    }
+    public override bool MeleePrefix() => true;
 }

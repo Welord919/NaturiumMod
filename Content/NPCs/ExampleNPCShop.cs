@@ -16,7 +16,7 @@ public class ExampleNPCShop : GlobalNPC
         }
     }
 
-    private int[] GetItemsToAdd(int npcID)
+    private static int[] GetItemsToAdd(int npcID)
     {
         return npcID switch
         {

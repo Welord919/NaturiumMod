@@ -34,7 +34,10 @@ public class BarkionsBark : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(15);
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.Wood, 25), (ItemID.Acorn, 3)], TileID.LivingLoom);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.Wood, 25),
+            new(ItemID.Acorn, 3)
+        ], TileID.LivingLoom);
         recipe.Register();
     }
 }

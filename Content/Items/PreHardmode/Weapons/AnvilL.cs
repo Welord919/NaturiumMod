@@ -39,17 +39,17 @@ public class AnvilL : ModItem
         //Item.useAmmo = AmmoID.Bullet;
         Item.shootSpeed = 11f;
         //Item.useAmmo = AmmoID.Bullet;
-        Item.value = Item.buyPrice(gold: 3);
+        Item.value = Item.buyPrice(0, 3, 0, 0);
     }
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ItemID.IronAnvil, 10), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ItemID.IronAnvil, 10)], TileID.Anvils);
         recipe.Register();
 
-        Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeHelper.GetNewRecipe(recipe1, (ItemID.LeadAnvil, 10), TileID.Anvils);
-        recipe1.Register();
+        recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ItemID.LeadAnvil, 10)], TileID.Anvils);
+        recipe.Register();
     }
 }

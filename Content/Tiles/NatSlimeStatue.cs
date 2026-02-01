@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Tiles;
 
-// The item used to place the statue.
 public class NatSlimeStatue : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Tiles/NatSlimeStatue";

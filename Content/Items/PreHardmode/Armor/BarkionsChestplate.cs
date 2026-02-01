@@ -11,8 +11,6 @@ public class BarkionsChestplate : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Armor/BarkionsChestplate";
 
-    public override void SetStaticDefaults() { }
-
     public override void SetDefaults()
     {
         Item.Size = new(20, 20);
@@ -30,7 +28,7 @@ public class BarkionsChestplate : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, (ModContent.ItemType<BarkionsBark>(), 125), TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [new(ModContent.ItemType<BarkionsBark>(), 125)], TileID.Anvils);
         recipe.Register();
     }
 }

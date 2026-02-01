@@ -16,7 +16,7 @@ public class BarkionsSS : ModItem
         Item.height = 32;
         Item.scale = 0.75f;
         Item.rare = ItemRarityID.Green;
-        Item.value = Item.buyPrice(silver: 20);
+        Item.value = Item.buyPrice(0, 0, 20, 0);
 
         // Use Properties
         Item.useTime = 20;
@@ -41,11 +41,17 @@ public class BarkionsSS : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.IronBar, 5)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<BarkionsBark>(), 50),
+            new(ItemID.IronBar, 5)
+        ], TileID.Anvils);
         recipe.Register();
 
         Recipe recipe1 = CreateRecipe();
-        recipe1 = RecipeHelper.GetNewRecipe(recipe1, [(ModContent.ItemType<BarkionsBark>(), 50), (ItemID.LeadBar, 5)], TileID.Anvils);
+        recipe1 = RecipeHelper.GetNewRecipe(recipe1, [
+            new(ModContent.ItemType<BarkionsBark>(), 50),
+            new(ItemID.LeadBar, 5)
+        ], TileID.Anvils);
         recipe1.Register();
     }
 }

@@ -10,6 +10,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 public class LeodrakesYoyo : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Weapons/LeodrakesYoyo";
+    private static readonly int[] _UnwantedPrefixes = [PrefixID.Terrible, PrefixID.Dull, PrefixID.Shameful, PrefixID.Annoying, PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy];
 
     public override void SetStaticDefaults()
     {
@@ -36,22 +37,20 @@ public class LeodrakesYoyo : ModItem
         Item.knockBack = 2.5f; // The amount of knockback the item inflicts.
         Item.crit = 6; // The percent chance for the weapon to deal a critical strike. Defaults to 4.
         Item.channel = true; // Set to true for items that require the attack button to be held out (e.g. yoyos and magic missile weapons)
-        Item.value = Item.buyPrice(gold: 1); // The amount of money that the item is can be bought for.
+        Item.value = Item.buyPrice(0, 1, 0, 0); // The amount of money that the item is can be bought for.
 
         Item.shoot = ModContent.ProjectileType<LeodrakesYoyoProj>(); // Which projectile this item will shoot. We set this to our corresponding projectile.
         Item.shootSpeed = 11f; // The velocity of the shot projectile.			
     }
 
-    // Here is an example of blacklisting certain modifiers. Remove this section for standard vanilla behavior.
-    // In this example, we are blacklisting the ones that reduce damage of a melee weapon.
-    // Make sure that your item can even receive these prefixes (check the vanilla wiki on prefixes).
-    private static readonly int[] unwantedPrefixes = [PrefixID.Terrible, PrefixID.Dull, PrefixID.Shameful, PrefixID.Annoying, PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy];
-
-    // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<NaturiumBar>(), 15), (ItemID.JungleYoyo, 1), (ItemID.Ruby, 12)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 15),
+            new(ItemID.JungleYoyo, 1),
+            new(ItemID.Ruby, 12)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

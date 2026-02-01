@@ -33,11 +33,17 @@ internal class ExteriosMedallion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<LeodrakesMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 5)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<LeodrakesMedallion>(), 1),
+            new(ModContent.ItemType<NaturiumBar>(), 5)
+        ], TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ModContent.ItemType<BarkionsMedallion>(), 1), (ModContent.ItemType<NaturiumBar>(), 10)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<BarkionsMedallion>(), 1),
+            new(ModContent.ItemType<NaturiumBar>(), 10)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }

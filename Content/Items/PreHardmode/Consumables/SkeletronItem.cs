@@ -47,7 +47,7 @@ public class SkeletronItem : ModItem
     {
         if (player.whoAmI != Main.myPlayer)
         {
-            return true;
+            return false;
         }
 
         // If the player using the item is the client
@@ -74,7 +74,10 @@ public class SkeletronItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [(ItemID.ClothierVoodooDoll, 1), (ItemID.Bone, 99)], TileID.Anvils);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ItemID.ClothierVoodooDoll, 1),
+            new(ItemID.Bone, 99)
+        ], TileID.Anvils);
         recipe.Register();
     }
 }
