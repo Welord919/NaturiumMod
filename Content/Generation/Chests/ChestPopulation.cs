@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Generation.Chests;
 
-public class ChestItemWorldGen : ModSystem
+public class ChestPopulation : ModSystem
 {
     public override void PostWorldGen()
     {
