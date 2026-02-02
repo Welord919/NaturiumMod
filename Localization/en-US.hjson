@@ -66,7 +66,12 @@ Mods: {
 			}
 
 			ExteriosCannon: {
-				Tooltip: A cannon that shoots Exterio's Fangs. Very powerful!
+				Tooltip:
+					'''
+					A cannon that shoots Exterio's Fangs.
+					10% chance to not consume ammo.
+					Gain another 15% chance to not consume ammo if Exterio's Medallion is equipped.
+					'''
 				DisplayName: Exterio's Cannon
 			}
 
@@ -166,23 +171,48 @@ Mods: {
 			}
 
 			LeodrakesMedallion: {
-				Tooltip: A medallion that boosts the stats of Leodrake's Weapons.
+				Tooltip:
+					'''
+					A medallion that boosts the stats of Barkion's weapons per different weapon class.
+					All: Increases Armor Penetration by 2.
+					Melee: Increases knockback by 10%.
+					Ranged: Increases critical strike chance by 5%.
+					Magic: Increases mana regeneration rate by 10%.
+					Summon: Increases minion damage by 10%.
+					'''
 				DisplayName: Leodrake's Medallion
 			}
 
 			ExteriosMedallion: {
-				Tooltip: A medallion that boosts the stats of Exterio's Weapons.
+				Tooltip:
+					'''
+						A medallion that boosts the stats of Exterio's weapons per different weapon class.
+						All: Increases Armor Penetration by 3.
+						Melee: Increases knockback by 10%.
+						Ranged: Increases critical strike chance by 5%.
+						Magic: Increases mana regeneration rate by 10%.
+						Summon: Increases minion damage by 10%.
+						
+					'''
 				DisplayName: Exterio's Medallion
 			}
 
 			BarkionsMedallion: {
-				Tooltip: A medallion that boosts the stats of Barkion's Weapons per diffrent weapon class. All: Increases Armor Penetration by 1. Melee: Increases knockback by 10%. Ranged: Increases critical strike chance by 5%. Magic: Increases mana regeneration rate by 10%. Summon: Increases minion damage by 10%.
+				Tooltip:
+					'''
+					A medallion that boosts the stats of Barkion's weapons per different weapon class.
+					All: Increases Armor Penetration by 1.
+					Melee: Increases knockback by 10%.
+					Ranged: Increases critical strike chance by 5%.
+					Magic: Increases mana regeneration rate by 10%.
+					Summon: Increases minion damage by 10%.
+					'''
 				DisplayName: Barkion's Medallion
 			}
 
 			ExampleCritterItem: {
 				DisplayName: Antjaw
-				Tooltip: Creature...
+				Tooltip: An Antjaw that flys around and carries its food with its legs.
 			}
 
 			PlatformCreator: {
@@ -217,6 +247,21 @@ Mods: {
 
 			AntjawCritter: {
 				DisplayName: Antjaw Critter
+				Tooltip: ""
+			}
+
+			InfusedNaturiumBar: {
+				DisplayName: Infused Naturium Bar
+				Tooltip: ""
+			}
+
+			NaturesEssence: {
+				DisplayName: Natures Essence
+				Tooltip: ""
+			}
+
+			InfusedNaturiumGunParts: {
+				DisplayName: Infused Naturium Gun Parts
 				Tooltip: ""
 			}
 		}

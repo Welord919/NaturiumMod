@@ -19,8 +19,8 @@ public class LeodrakesLeafstorm : ModItem
         Item.DamageType = DamageClass.Magic;
         Item.mana = 10;
 
-        Item.width = 30;
-        Item.height = 40;
+        Item.width = 1;
+        Item.height = 1;
         Item.useTime = 40;
         Item.useAnimation = 40;
 

@@ -5,6 +5,7 @@ using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PostHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PreHardmode.Accessories;
+using NaturiumMod.Content.Items.PostHardmode.Materials;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Accessories;
 
@@ -22,13 +23,18 @@ internal class ExteriosMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.moveSpeed += 0.5f;
-        player.GetDamage(DamageClass.Generic) += 0.1f;
+
+        player.GetModPlayer<ExteriosPlayer>().hasExteriosMedallion = true;
 
         if (player.HeldItem.type == ModContent.ItemType<ExteriosCannon>())
         {
-            player.GetKnockback(DamageClass.Ranged) += 0.7f;
+            player.GetArmorPenetration(DamageClass.Generic) += 3f;
+            player.GetDamage(DamageClass.Melee) += 0.1f;
+            player.GetDamage(DamageClass.Ranged) += 0.1f;
+            player.GetDamage(DamageClass.Magic) += 0.1f;
+            player.GetDamage(DamageClass.Summon) += 0.1f;
         }
+
     }
 
     public override void AddRecipes()
@@ -36,15 +42,10 @@ internal class ExteriosMedallion : ModItem
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<LeodrakesMedallion>(), 1),
-            new(ModContent.ItemType<NaturiumBar>(), 5)
-        ], TileID.Anvils);
+            new(ModContent.ItemType<InfusedNaturiumBar>(), 15)
+        ], TileID.MythrilAnvil);
         recipe.Register();
 
-        recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<BarkionsMedallion>(), 1),
-            new(ModContent.ItemType<NaturiumBar>(), 10)
-        ], TileID.Anvils);
-        recipe.Register();
+        
     }
 }
