@@ -41,6 +41,5 @@ public class InfusedNaturiumBar : ModItem
             new(ModContent.ItemType<NaturesEssence>(), 2),
         ], TileID.MythrilAnvil);
         recipe.Register();
-
     }
 }
