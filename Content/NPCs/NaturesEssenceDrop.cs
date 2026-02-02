@@ -31,7 +31,7 @@ namespace NaturiumMod.Content.NPCs
                 return;
 
             // Drop chance, 1/10
-            if (Main.rand.NextBool(1))
+            if (Main.rand.NextBool(10))
             {
                 Item.NewItem(
                     npc.GetSource_Loot(),

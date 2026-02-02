@@ -11,7 +11,7 @@ namespace NaturiumMod.Content.Items.PostHardmode.Accessories;
 
 internal class ExteriosMedallion : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Accessories/ExteriosMedallion";
+    public override string Texture => "NaturiumMod/Assets/Items/PostHardmode/Accessories/ExteriosMedallion";
 
     public override void SetDefaults()
     {

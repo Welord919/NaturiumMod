@@ -41,15 +41,9 @@ public class BarkionsBlaster : ModItem
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<NaturiumBar>(), 25),
-            new(ItemID.LeadBar, 15)
+            new(ItemID.IllegalGunParts, 1)
         ], TileID.Anvils);
         recipe.Register();
 
-        recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NaturiumBar>(), 25),
-            new(ItemID.IronBar, 15)
-        ], TileID.Anvils);
-        recipe.Register();
     }
 }

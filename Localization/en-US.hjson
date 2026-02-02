@@ -21,7 +21,7 @@ Mods: {
 
 		Items: {
 			NatSlimeStatue: {
-				Tooltip: Used for testing LUL
+				Tooltip: Was made try to craft a statue of Barkion, but ended up looking like a slime instead.
 				DisplayName: Naturium Slime Statue
 			}
 
@@ -264,6 +264,11 @@ Mods: {
 				DisplayName: Infused Naturium Gun Parts
 				Tooltip: ""
 			}
+
+			NatSlimeBanner: {
+				DisplayName: Nat Slime Banner
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -289,6 +294,10 @@ Mods: {
 		}
 
 		WorldGen.ExampleOrePassMessage: Breathing Naturium
-		Tiles.DaltonPaintingTile.MapEntry: Dalton Painting Tile
+
+		Tiles: {
+			DaltonPaintingTile.MapEntry: Dalton Painting Tile
+			NatSlimeBannerTile.MapEntry: Nat Slime Banner Tile
+		}
 	}
 }

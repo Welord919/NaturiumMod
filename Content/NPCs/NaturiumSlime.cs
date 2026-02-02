@@ -6,6 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using NaturiumMod.Content.Items.General.Placeable;
 
 namespace NaturiumMod.Content.NPCs;
 
@@ -37,8 +38,9 @@ internal class NaturiumSlime : ModNPC
         AIType = NPCID.BlueSlime;
         AnimationType = NPCID.BlueSlime;
 
-        Banner = Item.NPCtoBanner(NPCID.BlueSlime);
-        BannerItem = Item.BannerToItem(Banner);
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<NatSlimeBanner>();
+
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -55,7 +57,7 @@ internal class NaturiumSlime : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-        SpawnCondition.Cavern.Chance * 0.2f;
+        SpawnCondition.Cavern.Chance * 0.3f;
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {

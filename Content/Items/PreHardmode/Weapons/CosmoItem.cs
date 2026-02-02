@@ -22,7 +22,7 @@ public class CosmoItem : ModItem
 
     public override void SetDefaults()
     {
-        Item.damage = 11;
+        Item.damage = 16;
         Item.knockBack = 2f;
         Item.mana = 10; // mana cost
         Item.width = 32;
@@ -67,7 +67,7 @@ public class CosmoItem : ModItem
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ModContent.ItemType<BarkionsBark>(), 25),
-            new(ModContent.ItemType<NaturiumOre>(), 5),
+            new(ModContent.ItemType<NaturiumBar>(), 5),
             new(ItemID.Vine, 5),
             new(ItemID.Stinger, 3)
         ], TileID.Anvils);
