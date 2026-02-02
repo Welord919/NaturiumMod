@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Helpers;
+using System;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -52,15 +53,26 @@ public class LeodrakesLeafstorm : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        float numberProjectiles = 3 + Main.rand.Next(5);
-        float rotation = MathHelper.TwoPi;
+        Vector2 origin = player.RotatedRelativePoint(player.MountedCenter);
+        Vector2 aimDir = (Main.MouseWorld - origin).SafeNormalize(Vector2.UnitX * player.direction);
+        Vector2 spawnPosition = origin + aimDir * 18f + new Vector2(0f, -6f * player.gravDir);
 
-        position += Vector2.Normalize(velocity) * 45f;
+        float numberProjectiles = Main.rand.Next(3, 8);
+
+        float baseRotation = Main.rand.NextFloat(MathHelper.TwoPi);
 
         for (int i = 0; i < numberProjectiles; i++)
         {
-            Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / numberProjectiles));
-            Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
+            float angle = baseRotation + MathHelper.TwoPi * (i / (float)numberProjectiles);
+
+            Vector2 direction = new(MathF.Cos(angle), MathF.Sin(angle));
+
+            float speedScale = Main.rand.NextFloat(0.9f, 1.1f);
+            Vector2 speed = direction * Item.shootSpeed * speedScale;
+
+            Vector2 jitter = Vector2.Zero;
+
+            Projectile.NewProjectile(source, spawnPosition + jitter, speed, type, damage, knockback, player.whoAmI);
         }
 
         return false; // return false to stop vanilla from calling Projectile.NewProjectile.

@@ -32,7 +32,7 @@ public class LeodrakesManeProj : ModProjectile
     public override void AI()
     {
         float maximumDetectionRadius = 400f;
-        float projectileSpeed = 10f;
+        float projectileSpeed = 2f;
         float trackingStrength = 0.05f;
 
         NPC closestNPC = FindClosestNPC(maximumDetectionRadius);
