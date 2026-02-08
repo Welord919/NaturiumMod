@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace NaturiumMod.Content.Helpers
+namespace NaturiumMod.Content.ModPlayers
 {
     public class ExteriosPlayer : ModPlayer
     {

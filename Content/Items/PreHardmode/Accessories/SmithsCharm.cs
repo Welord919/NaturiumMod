@@ -1,6 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.Materials.CharmPieces;
+using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 
 namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
@@ -27,5 +29,16 @@ public class SmithsCharm : ModItem
         player.AddBuff(ModContent.BuffType<Buffs.SmithsBuff>(), 2);
     }
 
-
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<CharmPieceAngler>(), 1),
+        new(ModContent.ItemType<CharmPieceArtisan>(), 1),
+        new(ModContent.ItemType<CharmPieceGuardian>(), 1),
+        new(ModContent.ItemType<CharmPieceMystic>(), 1),
+        new(ModContent.ItemType<CharmPieceWarrior>(), 1)
+        ], TileID.Anvils);
+        recipe.Register();
+    }
 }

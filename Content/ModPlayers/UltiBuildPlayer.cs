@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
 
-namespace NaturiumMod.Content.Helpers
+namespace NaturiumMod.Content.ModPlayers
 {
     public class UltiBuildPlayer : ModPlayer
     {

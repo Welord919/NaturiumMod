@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Helpers
+namespace NaturiumMod.Content.ModPlayers
 {
     public class SmithsCharmPlayer : ModPlayer
     {

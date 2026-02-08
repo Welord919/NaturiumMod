@@ -20,6 +20,13 @@ public class CharmPieceAngler : ModItem
         Item.maxStack = 1;
     }
 
+    public override void Load()
+    {
+        ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<NaturiumBar>()] =
+            ModContent.ItemType<NaturiumOre>();
+    }
+
+
     public override void UpdateInventory(Player player)
     {
         player.AddBuff(BuffID.Fishing, 2);
@@ -28,21 +35,4 @@ public class CharmPieceAngler : ModItem
         player.AddBuff(BuffID.Gills, 2);
         player.AddBuff(BuffID.WaterWalking, 2);
     }
-
-    public override void AddRecipes()
-    {
-        Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ItemID.FishingPotion, 5),
-        new(ItemID.CratePotion, 5),
-        new(ItemID.SonarPotion, 3),
-        new(ItemID.GillsPotion, 3),
-        new(ItemID.WaterWalkingPotion, 3),
-        new(ItemID.Coral, 10),
-        new(ItemID.Seashell, 5),
-        new(ModContent.ItemType<NaturiumBar>(), 10)
-        ], TileID.Anvils);
-        recipe.Register();
-    }
-
 }
