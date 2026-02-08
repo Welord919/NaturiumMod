@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Buffs;
 
-public class MktPotionBuff : ModBuff
+public class UltiBuildPotionBuff : ModBuff
 {
     public override string Texture => "NaturiumMod/Assets/Buffs/MktPotionBuff";
 

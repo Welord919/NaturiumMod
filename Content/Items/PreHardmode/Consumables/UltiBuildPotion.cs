@@ -6,9 +6,9 @@ using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Consumables;
 
-public class MktPotion : ModItem
+public class UltiBuildPotion : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Consumables/MktPotion";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Consumables/UltiBuildPotion";
 
     public override void SetDefaults()
     {
@@ -22,7 +22,7 @@ public class MktPotion : ModItem
         Item.consumable = true;
         Item.rare = ItemRarityID.Orange;
         Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.buffType = ModContent.BuffType<Buffs.MktPotionBuff>(); // Specify an existing buff to be applied when used.
+        Item.buffType = ModContent.BuffType<Buffs.UltiBuildPotionBuff>(); // Specify an existing buff to be applied when used.
         Item.buffTime = 14400; // The amount of time the buff declared in Item.buffType will last in ticks. 14400 / 60 = 240, so this buff will last 4 minutes.
     }
 
@@ -33,7 +33,7 @@ public class MktPotion : ModItem
             new(ModContent.ItemType<NaturiumOre>(), 4),
             new(ModContent.ItemType<CameliaPetal>(), 2),
             new(ItemID.BottledWater, 1),
-            new(ItemID.Daybloom, 1)
+            new(ItemID.Blinkroot, 1)
         ], TileID.AlchemyTable);
         recipe.Register();
     }

@@ -27,66 +27,86 @@ Mods: {
 
 			DaltonPainting: {
 				Tooltip: Dalton Vegeta ahh hair
-				DisplayName: A Painting of Dalton... Don't tell him...
+				DisplayName: A Painting of Dalton. Don't tell him!
 			}
 
 			TripleWOS: {
-				Tooltip: A Wand of Sparking that has been combined with two other Wands of Sparking. This works?
+				Tooltip:
+					'''
+					A Wand of Sparking that has been combined with two other Wands of Sparking
+					'This works?'
+					'''
 				DisplayName: Triple Wand of Sparking
 			}
 
 			TripleWOF: {
-				Tooltip: A Wand of Frost that has been combined with two other Wands of Frost. Chilly!
+				Tooltip:
+					'''
+					A Wand of Frost that has been combined with two other Wands of Frost
+					'Chilly!'
+					'''
 				DisplayName: Triple Wand of Frost
 			}
 
 			RoseWhip: {
-				Tooltip: A whip crafted from tangled vines and thorns. Barkion Approved!
+				Tooltip:
+					'''
+					A whip crafted from tangled vines and thorns
+					'Barkion Approved!'
+					'''
 				DisplayName: Barkion's Rose Whip
 			}
 
 			RocketSword: {
-				Tooltip: Shoots rockets out of the tip of the sword. Don't stand too close!
+				Tooltip:
+					'''
+					Shoots rockets out of the tip of the sword
+					'Don't stand too close!'
+					'''
 				DisplayName: Rocket Sword
 			}
 
 			LeodrakesYoyo: {
-				Tooltip: A yoyo that releases Leodrake's Projectiles periodically.
+				Tooltip: A yoyo that releases Leodrake's Projectiles periodically
 				DisplayName: Leodrake's Yoyo
 			}
 
 			LeodrakesLeafstorm: {
-				Tooltip: A gemstone imbued with the essence of the Forest Lion, Leodrake, channeling its power.
+				Tooltip: A gemstone imbued with the essence of the Forest Lion, Leodrake, channeling its power
 				DisplayName: Leodrake's Leafstorm
 			}
 
 			ExteriosWhip: {
-				Tooltip: A whip made for those who follow Exterio. Watch out for the point!
+				Tooltip:
+					'''
+					A whip made for those who follow Exterio
+					'Watch out for the point!'
+					'''
 				DisplayName: Exterio's Whip
 			}
 
 			ExteriosCannon: {
 				Tooltip:
 					'''
-					A cannon that shoots Exterio's Fangs.
-					10% chance to not consume ammo.
-					Gain another 15% chance to not consume ammo if Exterio's Medallion is equipped.
+					A cannon that shoots Exterio's Fangs
+					10% chance to not consume ammo
+					Gain another 15% chance to not consume ammo if Exterio's Medallion is equipped
 					'''
 				DisplayName: Exterio's Cannon
 			}
 
 			EmpressFS: {
-				Tooltip: A wand that has been crafted from the remains of the Empress herself. Le Rainbows..!
+				Tooltip: A wand that has been crafted from the remains of the Empress herself
 				DisplayName: The Empresses Falling Stars
 			}
 
 			CosmoItem: {
-				Tooltip: Summons a Cosmobeet to float and protect the user. Frien!
+				Tooltip: Summons a Cosmobeet to float and protect the user
 				DisplayName: Barkion's Beet Stick
 			}
 
 			BarkionsTB: {
-				Tooltip: A sword imbued with the power of the Wooden Dragon. Pokey.
+				Tooltip: A sword imbued with the power of the Wooden Dragon
 				DisplayName: Barkion's Thorn Blade
 			}
 
@@ -96,7 +116,7 @@ Mods: {
 			}
 
 			BarkionsBlaster: {
-				Tooltip: A versatile firearm capable of launching clumps of Naturium, as well as standard bullets if needed.
+				Tooltip: A versatile firearm capable of launching clumps of Naturium, as well as standard bullets if needed
 				DisplayName: Barkion's Blaster
 			}
 
@@ -106,47 +126,63 @@ Mods: {
 			}
 
 			NaturiumPickaxe: {
-				Tooltip: A pickaxe forged from Naturium crystals and infused with Barkion’s essence. Has gold on top!
+				Tooltip: A pickaxe forged from Naturium crystals and infused with Barkion’s essence
 				DisplayName: Naturium Pickaxe
 			}
 
 			NaturiumOre: {
-				Tooltip: Raw Naturium to be smelted into something greater. Wonder what the bar is called...
+				Tooltip:
+					'''
+					Raw Naturium to be smelted into something greater
+					'Wonder what the bar is called'
+					'''
 				DisplayName: Naturium Ore
 			}
 
 			NaturiumBar: {
-				Tooltip: A bar crafted from pure Naturium, radiating with the essence of nature. Yippie green!
+				Tooltip: A bar crafted from pure Naturium, radiating with the essence of nature
 				DisplayName: Naturium Bar
 			}
 
 			ExteriosFang: {
-				Tooltip: A Fang that contains Exterio's Power. Use wisely...
+				Tooltip:
+					'''
+					A Fang that contains Exterio's Power
+					'Use wisely'
+					'''
 				DisplayName: Exterio's Fang
 			}
 
 			CameliaPetal: {
-				Tooltip: A petal dropped from Camelia Flowers.
+				Tooltip: A petal dropped from Camelia Flowers
 				DisplayName: Camelia Petal
 			}
 
 			Camelia: {
 				DisplayName: Camelia
-				Tooltip: A flower that grew sentience from being infused with Barkion's power.
+				Tooltip: A flower that grew sentience from being surrounded with Barkion's power
 			}
 
 			BarkionsBark: {
-				Tooltip: A fragment of Barkion, imbued with his ancient wooden essence. Penetrates through one point of armor.
+				Tooltip:
+					'''
+					A fragment of Barkion, imbued with his ancient wooden essence
+					Penetrates through one point of armor
+					'''
 				DisplayName: Barkion's Bark
 			}
 
 			SkeletronItem: {
-				Tooltip: Summons Skeletron. That's all.
-				DisplayName: A Weird Skull
+				Tooltip:
+					'''
+					Summons Skeletron
+					What else would it do?
+					'''
+				DisplayName: A strange skull
 			}
 
 			MktPotion: {
-				Tooltip: Increases defense by 6 and life regeneration by 1.8 for 4 minutes.
+				Tooltip: Increases defense and life regeneration
 				DisplayName: Barkion's Mosquito Potion
 			}
 
@@ -166,19 +202,23 @@ Mods: {
 			}
 
 			NaturiumClump: {
-				Tooltip: A clump of naturium, designed to be launched at foes. Has homing precision!
+				Tooltip:
+					'''
+					A clump of naturium, designed to be launched at foes
+					'Has homing precision!'
+					'''
 				DisplayName: Naturium Clump
 			}
 
 			LeodrakesMedallion: {
 				Tooltip:
 					'''
-					A medallion that boosts the stats of Barkion's weapons per different weapon class.
-					All: Increases Armor Penetration by 2.
-					Melee: Increases knockback by 10%.
-					Ranged: Increases critical strike chance by 5%.
-					Magic: Increases mana regeneration rate by 10%.
-					Summon: Increases minion damage by 10%.
+					A medallion that boosts the stats of Barkion's weapons per different weapon class
+					All: Increases Armor Penetration by 2
+					Melee: Increases knockback by 10%
+					Ranged: Increases critical strike chance by 5%
+					Magic: Increases mana regeneration rate by 10%
+					Summon: Increases minion damage by 10%
 					'''
 				DisplayName: Leodrake's Medallion
 			}
@@ -186,13 +226,12 @@ Mods: {
 			ExteriosMedallion: {
 				Tooltip:
 					'''
-						A medallion that boosts the stats of Exterio's weapons per different weapon class.
-						All: Increases Armor Penetration by 3.
-						Melee: Increases knockback by 10%.
-						Ranged: Increases critical strike chance by 5%.
-						Magic: Increases mana regeneration rate by 10%.
-						Summon: Increases minion damage by 10%.
-						
+					A medallion that boosts the stats of Exterio's weapons per different weapon class.
+					All: Increases Armor Penetration by 3
+					Melee: Increases knockback by 10%
+					Ranged: Increases critical strike chance by 5%
+					Magic: Increases mana regeneration rate by 10%
+					Summon: Increases minion damage by 10%						
 					'''
 				DisplayName: Exterio's Medallion
 			}
@@ -201,79 +240,134 @@ Mods: {
 				Tooltip:
 					'''
 					A medallion that boosts the stats of Barkion's weapons per different weapon class.
-					All: Increases Armor Penetration by 1.
-					Melee: Increases knockback by 10%.
-					Ranged: Increases critical strike chance by 5%.
-					Magic: Increases mana regeneration rate by 10%.
-					Summon: Increases minion damage by 10%.
+					All: Increases Armor Penetration by 1
+					Melee: Increases knockback by 10%
+					Ranged: Increases critical strike chance by 5%
+					Magic: Increases mana regeneration rate by 10%
+					Summon: Increases minion damage by 10%
 					'''
 				DisplayName: Barkion's Medallion
 			}
 
 			ExampleCritterItem: {
 				DisplayName: Antjaw
-				Tooltip: An Antjaw that flys around and carries its food with its legs.
+				Tooltip: An Antjaw that flys around and carries its food with its legs
 			}
 
 			PlatformCreator: {
 				DisplayName: Platform Creator
-				Tooltip: Creates 25 platforms at the players cursor. Right click to enter Safe or Replace mode.
+				Tooltip:
+					'''
+					Creates 25 platforms at the players cursor 
+					Right click to enter Safe or Replace mode
+					'''
 			}
 
 			PlatformCreator2: {
 				DisplayName: Platform Creator +1
-				Tooltip: Creates 50 platforms at the players cursor. Right click to enter Safe or Replace mode.
+				Tooltip:
+					'''
+					Creates 50 platforms at the players cursor 
+					Right click to enter Safe or Replace mode
+					'''
 			}
 
 			PlatformCreator3: {
 				DisplayName: Platform Creator +2
-				Tooltip: Creates 100 platforms at the players cursor. Right click to enter Safe or Replace mode.
+				Tooltip:
+					'''
+					Creates 100 platforms at the players cursor 
+					Right click to enter Safe or Replace mode
+					'''
 			}
 
 			PlatformCreator4: {
 				DisplayName: Platform Creator +3
-				Tooltip: Creates 200 platforms at the players cursor. Right click to enter Safe or Replace mode.
+				Tooltip:
+					'''
+					Creates 200 platforms at the players cursor 
+					Right click to enter Safe or Replace mode
+					'''
 			}
 
 			PlatformCreatorFinal: {
 				DisplayName: Platform Creator Final
-				Tooltip: Right click to enter a menu to choose 25-400 platforms. Change from Safe or Replace by pressing the center.
+				Tooltip:
+					'''
+					Right click to enter a menu to choose 25-400 platforms
+					Change from Safe or Replace by clicking the center
+					'''
 			}
 
 			CameliaSeeds: {
 				DisplayName: Camelia Seeds
-				Tooltip: Seeds of a Camelia flower. Be careful!
+				Tooltip: Delicate seeds of a Camelia flower
 			}
 
 			AntjawCritter: {
 				DisplayName: Antjaw Critter
-				Tooltip: ""
+				Tooltip: Ant he just special!
 			}
 
 			InfusedNaturiumBar: {
 				DisplayName: Infused Naturium Bar
-				Tooltip: ""
+				Tooltip: Pure Naturium infused with the nature's essence from the jungle
 			}
 
 			NaturesEssence: {
 				DisplayName: Natures Essence
-				Tooltip: ""
+				Tooltip: Essence that drops from creatues in the jungle
 			}
 
 			InfusedNaturiumGunParts: {
 				DisplayName: Infused Naturium Gun Parts
-				Tooltip: ""
+				Tooltip: Gun parts that have powerful energy flowing through them
 			}
 
 			NatSlimeBanner: {
 				DisplayName: Nat Slime Banner
-				Tooltip: ""
+				Tooltip: Buff not working but soon!
+			}
+
+			UltiBuildPotion: {
+				DisplayName: Ulti Build Potion
+				Tooltip: Boosts Building and Mining speed
+			}
+
+			CharmPieceAngler: {
+				Tooltip: Gives buffs related to the water
+				DisplayName: Charm Piece Angler
+			}
+
+			CharmPieceArtisan: {
+				DisplayName: Charm Piece Artisan
+				Tooltip: Gives buffs related to building
+			}
+
+			CharmPieceGuardian: {
+				DisplayName: Charm Piece Guardian
+				Tooltip: Gives buffs related to defense
+			}
+
+			CharmPieceMystic: {
+				DisplayName: Charm Piece Mystic
+				Tooltip: Gives buffs related to magic
+			}
+
+			CharmPieceWarrior: {
+				DisplayName: Charm Piece Warrior
+				Tooltip: Gives buffs related to offense
+			}
+
+			SmithsCharm: {
+				DisplayName: Smiths Charm
+				Tooltip: Gives almost every buff in the game
 			}
 		}
 
 		Buffs: {
 			MktPotionBuff: {
-				Description: Increases life regeneration and defense.
+				Description: Increases life regeneration and defense
 				DisplayName: Mosquito Potion Buff
 			}
 
@@ -283,13 +377,18 @@ Mods: {
 			}
 
 			BarkionsBuff: {
-				Description: A blessing bestowed by the Wooden Dragon himself.
+				Description: A blessing bestowed by the Wooden Dragon himself
 				DisplayName: Barkion's Buff
 			}
 
-			CosmoArmorSetVerBuff: {
-				DisplayName: Cosmo Armor Set Ver Buff
-				Description: Mods.NaturiumMod.Buffs.CosmoArmorSetVerBuff.Description
+			UltiBuildPotionBuff: {
+				Description: Buffs both building and mining
+				DisplayName: Greater Build Potion Buff
+			}
+
+			SmithsBuff: {
+				DisplayName: Smiths Buff
+				Description: Includes almost every buff in the game
 			}
 		}
 
