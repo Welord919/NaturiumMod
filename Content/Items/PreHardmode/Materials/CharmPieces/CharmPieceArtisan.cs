@@ -35,8 +35,16 @@ public class CharmPieceArtisan : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<UltiBuildPotion>(), 30)
+            new(ItemID.BuilderPotion, 5),
+        new(ItemID.MiningPotion, 5),
+        new(ItemID.TrapsightPotion, 3),
+        new(ItemID.ShinePotion, 3),
+        new(ItemID.SpelunkerPotion, 3),
+        new(ItemID.StoneBlock, 25),
+        new(ItemID.IronBar, 5),
+        new(ModContent.ItemType<NaturiumBar>(), 10)
         ], TileID.Anvils);
         recipe.Register();
     }
+
 }

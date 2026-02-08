@@ -360,7 +360,7 @@ Mods: {
 			}
 
 			SmithsCharm: {
-				DisplayName: Smiths Charm
+				DisplayName: Smith's Charm
 				Tooltip: Gives almost every buff in the game
 			}
 		}
@@ -387,7 +387,7 @@ Mods: {
 			}
 
 			SmithsBuff: {
-				DisplayName: Smiths Buff
+				DisplayName: Smith's Buff
 				Description: Includes almost every buff in the game
 			}
 		}

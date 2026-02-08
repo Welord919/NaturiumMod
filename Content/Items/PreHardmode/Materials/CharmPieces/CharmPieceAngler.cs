@@ -33,8 +33,16 @@ public class CharmPieceAngler : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<UltiBuildPotion>(), 30)
+            new(ItemID.FishingPotion, 5),
+        new(ItemID.CratePotion, 5),
+        new(ItemID.SonarPotion, 3),
+        new(ItemID.GillsPotion, 3),
+        new(ItemID.WaterWalkingPotion, 3),
+        new(ItemID.Coral, 10),
+        new(ItemID.Seashell, 5),
+        new(ModContent.ItemType<NaturiumBar>(), 10)
         ], TileID.Anvils);
         recipe.Register();
     }
+
 }

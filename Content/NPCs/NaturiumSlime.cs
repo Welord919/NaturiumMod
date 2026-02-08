@@ -51,7 +51,7 @@ internal class NaturiumSlime : ModNPC
             npcLoot.Add(rule);
         }
 
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaturiumOre>(), 1, 1, 6));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaturiumOre>(), 1, 4, 7));
         // Make DaltonPainting a 1/1000 drop chance
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
     }

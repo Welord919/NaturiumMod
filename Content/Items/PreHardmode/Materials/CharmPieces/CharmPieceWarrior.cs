@@ -33,8 +33,16 @@ public class CharmPieceWarrior : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<UltiBuildPotion>(), 30)
+            new(ItemID.RagePotion, 5),
+        new(ItemID.WrathPotion, 5),
+        new(ItemID.SwiftnessPotion, 3),
+        new(ItemID.HunterPotion, 3),
+        new(ItemID.InfernoPotion, 3),
+        new(ItemID.Bone, 10),
+        new(ItemID.Stinger, 5),
+        new(ModContent.ItemType<NaturiumBar>(), 10)
         ], TileID.Anvils);
         recipe.Register();
     }
+
 }

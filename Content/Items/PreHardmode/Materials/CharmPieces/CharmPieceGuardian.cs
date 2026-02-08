@@ -34,8 +34,15 @@ public class CharmPieceGuardian : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<UltiBuildPotion>(), 30)
+            new(ItemID.IronskinPotion, 5),
+        new(ItemID.EndurancePotion, 5),
+        new(ItemID.RegenerationPotion, 5),
+        new(ItemID.HeartreachPotion, 3),
+        new(ItemID.ObsidianSkinPotion, 3),
+        new(ItemID.Obsidian, 15),
+        new(ModContent.ItemType<NaturiumBar>(), 10)
         ], TileID.Anvils);
         recipe.Register();
     }
+
 }
