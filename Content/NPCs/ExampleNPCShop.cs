@@ -1,4 +1,5 @@
-﻿using NaturiumMod.Content.Items.PreHardmode.Accessories;
+﻿using NaturiumMod.Content.Items.General.Placeable;
+using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,6 +25,7 @@ public class ExampleNPCShop : GlobalNPC
             [
                 ModContent.ItemType<BarkionsBark>(),
                 ModContent.ItemType<BarkionsMedallion>(),
+                ModContent.ItemType<CameliaSeeds>(),
                 ItemID.Vine
             ],
             NPCID.Demolitionist =>

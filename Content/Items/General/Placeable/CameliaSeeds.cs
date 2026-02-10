@@ -19,6 +19,7 @@ public class CameliaSeeds : ModItem
         Item.useAnimation = 10;
         Item.consumable = true;
         Item.autoReuse = false;
+        Item.value = Item.buyPrice(0, 0, 0, 25);
 
         // places the CameliaTile (stage 0)
         Item.createTile = ModContent.TileType<CameliaTile>();
@@ -42,6 +43,12 @@ public class CameliaSeeds : ModItem
         }
 
         Tile tileBelow = Framing.GetTileSafely(i, j + 1);
-        return tileBelow.HasTile && tileBelow.TileType is TileID.JungleGrass or TileID.Grass or TileID.Mud;
+        return tileBelow.HasTile &&
+       (tileBelow.TileType == TileID.JungleGrass ||
+        tileBelow.TileType == TileID.Grass ||
+        tileBelow.TileType == TileID.Mud ||
+        tileBelow.TileType == TileID.PlanterBox && tileBelow.TileFrameY == 0
+);
+
     }
 }

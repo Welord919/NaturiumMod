@@ -292,7 +292,11 @@ Mods: {
 
 			CameliaSeeds: {
 				DisplayName: Camelia Seeds
-				Tooltip: Delicate seeds of a Camelia flower
+				Tooltip:
+					'''
+					Delicate seeds of a Camelia flower
+					Only plantable on Grass
+					'''
 			}
 
 			AntjawCritter: {
