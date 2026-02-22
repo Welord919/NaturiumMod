@@ -9,5 +9,11 @@
     <ItemGroup>
         <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     </ItemGroup>
-    <!-- References -->
+	<ItemGroup>
+		<Reference Include="StructureHelper">
+			<HintPath>..\ModAssemblies\StructureHelper_v3.1.0.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+ 
+	<!-- References -->
 </Project>
