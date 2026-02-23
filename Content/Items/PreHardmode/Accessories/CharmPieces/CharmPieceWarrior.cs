@@ -7,17 +7,17 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace NaturiumMod.Content.Items.PreHardmode.Materials.CharmPieces;
+namespace NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 
 public class CharmPieceWarrior : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/CharmPieces/CharmPiece";
-    public override void SetDefaults()
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Accessories/CharmPiece"; public override void SetDefaults()
     {
         Item.Size = new(20, 26);
         Item.rare = ItemRarityID.Orange;
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.maxStack = 1;
+        Item.accessory = true;
     }
 
     public override void UpdateInventory(Player player)
@@ -41,7 +41,7 @@ public class CharmPieceWarrior : ModItem
         new(ItemID.Bone, 10),
         new(ItemID.Stinger, 5),
         new(ModContent.ItemType<NaturiumBar>(), 10)
-        ], TileID.Anvils);
+        ], TileID.TinkerersWorkbench);
         recipe.Register();
     }
 

@@ -13,7 +13,7 @@ public class RoseWhip : ModItem
 
     public override void SetDefaults()
     {
-        Item.DefaultToWhip(ModContent.ProjectileType<RoseWhipProj>(), 29, 6f, 4);
+        Item.DefaultToWhip(ModContent.ProjectileType<RoseWhipProj>(), 30, 3.5f, 5);
         Item.shootSpeed = 4;
         Item.rare = ItemRarityID.Green;
         Item.channel = true;
@@ -26,13 +26,19 @@ public class RoseWhip : ModItem
         Item.rare = ItemRarityID.Green;
 
     }
+    public override void HoldItem(Player player)
+    {
+        player.thorns += 0.15f; // 15% return damage
+    }
+
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<BarkionsBark>(), 36),
-            new(ItemID.Vine, 7)
+            new(ModContent.ItemType<NaturiumBar>(), 20),
+            new(ModContent.ItemType<RoseIcon>(), 3),
+            new(ItemID.IvyWhip, 1)
         ], TileID.Anvils);
         recipe.Register();
     }

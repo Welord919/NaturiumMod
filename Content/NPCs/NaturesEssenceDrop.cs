@@ -30,8 +30,8 @@ namespace NaturiumMod.Content.NPCs
             if (npc.friendly || npc.lifeMax <= 5)
                 return;
 
-            // Drop chance, 1/10
-            if (Main.rand.NextBool(10))
+            // Drop chance, 1/20
+            if (Main.rand.NextBool(20))
             {
                 Item.NewItem(
                     npc.GetSource_Loot(),

@@ -51,12 +51,11 @@ internal class NaturiumSlime : ModNPC
         }
 
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaturiumOre>(), 1, 4, 7));
-        // Make DaltonPainting a 1/1000 drop chance
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-        SpawnCondition.Cavern.Chance * 0.3f;
+        SpawnCondition.Cavern.Chance * 0.4f;
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {

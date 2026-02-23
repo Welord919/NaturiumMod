@@ -1,10 +1,11 @@
 ﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Tiles;
+namespace NaturiumMod.Content.Items.General.Placeable;
 
 public class NatSlimeStatue : ModItem
 {

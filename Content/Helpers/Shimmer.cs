@@ -1,6 +1,6 @@
 ﻿using NaturiumMod.Content.Generation.Ores;
+using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
-using NaturiumMod.Content.Items.PreHardmode.Materials.CharmPieces;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

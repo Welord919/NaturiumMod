@@ -52,7 +52,9 @@ Mods: {
 				Tooltip:
 					'''
 					A whip crafted from tangled vines and thorns
-					'Barkion Approved!'
+					Poisons enemies
+					Enemies take a portion of the damage they deal to you
+					Your summons will focus struck enemies
 					'''
 				DisplayName: Barkion's Rose Whip
 			}
@@ -71,6 +73,7 @@ Mods: {
 				Tooltip:
 					'''
 					A whip made for those who follow Exterio
+					Your summons will focus struck enemies
 					'Watch out for the point!'
 					'''
 				DisplayName: Exterio's Whip
@@ -373,6 +376,36 @@ Mods: {
 				DisplayName: Hive Keeper
 				Tooltip: Upgraded Bee Keeper with the power of Naturium
 			}
+
+			EliteMudBrick: {
+				DisplayName: Elite Mud Brick
+				Tooltip: Not currently being used
+			}
+
+			NaturiumChest: {
+				DisplayName: Naturium Chest
+				Tooltip: To store items
+			}
+
+			NaturiumKey: {
+				DisplayName: Naturium Key
+				Tooltip: To do the opening
+			}
+
+			NaturiumChestLocked: {
+				DisplayName: Naturium Chest Locked
+				Tooltip: To be opened
+			}
+
+			SunflowerPower: {
+				Tooltip: The Sunflower's following Barkion made a charm to display their loyalty
+				DisplayName: Sunflower Power
+			}
+
+			RoseIcon: {
+				Tooltip: Used in rose related recipes
+				DisplayName: Rose Icon
+			}
 		}
 
 		Buffs: {
@@ -407,6 +440,11 @@ Mods: {
 		Tiles: {
 			DaltonPaintingTile.MapEntry: Dalton Painting Tile
 			NatSlimeBannerTile.MapEntry: Nat Slime Banner Tile
+
+			NaturiumChestTile: {
+				MapEntry: Naturium Chest Tile
+				Locked: You need da key fool
+			}
 		}
 	}
 }

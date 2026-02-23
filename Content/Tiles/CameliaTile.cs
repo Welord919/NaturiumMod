@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Items.General.Placeable;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

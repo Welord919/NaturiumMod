@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.General.Placeable;
+namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
 public class Camelia : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/General/Placeable/Camelia";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/Camelia";
 
 	public override void SetDefaults()
 	{

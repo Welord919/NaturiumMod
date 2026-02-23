@@ -1,5 +1,5 @@
 ﻿using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PreHardmode.Materials.CharmPieces;
+using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,12 +33,12 @@ public class SmithsCharm : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<CharmPieceAngler>(), 1),
+        new(ModContent.ItemType<CharmPieceAngler>(), 1),
         new(ModContent.ItemType<CharmPieceArtisan>(), 1),
         new(ModContent.ItemType<CharmPieceGuardian>(), 1),
         new(ModContent.ItemType<CharmPieceMystic>(), 1),
         new(ModContent.ItemType<CharmPieceWarrior>(), 1)
-        ], TileID.Anvils);
+        ], TileID.TinkerersWorkbench);
         recipe.Register();
     }
 }

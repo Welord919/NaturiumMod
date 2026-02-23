@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <!-- Import tModLoader mod properties -->
     <Import Project="..\tModLoader.targets" />
     <!-- General -->
     <PropertyGroup />
     <ItemGroup>
-        <PackageReference Include="CloudinaryDotNet"
-                          Version="1.26.2" />
+        <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="StructureHelper">
