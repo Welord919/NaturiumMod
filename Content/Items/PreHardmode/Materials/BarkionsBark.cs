@@ -8,7 +8,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
 public class BarkionsBark : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/RoseIcon";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/BarkionsBark";
 
     public override void SetStaticDefaults()
     {
