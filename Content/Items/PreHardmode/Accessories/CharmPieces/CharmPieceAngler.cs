@@ -32,7 +32,7 @@ public class CharmPieceAngler : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ItemID.FishingPotion, 5),
+        new(ModContent.ItemType<CharmBase>(), 1),
         new(ItemID.CratePotion, 5),
         new(ItemID.SonarPotion, 5),
         new(ItemID.GillsPotion, 3),

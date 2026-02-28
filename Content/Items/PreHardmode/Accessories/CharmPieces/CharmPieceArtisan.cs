@@ -36,14 +36,13 @@ public class CharmPieceArtisan : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ItemID.BuilderPotion, 5),
+        new(ModContent.ItemType<CharmBase>(), 1),
         new(ItemID.MiningPotion, 5),
         new(ItemID.TrapsightPotion, 3),
         new(ItemID.ShinePotion, 3),
         new(ItemID.SpelunkerPotion, 3),
         new(ItemID.StoneBlock, 25),
-        new(ItemID.IronBar, 5),
-        new(ModContent.ItemType<NaturiumBar>(), 10)
+        new(ItemID.IronBar, 5)
         ], TileID.TinkerersWorkbench);
         recipe.Register();
     }

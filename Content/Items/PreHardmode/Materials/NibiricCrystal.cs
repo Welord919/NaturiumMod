@@ -5,13 +5,13 @@ using Terraria.GameContent.Creative;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
-public class EliteMudBrick : ModItem
+public class NibiricCrystal : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/EliteMudBrick";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/NibiricStone";
 
     public override void SetStaticDefaults()
     {
-        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()
@@ -19,7 +19,7 @@ public class EliteMudBrick : ModItem
         Item.Size = new(12, 12);
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.value = Item.buyPrice(0, 0, 0, 0);
+        Item.value = Item.buyPrice(0, 0, 1, 50);
 
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
@@ -27,6 +27,6 @@ public class EliteMudBrick : ModItem
         Item.useTurn = true;
         Item.autoReuse = true;
 
-        Item.createTile = ModContent.TileType<Tiles.EliteMudBrickTile>();
+        Item.createTile = ModContent.TileType<Tiles.NibiricCrystalTile>();
     }
 }

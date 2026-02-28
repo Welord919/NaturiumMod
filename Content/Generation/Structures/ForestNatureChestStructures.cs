@@ -10,19 +10,20 @@ namespace NaturiumMod.Content.Generation.Structures;
 public class ForestNatureChestStructures : ModSystem
 {
     private readonly List<string> ForestChestSet = new()
-{
-    "Assets/Structures/ForestNatureChest1",
-    "Assets/Structures/ForestNatureChest1",
-    "Assets/Structures/ForestNatureChest1",
+    {
+        "Assets/Structures/ForestNatureChest1",
+        "Assets/Structures/ForestNatureChest1",
+        "Assets/Structures/ForestNatureChest1",
 
-    "Assets/Structures/ForestNatureChest2",
-    "Assets/Structures/ForestNatureChest2",
+        "Assets/Structures/ForestNatureChest2",
+        "Assets/Structures/ForestNatureChest2",
 
-    "Assets/Structures/ForestNatureChest3",
-    "Assets/Structures/ForestNatureChest3",
+        "Assets/Structures/ForestNatureChest3",
+        "Assets/Structures/ForestNatureChest3",
 
-    "Assets/Structures/ForestNatureChest4"
-};
+        "Assets/Structures/ForestNatureChest4"
+    };
+
     private void Shuffle<T>(IList<T> list)
     {
         for (int i = list.Count - 1; i > 0; i--)
@@ -43,73 +44,79 @@ public class ForestNatureChestStructures : ModSystem
                 Tile t = Framing.GetTileSafely(x + i, y + j);
                 ushort type = t.TileType;
 
-                // ❄ Snow / Ice biome
+                // Snow / Ice
                 if (type == TileID.SnowBlock || type == TileID.IceBlock ||
                     type == TileID.CorruptIce || type == TileID.FleshIce)
                     return false;
 
-                // 🌿 Jungle biome
+                // Jungle
                 if (type == TileID.JungleGrass || type == TileID.Mud)
                     return false;
 
-                // 🏜 Desert biome
-                if (type == TileID.Sand || type == TileID.HardenedSand || type == TileID.Sandstone || 
+                // Desert
+                if (type == TileID.Sand || type == TileID.HardenedSand || type == TileID.Sandstone ||
                     type == TileID.CorruptHardenedSand || type == TileID.CorruptSandstone ||
                     type == TileID.Crimsand || type == TileID.CrimsonHardenedSand || type == TileID.CrimsonSandstone)
                     return false;
 
-                // 💀 Corruption biome
+                // Corruption
                 if (type == TileID.Ebonstone || type == TileID.EbonstoneBrick ||
                     type == TileID.CorruptGrass || type == TileID.Ebonwood)
                     return false;
 
-                // ❤️ Crimson biome
+                // Crimson
                 if (type == TileID.Crimstone || type == TileID.CrimsonGrass ||
                     type == TileID.FleshBlock)
                     return false;
 
-                // 🍄 Mushroom biome
+                // Mushroom
                 if (type == TileID.MushroomGrass)
                     return false;
 
-                // Bricks
-                if (type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick || type == TileID.PinkDungeonBrick 
-                        || type == TileID.LihzahrdBrick || type == TileID.HoneyBlock || type == TileID.CrackedBlueDungeonBrick 
-                        || type == TileID.CrackedGreenDungeonBrick || type == TileID.CrackedPinkDungeonBrick)
+                // Dungeon / Temple / Honey
+                if (type == TileID.BlueDungeonBrick || type == TileID.GreenDungeonBrick || type == TileID.PinkDungeonBrick ||
+                    type == TileID.CrackedBlueDungeonBrick || type == TileID.CrackedGreenDungeonBrick || type == TileID.CrackedPinkDungeonBrick ||
+                    type == TileID.LihzahrdBrick || type == TileID.HoneyBlock)
+                    return false;
+
+                // Calamity biomes auto‑excluded because they use modded tiles
+                // Any modded tile = not forest
+                if (type >= TileID.Count)
                     return false;
             }
         }
 
-        return true; // No biome-defining tiles → Forest
+        return true;
     }
-
 
     public override void PostWorldGen()
     {
-        // Make a working copy so the original list stays intact
         List<string> chestList = new(ForestChestSet);
-
-        // Shuffle so the order is random each world
         Shuffle(chestList);
 
         int placed = 0;
+        int attempts = 0;
+        int maxAttempts = 20000;
 
-        while (placed < chestList.Count)
+        while (placed < chestList.Count && attempts < maxAttempts)
         {
+            attempts++;
+
             int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
 
+            // ORIGINAL underground spawning restored
             int yMin = (int)Main.worldSurface + 10;
             int yMax = (int)Main.rockLayer - 20;
-
             int y = WorldGen.genRand.Next(yMin, yMax);
 
             if (!IsForest(x, y))
                 continue;
 
-            // Place the next chest structure in the shuffled list
             Generator.GenerateStructure(chestList[placed], new Point16(x, y), Mod);
             placed++;
         }
-    }
 
+        if (attempts >= maxAttempts)
+            Main.NewText("Forest chest generation aborted early (no valid forest tiles found).");
+    }
 }

@@ -89,8 +89,14 @@ public class WorldTree : ModSystem
         int midX = (chosen.start + chosen.end) / 2;
         int y = FindSurfaceY(midX) - 170;
 
+        int surface = (int)Main.worldSurface;
+
+        if (y > surface && y < 20)
+            y = 20;
+
+
         Generator.GenerateStructure(
-            "Assets/Structures/WorldTreeTest6",
+            "Assets/Structures/WorldTreeNeedChests",
             new Point16(midX, y),
             Mod
         );

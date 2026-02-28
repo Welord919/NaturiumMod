@@ -35,13 +35,13 @@ public class CharmPieceMystic : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ItemID.MagicPowerPotion, 5),
+        new(ModContent.ItemType<CharmBase>(), 1),
+        new(ItemID.MagicPowerPotion, 5),
         new(ItemID.ManaRegenerationPotion, 5),
         new(ItemID.NightOwlPotion, 3),
         new(ItemID.SummoningPotion, 3),
         new(ItemID.FallenStar, 10),
-        new(ItemID.Amethyst, 5),
-        new(ModContent.ItemType<NaturiumBar>(), 10)
+        new(ItemID.Amethyst, 5)
         ], TileID.TinkerersWorkbench);
         recipe.Register();
     }

@@ -18,13 +18,13 @@ public class NaturiumPickaxe : ModItem
         Item.useTime = 12;
         Item.useAnimation = 12;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.knockBack = 9;
-        Item.value = Item.buyPrice(0, 1, 0, 0);
+        Item.knockBack = 10;
+        Item.value = Item.buyPrice(0, 3, 0, 0);
         Item.rare = ItemRarityID.Green;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
-        Item.tileBoost = 1;
-        Item.pick = 100;
+        Item.tileBoost = 2;
+        Item.pick = 75;
         Item.attackSpeedOnlyAffectsWeaponAnimation = true;
     }
 
@@ -33,17 +33,15 @@ public class NaturiumPickaxe : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NaturiumBar>(), 5),
-            new(ItemID.NightmarePickaxe, 1),
-            new(ItemID.GoldBar, 10)
+            new(ModContent.ItemType<NaturiumBar>(), 15),
+            new(ItemID.NightmarePickaxe, 1)
         ], TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NaturiumBar>(), 5),
-            new(ItemID.DeathbringerPickaxe, 1),
-            new(ItemID.GoldBar, 10)
+            new(ModContent.ItemType<NaturiumBar>(), 15),
+            new(ItemID.DeathbringerPickaxe, 1)
         ], TileID.Anvils);
         recipe.Register();
     }

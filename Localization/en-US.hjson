@@ -11,6 +11,12 @@ Mods: {
 			BarkionsBarkProj.DisplayName: Barkions Bark Proj
 			AnvilLProj.DisplayName: Anvil L Proj
 			CosmoArmorSetVer.DisplayName: Cosmo Armor Set Ver
+			ApophisProj.DisplayName: Apophis Proj
+			NibiruStarProj.DisplayName: Nibiru Star Proj
+			AstralBolt.DisplayName: Astral Bolt
+			StarfieldAoE.DisplayName: Starfield Ao E
+			StarfieldTick.DisplayName: Starfield Tick
+			StarryNightProj.DisplayName: Starry Night Proj
 		}
 
 		NPCs: {
@@ -120,7 +126,11 @@ Mods: {
 			}
 
 			NaturiumPickaxe: {
-				Tooltip: A pickaxe forged from Naturium crystals and infused with Barkion’s essence
+				Tooltip:
+					'''
+					A pickaxe forged from Naturium that can mine through crimson and corruption with ease
+					Able to mine Hellstone
+					'''
 				DisplayName: Naturium Pickaxe
 			}
 
@@ -406,6 +416,61 @@ Mods: {
 				Tooltip: Used in rose related recipes
 				DisplayName: Rose Icon
 			}
+
+			NaturiumBrick: {
+				Tooltip: ""
+				DisplayName: Naturium Brick
+			}
+
+			NaturiumWall: {
+				Tooltip: ""
+				DisplayName: Naturium Wall
+			}
+
+			ApophisSwrd: {
+				DisplayName: Apophis Sword
+				Tooltip: A blade sealed in the temple of an old king
+			}
+
+			NibiricCrystal: {
+				DisplayName: Nibiric Crystal
+				Tooltip: Crystal mined from the innards of the floating planet, Nibiru
+			}
+
+			Starsteel: {
+				DisplayName: Nibiric Starsteel
+				Tooltip: Forged from the Nibiric Crystal, this starsteel is imbued with the power of the stars themselves
+			}
+
+			StarsteelPickaxe: {
+				Tooltip: Right click to occasionally shoot a star
+				DisplayName: Starsteel Pickaxe
+			}
+
+			StarsteelStarburst: {
+				DisplayName: Starsteel Starburst
+				Tooltip:
+					'''
+					A powerful ranged weapon that shoots bullets and a burst of stars every 2 seconds
+					Can shoot burst of stars without consuming ammo
+					Turns musket balls into meteor shot 
+					'''
+			}
+
+			CharmBase: {
+				DisplayName: Charm Base
+				Tooltip: Used to craft many diffrent accessories
+			}
+
+			StarryNight: {
+				DisplayName: Starry Night
+				Tooltip: "'Flows through the air like oil on a painting'"
+			}
+
+			NibiruSepter: {
+				DisplayName: Nibiru Septer
+				Tooltip: Shoots a cluster of 5 Nibiru Stars, leaving a damaging area of effect circle on enemy hit
+			}
 		}
 
 		Buffs: {
@@ -432,6 +497,11 @@ Mods: {
 			SmithsBuff: {
 				DisplayName: Smith's Buff
 				Description: Includes almost every buff in the game
+			}
+
+			AntiGravDebuff: {
+				DisplayName: Anti Grav Debuff
+				Description: Mods.NaturiumMod.Buffs.AntiGravDebuff.Description
 			}
 		}
 

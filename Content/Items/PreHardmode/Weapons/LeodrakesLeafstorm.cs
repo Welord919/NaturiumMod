@@ -23,6 +23,7 @@ public class LeodrakesLeafstorm : ModItem
         Item.height = 1;
         Item.useTime = 40;
         Item.useAnimation = 40;
+        Item.useTurn = true;
 
         Item.shootSpeed = 12f;
         Item.knockBack = 0.5f;

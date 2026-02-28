@@ -9,33 +9,44 @@ public class ApophisProj : ModProjectile
 
     public override void SetDefaults()
     {
-        // Match Enchanted Sword beam size
         Projectile.width = 14;
         Projectile.height = 14;
+        Main.projFrames[Projectile.type] = 4;
 
-        // Match Enchanted Sword AI
-        Projectile.aiStyle = 27;
-        AIType = ProjectileID.EnchantedBeam;
-
+        Projectile.aiStyle = 0;
         Projectile.friendly = true;
-        Projectile.hostile = false;
-        Projectile.DamageType = DamageClass.Melee; // Enchanted Sword beam is melee
+        Projectile.DamageType = DamageClass.Melee;
 
-        Projectile.penetrate = 1;       // same as Enchanted Beam
-        Projectile.timeLeft = 60;       // same lifetime
+        Projectile.penetrate = 1;
+        Projectile.timeLeft = 120;
+
         Projectile.ignoreWater = true;
-        Projectile.tileCollide = true;
+        Projectile.tileCollide = false; // goes through walls
 
-        Projectile.light = 0.5f;        // Enchanted Sword glow
-        Projectile.extraUpdates = 1;    // smooth movement like the beam
+        Projectile.light = 0.5f;
+        Projectile.extraUpdates = 1;
+
+        Projectile.alpha = 100; // slight transparency
     }
 
     public override void AI()
     {
-        Dust d = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame);
+        Projectile.velocity *= 0.99f; // slows it by 5% each frame
+
+        Projectile.frameCounter++;
+        if (Projectile.frameCounter >= 10)
+        {
+            Projectile.frameCounter = 0;
+            Projectile.frame++;
+            if (Projectile.frame >= Main.projFrames[Projectile.type])
+                Projectile.frame = 0;
+        }
+
+        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+
+        Dust d = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch);
         d.noGravity = true;
         d.scale = 0.5f;
-
+        d.velocity *= 0.2f;
     }
-
 }

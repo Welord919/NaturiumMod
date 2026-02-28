@@ -42,7 +42,7 @@ internal class ExteriosMedallion : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<LeodrakesMedallion>(), 1),
+            new(ModContent.ItemType<CharmBase>(), 1),
             new(ModContent.ItemType<InfusedNaturiumBar>(), 15)
         ], TileID.MythrilAnvil);
         recipe.Register();

@@ -1,4 +1,5 @@
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PostHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
@@ -29,6 +30,19 @@ public class SunflowerPower : ModItem
         // Extra custom movement speed
         player.moveSpeed += 0.10f;       
         player.runAcceleration *= 1.03f; 
+    }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<CharmBase>(), 1),
+            new(ItemID.Sunflower, 5),
+            new(ItemID.SunflowerMinecart, 1),
+            new(ItemID.SunflowerStatue, 1)
+        ], TileID.MythrilAnvil);
+        recipe.Register();
+
+
     }
 }
 

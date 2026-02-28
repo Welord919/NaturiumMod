@@ -5,6 +5,10 @@
     <!-- General -->
     <PropertyGroup />
     <ItemGroup>
+      <None Include="Content\Items\PreHardmode\Tools\StarsteelPickaxe.cs" />
+      <None Include="Content\Tiles\NibiricCrystalTile.cs" />
+    </ItemGroup>
+    <ItemGroup>
         <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     </ItemGroup>
     <ItemGroup>
