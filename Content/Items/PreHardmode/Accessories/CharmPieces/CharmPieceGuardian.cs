@@ -15,7 +15,7 @@ public class CharmPieceGuardian : ModItem
     public override void SetDefaults()
     {
         Item.Size = new(20, 26);
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Green;
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.maxStack = 1;
         Item.accessory = true;

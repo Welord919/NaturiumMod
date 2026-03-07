@@ -19,6 +19,7 @@ public class CharmBase : ModItem
     {
         Item.Size = new(12, 12);
         Item.value = Item.buyPrice(0, 0, 0, 69);
+        Item.rare = ItemRarityID.Blue;
     }
 
     public override void AddRecipes()

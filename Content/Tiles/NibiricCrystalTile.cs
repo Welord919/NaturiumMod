@@ -22,7 +22,7 @@ internal class NibiricCrystalTile : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 400;
 
-        AddMapEntry(new Color(75, 170, 30), Language.GetText("Nibiric Crystal"));
+        AddMapEntry(new Color(220, 240, 255), Language.GetText("Nibiric Crystal"));
 
         DustType = DustID.Stone;
 

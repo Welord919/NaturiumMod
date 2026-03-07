@@ -17,12 +17,15 @@ Mods: {
 			StarfieldAoE.DisplayName: Starfield Ao E
 			StarfieldTick.DisplayName: Starfield Tick
 			StarryNightProj.DisplayName: Starry Night Proj
+			SpiritReaper.DisplayName: Spirit Reaper
+			SpiritScytheProj.DisplayName: Spirit Scythe Proj
 		}
 
 		NPCs: {
 			NaturiumSlime.DisplayName: Naturium Slime
 			ExampleCritterNPC.DisplayName: Example Critter N P C
 			AntjawCritterNPC.DisplayName: Antjaw Critter N P C
+			Plaguespreader.DisplayName: Plaguespreader
 		}
 
 		Items: {
@@ -217,12 +220,10 @@ Mods: {
 			LeodrakesMedallion: {
 				Tooltip:
 					'''
-					A medallion that boosts the stats of Barkion's weapons per different weapon class
+					A medallion that boosts the stats of Leodrake's weapons per different weapon class
 					All: Increases Armor Penetration by 2
-					Melee: Increases knockback by 10%
-					Ranged: Increases critical strike chance by 5%
-					Magic: Increases mana regeneration rate by 10%
-					Summon: Increases minion damage by 10%
+					Melee: Increases attack speed by 10%
+					Magic: Reduces mana consumtion by 25%
 					'''
 				DisplayName: Leodrake's Medallion
 			}
@@ -230,12 +231,9 @@ Mods: {
 			ExteriosMedallion: {
 				Tooltip:
 					'''
-					A medallion that boosts the stats of Exterio's weapons per different weapon class.
+					Look at the individual Exterio weapons for their specific buffs
 					All: Increases Armor Penetration by 3
-					Melee: Increases knockback by 10%
-					Ranged: Increases critical strike chance by 5%
-					Magic: Increases mana regeneration rate by 10%
-					Summon: Increases minion damage by 10%						
+					All weapon classes get a 20% damage increase		
 					'''
 				DisplayName: Exterio's Medallion
 			}
@@ -427,7 +425,7 @@ Mods: {
 				DisplayName: Naturium Wall
 			}
 
-			ApophisSwrd: {
+			ApophisSword: {
 				DisplayName: Apophis Sword
 				Tooltip: A blade sealed in the temple of an old king
 			}
@@ -438,7 +436,7 @@ Mods: {
 			}
 
 			Starsteel: {
-				DisplayName: Nibiric Starsteel
+				DisplayName: Starsteel
 				Tooltip: Forged from the Nibiric Crystal, this starsteel is imbued with the power of the stars themselves
 			}
 
@@ -471,6 +469,48 @@ Mods: {
 				DisplayName: Nibiru Septer
 				Tooltip: Shoots a cluster of 5 Nibiru Stars, leaving a damaging area of effect circle on enemy hit
 			}
+
+			NibiruMedallion: {
+				DisplayName: Nibiru Medallion
+				Tooltip:
+					'''
+					Should help Nibiru and Starsteel weapons in the start of hardmode
+					All: Increases Armor Penetration by 2
+					Ranged: Increases critical strike chance by 10%
+					Magic: Increases damage by 10%
+					Summon: Increases whip attack speed by 10%
+					'''
+			}
+
+			MillenniumShield: {
+				Tooltip:
+					'''
+					Grants immunity to knockback and gives the user the ability to dash through enemies to damage them
+					Gives 30 frames of invincibility after dashing
+					A shield with a tiny fragment of the power of the Millennium Pieces 
+					'''
+				DisplayName: Millennium Shield
+			}
+
+			MelliniumPiece: {
+				Tooltip: Small piece that can be used for Millennium item related crafting
+				DisplayName: Mellinium Piece
+			}
+
+			PlagueChunk: {
+				DisplayName: Plague Chunk
+				Tooltip: Chunk of a zombie infected with plague
+			}
+
+			PlaguespreaderBanner: {
+				DisplayName: Plaguespreader Banner
+				Tooltip: ""
+			}
+
+			ReapersArm: {
+				DisplayName: Reaper's Arm
+				Tooltip: The arm of the Spirit Reaper that summons scythes that can constantly damage enemies swinging around, and at, the cursor
+			}
 		}
 
 		Buffs: {
@@ -501,7 +541,12 @@ Mods: {
 
 			AntiGravDebuff: {
 				DisplayName: Anti Grav Debuff
-				Description: Mods.NaturiumMod.Buffs.AntiGravDebuff.Description
+				Description: Read the tin
+			}
+
+			NoManaRegenDebuff: {
+				DisplayName: No Mana Regen Debuff
+				Description: Stop regenerating mana
 			}
 		}
 
@@ -512,9 +557,14 @@ Mods: {
 			NatSlimeBannerTile.MapEntry: Nat Slime Banner Tile
 
 			NaturiumChestTile: {
-				MapEntry: Naturium Chest Tile
+				MapEntry: Naturium Chest
 				Locked: You need da key fool
+				MapEntry0: Naturium Chest
+				MapEntry1: Naturium Chest Locked
 			}
+
+			NatSlimeStatueTile.MapEntry: Nat Slime Statue Tile
+			PlaguespreaderBannerTile.MapEntry: Plaguespreader Banner Tile
 		}
 	}
 }

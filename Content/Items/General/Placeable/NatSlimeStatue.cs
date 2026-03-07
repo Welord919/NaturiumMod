@@ -16,6 +16,7 @@ public class NatSlimeStatue : ModItem
         Item.CloneDefaults(ItemID.ArmorStatue);
         Item.createTile = ModContent.TileType<NatSlimeStatueTile>();
         Item.placeStyle = 0;
+        Item.rare = ItemRarityID.Blue;
     }
 
     public override void AddRecipes()

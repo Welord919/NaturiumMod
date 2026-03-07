@@ -21,6 +21,7 @@ public class CameliaPetal : ModItem
         Item.maxStack = 999;
         Item.consumable = true;
         Item.value = Item.buyPrice(0, 0, 0, 75);
+        Item.rare = ItemRarityID.Blue;
     }
 
     public override void AddRecipes()

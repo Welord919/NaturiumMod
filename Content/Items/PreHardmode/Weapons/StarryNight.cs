@@ -23,7 +23,7 @@ public class StarryNight : ModItem
         Item.height = 40;
 
         Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Orange;
 
     }
     public override void HoldItem(Player player)

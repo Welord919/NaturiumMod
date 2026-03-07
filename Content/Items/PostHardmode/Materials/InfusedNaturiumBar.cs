@@ -22,7 +22,7 @@ public class InfusedNaturiumBar : ModItem
         Item.maxStack = 99;
         Item.consumable = true;
         Item.value = Item.buyPrice(0, 0, 75, 0);
-
+        Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;
         Item.useAnimation = 15;

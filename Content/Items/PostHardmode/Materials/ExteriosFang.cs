@@ -23,13 +23,13 @@ public class ExteriosFang : ModItem
         Item.damage = 12;
         Item.DamageType = DamageClass.Ranged;
         Item.knockBack = 1.25f;
-
+        Item.rare = ItemRarityID.LightRed;
         Item.maxStack = 9999;
         Item.consumable = true;
 
         Item.ammo = Item.type;
         Item.shoot = Mod.Find<ModProjectile>("ExteriosFangProj").Type;
-        Item.value = 5000;
+        Item.value = Item.buyPrice(0, 0, 80, 0);
     }
 
     public override void AddRecipes()

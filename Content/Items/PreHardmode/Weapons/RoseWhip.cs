@@ -19,10 +19,10 @@ public class RoseWhip : ModItem
         Item.channel = true;
 
         Item.DamageType = DamageClass.Summon;
-        Item.width = 40;
-        Item.height = 40;
+        Item.width = 32;
+        Item.height = 32;
 
-        Item.value = Item.buyPrice(0, 1, 0, 0);
+        Item.value = Item.buyPrice(0, 5, 0, 0);
         Item.rare = ItemRarityID.Green;
 
     }

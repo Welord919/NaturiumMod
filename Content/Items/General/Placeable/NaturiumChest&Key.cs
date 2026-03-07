@@ -16,6 +16,7 @@ public class NaturiumChestLocked : ModItem
         Item.height = 22;
         Item.value = Item.buyPrice(0, 0, 50, 0);
         Item.maxStack = 99;
+        Item.rare = ItemRarityID.Green;
     }
     public override void AddRecipes()
     {
@@ -37,6 +38,7 @@ public class NaturiumChest : ModItem
         Item.height = 22;
         Item.value = Item.buyPrice(0, 0, 50, 0);
         Item.maxStack = 99;
+        Item.rare = ItemRarityID.Green;
     }
 
     public override void AddRecipes()

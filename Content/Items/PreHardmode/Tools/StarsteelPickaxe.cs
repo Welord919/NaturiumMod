@@ -24,7 +24,7 @@ public class StarsteelPickaxe : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 15;
         Item.value = Item.buyPrice(0, 10, 0, 0);
-        Item.rare = ItemRarityID.Blue;
+        Item.rare = ItemRarityID.Orange;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.tileBoost = 3;

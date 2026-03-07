@@ -1,10 +1,11 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.General.Projectiles;
 
@@ -83,7 +84,62 @@ public class ExteriosWhipProj : ModProjectile
             pos += diff;
         }
     }
+    public override bool PreDraw(ref Color lightColor)
+    {
+        List<Vector2> points = new();
+        Projectile.FillWhipControlPoints(Projectile, points);
 
+        DrawLine(points);
+
+        SpriteEffects flip = Projectile.spriteDirection < 0
+            ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+        Texture2D texture = TextureAssets.Projectile[Type].Value;
+
+        const int frameWidth = 4;
+        const int frameHeight = 23;
+        const int frameCount = 4;
+
+        Vector2 pos = points[0];
+
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            // Always use one of the 4 frames
+            int frameIndex = Math.Min(i, frameCount - 1);
+
+            Rectangle frame = new Rectangle(
+                0,
+                frameIndex * frameHeight,
+                frameWidth,
+                frameHeight
+            );
+
+            Vector2 origin = new Vector2(frameWidth / 2f, frameHeight / 2f);
+
+            Vector2 element = points[i];
+            Vector2 diff = points[i + 1] - element;
+
+            float rotation = diff.ToRotation() - MathHelper.PiOver2;
+            Color color = Lighting.GetColor(element.ToTileCoordinates());
+
+            Main.EntitySpriteDraw(
+                texture,
+                pos - Main.screenPosition,
+                frame,
+                color,
+                rotation,
+                origin,
+                1f,
+                flip,
+                0
+            );
+
+            pos += diff;
+        }
+
+        return false;
+    }
+    /*
     public override bool PreDraw(ref Color lightColor)
     {
         List<Vector2> list = [];
@@ -140,5 +196,5 @@ public class ExteriosWhipProj : ModProjectile
         }
 
         return false;
-    }
+    }*/
 }

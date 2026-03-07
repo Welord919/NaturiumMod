@@ -22,7 +22,7 @@ public class NaturiumBrick : ModItem
         Item.maxStack = 999;
         Item.consumable = true;
         Item.value = Item.buyPrice(0, 0, 0, 0);
-
+        Item.rare = ItemRarityID.Green;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
         Item.useTime = 10;

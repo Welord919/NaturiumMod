@@ -1,10 +1,11 @@
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
-using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PostHardmode.Accessories;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.PreHardmode.Weapons;
+//using NaturiumMod.Content.ModPlayers;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
 
@@ -22,16 +23,15 @@ internal class LeodrakesMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
+        //player.GetModPlayer<LeodrakePlayer>().hasLeodrakeMedallion = true;
 
-        if (player.HeldItem.type != ModContent.ItemType<LeodrakesLeafstorm>() && player.HeldItem.type != ModContent.ItemType<LeodrakesYoyo>())
+        if (player.HeldItem.type != ModContent.ItemType<LeodrakesLeafstorm>()
+            && player.HeldItem.type != ModContent.ItemType<LeodrakesYoyo>())
         {
             return;
         }
-
+        player.GetArmorPenetration(DamageClass.Generic) += 2f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
-        player.GetKnockback(DamageClass.Ranged) += 0.4f;
-        player.manaCost -= 0.2f;
-        player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 1f;
     }
 
     public override void AddRecipes()

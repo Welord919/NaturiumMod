@@ -1,10 +1,11 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.General.Projectiles;
 
@@ -85,49 +86,49 @@ public class StarryNightProj : ModProjectile
 
         DrawLine(points);
 
-        SpriteEffects flip = Projectile.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+        SpriteEffects flip = Projectile.spriteDirection < 0
+            ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-        Texture2D tex = TextureAssets.Projectile[Type].Value;
+        Texture2D texture = TextureAssets.Projectile[Type].Value;
+
+        const int frameWidth = 4;
+        const int frameHeight = 23;
+        const int frameCount = 4;
+
         Vector2 pos = points[0];
 
         for (int i = 0; i < points.Count - 1; i++)
         {
-            Rectangle frame = new(0, 0, 10, 26);
-            Vector2 origin = new(5, 8);
-            float scale = 1f;
+            // Always use one of the 4 frames
+            int frameIndex = Math.Min(i, frameCount - 1);
 
-            if (i == points.Count - 2)
-            {
-                frame.Y = 74;
-                frame.Height = 18;
+            Rectangle frame = new Rectangle(
+                0,
+                frameIndex * frameHeight,
+                frameWidth,
+                frameHeight
+            );
 
-                Projectile.GetWhipSettings(Projectile, out float timeToFlyOut, out _, out _);
-                float t = Timer / timeToFlyOut;
-                scale = MathHelper.Lerp(0.5f, 1.5f,
-                    Utils.GetLerpValue(0.1f, 0.7f, t, true) *
-                    Utils.GetLerpValue(0.9f, 0.7f, t, true));
-            }
-            else if (i > 10)
-            {
-                frame.Y = 58;
-                frame.Height = 16;
-            }
-            else if (i > 5)
-            {
-                frame.Y = 42;
-                frame.Height = 16;
-            }
-            else if (i > 0)
-            {
-                frame.Y = 26;
-                frame.Height = 16;
-            }
+            Vector2 origin = new Vector2(frameWidth / 2f, frameHeight / 2f);
 
-            Vector2 diff = points[i + 1] - points[i];
+            Vector2 element = points[i];
+            Vector2 diff = points[i + 1] - element;
+
             float rotation = diff.ToRotation() - MathHelper.PiOver2;
-            Color color = Lighting.GetColor(points[i].ToTileCoordinates());
+            Color color = Lighting.GetColor(element.ToTileCoordinates());
 
-            Main.EntitySpriteDraw(tex, pos - Main.screenPosition, frame, color, rotation, origin, scale, flip, 0);
+            Main.EntitySpriteDraw(
+                texture,
+                pos - Main.screenPosition,
+                frame,
+                color,
+                rotation,
+                origin,
+                1f,
+                flip,
+                0
+            );
+
             pos += diff;
         }
 

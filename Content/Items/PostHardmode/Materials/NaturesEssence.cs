@@ -27,7 +27,7 @@ internal class NaturesEssence : ModItem
         Item.height = 18;
         Item.maxStack = Item.CommonMaxStack;
         Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.LightRed;
     }
 
     public override void PostUpdate()

@@ -25,7 +25,7 @@ public class FlameRocketSword : ModItem
         Item.UseSound = SoundID.Item1;
 
         Item.value = Item.buyPrice(0, 3, 0, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.LightRed;
         Item.autoReuse = true;
 
         // Default left-click projectile (Rocket I)

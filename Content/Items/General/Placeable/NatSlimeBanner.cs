@@ -27,6 +27,7 @@ public class NatSlimeBanner : ModItem
         Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.consumable = true;
+        Item.rare = ItemRarityID.Blue;
 
         Item.createTile = ModContent.TileType<Tiles.NatSlimeBannerTile>();
         Item.placeStyle = 0;

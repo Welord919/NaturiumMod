@@ -21,17 +21,17 @@ public class ApophisProj : ModProjectile
         Projectile.timeLeft = 120;
 
         Projectile.ignoreWater = true;
-        Projectile.tileCollide = false; // goes through walls
+        Projectile.tileCollide = false;
 
         Projectile.light = 0.5f;
         Projectile.extraUpdates = 1;
 
-        Projectile.alpha = 100; // slight transparency
+        Projectile.alpha = 100;
     }
 
     public override void AI()
     {
-        Projectile.velocity *= 0.99f; // slows it by 5% each frame
+        Projectile.velocity *= 0.99f;
 
         Projectile.frameCounter++;
         if (Projectile.frameCounter >= 10)

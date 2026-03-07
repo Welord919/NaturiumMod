@@ -1,20 +1,27 @@
 General Info:
 
-Naturium is a content mod made that adds lots of new content to the game. Some of the new content includes: a new ore named Naturium, a set of armor, a few weapons, and an enemy. The majority of the items in this mod rely on Barkion's Bark and Naturium Ore as well as the Archetype system. Most of the content in this mod ranges from early game to early hard-mode. Naturium includes weapons and items for every base-game class. More content is planned for Naturium including a boss, new armor, and new weapons.
+Naturium is a content mod made that adds lots of new content to the game. Some of the new content includes: new ores, a set of armor, weapons, structures, and an enemy. The majority of the items in this mod rely on Barkion's Bark and Naturium Ore as well as the Archetype system. Most of the content in this mod ranges from early game to early hard-mode. Naturium includes weapons and items for every base-game class. More content is planned for Naturium including a boss, new armor, new structures and new weapons.
 
 Primary Materials:
 
 Barkion's Bark is one of the primary materials used in most of the early-game item recipes. You can craft Barkion's Bark at a crafting bench using wood and acorns.
 
-Naturium Bars are used in the vast majority of recipes in Naturium past the early-game. A lot of the recipes that include Naturium Bars, also include either crimtane or demonite as well as raw Naturium ore.
+Naturium Bars are used in the vast majority of recipes in Naturium past the early-game. You can craft Naturium bars with crimtane or demonite, and Naturium Ore.
 
 Archetype System:
 
 The Archetype system uses the name of a piece of armor or a weapon to classify it into an archetype. This classification allows the item to receive buffs when the player has the respective medallion equipped. The Druid offers the first obtainable medallion in her shop which can be upgraded over time as you progress further.
 
+Structures:
+
+With the help of Structure Helper, there are multiple structures that spawn around the world. You can find a World Tree with chests to loot and some you can unlock later. Temple-like structures found in the Jungle and Desert. And multiple living wood out coves all throughout the forest biome's underground.
+Make sure to look above one of the oceans for a roaming planet with late pre-hardmode goodies.
+
 Editors Notes:
 
 I hope you enjoy our little mod! Feel free to leave a comment if you encounter any issues, or have any suggestions to better the mod!
+
+P.S. It should all work with calamity
 
 GitHub Repository: https://github.com/Welord919/NaturiumMod
 

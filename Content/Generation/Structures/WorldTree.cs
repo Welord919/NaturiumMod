@@ -96,7 +96,7 @@ public class WorldTree : ModSystem
 
 
         Generator.GenerateStructure(
-            "Assets/Structures/WorldTreeNeedChests",
+            "Assets/Structures/WorldTreeV1",
             new Point16(midX, y),
             Mod
         );

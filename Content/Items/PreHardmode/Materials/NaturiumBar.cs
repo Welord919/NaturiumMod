@@ -21,6 +21,7 @@ public class NaturiumBar : ModItem
         Item.maxStack = 99;
         Item.consumable = true;
         Item.value = Item.buyPrice(0, 0, 1, 75);
+        Item.rare = ItemRarityID.Green;
 
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;

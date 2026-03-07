@@ -88,6 +88,48 @@ public class ForestNatureChestStructures : ModSystem
 
         return true;
     }
+    private bool AreaIsClear(int x, int y, int width, int height)
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                Tile t = Framing.GetTileSafely(x + i, y + j);
+                ushort type = t.TileType;
+
+                if (!t.HasTile)
+                    continue;
+
+                // Block chests
+                if (type == TileID.Containers || type == TileID.Containers2)
+                    return false;
+
+                // Block altars
+                if (type == TileID.DemonAltar)
+                    return false;
+
+                // Block dungeon bricks
+                if (type == TileID.BlueDungeonBrick ||
+                    type == TileID.GreenDungeonBrick ||
+                    type == TileID.PinkDungeonBrick ||
+                    type == TileID.CrackedBlueDungeonBrick ||
+                    type == TileID.CrackedGreenDungeonBrick ||
+                    type == TileID.CrackedPinkDungeonBrick)
+                    return false;
+
+                // Block temple
+                if (type == TileID.LihzahrdBrick)
+                    return false;
+
+                // Block modded tiles (other mod structures)
+                if (type >= TileID.Count)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
 
     public override void PostWorldGen()
     {
@@ -98,18 +140,23 @@ public class ForestNatureChestStructures : ModSystem
         int attempts = 0;
         int maxAttempts = 20000;
 
+        const int StructureWidth = 19;   // adjust to your structure size
+        const int StructureHeight = 14;
+
         while (placed < chestList.Count && attempts < maxAttempts)
         {
             attempts++;
 
             int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
 
-            // ORIGINAL underground spawning restored
             int yMin = (int)Main.worldSurface + 10;
             int yMax = (int)Main.rockLayer - 20;
             int y = WorldGen.genRand.Next(yMin, yMax);
 
             if (!IsForest(x, y))
+                continue;
+
+            if (!AreaIsClear(x, y, StructureWidth, StructureHeight))
                 continue;
 
             Generator.GenerateStructure(chestList[placed], new Point16(x, y), Mod);
@@ -119,4 +166,5 @@ public class ForestNatureChestStructures : ModSystem
         if (attempts >= maxAttempts)
             Main.NewText("Forest chest generation aborted early (no valid forest tiles found).");
     }
+
 }

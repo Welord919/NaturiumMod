@@ -20,7 +20,7 @@ public class UltiBuildPotion : ModItem
         Item.UseSound = SoundID.Item3;
         Item.maxStack = Item.CommonMaxStack;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Green;
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.buffType = ModContent.BuffType<Buffs.UltiBuildPotionBuff>(); // Specify an existing buff to be applied when used.
         Item.buffTime = 14400; // The amount of time the buff declared in Item.buffType will last in ticks. 14400 / 60 = 240, so this buff will last 4 minutes.

@@ -19,6 +19,7 @@ public class RoseIcon : ModItem
     {
         Item.Size = new(12, 12);
         Item.maxStack = 999;
+        Item.rare = ItemRarityID.Blue;
     }
 
     public override void AddRecipes()

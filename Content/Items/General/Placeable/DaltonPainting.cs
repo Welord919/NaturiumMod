@@ -19,7 +19,7 @@ internal class DaltonPainting : ModItem
     public override void SetDefaults()
     {
         Item.Size = new(48, 80);
-
+        Item.rare = ItemRarityID.Expert;
         Item.useTime = 15;
         Item.useAnimation = 15;
 

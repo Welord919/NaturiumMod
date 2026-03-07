@@ -30,7 +30,7 @@ public class StarsteelStarburst : ModItem
         Item.height = 14;
         Item.UseSound = SoundID.Item40;
         Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Orange;
         Item.shoot = ProjectileID.MeteorShot;
         Item.useAmmo = AmmoID.Bullet;
     }

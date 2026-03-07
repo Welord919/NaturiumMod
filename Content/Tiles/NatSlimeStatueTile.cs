@@ -1,4 +1,5 @@
-﻿using NaturiumMod.Content.NPCs;
+﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.NPCs;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -17,7 +18,7 @@ public class NatSlimeStatueTile : ModTile
         Main.tileObsidianKill[Type] = true;
         TileID.Sets.DisableSmartCursor[Type] = true;
         TileID.Sets.IsAMechanism[Type] = true; // Ensures that this tile and connected pressure plate won't be removed during the "Remove Broken Traps" world-gen step
-
+        AddMapEntry(new Color(200, 200, 200), CreateMapEntryName());
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.addTile(Type);
     }

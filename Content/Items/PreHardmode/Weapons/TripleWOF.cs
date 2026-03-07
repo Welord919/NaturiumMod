@@ -35,7 +35,7 @@ public class TripleWOF : ModItem
         Item.UseSound = SoundID.Item8;
 
         Item.value = Item.buyPrice(0, 0, 95, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Blue;
         Item.autoReuse = true;
         Item.noMelee = true;
 

@@ -22,6 +22,7 @@ public class NaturiumClump : ModItem
         Item.damage = 6;
         Item.DamageType = DamageClass.Ranged;
         Item.knockBack = 0.25f;
+        Item.rare = ItemRarityID.Blue;
 
         Item.maxStack = 9999;
         Item.consumable = true;

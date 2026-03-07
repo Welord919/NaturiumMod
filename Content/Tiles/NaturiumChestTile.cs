@@ -40,8 +40,8 @@ namespace NaturiumMod.Content.Tiles
 
             // Other tiles with just one map entry use CreateMapEntryName() to use the default translationkey, "MapEntry"
             // Since ExampleChest needs multiple, we register our own MapEntry keys
-            //AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
-            //AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry1"), MapChestName);
+            AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry0"), MapChestName);
+            AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry1"), MapChestName);
 
             // Style 1 is ExampleChest when locked. We want that tile style to drop the ExampleChest item as well. Use the Chest Lock item to lock this chest.
             // No item places ExampleChest in the locked style, so the automatically determined item drop is unknown, this is why RegisterItemDrop is necessary in this situation.

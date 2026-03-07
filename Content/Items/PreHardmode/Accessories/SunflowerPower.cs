@@ -16,7 +16,7 @@ public class SunflowerPower : ModItem
     public override void SetDefaults()
     {
         Item.Size = new(20, 26);
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Green;
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.maxStack = 1;
         Item.accessory = true;
@@ -39,7 +39,7 @@ public class SunflowerPower : ModItem
             new(ItemID.Sunflower, 5),
             new(ItemID.SunflowerMinecart, 1),
             new(ItemID.SunflowerStatue, 1)
-        ], TileID.MythrilAnvil);
+        ], TileID.TinkerersWorkbench);
         recipe.Register();
 
 

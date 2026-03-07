@@ -12,6 +12,6 @@ public class NaturiumWallTile : ModWall
 		Main.wallHouse[Type] = true;
 		VanillaFallbackOnModDeletion = WallID.DiamondGemspark;
         DustType = DustID.Chlorophyte;
-        AddMapEntry(new Color(150, 150, 150));
+        AddMapEntry(new Color(75, 170, 30));
 		}
 	}

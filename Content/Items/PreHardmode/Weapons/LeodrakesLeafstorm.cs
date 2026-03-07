@@ -1,11 +1,12 @@
+using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.ModPlayers;
+using System;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
-using NaturiumMod.Content.Helpers;
-using System;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
@@ -40,18 +41,24 @@ public class LeodrakesLeafstorm : ModItem
         Item.shoot = Mod.Find<ModProjectile>("LeodrakesManeProj").Type;
         Item.shootSpeed = 9f;
     }
-
     public override void AddRecipes()
     {
-        Recipe recipe = CreateRecipe();
+        Recipe recipe = CreateRecipe(1);
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NaturiumBar>(), 8),
-            new(ModContent.ItemType<CameliaPetal>(), 12),
-            new(ItemID.IronBar, 10)
-        ], TileID.Anvils);
+            new(ModContent.ItemType<NaturiumBar>(), 10),
+            new(ModContent.ItemType<CameliaPetal>(), 15),
+            new(ItemID.TissueSample, 15)
+        ], TileID.LivingLoom);
+        recipe.Register();
+
+        recipe = CreateRecipe(1);
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 10),
+            new(ModContent.ItemType<CameliaPetal>(), 15),
+            new(ItemID.ShadowScale, 15)
+        ], TileID.LivingLoom);
         recipe.Register();
     }
-
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Vector2 origin = player.RotatedRelativePoint(player.MountedCenter);

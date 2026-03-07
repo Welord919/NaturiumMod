@@ -13,7 +13,7 @@ public class CameliaSeeds : ModItem
     {
         Item.Size = new(14, 14);
         Item.maxStack = 999;
-        Item.rare = ItemRarityID.White;
+        Item.rare = ItemRarityID.Blue;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 10;
         Item.useAnimation = 10;

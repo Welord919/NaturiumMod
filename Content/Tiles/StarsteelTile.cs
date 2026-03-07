@@ -6,7 +6,7 @@ using Terraria.Localization;
 
 namespace NaturiumMod.Content.Tiles;
 
-internal class NibiricStarsteelTile : ModTile
+internal class StarsteelTile : ModTile
 {
     public override string Texture => "NaturiumMod/Assets/Tiles/NibiricStarsteelTile";
 
@@ -22,6 +22,6 @@ internal class NibiricStarsteelTile : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
 
-        AddMapEntry(new Color(75, 170, 30), Language.GetText("Nibiric Starsteel"));
+        AddMapEntry(new Color(220, 240, 255), Language.GetText("Starsteel"));
     }
 }

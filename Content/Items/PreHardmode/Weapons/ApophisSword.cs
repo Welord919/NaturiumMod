@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
 
-public class ApophisSwrd : ModItem
+public class ApophisSword : ModItem
 {
   
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Weapons/ApophisSword";
@@ -17,24 +17,24 @@ public class ApophisSwrd : ModItem
         Item.width = 40;
         Item.height = 40;
 
-        Item.damage = 23; // Enchanted Sword is 23 damage
+        Item.damage = 20; 
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 4.5f;
         Item.crit = 4;
 
-        Item.useTime = 25;
-        Item.useAnimation = 25;
+        Item.useTime = 30;
+        Item.useAnimation = 30;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;
 
         Item.autoReuse = true;
-        Item.UseSound = SoundID.Item20; // magical sound
+        Item.UseSound = SoundID.Item20; 
 
         Item.shoot = ModContent.ProjectileType<ApophisProj>();
         Item.shootSpeed = 8f;
 
         Item.value = Item.buyPrice(0, 0, 80, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Blue;
 
         Item.noMelee = false;
         Item.noUseGraphic = false;

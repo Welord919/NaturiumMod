@@ -6,7 +6,7 @@ using NaturiumMod.Content.Items.PostHardmode.Weapons;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PostHardmode.Materials;
-using NaturiumMod.Content.ModPlayers;
+//using NaturiumMod.Content.ModPlayers;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Accessories;
 
@@ -17,7 +17,7 @@ internal class ExteriosMedallion : ModItem
     public override void SetDefaults()
     {
         Item.Size = new(20, 20);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.LightRed;
         Item.accessory = true;
         Item.value = 100000;
     }
@@ -25,15 +25,15 @@ internal class ExteriosMedallion : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
 
-        player.GetModPlayer<ExteriosPlayer>().hasExteriosMedallion = true;
+        //player.GetModPlayer<ExteriosPlayer>().hasExteriosMedallion = true;
 
         if (player.HeldItem.type == ModContent.ItemType<ExteriosCannon>())
         {
             player.GetArmorPenetration(DamageClass.Generic) += 3f;
-            player.GetDamage(DamageClass.Melee) += 0.1f;
-            player.GetDamage(DamageClass.Ranged) += 0.1f;
-            player.GetDamage(DamageClass.Magic) += 0.1f;
-            player.GetDamage(DamageClass.Summon) += 0.1f;
+            player.GetDamage(DamageClass.Melee) += 0.2f;
+            player.GetDamage(DamageClass.Ranged) += 0.2f;
+            player.GetDamage(DamageClass.Magic) += 0.2f;
+            player.GetDamage(DamageClass.Summon) += 0.2f;
         }
 
     }

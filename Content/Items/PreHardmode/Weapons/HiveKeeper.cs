@@ -27,7 +27,7 @@ public class HiveKeeper : ModItem
         Item.UseSound = SoundID.Item1;
 
         Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Green;
 
         Item.shoot = ProjectileID.Beenade;
         Item.shootSpeed = 10f;

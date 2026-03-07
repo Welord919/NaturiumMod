@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
+using NaturiumMod.Content.Items.PreHardmode.Weapons;
 
 namespace NaturiumMod.Content.ModPlayers
 {
@@ -48,6 +49,24 @@ namespace NaturiumMod.Content.ModPlayers
             if (starburstCooldown > 0) starburstCooldown--;
             if (fireTimer > 0) fireTimer--;
         }
+    }
+    public class LeodrakePlayer : ModPlayer
+    {
+        public bool hasLeodrakeMedallion;
+
+        public override void ResetEffects()
+        {
+            hasLeodrakeMedallion = false;
+        }
+
+        public override void ModifyManaCost(Item item, ref float reduce, ref float mult)
+        {
+            if (hasLeodrakeMedallion && item.type == ModContent.ItemType<LeodrakesLeafstorm>())
+            {
+                reduce -= 0.25f;
+            }
+        }
+
     }
 
 }

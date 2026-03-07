@@ -21,7 +21,7 @@ public class PlatformCreator4 : ModItem
         Item.useAnimation = 12;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.buyPrice(0, 0, 180, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Orange;
         Item.UseSound = SoundID.Item1;
 
         Item.noMelee = true;
@@ -72,7 +72,7 @@ public class PlatformCreator4 : ModItem
             new (ItemID.WoodPlatform, PlatformPlacementCount),
             new (ItemID.HellstoneBar, 10),
             new (ItemID.Obsidian, 8),
-            new (ModContent.ItemType<NaturiumBar>(), 10)
+            new (ModContent.ItemType<NibiricCrystal>(), 10)
         ], TileID.Anvils);
         recipe.Register();
     }

@@ -23,7 +23,7 @@ public class NibiruSepter : ModItem
         Item.noMelee = true;
         Item.value = Item.buyPrice(0, 20, 0, 0);
         Item.knockBack = 8f;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.Orange;
         Item.DamageType = DamageClass.Magic;
         Item.shootSpeed = 15f;
         Item.shoot = ModContent.ProjectileType<AstralBolt>();

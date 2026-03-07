@@ -16,7 +16,7 @@ public class ExteriosWhip : ModItem
     {
         Item.DefaultToWhip(ModContent.ProjectileType<ExteriosWhipProj>(), 60, 5f, 5);
         Item.shootSpeed = 4;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ItemRarityID.LightRed;
         Item.channel = true;
     }
 

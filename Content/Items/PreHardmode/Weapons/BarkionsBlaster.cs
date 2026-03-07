@@ -25,7 +25,7 @@ public class BarkionsBlaster : ModItem
         Item.noMelee = true;
         Item.value = Item.buyPrice(0, 20, 0, 0);
         Item.knockBack = 8f;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.Green;
         Item.DamageType = DamageClass.Ranged;
 
         //Gun Properties

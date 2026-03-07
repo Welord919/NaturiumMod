@@ -17,7 +17,7 @@ public class NaturiumWall : ModItem
     {
         Item.width = 16;
         Item.height = 16;
-
+        Item.rare = ItemRarityID.Green;
         Item.maxStack = 9999;
         Item.useTurn = true;
         Item.autoReuse = true;

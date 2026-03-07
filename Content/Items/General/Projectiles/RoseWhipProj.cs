@@ -1,16 +1,17 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.General.Projectiles;
 
 public class RoseWhipProj : ModProjectile
 {
-    public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/RoseWhipProj";
+    public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/RoseWhipProj2";
 
     public override void SetStaticDefaults()
     {
@@ -50,6 +51,7 @@ public class RoseWhipProj : ModProjectile
         }
 
         Projectile.WhipSettings.RangeMultiplier += 1 / 30f;
+
 
         owner.itemAnimation = owner.itemAnimationMax;
         owner.itemTime = owner.itemTimeMax;
@@ -91,60 +93,58 @@ public class RoseWhipProj : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        List<Vector2> list = [];
-        Projectile.FillWhipControlPoints(Projectile, list);
+        List<Vector2> points = new();
+        Projectile.FillWhipControlPoints(Projectile, points);
 
-        DrawLine(list);
+        DrawLine(points);
+
         SpriteEffects flip = Projectile.spriteDirection < 0
             ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-        Main.instance.LoadProjectile(Type);
         Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-        Vector2 pos = list[0];
+        const int frameWidth = 4;
+        const int frameHeight = 23;
+        const int frameCount = 4;
 
-        for (int i = 0; i < list.Count - 1; i++)
+        Vector2 pos = points[0];
+
+        for (int i = 0; i < points.Count - 1; i++)
         {
-            Rectangle frame = new(0, 0, 10, 26);
-            Vector2 origin = new(5, 8);
-            float scale = 1;
+            // Always use one of the 4 frames
+            int frameIndex = Math.Min(i, frameCount - 1);
 
-            if (i == list.Count - 2)
-            {
-                frame.Y = 74;
-                frame.Height = 18;
+            Rectangle frame = new Rectangle(
+                0,
+                frameIndex * frameHeight,
+                frameWidth,
+                frameHeight
+            );
 
-                Projectile.GetWhipSettings(Projectile, out float timeToFlyOut, out int _, out float _);
-                float t = Timer / timeToFlyOut;
-                scale = MathHelper.Lerp(0.5f, 1.5f, Utils.GetLerpValue(0.1f, 0.7f, t, true) * Utils.GetLerpValue(0.9f, 0.7f, t, true));
-            }
-            else if (i > 10)
-            {
-                frame.Y = 58;
-                frame.Height = 16;
-            }
-            else if (i > 5)
-            {
-                frame.Y = 42;
-                frame.Height = 16;
-            }
-            else if (i > 0)
-            {
-                frame.Y = 26;
-                frame.Height = 16;
-            }
+            Vector2 origin = new Vector2(frameWidth / 2f, frameHeight / 2f);
 
-            Vector2 element = list[i];
-            Vector2 diff = list[i + 1] - element;
+            Vector2 element = points[i];
+            Vector2 diff = points[i + 1] - element;
 
             float rotation = diff.ToRotation() - MathHelper.PiOver2;
             Color color = Lighting.GetColor(element.ToTileCoordinates());
 
-            Main.EntitySpriteDraw(texture, pos - Main.screenPosition, frame, color, rotation, origin, scale, flip, 0);
+            Main.EntitySpriteDraw(
+                texture,
+                pos - Main.screenPosition,
+                frame,
+                color,
+                rotation,
+                origin,
+                1f,
+                flip,
+                0
+            );
 
             pos += diff;
         }
 
         return false;
     }
+
 }

@@ -21,7 +21,7 @@ public class PlatformCreatorFinal : ModItem
         Item.useAnimation = 14;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.buyPrice(0, 0, 180, 0);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.LightRed;
         Item.UseSound = SoundID.Item1;
 
         Item.noMelee = true;

@@ -15,7 +15,7 @@ public class BarkionsSS : ModItem
         Item.width = 62;
         Item.height = 32;
         Item.scale = 0.75f;
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Blue;
         Item.value = Item.buyPrice(0, 0, 20, 0);
 
         // Use Properties

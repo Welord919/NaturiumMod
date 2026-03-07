@@ -14,7 +14,7 @@ public class Camelia : ModItem
 		Item.Size = new(16, 16);
 		Item.maxStack = 99;
 		Item.value = Item.buyPrice(0, 0, 2, 0);
-		Item.rare = ItemRarityID.White;
-		Item.consumable = false;
+        Item.rare = ItemRarityID.Blue;
+        Item.consumable = false;
 	}
 }

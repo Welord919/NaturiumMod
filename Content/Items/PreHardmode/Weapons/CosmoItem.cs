@@ -31,7 +31,7 @@ public class CosmoItem : ModItem
         Item.useAnimation = 36;
         Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
         Item.value = Item.sellPrice(0, 30, 0, 0);
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ItemRarityID.Green;
         Item.UseSound = SoundID.Item44; // What sound should play when using the item
 
         // These below are needed for a minion weapon

@@ -21,7 +21,7 @@ public class InfusedNaturiumGunParts : ModItem
     {
         Item.width = 26;
         Item.height = 26;
-
+        Item.rare = ItemRarityID.LightRed;
         Item.maxStack = Item.CommonMaxStack;
         Item.value = Item.buyPrice(0, 3, 0, 0);
         Item.rare = ItemRarityID.LightRed; // Hardmode-tier rarity

@@ -21,14 +21,14 @@ public class Starsteel : ModItem
         Item.maxStack = 99;
         Item.consumable = true;
         Item.value = Item.buyPrice(0, 0, 1, 75);
-
+        Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;
         Item.useAnimation = 15;
         Item.useTime = 10;
         Item.autoReuse = true;
 
-        Item.createTile = ModContent.TileType<Tiles.NibiricStarsteelTile>();
+        Item.createTile = ModContent.TileType<Tiles.StarsteelTile>();
         Item.placeStyle = 1;
     }
 
