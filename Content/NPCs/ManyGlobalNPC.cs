@@ -102,11 +102,12 @@ public class ManyGlobalNPC : GlobalNPC
 
         public override void ResetEffects(NPC npc)
         {
-            if (!hadAntiGravity)
+            // Only reset gravity if THIS NPC had the debuff last tick
+            if (hadAntiGravity)
+            {
                 npc.noGravity = false;
-
-            hadAntiGravity = false;
+                hadAntiGravity = false;
+            }
         }
     }
-
 }
