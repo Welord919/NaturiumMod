@@ -8,7 +8,7 @@ using Terraria.ID;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 
-namespace NaturiumMod.Content.ModPlayers
+namespace NaturiumMod.Content.Helpers
 {
     public class ModPlayers : ModPlayer
     {
@@ -68,5 +68,26 @@ namespace NaturiumMod.Content.ModPlayers
         }
 
     }
+    public class TabletPlayer : ModPlayer
+    {
+        public bool apophisBoost;
+        public override void ResetEffects()
+        {
+            apophisBoost = false;
+        }
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            var tag = item.GetGlobalItem<WeaponTag>();
 
+            if (apophisBoost && tag.isApophis)
+                modifiers.SourceDamage *= 1.15f;
+        }
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            var tag = proj.GetGlobalProjectile<WeaponTagProj>();
+
+            if (apophisBoost && tag.isApophis)
+                modifiers.SourceDamage *= 1.15f;
+        }
+    }
 }

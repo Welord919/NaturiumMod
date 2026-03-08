@@ -6,7 +6,7 @@ namespace NaturiumMod.Content.Buffs;
 public class SmithsBuff : ModBuff
 {
     public float MultiplicativeDamageBonus { get; init; }
-    public override string Texture => "NaturiumMod/Assets/Buffs/BarkionsBuff";
+    public override string Texture => "NaturiumMod/Assets/Buffs/SmithsCharmBuff";
 
     public override void SetStaticDefaults()
     {

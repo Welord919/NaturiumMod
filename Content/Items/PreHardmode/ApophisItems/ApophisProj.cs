@@ -1,11 +1,12 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 
 public class ApophisProj : ModProjectile
 {
-    public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/ApophisProj";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/ApophisProj";
 
     public override void SetDefaults()
     {
@@ -15,7 +16,7 @@ public class ApophisProj : ModProjectile
 
         Projectile.aiStyle = 0;
         Projectile.friendly = true;
-        Projectile.DamageType = DamageClass.Melee;
+        Projectile.DamageType = DamageClass.Generic;
 
         Projectile.penetrate = 1;
         Projectile.timeLeft = 120;
@@ -26,7 +27,7 @@ public class ApophisProj : ModProjectile
         Projectile.light = 0.5f;
         Projectile.extraUpdates = 1;
 
-        Projectile.alpha = 100;
+        Projectile.alpha = 100; 
     }
 
     public override void AI()

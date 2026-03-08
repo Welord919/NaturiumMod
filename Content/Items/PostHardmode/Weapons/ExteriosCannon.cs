@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PostHardmode.Materials;
-using NaturiumMod.Content.ModPlayers;
 
 namespace NaturiumMod.Content.Items.PostHardmode.Weapons;
 

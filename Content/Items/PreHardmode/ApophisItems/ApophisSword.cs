@@ -5,12 +5,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
-
+namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 public class ApophisSword : ModItem
 {
   
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Weapons/ApophisSword";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/ApophisSword";
 
     public override void SetDefaults()
     {

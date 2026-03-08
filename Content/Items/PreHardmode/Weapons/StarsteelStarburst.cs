@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
-using NaturiumMod.Content.ModPlayers;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

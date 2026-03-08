@@ -19,6 +19,11 @@ Mods: {
 			StarryNightProj.DisplayName: Starry Night Proj
 			SpiritReaper.DisplayName: Spirit Reaper
 			SpiritScytheProj.DisplayName: Spirit Scythe Proj
+			DecayArrowProj.DisplayName: Decay Arrow Proj
+			DecayFog.DisplayName: Decay Fog
+			AnubisSentry.DisplayName: Anubis Sentry
+			ApophisOrbitMinion.DisplayName: Apophis Orbit Minion
+			MillenniumEye.DisplayName: Millennium Eye
 		}
 
 		NPCs: {
@@ -504,12 +509,42 @@ Mods: {
 
 			PlaguespreaderBanner: {
 				DisplayName: Plaguespreader Banner
-				Tooltip: ""
+				Tooltip: Not currently working but soon!
 			}
 
 			ReapersArm: {
 				DisplayName: Reaper's Arm
 				Tooltip: The arm of the Spirit Reaper that summons scythes that can constantly damage enemies swinging around, and at, the cursor
+			}
+
+			DecayBow: {
+				DisplayName: Decay Bow
+				Tooltip: A bow that shoots arrows that inflict the Decay Debuff
+			}
+
+			PlagueResin: {
+				DisplayName: Plague Resin
+				Tooltip: Gain the Plague Infusion Buff, which causes your melee attacks to inflict the Decay Debuff
+			}
+
+			JudgementofAnubis: {
+				DisplayName: Judgement of Apophis
+				Tooltip: Summon Anubis Sentries that shoot Apophis projectiles at nearby enemies
+			}
+
+			TabletoftheKings: {
+				DisplayName: Tabletofthe Kings
+				Tooltip:
+					'''
+					Buff all Apophis, Decay, and Millennium items' damage by 15%
+					Increases summons by 1
+					Increases mining speed by 25%
+					'''
+			}
+
+			MillenniumRod: {
+				DisplayName: Millennium Rod
+				Tooltip: Summon rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
 			}
 		}
 
@@ -524,11 +559,6 @@ Mods: {
 				DisplayName: Cosmo Minion Buff
 			}
 
-			BarkionsBuff: {
-				Description: A blessing bestowed by the Wooden Dragon himself
-				DisplayName: Barkion's Buff
-			}
-
 			UltiBuildPotionBuff: {
 				Description: Buffs both building and mining
 				DisplayName: Greater Build Potion Buff
@@ -541,12 +571,32 @@ Mods: {
 
 			AntiGravDebuff: {
 				DisplayName: Anti Grav Debuff
-				Description: Read the tin
+				Description: Does what's on the tin
 			}
 
 			NoManaRegenDebuff: {
-				DisplayName: No Mana Regen Debuff
-				Description: Stop regenerating mana
+				DisplayName: No Mana Regen
+				Description: Stops regenerating mana for specific weapons
+			}
+
+			DecayDebuff: {
+				DisplayName: Decay
+				Description: Causes enemies to take damage over time and reduce their defense by 4
+			}
+
+			PlagueInfusionBuff: {
+				DisplayName: Plague Infusion
+				Description: Causes your melee attacks to inflict the Decay Debuff but reduced life regeneration
+			}
+
+			ApophisIdolBuff: {
+				DisplayName: Millennium Eyes
+				Description: Rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
+			}
+
+			MillenniumRodBuff: {
+				DisplayName: Millennium Rod Buff
+				Description: Mods.NaturiumMod.Buffs.MillenniumRodBuff.Description
 			}
 		}
 
