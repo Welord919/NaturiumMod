@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NaturiumMod.Content.Helpers;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -129,10 +130,11 @@ public class ForestNatureChestStructures : ModSystem
 
         return true;
     }
-
-
     public override void PostWorldGen()
     {
+        // CONFIG CHECK
+        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+            return;
         List<string> chestList = new(ForestChestSet);
         Shuffle(chestList);
 

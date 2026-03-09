@@ -6,9 +6,9 @@ using NaturiumMod.Content.Helpers;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Materials;
 
-public class MelliniumPiece : ModItem
+public class MillenniumPiece : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/MelliniumPiece";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Materials/MillenniumPiece";
 
     public override void SetStaticDefaults()
     {
@@ -27,8 +27,9 @@ public class MelliniumPiece : ModItem
         Recipe recipe = CreateRecipe(1);
         recipe = RecipeHelper.GetNewRecipe(recipe, [
             new(ItemID.DesertFossil, 20),
-            new(ItemID.GoldBar, 5)
-        ], TileID.LivingLoom);
+            new(ItemID.FossilOre, 5),
+            new(ItemID.GoldBar, 2)
+        ], TileID.WorkBenches);
         recipe.Register();
     }
 }

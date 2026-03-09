@@ -38,4 +38,14 @@ public class ApophisSword : ModItem
         Item.noMelee = false;
         Item.noUseGraphic = false;
     }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<MillenniumPiece>(), 2),
+            new(ItemID.GoldBroadsword, 1),
+            new(ItemID.Amber, 1)
+        ], TileID.Anvils);
+        recipe.Register();
+    }
 }

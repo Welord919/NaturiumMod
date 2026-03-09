@@ -22,7 +22,8 @@ namespace NaturiumMod.Content.Helpers
             if (item.type == ModContent.ItemType<ApophisSword>()
              || item.type == ModContent.ItemType<JudgementofAnubis>()
              || item.type == ModContent.ItemType<DecayBow>()
-             || item.type == ModContent.ItemType<MillenniumRod>())
+             || item.type == ModContent.ItemType<MillenniumRod>()
+             || item.type == ModContent.ItemType<MillenniumNecklace>())
             {
                 isApophis = true;
             }
@@ -41,7 +42,9 @@ namespace NaturiumMod.Content.Helpers
             if (proj.type == ModContent.ProjectileType<ApophisProj>()
                 || proj.type == ModContent.ProjectileType<DecayArrowProj>()
                 || proj.type == ModContent.ProjectileType<MillenniumEye>()
-                || proj.type == ModContent.ProjectileType<AnubisSentry>())
+                || proj.type == ModContent.ProjectileType<AnubisSentry>()
+                || proj.type == ModContent.ProjectileType<MillenniumEye>()
+                || proj.type == ModContent.ProjectileType<MillenniumVileEye>())
             {
                 isApophis = true;
             }

@@ -1,5 +1,6 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,17 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 
             return false;
         }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<MillenniumPiece>(), 10),
+            new(ItemID.SlimeStaff, 1),
+            new(ItemID.Amber, 4)
+        ], TileID.Anvils);
+        recipe.Register();
     }
+}
     public class AnubisSentry : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/AnubisSentry";

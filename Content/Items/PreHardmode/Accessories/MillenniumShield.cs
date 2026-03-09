@@ -160,7 +160,7 @@ public class MillenniumShield : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MelliniumPiece>(), 6),
+            new(ModContent.ItemType<MillenniumPiece>(), 6),
             new(ItemID.EoCShield, 1),
             new(ItemID.CobaltShield, 1),
             new(ItemID.Amber, 3)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,6 +13,10 @@ public class WorldTree : ModSystem
 {
     public override void PostWorldGen()
     {
+        // CONFIG CHECK
+        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+            return;
+
         bool dungeonOnLeft = Main.dungeonX < Main.maxTilesX / 2;
         bool jungleOnLeft = !dungeonOnLeft;
 

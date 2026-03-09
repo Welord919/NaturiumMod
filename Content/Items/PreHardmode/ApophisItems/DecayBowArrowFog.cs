@@ -19,7 +19,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 
         public override void SetDefaults()
         {
-            Item.damage = 15;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 24;
             Item.height = 48;

@@ -1,5 +1,6 @@
 using NaturiumMod.Content.Items.General.Placeable;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.Weapons.Melee;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -50,6 +51,7 @@ internal class Plaguespreader : ModNPC
 
         // your custom drops
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PlagueChunk>(), 1, 4, 7));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PlaguespreaderArm>(), 20, 1, 1));
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)

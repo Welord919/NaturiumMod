@@ -7,18 +7,22 @@ using Generator = StructureHelper.API.Generator;
 
 namespace NaturiumMod.Content.Generation.Structures;
 
+using global::NaturiumMod.Content.Helpers;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
 
 public class Nibiru : ModSystem
 {
     // Simple Jungle check
     public override void PostWorldGen()
     {
+        // CONFIG CHECK
+        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+            return;
         // Determine dungeon side
         bool dungeonOnLeft = Main.dungeonX < Main.maxTilesX / 2;
 

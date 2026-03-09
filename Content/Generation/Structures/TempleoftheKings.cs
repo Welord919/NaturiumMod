@@ -7,12 +7,13 @@ using Generator = StructureHelper.API.Generator;
 
 namespace NaturiumMod.Content.Generation.Structures;
 
+using global::NaturiumMod.Content.Helpers;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
 
 public class TempleoftheKings : ModSystem
 {
@@ -28,6 +29,9 @@ public class TempleoftheKings : ModSystem
 
     public override void PostWorldGen()
     {
+        // CONFIG CHECK
+        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+            return;
         for (int attempt = 0; attempt < 500; attempt++)
         {
             int x = WorldGen.genRand.Next(200, Main.maxTilesX - 200);

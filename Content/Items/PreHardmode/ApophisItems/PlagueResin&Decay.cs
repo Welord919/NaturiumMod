@@ -47,7 +47,7 @@ public class PlagueResin : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-                new(ModContent.ItemType<PlagueChunk>(), 3),
+                new(ModContent.ItemType<PlagueChunk>(), 5),
                 new(ItemID.BottledWater, 1)
         ], TileID.ImbuingStation);
         recipe.Register();

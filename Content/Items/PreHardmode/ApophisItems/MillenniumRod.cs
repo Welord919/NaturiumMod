@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +31,22 @@ public class MillenniumRod : ModItem
         Item.DamageType = DamageClass.Summon;
         Item.mana = 10;
 
-        Item.damage = 15;
+        Item.damage = 10;
         Item.knockBack = 2f;
 
         Item.buffType = ModContent.BuffType<MillenniumRodBuff>();
         Item.shoot = ModContent.ProjectileType<MillenniumEye>();
+    }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<MillenniumPiece>(), 12),
+            new(ItemID.CrimsonRod, 1),
+            new(ItemID.Amber, 10)
+        ], TileID.Anvils);
+        recipe.Register();
+
     }
 
     // Enable right-click
@@ -51,13 +64,13 @@ public class MillenniumRod : ModItem
         {
             // RIGHT CLICK — confuse enemies
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.mana = 20; // <-- right-click now costs 20 mana
             ConfuseNearbyEnemies(player);
         }
         else
         {
             // LEFT CLICK — summon
             Item.useStyle = ItemUseStyleID.Thrust;
+            Shoot(player, null, Vector2.Zero, Vector2.Zero, 0, 0, 0); // manually call Shoot to summon without delay
             Item.mana = 10;
         }
 
@@ -81,8 +94,6 @@ public class MillenniumRod : ModItem
             }
         }
     }
-
-
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
         Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -108,9 +119,6 @@ public class MillenniumRod : ModItem
         return false;
     }
 }
-
-
-
 public class MillenniumRodBuff : ModBuff
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumRodBuff";
@@ -129,7 +137,6 @@ public class MillenniumRodBuff : ModBuff
             player.DelBuff(buffIndex);
     }
 }
-
 public class MillenniumEye : ModProjectile
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumEye";
@@ -157,31 +164,33 @@ public class MillenniumEye : ModProjectile
 
         Projectile.DamageType = DamageClass.Summon;
     }
-
     public override void AI()
     {
         Player player = Main.player[Projectile.owner];
 
-        if (!player.active || player.dead)
+        // If the player no longer has the buff, kill the minion
+        if (!player.HasBuff(ModContent.BuffType<MillenniumRodBuff>()))
         {
-            // your buff cleanup here
+            Projectile.Kill();
             return;
         }
 
-        // keep alive if buffed, etc.
+        // Keep the buff alive
+        player.AddBuff(ModContent.BuffType<MillenniumRodBuff>(), 2);
+
+
         Projectile.timeLeft = 2;
 
-        // --- Count all eyes of this type owned by this player ---
+        // --- Count all eyes ---
         int totalEyes = 0;
         foreach (Projectile p in Main.projectile)
-        {
             if (p.active && p.owner == player.whoAmI && p.type == Projectile.type)
                 totalEyes++;
-        }
+
         if (totalEyes <= 0)
             totalEyes = 1;
 
-        // --- Get this eye's index (0..totalEyes-1) ---
+        // --- Get index ---
         int index = 0;
         int counter = 0;
         foreach (Projectile p in Main.projectile)
@@ -195,13 +204,10 @@ public class MillenniumEye : ModProjectile
             }
         }
 
-        // --- Shared rotation for ALL eyes ---
+        // --- Orbit logic ---
         float orbitRadius = 60f;
         float angleOffset = MathHelper.TwoPi / totalEyes;
-
-        // use a shared timer so all eyes rotate together
-        float globalRotation = player.miscCounter / 60f; // smooth, synced
-
+        float globalRotation = player.miscCounter / 60f;
         float angle = globalRotation + index * angleOffset;
 
         Vector2 offset = new Vector2(
@@ -210,26 +216,12 @@ public class MillenniumEye : ModProjectile
         ) * orbitRadius;
 
         Projectile.Center = player.Center + offset;
+
+        // --- Targeting + Firing ---
+        NPC target = FindTarget(player, 500f);
+        if (target != null)
+            FireAtTarget(player, target);
     }
-        private int GetOrbiterIndex(Player player)
-        {
-        int index = 0;
-        int count = 0;
-
-        foreach (Projectile p in Main.projectile)
-        {
-            if (p.active && p.owner == player.whoAmI && p.type == Projectile.type)
-            {
-                if (p.whoAmI == Projectile.whoAmI)
-                    index = count;
-
-                count++;
-            }
-        }
-
-        return index;
-        }
-
     private NPC FindTarget(Player player, float range)
         {
         NPC closest = null;
@@ -249,7 +241,6 @@ public class MillenniumEye : ModProjectile
 
         return closest;
         }
-
     private void FireAtTarget(Player player, NPC target)
     {
         if (Projectile.localAI[0] > 0)
@@ -271,7 +262,7 @@ public class MillenniumEye : ModProjectile
             Projectile.Center,
             direction,
             ModContent.ProjectileType<ApophisProj>(),
-            Projectile.originalDamage, // correct inherited damage
+            Projectile.originalDamage,
             0f,
             player.whoAmI
         );

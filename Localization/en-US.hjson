@@ -24,6 +24,8 @@ Mods: {
 			AnubisSentry.DisplayName: Anubis Sentry
 			ApophisOrbitMinion.DisplayName: Apophis Orbit Minion
 			MillenniumEye.DisplayName: Millennium Eye
+			MillenniumVileEye.DisplayName: Millennium Vile Eye
+			MillenniumVilethorn.DisplayName: Millennium Vilethorn
 		}
 
 		NPCs: {
@@ -533,18 +535,50 @@ Mods: {
 			}
 
 			TabletoftheKings: {
-				DisplayName: Tabletofthe Kings
+				DisplayName: Tablet of the Kings
 				Tooltip:
 					'''
 					Buff all Apophis, Decay, and Millennium items' damage by 15%
-					Increases summons by 1
+					Increases your max number of minions by 1
 					Increases mining speed by 25%
 					'''
 			}
 
 			MillenniumRod: {
 				DisplayName: Millennium Rod
-				Tooltip: Summon rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
+				Tooltip:
+					'''
+					Summon rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
+					Right click to confuse all near by enemies for 3 seconds
+					'''
+			}
+
+			LeodrakesMane: {
+				DisplayName: Leodrakes Mane
+				Tooltip: When attacked, deal damage to the attacker and release 5 Leodrake's Mane Projectiles
+			}
+
+			MillenniumPiece: {
+				DisplayName: Millennium Piece
+				Tooltip: Piece of the Millennium Puzzle, used for crafting items related to the Millennium Pharoh
+			}
+
+			PlaguespreaderArm: {
+				DisplayName: Plaguespreader Arm
+				Tooltip:
+					'''
+					A decaying arm that fell off the Plaguespreader zombie, imbued with the power of the plague itself.
+					Inflicts the Decay debuff and on kill gives swiftness for 10 seconds
+					'''
+			}
+
+			MillenniumNecklace: {
+				Tooltip:
+					'''
+					Brings out vile power to summon a Millennium eye that shoots high penetration projectiles at nearby enemies
+					Increases your max number of minions by 1
+					'''
+				DisplayName: Millennium Necklace
 			}
 		}
 
@@ -589,22 +623,22 @@ Mods: {
 				Description: Causes your melee attacks to inflict the Decay Debuff but reduced life regeneration
 			}
 
-			ApophisIdolBuff: {
+			MillenniumRodBuff: {
 				DisplayName: Millennium Eyes
 				Description: Rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
 			}
 
-			MillenniumRodBuff: {
-				DisplayName: Millennium Rod Buff
-				Description: Mods.NaturiumMod.Buffs.MillenniumRodBuff.Description
+			MillenniumVileEyeBuff: {
+				DisplayName: Millennium Vile Eye
+				Description: Rotating Millennium Eyes that shoot Vile Eye projectiles at nearby enemies
 			}
 		}
 
-		WorldGen.ExampleOrePassMessage: Breathing Naturium
+		WorldGen.ExampleOrePassMessage: Naturium Ore
 
 		Tiles: {
-			DaltonPaintingTile.MapEntry: Dalton Painting Tile
-			NatSlimeBannerTile.MapEntry: Nat Slime Banner Tile
+			DaltonPaintingTile.MapEntry: Dalton Painting
+			NatSlimeBannerTile.MapEntry: Naturium Slime Banner
 
 			NaturiumChestTile: {
 				MapEntry: Naturium Chest
@@ -613,8 +647,24 @@ Mods: {
 				MapEntry1: Naturium Chest Locked
 			}
 
-			NatSlimeStatueTile.MapEntry: Nat Slime Statue Tile
-			PlaguespreaderBannerTile.MapEntry: Plaguespreader Banner Tile
+			NatSlimeStatueTile.MapEntry: Naturium Slime Statue
+			PlaguespreaderBannerTile.MapEntry: Plaguespreader Banner
+		}
+
+		Configs: {
+			NaturiumConfig: {
+				DisplayName: Structure Config
+
+				EnableStructures: {
+					Label: Custom Structures
+					Tooltip: If disabled, all custom Naturium mod structures will not generate when making a new world.
+				}
+			}
+		}
+
+		Prefixes: {
+			BarkionsCurse.DisplayName: Barkion's Curse
+			BarkionsBlessing.DisplayName: Barkion's Blessing
 		}
 	}
 }
