@@ -55,7 +55,7 @@ public class StarryNightProj : ModProjectile
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
-        target.AddBuff(ModContent.BuffType<AntiGravDebuff>(), 30);
+        target.AddBuff(ModContent.BuffType<AntiGravDebuff>(), 20);
         Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
     }
 

@@ -23,15 +23,8 @@ internal class LeodrakesMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        //player.GetModPlayer<LeodrakePlayer>().hasLeodrakeMedallion = true;
-
-        if (player.HeldItem.type != ModContent.ItemType<LeodrakesLeafstorm>()
-            && player.HeldItem.type != ModContent.ItemType<LeodrakesYoyo>())
-        {
-            return;
-        }
-        player.GetArmorPenetration(DamageClass.Generic) += 2f;
-        player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
+        var boost = player.GetModPlayer<WeaponBoostPlayer>();
+        boost.activeBoosts["Leodrake"] = true;
     }
 
     public override void AddRecipes()

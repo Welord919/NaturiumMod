@@ -49,7 +49,7 @@ public class LeodrakesYoyo : ModItem
             new(ModContent.ItemType<NaturiumBar>(), 10),
             new(ModContent.ItemType<CameliaPetal>(), 10),
             new(ItemID.TissueSample, 10)
-        ], TileID.LivingLoom);
+        ], TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe(1);
@@ -57,7 +57,7 @@ public class LeodrakesYoyo : ModItem
             new(ModContent.ItemType<NaturiumOre>(), 10),
             new(ModContent.ItemType<CameliaPetal>(), 10),
             new(ItemID.ShadowScale, 10)
-        ], TileID.LivingLoom);
+        ], TileID.Anvils);
         recipe.Register();
     }
 

@@ -240,7 +240,7 @@ Mods: {
 					'''
 					Look at the individual Exterio weapons for their specific buffs
 					All: Increases Armor Penetration by 3
-					All weapon classes get a 20% damage increase		
+					All weapon classes get a 15% damage increase		
 					'''
 				DisplayName: Exterio's Medallion
 			}
@@ -482,7 +482,7 @@ Mods: {
 				Tooltip:
 					'''
 					Should help Nibiru and Starsteel weapons in the start of hardmode
-					All: Increases Armor Penetration by 2
+					All: Increases Armor Penetration by 3
 					Ranged: Increases critical strike chance by 10%
 					Magic: Increases damage by 10%
 					Summon: Increases whip attack speed by 10%
@@ -538,8 +538,7 @@ Mods: {
 				DisplayName: Tablet of the Kings
 				Tooltip:
 					'''
-					Buff all Apophis, Decay, and Millennium items' damage by 15%
-					Increases your max number of minions by 1
+					Buff all Apophis, Decay, and Millennium items damage by 10%
 					Increases mining speed by 25%
 					'''
 			}
@@ -577,6 +576,7 @@ Mods: {
 					'''
 					Brings out vile power to summon a Millennium eye that shoots high penetration projectiles at nearby enemies
 					Increases your max number of minions by 1
+					Increase minion knockback and attack speed by 7%
 					'''
 				DisplayName: Millennium Necklace
 			}

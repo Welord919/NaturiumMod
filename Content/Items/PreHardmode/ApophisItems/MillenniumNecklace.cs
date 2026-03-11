@@ -28,17 +28,10 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<MillenniumNecklacePlayer>().MillenniumNecklaceEquipped = true;
-
-            // +1 summon
             player.maxMinions += 1;
+            player.GetKnockback(DamageClass.Summon) += 0.07f;
+            player.GetAttackSpeed(DamageClass.Summon) += 0.07f;
 
-            // summon bonuses
-            player.GetDamage(DamageClass.Summon) += 0.10f;
-            player.GetKnockback(DamageClass.Summon) += 0.10f;
-            player.whipRangeMultiplier += 0.10f;
-            player.GetAttackSpeed(DamageClass.Summon) += 0.10f;
-
-            // spawn the guardian minion
             player.AddBuff(ModContent.BuffType<MillenniumVileEyeBuff>(), 2);
 
             if (player.ownedProjectileCounts[ModContent.ProjectileType<MillenniumVileEye>()] <= 0)
@@ -54,8 +47,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
                 );
             }
         }
-
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
@@ -87,8 +78,16 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
         }
 
     }
+    public class MillenniumNecklacePlayer : ModPlayer
+    {
+        public bool MillenniumNecklaceEquipped;
 
+        public override void ResetEffects()
+        {
+            MillenniumNecklaceEquipped = false;
+        }
 
+    }
     public class MillenniumVileEye : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumEye";
@@ -116,7 +115,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
             // Kill if player is gone or necklace is not equipped
             if (!player.active || player.dead ||
                 !player.GetModPlayer<MillenniumNecklacePlayer>().MillenniumNecklaceEquipped)
@@ -124,8 +122,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
                 Projectile.Kill();
                 return;
             }
-
-
             // Keep the buff alive
             player.AddBuff(ModContent.BuffType<MillenniumVileEyeBuff>(), 2);
 
@@ -167,7 +163,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
 
             return chosen;
         }
-
         private void ShootVilethorn(NPC target)
         {
             Vector2 direction = Projectile.DirectionTo(target.Center);
@@ -183,8 +178,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
                 Projectile.owner
             );
         }
-
-
         public class MillenniumVilethorn : ModProjectile
         {
             public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumVilethorn";
@@ -195,7 +188,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
                 ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 
             }
-
             public override void SetDefaults()
             {
                 Projectile.width = 20;
@@ -211,7 +203,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
                 Projectile.timeLeft = 60;
                 Projectile.extraUpdates = 1;
             }
-
             public override void AI()
             {
                 Player player = Main.player[Projectile.owner];
@@ -237,7 +228,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
 
                     Projectile.localAI[0] = 1;
                 }
-
                 // Lock direction forever
                 Projectile.rotation = Projectile.ai[1];
 
@@ -292,9 +282,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
 
                 return projHitbox.Intersects(targetHitbox);
             }
-
-
-
             public override bool? CanHitNPC(NPC target)
             {
                 // Only the tip damages

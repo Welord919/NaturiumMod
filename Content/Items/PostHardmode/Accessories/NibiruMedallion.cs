@@ -22,19 +22,8 @@ internal class NibiruMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-
-        if (player.HeldItem.type != ModContent.ItemType<NibiruSepter>()
-        && player.HeldItem.type != ModContent.ItemType<StarsteelStarburst>()
-        && player.HeldItem.type != ModContent.ItemType<StarsteelPickaxe>()
-        && player.HeldItem.type != ModContent.ItemType<StarryNight>())
-        {
-            return;
-        }
-        
-        player.GetArmorPenetration(DamageClass.Generic) += 3f;
-        player.GetCritChance(DamageClass.Ranged) += 10;
-        player.GetDamage(DamageClass.Magic) += 0.1f;
-        player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.1f;
+        var boost = player.GetModPlayer<WeaponBoostPlayer>();
+        boost.activeBoosts["Nibiru"] = true;
     }
 
     public override void AddRecipes()

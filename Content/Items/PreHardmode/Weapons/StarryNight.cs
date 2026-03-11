@@ -25,20 +25,14 @@ public class StarryNight : ModItem
         Item.value = Item.buyPrice(0, 1, 0, 0);
         Item.rare = ItemRarityID.Orange;
 
+        Item.damage = 32;
     }
-    public override void HoldItem(Player player)
-    {
-        player.thorns += 0.15f; // 15% return damage
-    }
-
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NaturiumBar>(), 20),
-            new(ModContent.ItemType<RoseIcon>(), 3),
-            new(ItemID.IvyWhip, 1)
+            new(ModContent.ItemType<Starsteel>(), 25)
         ], TileID.Anvils);
         recipe.Register();
     }

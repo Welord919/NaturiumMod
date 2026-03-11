@@ -26,8 +26,9 @@ public class TabletoftheKings : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-            player.GetModPlayer<TabletPlayer>().apophisBoost = true;
-            player.pickSpeed -= 0.25f;
+        var boost = player.GetModPlayer<WeaponBoostPlayer>();
+        boost.activeBoosts["Apophis"] = true;
+        player.pickSpeed -= 0.25f;
     }
     public override void AddRecipes()
     {

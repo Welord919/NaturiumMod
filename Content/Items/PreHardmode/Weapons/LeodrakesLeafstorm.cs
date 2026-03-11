@@ -47,7 +47,7 @@ public class LeodrakesLeafstorm : ModItem
             new(ModContent.ItemType<NaturiumBar>(), 10),
             new(ModContent.ItemType<CameliaPetal>(), 15),
             new(ItemID.TissueSample, 15)
-        ], TileID.LivingLoom);
+        ], TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe(1);
@@ -55,7 +55,7 @@ public class LeodrakesLeafstorm : ModItem
             new(ModContent.ItemType<NaturiumBar>(), 10),
             new(ModContent.ItemType<CameliaPetal>(), 15),
             new(ItemID.ShadowScale, 15)
-        ], TileID.LivingLoom);
+        ], TileID.Anvils);
         recipe.Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

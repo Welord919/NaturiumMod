@@ -22,21 +22,8 @@ internal class BarkionsMedallion : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-
-        if (player.HeldItem.type != ModContent.ItemType<BarkionsSS>()
-        && player.HeldItem.type != ModContent.ItemType<RoseWhip>()
-        && player.HeldItem.type != ModContent.ItemType<CosmoItem>()
-        && player.HeldItem.type != ModContent.ItemType<BarkionsBlaster>()
-        && player.HeldItem.type != ModContent.ItemType<BarkionsTB>())
-        {
-            return;
-        }
-        
-        player.GetArmorPenetration(DamageClass.Generic) += 1f;
-        player.GetKnockback(DamageClass.Melee) += 0.1f;
-        player.GetCritChance(DamageClass.Ranged) += 5;
-        player.manaRegenBonus += 2;
-        player.GetDamage(DamageClass.Summon) += 0.1f;
+        var boost = player.GetModPlayer<WeaponBoostPlayer>();
+        boost.activeBoosts["Barkion"] = true;
     }
 
     public override void AddRecipes()
