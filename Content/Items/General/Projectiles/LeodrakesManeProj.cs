@@ -18,10 +18,10 @@ public class LeodrakesManeProj : ModProjectile
         Projectile.hostile = false;
         //Projectile.ArmorPenetration = 1;
 
-        Projectile.DamageType = DamageClass.Magic;
+        Projectile.DamageType = DamageClass.Generic;
 
         Projectile.penetrate = 1;
-        Projectile.timeLeft = 150;
+        Projectile.timeLeft = 200;
 
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;

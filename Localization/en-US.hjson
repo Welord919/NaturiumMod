@@ -26,13 +26,37 @@ Mods: {
 			MillenniumEye.DisplayName: Millennium Eye
 			MillenniumVileEye.DisplayName: Millennium Vile Eye
 			MillenniumVilethorn.DisplayName: Millennium Vilethorn
+			BurstStream.DisplayName: Burst Stream
+			DragonBurstCharge.DisplayName: Dragon Burst Charge
+			FlameSwordsmanSlash.DisplayName: Flame Swordsman Slash
+			SilverFangShout.DisplayName: Silver Fang Shout
+			CelticGuardianSlash.DisplayName: Celtic Guardian Slash
+			GaiaChargeProjectile.DisplayName: Gaia Charge Projectile
 		}
 
 		NPCs: {
 			NaturiumSlime.DisplayName: Naturium Slime
-			ExampleCritterNPC.DisplayName: Example Critter N P C
-			AntjawCritterNPC.DisplayName: Antjaw Critter N P C
+			AntjawCritterNPC.DisplayName: Antjaw
 			Plaguespreader.DisplayName: Plaguespreader
+
+			PlagueWormBody.DisplayName: Plague Worm Body
+			PlagueWormHead.DisplayName: Plague Worm Head
+			PlagueWormTail.DisplayName: Plague Worm Tail
+
+			MysteriousGrandpa: {
+				DisplayName: Mysterious Grandpa
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
 		}
 
 		Items: {
@@ -580,6 +604,74 @@ Mods: {
 					'''
 				DisplayName: Millennium Necklace
 			}
+
+			BEWD: {
+				DisplayName: Blue Eyes White Dragon
+				Tooltip: This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.
+			}
+
+			KaibasCloak: {
+				DisplayName: Kaibas Cloak
+				Tooltip:
+					'''
+					Increase damage of all Dragon cards by 15%
+					Reduce Summonign Sickenness duration from Dragon cards by 50%
+					Uses a secret move when 3 Blue Eyes White Dragon cards are used together
+					'You fight me with fruit? Don't mock me!'
+					'''
+			}
+
+			FlameSwordsman: {
+				DisplayName: Flame Swordsman
+				Tooltip:
+					'''
+					Charges: 5
+					Swing a huge firey blade that can put enemies on fire
+					"Flame Swordsman, everybody!"
+					'''
+			}
+
+			PackLOB: {
+				DisplayName: Legend of Blue Eyes White Dragon
+				Tooltip: Right click to open the pack and receive a random card with varying rarities
+			}
+
+			ManEaterBug: {
+				DisplayName: Man Eater Bug
+				Tooltip:
+					'''
+					Apply a buff that protects you from one hit from an enemy, and damages the enemy that hit you for 50% more
+					'Heeheehee! My insects have swarmed all over you!'
+					'''
+			}
+
+			SilverFang: {
+				DisplayName: Silver Fang
+				Tooltip: Let a roar that damages and knockbacks all enemies near you
+			}
+
+			AquaMador: {
+				DisplayName: Aqua Mador
+				Tooltip: Apply a buff that gives you 50 overhealth that reduces over time, and turns you into a merfolk that can breath underwater and swim faster while in water
+			}
+
+			CelticGuardian: {
+				DisplayName: Celtic Guardian
+				Tooltip:
+					'''
+					Charges: 9
+					Swing a medium sized blade that swings in a up, down, then thrust pattern
+					'''
+			}
+
+			Gaia: {
+				DisplayName: Gaia the Fierce Knight
+				Tooltip:
+					'''
+					Charges: 3
+					Send out a projectile that goes through tiles and scales up in damage the longer it travels for
+					'''
+			}
 		}
 
 		Buffs: {
@@ -630,7 +722,22 @@ Mods: {
 
 			MillenniumVileEyeBuff: {
 				DisplayName: Millennium Vile Eye
-				Description: Rotating Millennium Eyes that shoot Vile Eye projectiles at nearby enemies
+				Description: A rotating Millennium Eye that shoots Vile Eye projectiles at nearby enemies
+			}
+
+			SummoningSickness: {
+				DisplayName: Summoning Sickness
+				Description: You cannot use cards while you have this debuff
+			}
+
+			ManEaterBugGuard: {
+				DisplayName: Man Eater Bug Guard
+				Description: Protects you from one hit from an enemy, and damages the enemy that hit you for 50% more
+			}
+
+			AquaMadorBuff: {
+				DisplayName: Aqua Mador Buff
+				Description: Applies 50 overhealth that reduces over time, and turns you into a merfolk that can breath underwater and swim faster
 			}
 		}
 
@@ -653,11 +760,16 @@ Mods: {
 
 		Configs: {
 			NaturiumConfig: {
-				DisplayName: Structure Config
+				DisplayName: Configuration Toggles
 
-				EnableStructures: {
+				Structures: {
 					Label: Custom Structures
 					Tooltip: If disabled, all custom Naturium mod structures will not generate when making a new world.
+				}
+
+				CardDrops: {
+					Label: Card Drops
+					Tooltip: If diasbled, no card packs will drop from enemies.
 				}
 			}
 		}

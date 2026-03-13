@@ -122,21 +122,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
                 JustSpawned = false;
                 ShootTimer = ShootFrequency * 1.5f;
 
-                SoundEngine.PlaySound(SoundID.Item46, Projectile.position);
-
-                for (int i = 0; i < 50; i++)
-                {
-                    Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
-                    Dust d = Dust.NewDustPerfect(Projectile.Center, DustID.BlueCrystalShard, speed * 4, Scale: 1.5f);
-                    d.noGravity = true;
-                }
-            }
-
-            if (Main.rand.NextBool(10))
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Firework_Blue, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
-                dust.noGravity = true;
-                dust.velocity *= 0.8f;
+                SoundEngine.PlaySound(SoundID.Item46, Projectile.position);    
             }
 
             Projectile.velocity.X = 0f;

@@ -53,5 +53,4 @@ namespace NaturiumMod.Content.Helpers
             if (fireTimer > 0) fireTimer--;
         }
     }
-
 }

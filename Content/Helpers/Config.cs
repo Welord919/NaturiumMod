@@ -11,8 +11,14 @@ namespace NaturiumMod.Content.Helpers
     public class NaturiumConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
+
         [DefaultValue(true)]
         public bool EnableStructures { get; set; }
+
+        [DefaultValue(true)]
+        public bool CardDrops { get; set; }
     }
 
 }
+
+

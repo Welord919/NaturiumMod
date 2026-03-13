@@ -1,4 +1,5 @@
 using NaturiumMod.Content.Items.General.Placeable;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.Weapons.Melee;
 using Terraria;
@@ -6,9 +7,6 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
-
-namespace NaturiumMod.Content.NPCs;
 
 internal class Plaguespreader : ModNPC
 {
@@ -44,12 +42,10 @@ internal class Plaguespreader : ModNPC
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        // copy zombie drops
         var zombieDrops = Main.ItemDropsDB.GetRulesForNPCID(NPCID.Zombie, false);
         foreach (var rule in zombieDrops)
             npcLoot.Add(rule);
 
-        // your custom drops
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PlagueChunk>(), 1, 4, 7));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PlaguespreaderArm>(), 20, 1, 1));
     }
@@ -76,5 +72,10 @@ internal class Plaguespreader : ModNPC
         ];
 
         bestiaryEntry.Info.AddRange(info);
+    }
+
+    public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+    {
+        target.AddBuff(ModContent.BuffType<DecayDebuff>(), 180);
     }
 }

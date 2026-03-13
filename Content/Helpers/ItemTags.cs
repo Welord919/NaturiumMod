@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.PostHardmode.Weapons;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using NaturiumMod.Content.Items.PreHardmode.Cards;
+using NaturiumMod.Content.Items.PreHardmode.Cards.Rares;
+using NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares;
+using NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Tools;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using System;
@@ -48,6 +52,20 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<StarsteelStarburst>(), "Nibiru");
             AddTag(ModContent.ItemType<StarsteelPickaxe>(), "Nibiru");
             AddTag(ModContent.ItemType<StarryNight>(), "Nibiru");
+
+            //Dragons
+            AddTags(ModContent.ItemType<BEWD>(), "Card", "Dragon");
+
+            //Warriors
+            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior");
+            AddTags(ModContent.ItemType<CelticGuardian>(), "Card", "Warrior");
+            AddTags(ModContent.ItemType<Gaia>(), "Card", "Warrior");
+
+            //Bugs
+            AddTags(ModContent.ItemType<ManEaterBug>(), "Card", "Bug");
+
+            //Beasts
+            AddTags(ModContent.ItemType<SilverFang>(), "Card", "Beast");
         }
 
         private void AddTag(int itemType, string tag)
@@ -59,6 +77,12 @@ namespace NaturiumMod.Content.Helpers
             WeaponTag.ItemTags[itemType].Add(tag);
 
         }
+        private void AddTags(int itemType, params string[] tags)
+        {
+            foreach (var tag in tags)
+                AddTag(itemType, tag);
+        }
+
     }
 
     public class WeaponTag : GlobalItem
@@ -155,6 +179,12 @@ namespace NaturiumMod.Content.Helpers
                 Player.GetDamage(DamageClass.Magic) += 0.1f;
                 Player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.1f;
             }
+            //Dragon boosts
+            if (activeBoosts.TryGetValue("Dragon", out bool dragonActive) && dragonActive)
+            {
+                Player.GetDamage(DamageClass.Magic) += 0.15f; // 15% more damage
+            }
+
         }
 
     }
