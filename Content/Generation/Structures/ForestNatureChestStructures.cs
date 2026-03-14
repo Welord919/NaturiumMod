@@ -133,7 +133,7 @@ public class ForestNatureChestStructures : ModSystem
     public override void PostWorldGen()
     {
         // CONFIG CHECK
-        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+        if (!ModContent.GetInstance<NaturiumConfig>().Structures)
             return;
         List<string> chestList = new(ForestChestSet);
         Shuffle(chestList);

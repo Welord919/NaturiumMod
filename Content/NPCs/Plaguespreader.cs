@@ -3,6 +3,7 @@ using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.Weapons.Melee;
 using Terraria;
+using Terraria.Enums;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -39,7 +40,17 @@ internal class Plaguespreader : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<PlaguespreaderBanner>();
     }
-
+    public class PlaguespreaderBanner : ModItem
+    {
+        public override string Texture => "NaturiumMod/Assets/Items/General/Placeable/PlaguespreaderBanner";
+        public override void SetDefaults()
+        {
+            Item.DefaultToPlaceableTile(ModContent.TileType<EnemyBanner>(), (int)EnemyBanner.StyleID.Plaguespreader);
+            Item.width = 10;
+            Item.height = 24;
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(silver: 10));
+        }
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         var zombieDrops = Main.ItemDropsDB.GetRulesForNPCID(NPCID.Zombie, false);
@@ -61,17 +72,13 @@ internal class Plaguespreader : ModNPC
 
         return 0f;
     }
-
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
-        IBestiaryInfoElement[] info =
-        [
-            new FlavorTextBestiaryInfoElement(
-                "Once an ordinary zombie, now infected by a devious plague"
-            )
-        ];
-
-        bestiaryEntry.Info.AddRange(info);
+        bestiaryEntry.Info.AddRange([
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.CorruptDesert,
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.CorruptUndergroundDesert,
+			new FlavorTextBestiaryInfoElement("Once an ordinary zombie, now infected by a plague that spreads to any nearby creature")
+        ]);
     }
 
     public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)

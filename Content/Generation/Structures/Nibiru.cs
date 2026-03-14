@@ -21,7 +21,7 @@ public class Nibiru : ModSystem
     public override void PostWorldGen()
     {
         // CONFIG CHECK
-        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+        if (!ModContent.GetInstance<NaturiumConfig>().Structures)
             return;
         // Determine dungeon side
         bool dungeonOnLeft = Main.dungeonX < Main.maxTilesX / 2;

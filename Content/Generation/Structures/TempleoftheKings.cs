@@ -30,7 +30,7 @@ public class TempleoftheKings : ModSystem
     public override void PostWorldGen()
     {
         // CONFIG CHECK
-        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+        if (!ModContent.GetInstance<NaturiumConfig>().Structures)
             return;
         for (int attempt = 0; attempt < 500; attempt++)
         {

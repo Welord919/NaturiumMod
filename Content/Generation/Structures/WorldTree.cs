@@ -14,7 +14,7 @@ public class WorldTree : ModSystem
     public override void PostWorldGen()
     {
         // CONFIG CHECK
-        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+        if (!ModContent.GetInstance<NaturiumConfig>().Structures)
             return;
 
         bool dungeonOnLeft = Main.dungeonX < Main.maxTilesX / 2;

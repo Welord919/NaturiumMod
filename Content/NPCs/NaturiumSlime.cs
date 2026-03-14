@@ -1,6 +1,7 @@
 using NaturiumMod.Content.Items.General.Placeable;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
+using Terraria.Enums;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -59,7 +60,21 @@ internal class NaturiumSlime : ModNPC
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
-        IBestiaryInfoElement[] bestiaryInfoElements = [new FlavorTextBestiaryInfoElement("This slime has taken in enough nature energy to start developing Naturium Ore inside of its body.")];
-        bestiaryEntry.Info.AddRange(bestiaryInfoElements);
+        bestiaryEntry.Info.AddRange([
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
+            new FlavorTextBestiaryInfoElement("This slime has taken in enough nature energy to start developing Naturium Ore inside of its body.")
+        ]);
     }
+    public class NatSlimeBanner : ModItem
+    {
+        public override string Texture => "NaturiumMod/Assets/Items/General/Placeable/NatSlimeBanner";
+        public override void SetDefaults()
+        {
+            Item.DefaultToPlaceableTile(ModContent.TileType<EnemyBanner>(), (int)EnemyBanner.StyleID.NatSlime);
+            Item.width = 10;
+            Item.height = 24;
+            Item.SetShopValues(ItemRarityColor.Blue1, Item.buyPrice(silver: 10));
+        }
+    }
+
 }

@@ -32,16 +32,16 @@ Mods: {
 			SilverFangShout.DisplayName: Silver Fang Shout
 			CelticGuardianSlash.DisplayName: Celtic Guardian Slash
 			GaiaChargeProjectile.DisplayName: Gaia Charge Projectile
+			PlagueBlobProj.DisplayName: Plague Blob Proj
 		}
 
 		NPCs: {
 			NaturiumSlime.DisplayName: Naturium Slime
 			AntjawCritterNPC.DisplayName: Antjaw
 			Plaguespreader.DisplayName: Plaguespreader
-
-			PlagueWormBody.DisplayName: Plague Worm Body
-			PlagueWormHead.DisplayName: Plague Worm Head
-			PlagueWormTail.DisplayName: Plague Worm Tail
+			PlagueWormBody.DisplayName: Plague Worm
+			PlagueWormHead.DisplayName: Plague Worm
+			PlagueWormTail.DisplayName: Plague Worm
 
 			MysteriousGrandpa: {
 				DisplayName: Mysterious Grandpa
@@ -53,8 +53,8 @@ Mods: {
 					LoveSpace: I love having so much space.
 					DislikeCrowded: I dislike how crowded I am.
 					HateCrowded: I hate how crowded I am.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
+					LikeNPC_Princess: I like the Princess.
+					Princess_LovesNPC: I like the Grandpa.
 				}
 			}
 		}
@@ -607,7 +607,11 @@ Mods: {
 
 			BEWD: {
 				DisplayName: Blue Eyes White Dragon
-				Tooltip: This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.
+				Tooltip:
+					'''
+					Fire a huge lazer the damages enemies for a few seconds
+					'This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale'
+					'''
 			}
 
 			KaibasCloak: {
@@ -647,12 +651,20 @@ Mods: {
 
 			SilverFang: {
 				DisplayName: Silver Fang
-				Tooltip: Let a roar that damages and knockbacks all enemies near you
+				Tooltip:
+					'''
+					Let a roar that damages and knockbacks all enemies near you
+					'A snow wolf that's beautiful to the eye, but absolutely vicious in battle'
+					'''
 			}
 
 			AquaMador: {
 				DisplayName: Aqua Mador
-				Tooltip: Apply a buff that gives you 50 overhealth that reduces over time, and turns you into a merfolk that can breath underwater and swim faster while in water
+				Tooltip:
+					'''
+					Apply a buff that gives you 50 overhealth that reduces over time, and protextive liquid wall that allows you to breath underwater and swim faster
+					A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him''
+					'''
 			}
 
 			CelticGuardian: {
@@ -661,6 +673,7 @@ Mods: {
 					'''
 					Charges: 9
 					Swing a medium sized blade that swings in a up, down, then thrust pattern
+					'An elf who learned to wield a sword, he baffles enemies with lightning-swift attacks'
 					'''
 			}
 
@@ -670,7 +683,13 @@ Mods: {
 					'''
 					Charges: 3
 					Send out a projectile that goes through tiles and scales up in damage the longer it travels for
+					'A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with'
 					'''
+			}
+
+			PlagueWormHeadBanner: {
+				DisplayName: Plague Worm Head Banner
+				Tooltip: ""
 			}
 		}
 
@@ -737,7 +756,7 @@ Mods: {
 
 			AquaMadorBuff: {
 				DisplayName: Aqua Mador Buff
-				Description: Applies 50 overhealth that reduces over time, and turns you into a merfolk that can breath underwater and swim faster
+				Description: Applies 50 overhealth that reduces over time, and can breath underwater and swim faster
 			}
 		}
 

@@ -30,7 +30,7 @@ public class JungleStructures : ModSystem
     public override void PostWorldGen()
     {
         // CONFIG CHECK
-        if (!ModContent.GetInstance<NaturiumConfig>().EnableStructures)
+        if (!ModContent.GetInstance<NaturiumConfig>().Structures)
             return;
         // Try up to 500 times to find a good Jungle location
         for (int attempt = 0; attempt < 500; attempt++)

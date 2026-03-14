@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static NaturiumMod.Content.Helpers.CardRarityHelper;
 
 namespace NaturiumMod.Content.Items.PreHardmode.Cards
 {
@@ -45,23 +46,27 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
             // -------------------------
             if (roll < 60)
             {
+
                 int commonRoll = Main.rand.Next(3);
 
                 switch (commonRoll)
                 {
                     case 0:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                            ModContent.ItemType<AquaMador>());
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<AquaMador>());
+                        CardRarityHelper.AnnounceCard(player, "Aqua Mador", Rarity.Common);
+
                         break;
 
                     case 1:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                            ModContent.ItemType<CelticGuardian>());
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<CelticGuardian>());
+                        CardRarityHelper.AnnounceCard(player, "Celtic Guardian", Rarity.Common);
+
                         break;
 
                     case 2:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                            ModContent.ItemType<SilverFang>());
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SilverFang>());
+                        CardRarityHelper.AnnounceCard(player, "Silver Fang", Rarity.Common);
+
                         break;
                 }
 
@@ -78,13 +83,15 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
                 switch (rareRoll)
                 {
                     case 0:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                            ModContent.ItemType<Gaia>());
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Gaia>());
+                        CardRarityHelper.AnnounceCard(player, "Gaia the Fierce Knight", Rarity.Rare);
+
                         break;
 
                     case 1:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                            ModContent.ItemType<ManEaterBug>());
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<ManEaterBug>());
+                        CardRarityHelper.AnnounceCard(player, "Man-Eater Bug", Rarity.Rare);
+
                         break;
                 }
 
@@ -96,16 +103,18 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
             // -------------------------
             if (roll < 95)
             {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                    ModContent.ItemType<FlameSwordsman>());
+                player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FlameSwordsman>());
+                CardRarityHelper.AnnounceCard(player, "Flame Swordsman", Rarity.SuperRare);
+
                 return;
             }
 
             // -------------------------
             // ULTRA RARE (5%)
             // -------------------------
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type),
-                ModContent.ItemType<BEWD>());
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BEWD>());
+            CardRarityHelper.AnnounceCard(player, "Blue-Eyes White Dragon", Rarity.UltraRare);
+
         }
 
     }
