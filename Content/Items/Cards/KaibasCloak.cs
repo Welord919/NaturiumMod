@@ -3,12 +3,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards;
+namespace NaturiumMod.Content.Items.Cards;
 [AutoloadEquip(EquipType.Body)]
 
 public class KaibasCloak : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/KaibasCloak";
+    public override string Texture => "NaturiumMod/Assets/Items/Cards/KaibasCloak";
     public override void SetDefaults()
     {
         Item.width = 18;
@@ -35,12 +35,10 @@ public class KaibasCloak : ModItem
         equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Legs);
     }
     public override void UpdateEquip(Player player)
-
     {
         player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped = true;
         var boost = player.GetModPlayer<WeaponBoostPlayer>();
         boost.activeBoosts["Dragon"] = true;
-        
     }
 }
 public class KaibaPlayer : ModPlayer
@@ -51,6 +49,31 @@ public class KaibaPlayer : ModPlayer
     {
         KaibasCloakEquipped = false;
     }
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+    {
+        // Only apply to CardDamage projectiles
+        if (proj.DamageType == ModContent.GetInstance<CardDamage>())
+        {
+            // If Kaiba's Cloak is equipped, apply +10% damage
+            if (KaibasCloakEquipped)
+            {
+                modifiers.SourceDamage *= 1.10f; // +10% damage
+            }
+        }
+    }
+    public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+    {
+        // Only apply to CardDamage items
+        if (item.DamageType == ModContent.GetInstance<CardDamage>())
+        {
+            if (KaibasCloakEquipped)
+            {
+                damage *= 1.10f; // +10% damage
+            }
+        }
+    }
+
+
 }
 
 

@@ -1,18 +1,22 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards
+namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
     public class SilverFang : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/Silverfang";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Silverfang";
 
         public override void SetDefaults()
         {
+            Item.damage = 2;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.width = 32;
             Item.height = 32;
             Item.useStyle = ItemUseStyleID.HoldUp;
@@ -39,7 +43,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
                 player.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<SilverFangShout>(),
-                2,                // damage
+                Item.damage,                // damage
                 Item.knockBack,   // knockback
                 player.whoAmI
             );

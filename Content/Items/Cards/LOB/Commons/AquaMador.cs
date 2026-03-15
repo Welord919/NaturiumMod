@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards
+namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
     public class AquaMador : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/aquamador";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/aquamador";
 
         public override void SetDefaults()
         {
@@ -28,6 +28,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
         public override bool? UseItem(Player player)
         {
             player.AddBuff(ModContent.BuffType<AquaMadorBuff>(), 60 * 20);
+            player.AddBuff(BuffID.Gills, 60 * 20);
             var mp = player.GetModPlayer<AquaMadorPlayer>();
             mp.currentOverHealth = 50;
             return true;
@@ -36,7 +37,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
 
     public class AquaMadorBuff : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/AquaMadorBuff";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/AquaMadorBuff";
 
         public override void SetStaticDefaults()
         {
@@ -70,13 +71,14 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards
         {
             if (Player.wet && !Player.honeyWet && !Player.lavaWet)
             {
-                Player.AddBuff(BuffID.Merfolk, 2);
-
-                // Enable actual merfolk physics
-                Player.merman = true;
-
+                // Enable full merfolk behavior manually (1.4.3 style)
+                Player.merman = true;        // transformation visuals
+                Player.ignoreWater = true;   // swim freely
+                Player.gills = true;         // breathe underwater
             }
         }
+
+
         public override void PostUpdateMiscEffects()
         {
             if (!aquaMadorActive)

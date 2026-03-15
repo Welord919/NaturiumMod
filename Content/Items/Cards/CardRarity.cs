@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.PreHardmode.Cards.Rares;
-using NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares;
-using NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +9,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Helpers
+namespace NaturiumMod.Content.Items.Cards
 {
     public static class CardRarityHelper
     {

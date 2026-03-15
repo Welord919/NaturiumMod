@@ -1,17 +1,18 @@
 ﻿
 using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards.Rares
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 {
     // ============================
     //  MAN-EATER BUG ITEM
     // ============================
     public class ManEaterBug : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/ManEaterBug";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/ManEaterBug";
 
         public override void SetDefaults()
         {
@@ -42,7 +43,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.Rares
     // ============================
     public class ManEaterBugGuard : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/ManEaterBugBuff";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/ManEaterBugBuff";
         public override void SetStaticDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;

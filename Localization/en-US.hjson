@@ -33,6 +33,10 @@ Mods: {
 			CelticGuardianSlash.DisplayName: Celtic Guardian Slash
 			GaiaChargeProjectile.DisplayName: Gaia Charge Projectile
 			PlagueBlobProj.DisplayName: Plague Blob Proj
+			DMAttack.DisplayName: D M Attack
+			DMCharge.DisplayName: D M Charge
+			RedEyesBlast.DisplayName: Red Eyes Blast
+			RedEyesCharge.DisplayName: Red Eyes Charge
 		}
 
 		NPCs: {
@@ -618,7 +622,7 @@ Mods: {
 				DisplayName: Kaibas Cloak
 				Tooltip:
 					'''
-					Increase damage of all Dragon cards by 15%
+					Increase damage of all cards by 10%
 					Reduce Summonign Sickenness duration from Dragon cards by 50%
 					Uses a secret move when 3 Blue Eyes White Dragon cards are used together
 					'You fight me with fruit? Don't mock me!'
@@ -662,7 +666,7 @@ Mods: {
 				DisplayName: Aqua Mador
 				Tooltip:
 					'''
-					Apply a buff that gives you 50 overhealth that reduces over time, and protextive liquid wall that allows you to breath underwater and swim faster
+					Apply a buff that gives you 50 overhealth that reduces over time, and a liquid wall that allows you to breath underwater
 					A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him''
 					'''
 			}
@@ -690,6 +694,59 @@ Mods: {
 			PlagueWormHeadBanner: {
 				DisplayName: Plague Worm Head Banner
 				Tooltip: ""
+			}
+
+			PetiteDragon: {
+				DisplayName: Petite Dragon
+				Tooltip: Apply a buff that boosts Card damage by 5% for 30 seconds
+			}
+
+			CurseofDragon: {
+				DisplayName: Curse of Dragon
+				Tooltip: A fire-breathing plant found growing near volcanoes.
+			}
+
+			Masaki: {
+				DisplayName: Masaki
+				Tooltip: "'Legendary swordmaster Masaki is a veteran of over 100 battles.'"
+			}
+
+			Swords: {
+				DisplayName: Swords
+				Tooltip: ""
+			}
+
+			LeftLeg: {
+				DisplayName: Left Leg
+				Tooltip: "'A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.'"
+			}
+
+			DarkMagician: {
+				DisplayName: Dark Magician
+				Tooltip: "'The ultimate wizard in terms of attack and defense.'"
+			}
+
+			REBD: {
+				DisplayName: Red Eyes Black Dragon
+				Tooltip: "'A ferocious dragon with a deadly attack.'"
+			}
+
+			Firegrass: {
+				DisplayName: Firegrass
+				Tooltip:
+					'''
+					Gain the Obsidian skin buff for 30 seconds
+					'A fire-breathing plant found growing near volcanoes.'
+					'''
+			}
+
+			FlameManipulator: {
+				DisplayName: Flame Manipulator
+				Tooltip:
+					'''
+					Gain the Fire Damage Buff, which buffs all forms of fire damage by 5% for 30 seconds
+					'This Spellcaster attacks enemies with fire-related spells such as "Sea of Flames" and "Wall of Fire"'
+					'''
 			}
 		}
 
@@ -758,6 +815,16 @@ Mods: {
 				DisplayName: Aqua Mador Buff
 				Description: Applies 50 overhealth that reduces over time, and can breath underwater and swim faster
 			}
+
+			PetiteDragonBuff: {
+				DisplayName: Petite Dragon Buff
+				Description: Boost Card damage by 5%
+			}
+
+			FireDamageBuff: {
+				DisplayName: Fire Damage Buff
+				Description: Buffs all forms of fire damage by 5%
+			}
 		}
 
 		WorldGen.ExampleOrePassMessage: Naturium Ore
@@ -797,5 +864,7 @@ Mods: {
 			BarkionsCurse.DisplayName: Barkion's Curse
 			BarkionsBlessing.DisplayName: Barkion's Blessing
 		}
+
+		DamageClasses.CardDamage.DisplayName: Card Damage
 	}
 }

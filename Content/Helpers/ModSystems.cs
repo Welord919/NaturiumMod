@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using NaturiumMod.Content.Items.PreHardmode.Cards;
-using NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares;
-using NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares;
+using NaturiumMod.Content.Items.Cards.LOB;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using System.Collections.Generic;

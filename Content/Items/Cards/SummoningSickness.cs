@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards
+namespace NaturiumMod.Content.Items.Cards
 {
     
     public class SummoningSickness : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/SummoningSickness";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/SummoningSickness";
         public override void SetStaticDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;

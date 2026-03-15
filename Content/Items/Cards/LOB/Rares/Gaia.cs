@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares;
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares;
 
 public class Gaia : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/Gaia";
+    public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Gaia";
     private int usesLeft = 3;
     public override void SetDefaults()
     {
@@ -25,7 +27,7 @@ public class Gaia : ModItem
 
         Item.damage = 20;
         Item.knockBack = 3f;
-        Item.DamageType = DamageClass.Melee;
+        Item.DamageType = ModContent.GetInstance<CardDamage>();
 
         Item.rare = ItemRarityID.Orange;
         Item.value = Item.buyPrice(gold: 3);
@@ -86,7 +88,7 @@ public class GaiaChargeProjectile : ModProjectile
 {
     private float distanceTraveled = 0f;
 
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/GaiaChargeProjectile";
+    public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/GaiaChargeProjectile";
 
     public override void SetDefaults()
     {
@@ -135,7 +137,7 @@ public class GaiaChargeProjectile : ModProjectile
         float bonus = distanceTraveled / 100f; // scales faster
         bonus = MathHelper.Clamp(bonus, 0f, 5f); // up to +250% damage
 
-        modifiers.SourceDamage *= (1f + bonus);
-        modifiers.Knockback *= (1f + bonus);
+        modifiers.SourceDamage *= 1f + bonus;
+        modifiers.Knockback *= 1f + bonus;
     }
 }

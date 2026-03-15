@@ -1,19 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
+namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 {
-    public class CelticGuardian : ModItem
+    public class FlameSwordsman : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/CelticGuardian";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/FlameSwordsman";
 
-        private int usesLeft = 9;
-        private int swingIndex = 0;
+        private int usesLeft = 5;
+        private int swingIndex = 0; // 0 = top→bottom, 1 = bottom→top
 
         public override void SetDefaults()
         {
@@ -26,19 +28,22 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
             Item.noUseGraphic = true;
             Item.noMelee = true;
 
-            Item.DamageType = DamageClass.Melee;
-            Item.damage = 20;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            Item.damage = 50;
             Item.knockBack = 6f;
 
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(silver: 25);
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.buyPrice(gold: 2);
 
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = SoundID.Item20;
 
-            Item.shoot = ModContent.ProjectileType<CelticGuardianSlash>();
+
+            Item.shoot = ModContent.ProjectileType<FlameSwordsmanSlash>();
             Item.shootSpeed = 0f;
 
+            
             Item.maxStack = 999;
+
         }
 
         public override bool CanUseItem(Player player)
@@ -56,16 +61,8 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
         {
             usesLeft--;
 
-            // ⭐ increment swing index instead of XOR toggle
-            swingIndex++;
-            if (swingIndex >= 9)
-            {
-                swingIndex = 0;
-                Item.stack--;     // ⭐ consume the card after 9 swings
-                usesLeft = 9;     // reset for next card
-            }
+            swingIndex ^= 1; // alternate swing direction
 
-            // short cooldown
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 30);
 
             if (Main.myPlayer == player.whoAmI)
@@ -83,45 +80,53 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
                     Item.damage,
                     Item.knockBack,
                     player.whoAmI,
-                    swingIndex % 3 // ⭐ 0=up→down, 1=down→up, 2=thrust
+                    swingIndex
                 );
 
                 if (proj >= 0)
                     Main.projectile[proj].originalDamage = Item.damage;
             }
 
+            if (usesLeft <= 0)
+            {
+                Item.stack--;      // consume ONE card
+                usesLeft = 5;      // reset charges for the next card in the stack
+            }
+
+
             return true;
         }
 
+        // ⭐ Prevent double‑spawn from swing useStyle
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            return false; // prevent double spawn
+            return false;
         }
     }
-    public class CelticGuardianSlash : ModProjectile
+
+    public class FlameSwordsmanSlash : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/CelticGuardianSlash";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/FlameSwordsmanSlash";
+
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 1;
+        }
 
         public override void SetDefaults()
         {
             Projectile.width = 120;
             Projectile.height = 120;
-
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = -1;
-
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-
             Projectile.timeLeft = 16;
-
             Projectile.DamageType = DamageClass.Melee;
-
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
-
             Projectile.spriteDirection = 1;
         }
 
@@ -142,43 +147,58 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
                 .SafeNormalize(new Vector2(player.direction, 0f));
 
             float baseRot = baseDir.ToRotation();
-
             float progress = 1f - Projectile.timeLeft / 16f;
             progress = MathHelper.Clamp(progress, 0f, 1f);
 
-            int swingType = (int)Projectile.ai[0] % 3;
-
+            bool bottomToTop = Projectile.ai[0] == 1f;
             float swingRange = MathHelper.PiOver2;
 
-            if (swingType == 0)
-            {
-                // Up → Down
-                Projectile.rotation = baseRot + MathHelper.Lerp(swingRange, -swingRange, progress);
-            }
-            else if (swingType == 1)
-            {
-                // Down → Up
-                Projectile.rotation = baseRot + MathHelper.Lerp(-swingRange, swingRange, progress);
-            }
-            else
-            {
-                // Thrust (straight forward)
-                Projectile.rotation = baseRot;
-            }
+            float offset = bottomToTop
+                ? MathHelper.Lerp(-swingRange, swingRange, progress)
+                : MathHelper.Lerp(swingRange, -swingRange, progress);
+
+            Projectile.rotation = baseRot + offset;
+            Projectile.rotation %= MathHelper.TwoPi;
 
             Projectile.Center = player.Center;
 
             player.direction = Main.MouseWorld.X >= player.Center.X ? 1 : -1;
             player.itemRotation = Projectile.rotation * player.direction;
+
+            Lighting.AddLight(Projectile.Center, 1f, 0.5f, 0.1f);
+
+            Vector2 dir = Projectile.rotation.ToRotationVector2();
+            float drawScale = 2f;
+            float bladeLength = 120f * drawScale * 0.8f;
+            int dustCount = 12;
+
+            for (int i = 0; i < dustCount; i++)
+            {
+                float bladeProgress = i / (float)(dustCount - 1);
+                Vector2 pos = Projectile.Center + dir * (bladeLength * bladeProgress);
+                pos += Main.rand.NextVector2Circular(8f, 8f);
+
+                Dust d = Dust.NewDustDirect(
+                    pos,
+                    0, 0,
+                    DustID.Torch,
+                    dir.X * 2f + Main.rand.NextFloat(-1f, 1f),
+                    dir.Y * 2f + Main.rand.NextFloat(-1f, 1f),
+                    150,
+                    Color.OrangeRed,
+                    1.4f
+                );
+
+                d.noGravity = true;
+                d.velocity *= 1.3f;
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
             var texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-
             Vector2 origin = new Vector2(20f, texture.Height / 2f);
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
-
             float scale = 2f;
 
             Main.EntitySpriteDraw(
@@ -199,21 +219,22 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.SuperRares
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
-
             Vector2 start = Projectile.Center;
+            Vector2 end = Projectile.Center + Projectile.rotation.ToRotationVector2() * 200f;
 
-            // ⭐ Half hit length (100f instead of 200f)
-            Vector2 end = Projectile.Center + Projectile.rotation.ToRotationVector2() * 115f;
-
-            // ⭐ Half line width (20f instead of 40f)
             return Collision.CheckAABBvLineCollision(
                 targetHitbox.TopLeft(),
                 targetHitbox.Size(),
                 start,
                 end,
-                20f,
+                40f,
                 ref collisionPoint
             );
+        }
+
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            target.AddBuff(BuffID.OnFire, 180); // 3 seconds
         }
     }
 }

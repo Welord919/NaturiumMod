@@ -1,23 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares
+namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
     public class BEWD : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/BEWD";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BEWD";
 
         public override void SetDefaults()
         {
+            Item.damage = 200;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+
             Item.width = 32;
             Item.height = 32;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -34,7 +36,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares
             Item.noMelee = true;
         }
 
-        // Count how many BEWD cards the player has
         private int CountBEWD(Player player)
         {
             int count = 0;
@@ -46,7 +47,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares
             return count;
         }
 
-        // Consume N BEWD cards
         private void ConsumeBEWD(Player player, int amount)
         {
             for (int i = 0; i < player.inventory.Length && amount > 0; i++)
@@ -64,114 +64,112 @@ namespace NaturiumMod.Content.Items.PreHardmode.Cards.UltraRares
         }
 
         public override bool? UseItem(Player player)
-{
-    bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
-    bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
+        {
+            bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
+            bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
 
-    // Base Summoning Sickness
-    int duration = 600;
+            int duration = 600;
+            if (hasCloak && isDragon)
+                duration = (int)(duration * 0.5);
 
-    // Cloak reduces sickness
-    if (hasCloak && isDragon)
-        duration = (int)(duration * 0.5);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), duration);
 
-    player.AddBuff(ModContent.BuffType<SummoningSickness>(), duration);
+            int bewdCount = CountBEWD(player);
 
-    // Count BEWD copies
-    int bewdCount = CountBEWD(player);
+            // Triple-shot effect
+            if (hasCloak && bewdCount >= 3)
+            {
+                ConsumeBEWD(player, 2);
 
-    // ⭐ SPECIAL EFFECT: Kaiba’s Cloak + 3 BEWD
-    if (hasCloak && bewdCount >= 3)
-    {
-        // Consume 3 cards
-        ConsumeBEWD(player, 2);
+                Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
-        // Base direction toward cursor
-Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
+                float[] angles =
+                {
+                    0f,
+                    MathHelper.ToRadians(10f),
+                    MathHelper.ToRadians(-10f)
+                };
 
-// Rotation offsets
-float[] angles =
-{
-    0f,
-    MathHelper.ToRadians(10f),
-    MathHelper.ToRadians(-10f)
-};
+                foreach (float angle in angles)
+                {
+                    Projectile.NewProjectile(
+                        Item.GetSource_FromThis(),
+                        player.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<DragonBurstCharge>(),
+                        Item.damage,        // ✔ CardDamage scaling works
+                        Item.knockBack,
+                        player.whoAmI,
+                        ai0: 0,
+                        ai1: angle
+                    );
+                }
 
-foreach (float angle in angles)
-{
-    Vector2 dir = baseDir.RotatedBy(angle);
+                return true;
+            }
 
-    int proj = Projectile.NewProjectile(
-        Item.GetSource_FromThis(),
-        player.Center,
-        Vector2.Zero, // velocity ignored anyway
-        ModContent.ProjectileType<DragonBurstCharge>(),
-        200,
-        4f,
-        player.whoAmI,
-        ai0: 0,
-        ai1: angle
-    );
+            // Single shot
+            if (player.whoAmI == Main.myPlayer)
+            {
+                Projectile.NewProjectile(
+                    Item.GetSource_FromThis(),
+                    player.Center,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<DragonBurstCharge>(),
+                    Item.damage,        // ✔ CardDamage scaling works
+                    Item.knockBack,
+                    player.whoAmI
+                );
+            }
 
-    Main.projectile[proj].timeLeft *= 2;
-}
-
-
-        return true;
+            return true;
+        }
     }
 
-    // ⭐ Normal single BEWD use
-    if (player.whoAmI == Main.myPlayer)
-    {
-        Projectile.NewProjectile(
-            Item.GetSource_FromThis(),
-            player.Center,
-            Vector2.Zero,
-            ModContent.ProjectileType<DragonBurstCharge>(),
-            200,
-            4f,
-            player.whoAmI
-        );
-    }
+    // ============================================================
+    // BURST STREAM (BEAM)
+    // ============================================================
 
-    return true;
-}
-    }
-public class BurstStream : ModProjectile
+    public class BurstStream : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Cards/BurstStream";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BurstStream";
+
         public override void SetDefaults()
         {
-            Projectile.width = 1000; // your PNG length
-            Projectile.height = 40;  // your PNG height
+            Projectile.width = 1000;
+            Projectile.height = 40;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.timeLeft = 60; // lasts 1 second
+            Projectile.timeLeft = 60;
 
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            var modPlayer = Main.player[Projectile.owner].GetModPlayer<WeaponBoostPlayer>();
 
+            // If Warrior tag is active, apply the boost
+            if (modPlayer.activeBoosts.TryGetValue("KaibaBoost", out bool warriorActive) && warriorActive)
+            {
+                modifiers.SourceDamage *= 1.10f; // +10% damage
+            }
+        }
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
 
-            // Beam starts at player
             Projectile.Center = player.Center;
 
-            // Retrieve angle offset
             float angleOffset = Projectile.ai[0];
 
-            // Base direction toward cursor
             Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-
-            // Apply offset
             Vector2 finalDir = baseDir.RotatedBy(angleOffset);
 
-            // Apply direction
             Projectile.velocity = finalDir;
             Projectile.rotation = finalDir.ToRotation();
 
@@ -181,8 +179,6 @@ public class BurstStream : ModProjectile
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-
-            // ⭐ Origin at the START of the beam (left side)
             Vector2 origin = new Vector2(0, tex.Height / 2f);
 
             Main.EntitySpriteDraw(
@@ -204,17 +200,20 @@ public class BurstStream : ModProjectile
         {
             float collisionPoint = 0f;
 
-            // 2000f = beam length
             return Collision.CheckAABBvLineCollision(
                 targetHitbox.TopLeft(),
                 targetHitbox.Size(),
                 Projectile.Center,
                 Projectile.Center + Projectile.velocity * 2000f,
-                40f, // beam thickness
+                40f,
                 ref collisionPoint
             );
         }
     }
+
+    // ============================================================
+    // DRAGON BURST CHARGE
+    // ============================================================
 
     public class DragonBurstCharge : ModProjectile
     {
@@ -227,32 +226,26 @@ public class BurstStream : ModProjectile
             Projectile.friendly = false;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-
-            Projectile.timeLeft = 120; // enough time for charge + fire
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
+            Projectile.timeLeft = 120;
         }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
 
-            // Stick to player
             Projectile.Center = player.Center;
 
-            // FRAME 0: Lock direction + play roar
             if (Projectile.ai[0] == 0)
             {
-                // ai[1] already contains the direction passed from BEWD
-
-
                 SoundEngine.PlaySound(
                     SoundID.Roar with { Pitch = -0.4f, Volume = 1.2f },
                     Projectile.Center
                 );
             }
 
-            Projectile.ai[0]++; // frame counter
+            Projectile.ai[0]++;
 
-            // Charging dust
             for (int i = 0; i < 4; i++)
             {
                 Dust d = Dust.NewDustDirect(
@@ -275,26 +268,20 @@ public class BurstStream : ModProjectile
             {
                 float angleOffset = Projectile.ai[1];
 
-                // Base direction toward cursor
                 Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-
-                // Apply the offset
                 Vector2 finalDir = baseDir.RotatedBy(angleOffset);
 
-                // Fire BurstStream and store ONLY the angle offset
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
                     player.Center,
                     finalDir,
                     ModContent.ProjectileType<BurstStream>(),
-                    Projectile.damage,
+                    Projectile.damage,      // ✔ inherits BEWD damage WITH scaling
                     Projectile.knockBack,
                     player.whoAmI,
-                    angleOffset, // ai[0] = offset
-                    0            // ai[1] unused
+                    angleOffset
                 );
             }
-
         }
     }
 }
