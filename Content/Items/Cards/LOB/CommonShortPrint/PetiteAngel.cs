@@ -1,14 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.Commons
+namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint
 {
-    public class PetiteDragon : ModItem
+    public class PetiteAngel : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragon";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteAngel";
 
         public override void SetDefaults()
         {
@@ -17,25 +19,30 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
+            Item.UseSound = SoundID.Item44;
             Item.consumable = true;
             Item.maxStack = 999;
-            Item.rare = ItemRarityID.Blue;
-            Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 25);
+            Item.DamageType = DamageClass.Summon;
+            Item.damage = 8;
+            Item.knockBack = 1f;
+
+            Item.buffType = ModContent.BuffType<PetiteAngelBuff>();
+
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.buyPrice(silver: 50);
         }
 
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(ModContent.BuffType<PetiteDragonBuff>(), 60 * 30);
+            player.AddBuff(Item.buffType, 60 * 40);
             return true;
         }
     }
 
-    public class PetiteDragonBuff : ModBuff
+    public class PetiteAngelBuff : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragonBuff";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteAngelBuff";
 
         public override void SetStaticDefaults()
         {
@@ -45,22 +52,22 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<PetiteDragonPlayer>().petiteDragonActive = true;
+            player.GetModPlayer<PetiteAngelPlayer>().petiteAngelActive = true;
         }
     }
 
-    public class PetiteDragonPlayer : ModPlayer
+    public class PetiteAngelPlayer : ModPlayer
     {
-        public bool petiteDragonActive;
+        public bool petiteAngelActive;
 
         public override void ResetEffects()
         {
-            petiteDragonActive = false;
+            petiteAngelActive = false;
         }
 
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if (petiteDragonActive && item.DamageType == ModContent.GetInstance<CardDamage>())
+            if (petiteAngelActive && item.DamageType == ModContent.GetInstance<CardDamage>())
             {
                 damage *= 1.05f; // +5% card damage
             }
@@ -68,7 +75,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (petiteDragonActive && proj.DamageType == ModContent.GetInstance<CardDamage>())
+            if (petiteAngelActive && proj.DamageType == ModContent.GetInstance<CardDamage>())
             {
                 modifiers.SourceDamage *= 1.05f; // +5% card projectile damage
             }

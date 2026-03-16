@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;

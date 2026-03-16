@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
@@ -42,13 +43,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             // Weighted roll (0–99)
             int roll = Main.rand.Next(100);
 
-            // -------------------------
-            // COMMON (60% total)
-            // -------------------------
+            //Commons (60% total)
             if (roll < 60)
             {
 
-                int commonRoll = Main.rand.Next(5);
+                int commonRoll = Main.rand.Next(4);
 
                 switch (commonRoll)
                 {
@@ -70,11 +69,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
                         break;
                     case 3:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PetiteDragon>());
-                        AnnounceCard(player, "Petite Dragon", Rarity.Common);
-
-                        break;
-                    case 4:
                         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FlameManipulator>());
                         AnnounceCard(player, "Flame Manipulator", Rarity.Common);
 
@@ -84,10 +78,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                 return;
             }
 
-            // -------------------------
-            // RARE (25% total)
-            // -------------------------
-            if (roll < 85)
+            //Rare (20% total)
+            if (roll < 80)
             {
                 int rareRoll = Main.rand.Next(4);
 
@@ -119,7 +111,29 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                 return;
             }
 
-            if (roll < 95)
+            //Short Print Commons (10% total)
+            if (roll < 90)
+            {
+                int CSPRoll = Main.rand.Next(2);
+
+                switch (CSPRoll)
+                {
+                    case 0:
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PetiteDragon>());
+                        AnnounceCard(player, "Petite Dragon", Rarity.CommonSP);
+
+                        break;
+                    case 1:
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PetiteDragon>());
+                        AnnounceCard(player, "Petite Dragon", Rarity.CommonSP);
+
+                        break;
+                }
+
+                return;
+            }
+            //Super Rares (6% total)
+            if (roll < 96)
             {
                 int rareRoll = Main.rand.Next(3);
 
@@ -145,7 +159,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
                 return;
             }
-
+            //Super Rares (4% total)
             if (roll < 100)
             {
                 int rareRoll = Main.rand.Next(3);

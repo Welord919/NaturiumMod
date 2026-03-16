@@ -37,6 +37,12 @@ Mods: {
 			DMCharge.DisplayName: D M Charge
 			RedEyesBlast.DisplayName: Red Eyes Blast
 			RedEyesCharge.DisplayName: Red Eyes Charge
+			PetiteDragonMinion.DisplayName: Petite Dragon Minion
+			PetiteDragonShot.DisplayName: Petite Dragon Shot
+			SwordsProj.DisplayName: Swords Proj
+			MasakiBlade.DisplayName: Masaki Blade
+			MasakiChargeProj.DisplayName: Masaki Charge Proj
+			MasakiSheathed.DisplayName: Masaki Sheathed
 		}
 
 		NPCs: {
@@ -698,7 +704,11 @@ Mods: {
 
 			PetiteDragon: {
 				DisplayName: Petite Dragon
-				Tooltip: Apply a buff that boosts Card damage by 5% for 30 seconds
+				Tooltip:
+					'''
+					Summon a Petite Dragon that fires petite projectiles at enemies for 3 minutes
+					'A very small dragon known for its vicious attacks.'
+					'''
 			}
 
 			CurseofDragon: {
@@ -707,13 +717,16 @@ Mods: {
 			}
 
 			Masaki: {
-				DisplayName: Masaki
-				Tooltip: "'Legendary swordmaster Masaki is a veteran of over 100 battles.'"
+				DisplayName: Masaki the Legendary Swordsman
+				Tooltip:'''
+				On use swing a katana, but the longer the botton is held for the stronger and faster the swing will be
+				'Legendary swordmaster Masaki is a veteran of over 100 battles.'
+				'''
 			}
 
 			Swords: {
 				DisplayName: Swords
-				Tooltip: ""
+				Tooltip: Spawn a holy sword on the cursor that falls downwards and damages enemies in its path, once in the ground it stops movement and damages for a short duration
 			}
 
 			LeftLeg: {
@@ -746,6 +759,15 @@ Mods: {
 					'''
 					Gain the Fire Damage Buff, which buffs all forms of fire damage by 5% for 30 seconds
 					'This Spellcaster attacks enemies with fire-related spells such as "Sea of Flames" and "Wall of Fire"'
+					'''
+			}
+
+			PetiteAngel: {
+				DisplayName: Petite Angel
+				Tooltip:
+					'''
+					Apply a buff that boosts all Card damage by 5% for 30 seconds
+					'A quick-moving and tiny fairy that's very difficult to hit.'
 					'''
 			}
 		}
@@ -818,12 +840,22 @@ Mods: {
 
 			PetiteDragonBuff: {
 				DisplayName: Petite Dragon Buff
-				Description: Boost Card damage by 5%
+				Description: Petite Dragon Minion that fires petite projectiles at enemies
 			}
 
 			FireDamageBuff: {
 				DisplayName: Fire Damage Buff
 				Description: Buffs all forms of fire damage by 5%
+			}
+
+			PetiteAngelBuff: {
+				DisplayName: Petite Angel Buff
+				Description: Boost all Card damage by 5%
+			}
+
+			RootedDebuff: {
+				DisplayName: Swords Debuff
+				Description: Stops movement and damages
 			}
 		}
 
