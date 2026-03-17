@@ -23,7 +23,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint
             Item.consumable = true;
             Item.maxStack = 999;
             Item.noMelee = true;
-            Item.DamageType = DamageClass.Summon;
             Item.damage = 8;
             Item.knockBack = 1f;
 

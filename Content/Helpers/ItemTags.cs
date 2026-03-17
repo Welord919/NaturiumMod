@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
@@ -59,9 +60,9 @@ namespace NaturiumMod.Content.Helpers
             AddTags(ModContent.ItemType<PetiteDragon>(), "Card", "Dragon");
             AddTags(ModContent.ItemType<REBD>(), "Card", "Dragon");
             AddTags(ModContent.ItemType<CurseofDragon>(), "Card", "Dragon");
+            AddTags(ModContent.ItemType<TriHornedDragon>(), "Card", "Dragon");
 
             //Warriors
-            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire");
             AddTags(ModContent.ItemType<CelticGuardian>(), "Card", "Warrior");
             AddTags(ModContent.ItemType<Gaia>(), "Card", "Warrior");
             AddTags(ModContent.ItemType<Masaki>(), "Card", "Warrior");
@@ -76,9 +77,17 @@ namespace NaturiumMod.Content.Helpers
             AddTags(ModContent.ItemType<DarkMagician>(), "Card", "Spellcaster");
             AddTags(ModContent.ItemType<LeftLeg>(), "Card", "Spellcaster");
             AddTags(ModContent.ItemType<FlameManipulator>(), "Card", "Spellcaster", "Fire");
+            AddTags(ModContent.ItemType<AquaMador>(), "Card", "Spellcaster", "Fire");
 
             //Plants
             AddTags(ModContent.ItemType<Firegrass>(), "Card", "Plant", "Fire");
+
+            //Fairy
+            AddTags(ModContent.ItemType<PetiteAngel>(), "Card", "Fairy");
+
+            //Fusion 
+            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Fire", "Fusion");
 
             //Spells
             AddTags(ModContent.ItemType<Swords>(), "Card", "Spell");

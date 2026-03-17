@@ -23,7 +23,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint
             Item.consumable = true;
             Item.maxStack = 999;
             Item.noMelee = true;
-            Item.DamageType = DamageClass.Summon;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 8;
             Item.knockBack = 1f;
 
@@ -78,7 +78,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint
             Projectile.minionSlots = 1f;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = DamageClass.Summon;
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); 
             Projectile.ignoreWater = true;
         }
 

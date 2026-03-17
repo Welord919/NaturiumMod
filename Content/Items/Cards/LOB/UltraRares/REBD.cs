@@ -1,287 +1,201 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using StructureHelper.Content.GUI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
+using Terraria.DataStructures;
+using Terraria.Graphics.Renderers;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static AssGen.Assets;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
+namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 {
     public class REBD : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/rebd";
+        private int burstsFired = 0;
 
         public override void SetDefaults()
         {
-            Item.damage = 200;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 40;
+            Item.height = 40;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            Item.damage = 45;
             Item.consumable = true;
             Item.maxStack = 999;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 3);
+            Item.knockBack = 3.5f;
             Item.shoot = ProjectileID.None;
-            Item.autoReuse = true;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
+            Item.shootSpeed = 10f;
+            Item.rare = ItemRarityID.LightRed;
+            Item.value = Item.buyPrice(gold: 1);
+            Item.autoReuse = false;
+            Item.consumable = false;
         }
 
-        private int CountBEWD(Player player)
+        public override bool CanUseItem(Player player)
         {
-            int count = 0;
-            foreach (var item in player.inventory)
-            {
-                if (item.type == ModContent.ItemType<BEWD>())
-                    count += item.stack;
-            }
-            return count;
-        }
+            if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
+                return false;
 
-        private void ConsumeBEWD(Player player, int amount)
-        {
-            for (int i = 0; i < player.inventory.Length && amount > 0; i++)
-            {
-                if (player.inventory[i].type == ModContent.ItemType<BEWD>())
-                {
-                    int take = Math.Min(player.inventory[i].stack, amount);
-                    player.inventory[i].stack -= take;
-                    amount -= take;
-
-                    if (player.inventory[i].stack <= 0)
-                        player.inventory[i].TurnToAir();
-                }
-            }
+            return true;
         }
 
         public override bool? UseItem(Player player)
         {
-            bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
-            bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
 
-            int duration = 600;
-            if (hasCloak && isDragon)
-                duration = (int)(duration * 0.5);
-
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), duration);
-
-            int bewdCount = CountBEWD(player);
-
-            // Triple-shot effect
-            if (hasCloak && bewdCount >= 3)
+            burstsFired++;
+            if (burstsFired >= 3)
             {
-                ConsumeBEWD(player, 2);
-
-                Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-
-                float[] angles =
-                {
-                    0f,
-                    MathHelper.ToRadians(10f),
-                    MathHelper.ToRadians(-10f)
-                };
-
-                foreach (float angle in angles)
-                {
-                    Projectile.NewProjectile(
-                        Item.GetSource_FromThis(),
-                        player.Center,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<DragonBurstCharge>(),
-                        Item.damage,        // ✔ CardDamage scaling works
-                        Item.knockBack,
-                        player.whoAmI,
-                        ai0: 0,
-                        ai1: angle
-                    );
-                }
-
-                return true;
+                burstsFired = 0;
+                Item.stack--;
+                if (Item.stack <= 0)
+                    Item.TurnToAir();
             }
 
-            // Single shot
-            if (player.whoAmI == Main.myPlayer)
+            // Spawn 3 fireballs
+            for (int i = 0; i < 3; i++)
             {
                 Projectile.NewProjectile(
-                    Item.GetSource_FromThis(),
+                    player.GetSource_ItemUse(Item),
                     player.Center,
                     Vector2.Zero,
-                    ModContent.ProjectileType<DragonBurstCharge>(),
-                    Item.damage,        // ✔ CardDamage scaling works
+                    ModContent.ProjectileType<RedEyesFireball>(),
+                    Item.damage,
                     Item.knockBack,
-                    player.whoAmI
+                    player.whoAmI,
+                    i // index for spread
                 );
             }
 
             return true;
         }
     }
-
-    // ============================================================
-    // BURST STREAM (BEAM)
-    // ============================================================
-
-    public class RedEyesBlast : ModProjectile
+    public class RedEyesFireball : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BurstStream";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/RedEyesFireball";
+
+        private Vector2 targetPos;
+        private bool initialized = false;
 
         public override void SetDefaults()
         {
-            Projectile.width = 1000;
-            Projectile.height = 40;
+            Projectile.width = 26;
+            Projectile.height = 26;
             Projectile.friendly = true;
+            Projectile.hostile = false;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.timeLeft = 60;
-
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
-
+            Projectile.timeLeft = 180;
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.ownerHitCheck = false;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = -1;
         }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            var modPlayer = Main.player[Projectile.owner].GetModPlayer<WeaponBoostPlayer>();
 
-            // If Warrior tag is active, apply the boost
-            if (modPlayer.activeBoosts.TryGetValue("KaibaBoost", out bool warriorActive) && warriorActive)
-            {
-                modifiers.SourceDamage *= 1.10f; // +10% damage
-            }
-        }
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
+            Player owner = Main.player[Projectile.owner];
 
-            Projectile.Center = player.Center;
+            if (!initialized)
+            {
+                initialized = true;
 
-            float angleOffset = Projectile.ai[0];
+                targetPos = Main.MouseWorld;
 
-            Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-            Vector2 finalDir = baseDir.RotatedBy(angleOffset);
+                int index = (int)Projectile.ai[0]; // 0,1,2
+                float spread = MathHelper.ToRadians(40f);
 
-            Projectile.velocity = finalDir;
-            Projectile.rotation = finalDir.ToRotation();
+                // Flip arc based on facing direction
+                float angle = MathHelper.Lerp(-spread, spread, index / 2f) * owner.direction;
 
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.4f, 1f);
+                // Spawn offset on facing side
+                Vector2 offset = new Vector2(120 * owner.direction, 0).RotatedBy(angle);
+                Projectile.Center = owner.Center + offset;
+
+                // Initial outward velocity
+                Projectile.velocity = offset.SafeNormalize(Vector2.UnitX * owner.direction) * 6f;
+            }
+
+            // Curve toward cursor
+            Vector2 toTarget = (targetPos - Projectile.Center).SafeNormalize(Vector2.Zero);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, toTarget * 14f, 0.05f);
+
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
+            if (Main.rand.NextBool(3))
+            {
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch);
+                Main.dust[dust].velocity *= 0.3f;
+            }
+
+            if (Vector2.Distance(Projectile.Center, targetPos) < 20f)
+                Explode();
         }
 
-        public override bool PreDraw(ref Color lightColor)
+        private void Explode()
         {
-            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 origin = new Vector2(0, tex.Height / 2f);
+            for (int i = 0; i < 30; i++)
+            {
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch);
+                Main.dust[dust].velocity *= 2f;
+            }
 
-            Main.EntitySpriteDraw(
-                tex,
-                Projectile.Center - Main.screenPosition,
-                null,
-                Color.White,
-                Projectile.rotation,
-                origin,
-                1f,
-                SpriteEffects.None,
-                0
-            );
-
-            return false;
-        }
-
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            float collisionPoint = 0f;
-
-            return Collision.CheckAABBvLineCollision(
-                targetHitbox.TopLeft(),
-                targetHitbox.Size(),
+            Projectile.NewProjectile(
+                Projectile.GetSource_Death(),
                 Projectile.Center,
-                Projectile.Center + Projectile.velocity * 2000f,
-                40f,
-                ref collisionPoint
+                Vector2.Zero,
+                ModContent.ProjectileType<RedEyesExplosion>(),
+                Projectile.damage,
+                Projectile.knockBack,
+                Projectile.owner
             );
+
+            Projectile.Kill();
         }
     }
 
-    // ============================================================
-    // DRAGON BURST CHARGE
-    // ============================================================
-
-    public class RedEyesCharge : ModProjectile
+    public class RedEyesExplosion : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/Blank";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.InfernoFriendlyBlast;
 
         public override void SetDefaults()
         {
-            Projectile.width = 40;
-            Projectile.height = 40;
-            Projectile.friendly = false;
+            Projectile.width = 80;
+            Projectile.height = 80;
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 2;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
-            Projectile.timeLeft = 120;
+            Projectile.DamageType = DamageClass.Ranged;
+
+            Projectile.ownerHitCheck = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
         }
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
-
-            Projectile.Center = player.Center;
-
-            if (Projectile.ai[0] == 0)
+            if (Projectile.timeLeft == 2)
             {
-                SoundEngine.PlaySound(
-                    SoundID.Roar with { Pitch = -0.4f, Volume = 1.2f },
-                    Projectile.Center
-                );
-            }
-
-            Projectile.ai[0]++;
-
-            for (int i = 0; i < 4; i++)
-            {
-                Dust d = Dust.NewDustDirect(
-                    Projectile.position,
-                    Projectile.width,
-                    Projectile.height,
-                    DustID.BlueCrystalShard,
-                    Main.rand.NextFloat(-3, 3),
-                    Main.rand.NextFloat(-3, 3),
-                    150,
-                    Color.White,
-                    1.8f
-                );
-                d.noGravity = true;
-            }
-
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.4f, 1f);
-
-            if (Projectile.ai[0] == 60 && Main.myPlayer == Projectile.owner)
-            {
-                float angleOffset = Projectile.ai[1];
-
-                Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-                Vector2 finalDir = baseDir.RotatedBy(angleOffset);
-
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    player.Center,
-                    finalDir,
-                    ModContent.ProjectileType<BurstStream>(),
-                    Projectile.damage,      // ✔ inherits BEWD damage WITH scaling
-                    Projectile.knockBack,
-                    player.whoAmI,
-                    angleOffset
-                );
+                SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
             }
         }
     }
+
 }

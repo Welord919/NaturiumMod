@@ -25,7 +25,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Item.maxStack = 999;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.shoot = ModContent.ProjectileType<SwordsProj>();
             Item.shootSpeed = 0f;
 
@@ -50,7 +50,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 Item.stack--;
                 usesLeft = 3;
             }
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 120);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 60);
             Vector2 pos = Main.MouseWorld;
             Projectile.NewProjectile(
                 player.GetSource_ItemUse(Item),
@@ -128,7 +128,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 if (Main.rand.NextBool(3))
                 {
                     int d = Dust.NewDust(
-                        Projectile.position + new Vector2(-6f, 0f),
+                        Projectile.position + new Vector2(-14f, 0f),
                         Projectile.width,
                         Projectile.height,
                         DustID.GoldCoin

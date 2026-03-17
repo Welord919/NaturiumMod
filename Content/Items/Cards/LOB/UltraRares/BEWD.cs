@@ -17,7 +17,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 
         public override void SetDefaults()
         {
-            Item.damage = 200;
+            Item.damage = 80;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
 
             Item.width = 32;
@@ -68,7 +68,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
             bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
 
-            int duration = 600;
+            int duration = 480;
             if (hasCloak && isDragon)
                 duration = (int)(duration * 0.5);
 

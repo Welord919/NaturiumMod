@@ -17,7 +17,7 @@ namespace NaturiumMod.Content.Items.Cards
         {
             Common,
             Rare,
-            CommonSP,
+            ShortPrint,
             SuperRare,
             UltraRare
         }
@@ -38,7 +38,7 @@ namespace NaturiumMod.Content.Items.Cards
                     sound = SoundID.Unlock;
                     break;
 
-                case Rarity.CommonSP:
+                case Rarity.ShortPrint:
                     color = Color.LightGray;
                     sound = SoundID.Item9;
                     break;

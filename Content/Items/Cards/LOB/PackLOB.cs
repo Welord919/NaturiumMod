@@ -47,7 +47,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             if (roll < 60)
             {
 
-                int commonRoll = Main.rand.Next(4);
+                int commonRoll = Main.rand.Next(5);
 
                 switch (commonRoll)
                 {
@@ -73,6 +73,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                         AnnounceCard(player, "Flame Manipulator", Rarity.Common);
 
                         break;
+                    case 4:
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Firegrass>());
+                        AnnounceCard(player, "Firegrass", Rarity.Common);
+
+                        break;
                 }
 
                 return;
@@ -86,9 +91,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                 switch (rareRoll)
                 {
                     case 0:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Gaia>());
-                        AnnounceCard(player, "Gaia the Fierce Knight", Rarity.Rare);
-
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Swords>());
+                        AnnounceCard(player, "Swords of revealing light", Rarity.Rare);
                         break;
 
                     case 1:
@@ -106,6 +110,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                         AnnounceCard(player, "Curse of Dragon", Rarity.Rare);
 
                         break;
+
                 }
 
                 return;
@@ -114,18 +119,18 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             //Short Print Commons (10% total)
             if (roll < 90)
             {
-                int CSPRoll = Main.rand.Next(2);
+                int ShortPrint = Main.rand.Next(2);
 
-                switch (CSPRoll)
+                switch (ShortPrint)
                 {
                     case 0:
                         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PetiteDragon>());
-                        AnnounceCard(player, "Petite Dragon", Rarity.CommonSP);
+                        AnnounceCard(player, "Petite Dragon", Rarity.ShortPrint);
 
                         break;
                     case 1:
                         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PetiteDragon>());
-                        AnnounceCard(player, "Petite Dragon", Rarity.CommonSP);
+                        AnnounceCard(player, "Petite Dragon", Rarity.ShortPrint);
 
                         break;
                 }
@@ -140,8 +145,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                 switch (rareRoll)
                 {
                     case 0:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FlameSwordsman>());
-                        AnnounceCard(player, "Flame Swordsman", Rarity.SuperRare);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<TriHornedDragon>());
+                        AnnounceCard(player, "Tri-Horned Dragon", Rarity.SuperRare);
 
                         break;
 
@@ -151,8 +156,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
                         break;
                     case 2:
-                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Swords>());
-                        AnnounceCard(player, "Swords of revealing light", Rarity.SuperRare);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Gaia>());
+                        AnnounceCard(player, "Gaia the Fierce Knight", Rarity.SuperRare);
 
                         break;
                 }
@@ -191,23 +196,31 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
     }
 
-    // ⭐ Global NPC drop for all basic enemies
     public class LOBPackDrop : GlobalNPC
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (!ModContent.GetInstance<NaturiumConfig>().CardDrops)
-                return;
+            // Pre-Hardmode condition
+            var rule = new LeadingConditionRule(new Conditions.IsPreHardmode());
 
-
-            // Only drop from basic enemies (no bosses, no town NPCs)
-            if (!npc.friendly && npc.lifeMax > 5 && npc.damage > 0 && !npc.boss)
+            // Only basic enemies
+            if (!npc.friendly &&
+                npc.lifeMax > 5 &&
+                npc.damage > 0 &&
+                !npc.boss &&
+                !npc.SpawnedFromStatue &&
+                npc.realLife == -1 && // no segmented bosses
+                npc.type != NPCID.ServantofCthulhu && // no Eye minions
+                npc.type != NPCID.SkeletronHand) // no boss parts
             {
-                npcLoot.Add(ItemDropRule.Common(
+                rule.OnSuccess(ItemDropRule.Common(
                     ModContent.ItemType<PackLOB>(),
-                    20 // 1 in 20 drop chance (5%)
+                    20 // 1/20 chance
                 ));
             }
+
+            npcLoot.Add(rule);
         }
+
     }
 }

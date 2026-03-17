@@ -18,24 +18,22 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
         {
             Item.width = 40;
             Item.height = 40;
-
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 10;
             Item.useTime = 10;
             Item.channel = true;
-
             Item.noUseGraphic = true;
             Item.noMelee = true;
-
             Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 20;
             Item.knockBack = 4f;
-
             Item.shoot = ModContent.ProjectileType<MasakiChargeProj>();
             Item.shootSpeed = 0f;
-
             Item.rare = ItemRarityID.Green;
             Item.value = Item.buyPrice(silver: 50);
+            Item.consumable = true;
+            Item.maxStack = 999;
+
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,

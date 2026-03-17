@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards;
-using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,273 +14,295 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/darkmagi";
 
+        public override void SetStaticDefaults()
+        {
+            Item.staff[Item.type] = true; // Hold like Diamond Staff
+        }
+
         public override void SetDefaults()
         {
-            Item.damage = 200;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 40;
+            Item.height = 40;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 3);
-            Item.shoot = ProjectileID.None;
-            Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.noMelee = true;
+            Item.channel = true;
+
+            Item.shoot = ModContent.ProjectileType<DarkMagicianStaff>();
+            Item.shootSpeed = 0f;
+
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            Item.damage = 50;
+            Item.knockBack = 2f;
+
+            Item.rare = ItemRarityID.LightRed;
+            Item.value = Item.buyPrice(gold: 1);
+
+            Item.consumable = false;
+            Item.maxStack = 999;
         }
 
-        private int CountBEWD(Player player)
+        public override bool CanUseItem(Player player)
         {
-            int count = 0;
-            foreach (var item in player.inventory)
-            {
-                if (item.type == ModContent.ItemType<BEWD>())
-                    count += item.stack;
-            }
-            return count;
-        }
-
-        private void ConsumeBEWD(Player player, int amount)
-        {
-            for (int i = 0; i < player.inventory.Length && amount > 0; i++)
-            {
-                if (player.inventory[i].type == ModContent.ItemType<BEWD>())
-                {
-                    int take = Math.Min(player.inventory[i].stack, amount);
-                    player.inventory[i].stack -= take;
-                    amount -= take;
-
-                    if (player.inventory[i].stack <= 0)
-                        player.inventory[i].TurnToAir();
-                }
-            }
-        }
-
-        public override bool? UseItem(Player player)
-        {
-            bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
-            bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
-
-            int duration = 600;
-            if (hasCloak && isDragon)
-                duration = (int)(duration * 0.5);
-
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), duration);
-
-            int bewdCount = CountBEWD(player);
-
-            // Triple-shot effect
-            if (hasCloak && bewdCount >= 3)
-            {
-                ConsumeBEWD(player, 2);
-
-                Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-
-                float[] angles =
-                {
-                    0f,
-                    MathHelper.ToRadians(10f),
-                    MathHelper.ToRadians(-10f)
-                };
-
-                foreach (float angle in angles)
-                {
-                    Projectile.NewProjectile(
-                        Item.GetSource_FromThis(),
-                        player.Center,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<DragonBurstCharge>(),
-                        Item.damage,        // ✔ CardDamage scaling works
-                        Item.knockBack,
-                        player.whoAmI,
-                        ai0: 0,
-                        ai1: angle
-                    );
-                }
-
-                return true;
-            }
-
-            // Single shot
-            if (player.whoAmI == Main.myPlayer)
-            {
-                Projectile.NewProjectile(
-                    Item.GetSource_FromThis(),
-                    player.Center,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<DragonBurstCharge>(),
-                    Item.damage,        // ✔ CardDamage scaling works
-                    Item.knockBack,
-                    player.whoAmI
-                );
-            }
-
-            return true;
+            // Prevent use during summoning sickness
+            return !player.HasBuff(ModContent.BuffType<SummoningSickness>());
         }
     }
 
     // ============================================================
-    // BURST STREAM (BEAM)
+    // STAFF PROJECTILE (CHARGING + BURST FIRING)
     // ============================================================
 
-    public class DMAttack : ModProjectile
+    public class DarkMagicianStaff : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BurstStream";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DMStaff";
 
-        public override void SetDefaults()
-        {
-            Projectile.width = 1000;
-            Projectile.height = 40;
-            Projectile.friendly = true;
-            Projectile.penetrate = -1;
-            Projectile.tileCollide = false;
-            Projectile.ignoreWater = true;
-            Projectile.timeLeft = 60;
+        private int chargeTime = 0;
+        private int tier = 0;
 
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
-
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
-        }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            var modPlayer = Main.player[Projectile.owner].GetModPlayer<WeaponBoostPlayer>();
-
-            // If Warrior tag is active, apply the boost
-            if (modPlayer.activeBoosts.TryGetValue("KaibaBoost", out bool warriorActive) && warriorActive)
-            {
-                modifiers.SourceDamage *= 1.10f; // +10% damage
-            }
-        }
-        public override void AI()
-        {
-            Player player = Main.player[Projectile.owner];
-
-            Projectile.Center = player.Center;
-
-            float angleOffset = Projectile.ai[0];
-
-            Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-            Vector2 finalDir = baseDir.RotatedBy(angleOffset);
-
-            Projectile.velocity = finalDir;
-            Projectile.rotation = finalDir.ToRotation();
-
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.4f, 1f);
-        }
-
-        public override bool PreDraw(ref Color lightColor)
-        {
-            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 origin = new Vector2(0, tex.Height / 2f);
-
-            Main.EntitySpriteDraw(
-                tex,
-                Projectile.Center - Main.screenPosition,
-                null,
-                Color.White,
-                Projectile.rotation,
-                origin,
-                1f,
-                SpriteEffects.None,
-                0
-            );
-
-            return false;
-        }
-
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            float collisionPoint = 0f;
-
-            return Collision.CheckAABBvLineCollision(
-                targetHitbox.TopLeft(),
-                targetHitbox.Size(),
-                Projectile.Center,
-                Projectile.Center + Projectile.velocity * 2000f,
-                40f,
-                ref collisionPoint
-            );
-        }
-    }
-
-    // ============================================================
-    // DRAGON BURST CHARGE
-    // ============================================================
-
-    public class DMCharge : ModProjectile
-    {
-        public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/Blank";
+        private bool tier1Sound = false;
+        private bool tier2Sound = false;
+        private bool tier3Sound = false;
 
         public override void SetDefaults()
         {
             Projectile.width = 40;
             Projectile.height = 40;
             Projectile.friendly = false;
+            Projectile.hostile = false;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
-            Projectile.timeLeft = 120;
+            Projectile.timeLeft = 999999;
         }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
 
+            if (!player.active || player.dead)
+            {
+                Projectile.Kill();
+                return;
+            }
+
+            // Force held projectile pose
+            player.heldProj = Projectile.whoAmI;
+            player.itemTime = 2;
+            player.itemAnimation = 2;
+
+            // Aim direction
+            Vector2 aim = (Main.MouseWorld - player.Center)
+                .SafeNormalize(new Vector2(player.direction, 0f));
+
+            float baseRot = aim.ToRotation();
+
+            // Staff rotation
+            Projectile.rotation = baseRot;
+
+            // Attach staff to hand
             Projectile.Center = player.Center;
 
-            if (Projectile.ai[0] == 0)
+            // Flip player direction
+            player.direction = Main.MouseWorld.X >= player.Center.X ? 1 : -1;
+
+            // Arm rotation
+            player.itemRotation = Projectile.rotation * player.direction;
+
+            // Charge tiers
+            chargeTime++;
+
+            if (chargeTime < 40) tier = 1;
+            else if (chargeTime < 80) tier = 2;
+            else tier = 3;
+
+            // Tier sounds
+            if (tier == 1 && !tier1Sound)
             {
-                SoundEngine.PlaySound(
-                    SoundID.Roar with { Pitch = -0.4f, Volume = 1.2f },
-                    Projectile.Center
-                );
+                tier1Sound = true;
+                SoundEngine.PlaySound(SoundID.Item29, Projectile.Center);
+            }
+            if (tier == 2 && !tier2Sound)
+            {
+                tier2Sound = true;
+                SoundEngine.PlaySound(SoundID.Item29, Projectile.Center);
+            }
+            if (tier == 3 && !tier3Sound)
+            {
+                tier3Sound = true;
+                SoundEngine.PlaySound(SoundID.Item74, Projectile.Center);
             }
 
-            Projectile.ai[0]++;
+            // Visual charge effects
+            if (tier == 1)
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch);
+            else if (tier == 2)
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame);
+            else
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror);
 
-            for (int i = 0; i < 4; i++)
+            // Release
+            if (!player.channel)
             {
-                Dust d = Dust.NewDustDirect(
-                    Projectile.position,
-                    Projectile.width,
-                    Projectile.height,
-                    DustID.BlueCrystalShard,
-                    Main.rand.NextFloat(-3, 3),
-                    Main.rand.NextFloat(-3, 3),
-                    150,
-                    Color.White,
-                    1.8f
-                );
-                d.noGravity = true;
+                FireBurst(player);
+
+                // Apply summoning sickness (30 frames)
+                player.AddBuff(ModContent.BuffType<SummoningSickness>(), 30);
+
+                // Consume 1 card
+                if (player.HeldItem.stack > 0)
+                {
+                    player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
+                    player.HeldItem.stack--;
+                    if (player.HeldItem.stack <= 0)
+                        player.HeldItem.TurnToAir();
+                }
+
+                Projectile.Kill();
             }
+        }
 
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.4f, 1f);
+        private void FireBurst(Player player)
+        {
+            int shots = 3;
+            int delay = 6;
 
-            if (Projectile.ai[0] == 60 && Main.myPlayer == Projectile.owner)
+            for (int i = 0; i < shots; i++)
             {
-                float angleOffset = Projectile.ai[1];
-
-                Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-                Vector2 finalDir = baseDir.RotatedBy(angleOffset);
-
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
-                    player.Center,
-                    finalDir,
-                    ModContent.ProjectileType<BurstStream>(),
-                    Projectile.damage,      // ✔ inherits BEWD damage WITH scaling
+                    Projectile.Center,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<DarkMagicDelayedShot>(),
+                    Projectile.damage,
                     Projectile.knockBack,
                     player.whoAmI,
-                    angleOffset
+                    tier,
+                    i * delay
                 );
             }
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+
+            // HANDLE PIVOT (left side)
+            Vector2 origin = new Vector2(20f, tex.Height / 2f);
+
+            Main.EntitySpriteDraw(
+                tex,
+                Projectile.Center - Main.screenPosition,
+                null,
+                lightColor,
+                Projectile.rotation,
+                origin,
+                1f,
+                Projectile.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
+                0
+            );
+
+            return false;
+        }
+    }
+
+    // ============================================================
+    // DELAYED SHOT (handles burst timing)
+    // ============================================================
+
+    public class DarkMagicDelayedShot : ModProjectile
+    {
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.None;
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 2;
+            Projectile.height = 2;
+            Projectile.timeLeft = 200;
+            Projectile.tileCollide = false;
+            Projectile.hide = true;
+        }
+
+        public override void AI()
+        {
+            int tier = (int)Projectile.ai[0];
+            int delay = (int)Projectile.ai[1];
+
+            if (Projectile.timeLeft == 200 - delay)
+            {
+                FireRealProjectile(tier);
+                Projectile.Kill();
+            }
+        }
+
+        private void FireRealProjectile(int tier)
+        {
+            Player player = Main.player[Projectile.owner];
+            Vector2 direction = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
+
+            float speed = 12f + tier * 2f;
+            float scale = 1f + (tier - 1) * 0.5f;
+            int damage = player.HeldItem.damage * tier;
+
+            int proj = Projectile.NewProjectile(
+                Projectile.GetSource_FromThis(),
+                player.Center,
+                direction * speed,
+                ModContent.ProjectileType<DarkMagicBolt>(),
+                damage,
+                player.HeldItem.knockBack,
+                player.whoAmI,
+                scale
+            );
+
+            Main.projectile[proj].scale = scale;
+        }
+    }
+
+    // ============================================================
+    // DARK MAGIC BOLT (scales automatically)
+    // ============================================================
+
+    public class DarkMagicBolt : ModProjectile
+    {
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DMagic";
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 12;
+            Projectile.height = 12;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = true;
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+        }
+
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        {
+            float s = Projectile.scale;
+
+            int newWidth = (int)(hitbox.Width * s);
+            int newHeight = (int)(hitbox.Height * s);
+
+            hitbox = new Rectangle(
+                (int)(Projectile.Center.X - newWidth / 2),
+                (int)(Projectile.Center.Y - newHeight / 2),
+                newWidth,
+                newHeight
+            );
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation += 0.25f;
+
+            if (Projectile.scale < 1.3f)
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch);
+            else if (Projectile.scale < 1.8f)
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame);
+            else
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror);
         }
     }
 }
