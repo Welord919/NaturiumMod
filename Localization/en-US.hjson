@@ -750,7 +750,11 @@ Mods: {
 
 			LeftLeg: {
 				DisplayName: Left Leg
-				Tooltip: "'A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.'"
+				Tooltip:
+					'''
+					No Effect
+					'A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.'
+					'''
 			}
 
 			DarkMagician: {
@@ -810,38 +814,57 @@ Mods: {
 			}
 
 			WindEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Wind Essence
 			}
 
 			WaterEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Water Essence
 			}
 
 			LightEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Light Essence
 			}
 
-			FusionAltarItem: {
-				Tooltip: ""
+			FusionAltar: {
+				Tooltip: Allows you to fuse certain items together to create new ones, using the power of the elements
 				DisplayName: Fusion Altar Item
 			}
 
 			FireEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Fire Essence
 			}
 
 			EarthEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Earth Essence
 			}
 
 			DarkEssence: {
-				Tooltip: ""
+				Tooltip: Used for Fusion Crafting
 				DisplayName: Dark Essence
+			}
+
+			EssenceExtractor: {
+				DisplayName: Essence Extractor
+				Tooltip: Used to extract the essence from Cards to be used for Fusion Crafting
+			}
+
+			Polymerization: {
+				DisplayName: Polymerization
+				Tooltip:
+					'''
+					No Effect
+					Used for Fusion Crafting
+					'''
+			}
+
+			QuestResetToken: {
+				DisplayName: Quest Reset Token
+				Tooltip: ""
 			}
 		}
 

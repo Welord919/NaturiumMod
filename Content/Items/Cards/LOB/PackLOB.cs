@@ -133,6 +133,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                         AnnounceCard(player, "Petite Dragon", Rarity.ShortPrint);
 
                         break;
+                    case 2:
+                        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Polymerization>());
+                        AnnounceCard(player, "Polymerization", Rarity.ShortPrint);
+
+                        break;
                 }
 
                 return;
@@ -195,32 +200,48 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         }
 
     }
-
     public class LOBPackDrop : GlobalNPC
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            // Pre-Hardmode condition
-            var rule = new LeadingConditionRule(new Conditions.IsPreHardmode());
+            // ============================================================
+            //  PRE-HARDMODE ONLY VERSION (enable later)
+            //
+            // var preHM = new LeadingConditionRule(new Conditions.IsPreHardmode());
+            // if (!npc.friendly &&
+            //     npc.lifeMax > 5 &&
+            //     npc.damage > 0 &&
+            //     !npc.boss &&
+            //     !npc.SpawnedFromStatue &&
+            //     npc.realLife == -1 &&
+            //     npc.type != NPCID.ServantofCthulhu &&
+            //     npc.type != NPCID.SkeletronHand)
+            // {
+            //     preHM.OnSuccess(ItemDropRule.Common(ModContent.ItemType<PackLOB>(), 20));
+            // }
+            // npcLoot.Add(preHM);
+            //
+            // ============================================================
 
-            // Only basic enemies
+
+            // ============================================================
+            //  CURRENT VERSION — ALWAYS DROPS (no conditions)
+            // ============================================================
+
             if (!npc.friendly &&
                 npc.lifeMax > 5 &&
                 npc.damage > 0 &&
                 !npc.boss &&
                 !npc.SpawnedFromStatue &&
-                npc.realLife == -1 && // no segmented bosses
-                npc.type != NPCID.ServantofCthulhu && // no Eye minions
-                npc.type != NPCID.SkeletronHand) // no boss parts
+                npc.realLife == -1 &&
+                npc.type != NPCID.ServantofCthulhu &&
+                npc.type != NPCID.SkeletronHand)
             {
-                rule.OnSuccess(ItemDropRule.Common(
+                npcLoot.Add(ItemDropRule.Common(
                     ModContent.ItemType<PackLOB>(),
                     20 // 1/20 chance
                 ));
             }
-
-            npcLoot.Add(rule);
         }
-
     }
 }

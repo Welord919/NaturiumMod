@@ -1,6 +1,10 @@
 using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.LOB;
+using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -11,9 +15,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
-using NaturiumMod.Content.Items.Cards.LOB;
-using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 
 namespace NaturiumMod.Content.NPCs
 {
@@ -93,6 +94,41 @@ namespace NaturiumMod.Content.NPCs
 
             Main.npcChatText = "You haven't met the conditions yet.";
         }
+        public class QuestResetToken : ModItem
+        {
+            public override string Texture => "Terraria/Images/Item_309"; // placeholder, change if you want
+
+            public override void SetDefaults()
+            {
+                Item.width = 20;
+                Item.height = 20;
+                Item.maxStack = 99;
+                Item.useStyle = ItemUseStyleID.HoldUp;
+                Item.useTime = 20;
+                Item.useAnimation = 20;
+                Item.consumable = true;
+                Item.rare = ItemRarityID.Blue;
+                Item.value = Item.buyPrice(silver: 50);
+            }
+
+            public override bool? UseItem(Player player)
+            {
+                // Reset quest stage
+                CardQuestWorld.questStage = 0;
+
+                // Feedback
+                if (Main.netMode != NetmodeID.Server)
+                    Main.NewText("Grandpa's questline has been reset.", 200, 200, 255);
+
+                SoundEngine.PlaySound(SoundID.MenuOpen, player.Center);
+
+                // Sync for multiplayer
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                    NetMessage.SendData(MessageID.WorldData);
+
+                return true;
+            }
+        }
 
         public override string GetChat()
         {
@@ -101,8 +137,8 @@ namespace NaturiumMod.Content.NPCs
                 0 => "I sense destiny in your future... care to hear a request?",
                 1 => "Bring me 3 Celtic Guardians. They hold ancient power.",
                 2 => "Bring me a Super Rare card. Show me your luck.",
-                3 => "Bring me 5 Warrior cards. Strength comes in numbers.",
-                4 => "Bring me a Warrior, a Spellcaster, and a Dragon card.",
+                3 => "Bring me 10 Fire cards. Surely you can do this.",
+                4 => "Now that you have the Fusion Altar, you must craft Fusion Extractors. Use Naturium to make them. They extract essence from the cards while on the table. With essences and Polymerization, you can craft powerful Fusion cards. Craft a Flame Swordsman.",
                 5 => "Bring me 3 Dragon cards. The dragons stir.",
                 6 => "Defeat 50 enemies using only card attacks.",
                 7 => "Bring me 3 Blue-Eyes White Dragons.",
@@ -137,48 +173,52 @@ namespace NaturiumMod.Content.NPCs
                         ConsumeFirstSuperRareCard(player);
                         RewardPack(player);
                         CardQuestWorld.questStage = 3;
-                        Main.npcChatText = "A Super Rare? Impressive. Now bring me 5 Warrior cards.";
+                        Main.npcChatText = "A Super Rare? Impressive. Now bring me 10 Fire cards.";
                         return true;
                     }
                     break;
 
-                // QUEST 4 — Bring 5 Warrior cards
+                // QUEST 4 — Bring 10 Fire cards
                 case 3:
-                    if (CountTaggedCards(player, "Warrior") >= 5)
+                    if (CountTaggedCards(player, "Fire") >= 10)
                     {
-                        ConsumeTaggedCards(player, "Warrior", 5);
+                        ConsumeTaggedCards(player, "Fire", 10);
                         RewardPack(player);
+                        player.QuickSpawnItem(
+                            player.GetSource_GiftOrReward(),
+                            ModContent.ItemType<FusionAltar>());
                         CardQuestWorld.questStage = 4;
-                        Main.npcChatText = "Very Brave. Now bring a Warrior, Spellcaster, and a Dragon.";
+                        Main.npcChatText = "Ho ho, for that I will give you a Fusion Altar. Place it down and come back to me.";
                         return true;
                     }
                     break;
 
-                // QUEST 6 — Warrior + Spellcaster + Dragon
+                // QUEST 5 — Craft a Flame Swordsman
                 case 4:
-                    if (HasTaggedCard(player, "Warrior") &&
-                        HasTaggedCard(player, "Spellcaster") &&
-                        HasTaggedCard(player, "Dragon"))
+                    if (player.HasItem(ModContent.ItemType<FlameSwordsman>()))
                     {
-                        ConsumeTaggedCards(player, "Warrior", 1);
-                        ConsumeTaggedCards(player, "Spellcaster", 1);
-                        ConsumeTaggedCards(player, "Dragon", 1);
+                        for (int i = 0; i < 5; i++)
+                            RewardPack(player);
+
                         RewardPack(player);
                         CardQuestWorld.questStage = 5;
-                        Main.npcChatText = "A balanced deck. Now bring me 3 Dragons.";
+
+                        Main.npcChatText =
+                            "Excellent work crafting a Flame Swordsman. You understand the basics of Fusion Crafting. Now bring me 10 Dragon cards";
                         return true;
                     }
                     break;
 
-                // QUEST 7 — Bring 3 Dragon cards
+
+                // QUEST 6 — Bring 10 Dragon cards
                 case 5:
-                    if (CountTaggedCards(player, "Dragon") >= 3)
+                    if (CountTaggedCards(player, "Dragon") >= 10)
                     {
-                        ConsumeTaggedCards(player, "Dragon", 3);
+                        ConsumeTaggedCards(player, "Dragon", 10);
                         RewardPack(player);
                         CardQuestWorld.questStage = 6;
                         CardQuestWorld.cardKillsWithCardDamage = 0;
-                        Main.npcChatText = "The dragons awaken. Now defeat 50 enemies with card attacks.";
+                        Main.npcChatText = "TNow defeat 50 enemies with card attacks.";
                         return true;
                     }
                     break;

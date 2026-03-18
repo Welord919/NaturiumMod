@@ -1,4 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.Rares;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +13,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static NaturiumMod.Content.Items.Cards.CardRarityHelper;
 
 namespace NaturiumMod.Content.Items.Cards
 {
@@ -94,6 +100,49 @@ namespace NaturiumMod.Content.Items.Cards
                 );
             }
             CombatText.NewText(player.getRect(), Color.IndianRed, "Amazing!", true);
+        }
+    }
+    public class CardRarityLoader : ModSystem
+    {
+        public override void PostSetupContent()
+        {
+            // Commons
+            CardRarityRegistry.Register(ModContent.ItemType<Firegrass>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<AquaMador>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<CelticGuardian>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<SilverFang>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<FlameManipulator>(), Rarity.Common);
+
+            // Short Prints
+            CardRarityRegistry.Register(ModContent.ItemType<PetiteDragon>(), Rarity.ShortPrint);
+
+            // Rares
+            CardRarityRegistry.Register(ModContent.ItemType<Swords>(), Rarity.Rare);
+            CardRarityRegistry.Register(ModContent.ItemType<ManEaterBug>(), Rarity.Rare);
+            CardRarityRegistry.Register(ModContent.ItemType<Masaki>(), Rarity.Rare);
+            CardRarityRegistry.Register(ModContent.ItemType<CurseofDragon>(), Rarity.Rare);
+
+            // Super Rares
+            CardRarityRegistry.Register(ModContent.ItemType<TriHornedDragon>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<LeftLeg>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<Gaia>(), Rarity.SuperRare);
+
+            // Ultra Rares
+            CardRarityRegistry.Register(ModContent.ItemType<BEWD>(), Rarity.UltraRare);
+            CardRarityRegistry.Register(ModContent.ItemType<REBD>(), Rarity.UltraRare);
+            CardRarityRegistry.Register(ModContent.ItemType<DarkMagician>(), Rarity.UltraRare);
+        }
+    }
+    // ---------------------------
+    //  RARITY REGISTRY
+    // ---------------------------
+    public static class CardRarityRegistry
+    {
+        public static Dictionary<int, Rarity> CardRarities = new();
+
+        public static void Register(int itemType, Rarity rarity)
+        {
+            CardRarities[itemType] = rarity;
         }
     }
 }
