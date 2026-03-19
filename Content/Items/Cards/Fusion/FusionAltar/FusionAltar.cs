@@ -1,7 +1,9 @@
 ﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -75,7 +77,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
 
         public override void AddRecipes()
         {
-            CreateRecipe(3)
+            CreateRecipe(15)
                 .AddIngredient(ModContent.ItemType<NaturiumBar>(), 5)
                 .AddTile(ModContent.TileType<FusionAltarTile>())
                 .Register();
@@ -89,7 +91,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.width = 20;
             Item.height = 20;
             Item.maxStack = 999;
-            Item.value = 0;
+            Item.value = 50;
             Item.rare = ItemRarityID.White;
         }
     }
@@ -201,36 +203,5 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             };
         }
     }
-    //  FUSION RECIPES
-    public class FlameSwordsmanFusion : ModSystem
-    {
-        public override void AddRecipes()
-        {
-            Recipe.Create(ModContent.ItemType<FlameSwordsman>())
-                .AddIngredient(ModContent.ItemType<FlameManipulator>())
-                .AddIngredient(ModContent.ItemType<Masaki>())
-                .AddIngredient(ModContent.ItemType<FireEssence>(), 2)
-                .AddIngredient(ModContent.ItemType<EarthEssence>(), 2)
-                .AddIngredient(ModContent.ItemType<Polymerization>(), 1)
-                .AddTile(ModContent.TileType<FusionAltarTile>())
-                .Register();
-        }
-    }
-    public class DarkfireDragonFusion : ModSystem
-    {
-        public override void AddRecipes()
-        {
-            Recipe.Create(ModContent.ItemType<DarkfireDragon>())
-                .AddIngredient(ModContent.ItemType<Firegrass>())
-                .AddIngredient(ModContent.ItemType<PetiteDragon>())
-                .AddIngredient(ModContent.ItemType<FireEssence>(), 10)
-                .AddIngredient(ModContent.ItemType<LightEssence>(), 5)
-                .AddIngredient(ModContent.ItemType<DarkEssence>(), 5)
-                .AddIngredient(ModContent.ItemType<Polymerization>(), 1)
-                .AddTile(ModContent.TileType<FusionAltarTile>())
-                .Register();
-        }
-    }
     
-
 }

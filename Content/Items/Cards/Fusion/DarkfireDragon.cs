@@ -5,6 +5,7 @@ using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,7 +36,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.shoot = ModContent.ProjectileType<DarkFireDragonHead>();
             Item.shootSpeed = 8f;
 
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.LightPurple;
             Item.value = Item.buyPrice(silver: 80);
 
             Item.consumable = true;
@@ -86,6 +87,57 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
 
         public override void AI()
         {
+            if (Projectile.localAI[0] == 0f)
+            {
+                Projectile.localAI[0] = 1f;
+
+                // 🔊 DRAGON ROAR
+                SoundEngine.PlaySound(
+                    SoundID.Roar with { Pitch = -0.4f, Volume = 1.2f },
+                    Projectile.Center
+                );
+
+                // 🔥 FIRE BLAST (big ignition)
+                SoundEngine.PlaySound(
+                    SoundID.Item20 with { Pitch = -0.2f, Volume = 1.0f },
+                    Projectile.Center
+                );
+
+                // 🔥🔥 OPTIONAL: flame crackle tail (adds texture)
+                SoundEngine.PlaySound(
+                    SoundID.Item34 with { Pitch = 0.1f, Volume = 0.7f },
+                    Projectile.Center
+                );
+
+                // 🔥 FIRE BURST EFFECT
+                for (int i = 0; i < 40; i++)
+                {
+                    Vector2 speed = Main.rand.NextVector2Circular(6f, 6f);
+                    Dust.NewDustPerfect(
+                        Projectile.Center,
+                        DustID.FlameBurst,
+                        speed,
+                        150,
+                        default,
+                        1.8f
+                    ).noGravity = true;
+                }
+
+                for (int i = 0; i < 20; i++)
+                {
+                    Vector2 speed = Main.rand.NextVector2Circular(3f, 3f);
+                    Dust.NewDustPerfect(
+                        Projectile.Center,
+                        DustID.Torch,
+                        speed,
+                        100,
+                        default,
+                        1.2f
+                    );
+                }
+            }
+
+
             Projectile.rotation += 0.35f;
             Projectile.velocity *= 0.9f;
 

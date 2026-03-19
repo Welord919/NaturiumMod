@@ -2,6 +2,7 @@
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
@@ -55,39 +56,71 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<StarsteelPickaxe>(), "Nibiru");
             AddTag(ModContent.ItemType<StarryNight>(), "Nibiru");
 
-            //Dragons
             AddTags(ModContent.ItemType<BEWD>(), "Card", "Dragon", "Light");
             AddTags(ModContent.ItemType<PetiteDragon>(), "Card", "Dragon", "Wind");
             AddTags(ModContent.ItemType<REBD>(), "Card", "Dragon", "Dark");
             AddTags(ModContent.ItemType<CurseofDragon>(), "Card", "Dragon", "Dark");
             AddTags(ModContent.ItemType<TriHornedDragon>(), "Card", "Dragon", "Dark");
+            AddTags(ModContent.ItemType<LesserDragon>(), "Card", "Dragon", "Wind");
+            AddTags(ModContent.ItemType<OneEyedSD>(), "Card", "Dragon", "Wind");
 
             //Warriors
             AddTags(ModContent.ItemType<CelticGuardian>(), "Card", "Warrior", "Earth");
             AddTags(ModContent.ItemType<Gaia>(), "Card", "Warrior", "Earth");
             AddTags(ModContent.ItemType<Masaki>(), "Card", "Warrior", "Earth");
+            AddTags(ModContent.ItemType<MonsterEgg>(), "Card", "Warrior", "Earth");
+            AddTags(ModContent.ItemType<MWarrior1>(), "Card", "Warrior", "Earth");
+            AddTags(ModContent.ItemType<MWarrior2>(), "Card", "Warrior", "Earth");
+            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<Armaill>(), "Card", "Warrior", "Earth");
 
             //Bugs
             AddTags(ModContent.ItemType<ManEaterBug>(), "Card", "Bug", "Earth");
 
             //Beasts
             AddTags(ModContent.ItemType<SilverFang>(), "Card", "Beast", "Earth");
+            AddTags(ModContent.ItemType<MysticalSheep2>(), "Card", "Beast", "Earth");
 
             //Spellcasters
-            AddTags(ModContent.ItemType<DarkMagician>(), "Card", "Spellcaster","Dark");
-            AddTags(ModContent.ItemType<LeftLeg>(), "Card", "Spellcaster","Dark");
+            AddTags(ModContent.ItemType<DarkMagician>(), "Card", "Spellcaster", "Dark");
             AddTags(ModContent.ItemType<FlameManipulator>(), "Card", "Spellcaster", "Fire");
             AddTags(ModContent.ItemType<AquaMador>(), "Card", "Spellcaster", "Water");
+            AddTags(ModContent.ItemType<LeftLeg>(), "Card", "Spellcaster", "Dark");
+            AddTags(ModContent.ItemType<LeftArm>(), "Card", "Spellcaster", "Dark");
+            AddTags(ModContent.ItemType<RightLeg>(), "Card", "Spellcaster", "Dark");
+            AddTags(ModContent.ItemType<RightArm>(), "Card", "Spellcaster", "Dark");
+            AddTags(ModContent.ItemType<Exodia>(), "Card", "Spellcaster", "Dark");
 
             //Plants
+            AddTags(ModContent.ItemType<DarkworldThorns>(), "Card", "Plant", "Dark");
             AddTags(ModContent.ItemType<Firegrass>(), "Card", "Plant", "Fire");
+
+            //Rocks
+            AddTags(ModContent.ItemType<Dissolverock>(), "Card", "Rock", "Earth");
+            AddTags(ModContent.ItemType<GiantSoldier>(), "Card", "Rock", "Earth");
+
+            //Zombies
+            AddTags(ModContent.ItemType<SkullServant>(), "Card", "Zombie", "Dark");
+
+            //Machines
+            AddTags(ModContent.ItemType<SteelOgre>(), "Card", "Machine", "Earth");
 
             //Fairy
             AddTags(ModContent.ItemType<PetiteAngel>(), "Card", "Fairy", "Light");
 
+            //Pyro 
+            AddTags(ModContent.ItemType<Hinotama>(), "Card", "Pyro", "Fire");
+
             //Fusion 
-            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire", "Fusion");
-            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<Charubin>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<Dragoness>(), "Card", "Warrior", "Earth", "Fusion");
+            AddTags(ModContent.ItemType<FlameGhost>(), "Card", "Zombie", "Dark", "Fusion");
+            AddTags(ModContent.ItemType<FlowerWolf>(), "Card", "Beast", "Earth", "Fusion");
+            AddTags(ModContent.ItemType<Fusionist>(), "Card", "Beast", "Wind", "Fusion");
+            AddTags(ModContent.ItemType<GaiaChampion>(), "Card", "Dragon", "Wind", "Fusion");
+            AddTags(ModContent.ItemType<Karbonala>(), "Card", "Warrior", "Earth", "Fusion");
+            AddTags(ModContent.ItemType<MetalDragon>(), "Card", "Machine", "Wind", "Fusion");
 
             //Spells
             AddTags(ModContent.ItemType<Swords>(), "Card", "Spell");
@@ -189,10 +222,25 @@ namespace NaturiumMod.Content.Helpers
             foreach (var key in activeBoosts.Keys.ToList())
                 activeBoosts[key] = false;
         }
+        private bool PlayerHoldingTag(string tag)
+        {
+            Item held = Player.HeldItem;
+
+            if (held == null || held.IsAir)
+                return false;
+
+            if (WeaponTag.ItemTags.TryGetValue(held.type, out var tags))
+                return tags.Contains(tag);
+
+            return false;
+        }
+
         public override void PostUpdateEquips()
         {
-            //Barkion boosts
-            if (activeBoosts.TryGetValue("Barkion", out bool barkionActive) && barkionActive)
+            // Barkion boosts
+            if (activeBoosts.TryGetValue("Barkion", out bool barkionActive)
+                && barkionActive
+                && PlayerHoldingTag("Barkion"))
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 1f;
                 Player.GetKnockback(DamageClass.Melee) += 0.1f;
@@ -200,43 +248,52 @@ namespace NaturiumMod.Content.Helpers
                 Player.manaRegenBonus += 2;
                 Player.GetDamage(DamageClass.Summon) += 0.1f;
             }
-            //Leodrake boosts
-            if (activeBoosts.TryGetValue("Leodrake", out bool leodrakeActive) && leodrakeActive)
+
+            // Leodrake boosts
+            if (activeBoosts.TryGetValue("Leodrake", out bool leodrakeActive)
+                && leodrakeActive
+                && PlayerHoldingTag("Leodrake"))
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 2f;
                 Player.GetAttackSpeed(DamageClass.Melee) += 0.10f;
                 Player.manaCost -= 0.25f;
             }
-            //Exterio boosts
-            if (activeBoosts.TryGetValue("Exterio", out bool exterioActive) && exterioActive)
+
+            // Exterio boosts
+            if (activeBoosts.TryGetValue("Exterio", out bool exterioActive)
+                && exterioActive
+                && PlayerHoldingTag("Exterio"))
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 3f;
                 Player.GetDamage(DamageClass.Generic) += 0.15f;
             }
-            //Apophis boosts
-            if (activeBoosts.TryGetValue("Apophis", out bool apophisActive) && apophisActive)
+
+            // Apophis boosts
+            if (activeBoosts.TryGetValue("Apophis", out bool apophisActive)
+                && apophisActive
+                && PlayerHoldingTag("Apophis"))
             {
                 Player.GetDamage(DamageClass.Generic) += 0.10f;
             }
-            //Nibiru boosts
-            if (activeBoosts.TryGetValue("Nibiru", out bool nibiruActive) && nibiruActive)
+
+            // Nibiru boosts
+            if (activeBoosts.TryGetValue("Nibiru", out bool nibiruActive)
+                && nibiruActive
+                && PlayerHoldingTag("Nibiru"))
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 3f;
                 Player.GetCritChance(DamageClass.Ranged) += 10;
                 Player.GetDamage(DamageClass.Magic) += 0.1f;
                 Player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.1f;
             }
-            //Dragon boosts
-            if (activeBoosts.TryGetValue("Dragon", out bool dragonActive) && dragonActive)
-            {
 
-            }
-            //Warrior boosts
-            if (activeBoosts.TryGetValue("Warrior", out bool warriorActive) && warriorActive)
+            // Fusionist boost
+            if (activeBoosts.TryGetValue("Fusion", out bool fusionActive)
+                && fusionActive
+                && PlayerHoldingTag("Fusion"))
             {
+                Player.GetDamage(ModContent.GetInstance<CardDamage>()) += 0.10f;
             }
         }
-
     }
-
 }

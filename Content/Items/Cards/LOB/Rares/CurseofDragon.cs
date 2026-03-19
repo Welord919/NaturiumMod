@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares;
 public class CurseofDragon : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/CurseofDragon";

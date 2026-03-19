@@ -31,7 +31,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.damage = 50;
             Item.knockBack = 6f;
 
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.LightPurple;
             Item.value = Item.buyPrice(gold: 2);
 
             Item.UseSound = SoundID.Item20;

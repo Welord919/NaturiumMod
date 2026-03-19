@@ -3,6 +3,8 @@ using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
+using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using System.Collections.Generic;
@@ -88,7 +90,7 @@ namespace NaturiumMod.Content.NPCs
             if (CardQuestWorld.questStage == 0)
             {
                 CardQuestWorld.questStage = 1;
-                Main.npcChatText = "Bring me 3 Celtic Guardians, and I shall reward you.";
+                Main.npcChatText = "Bring me 5 Warrior Cards. Easy!.";
                 return;
             }
 
@@ -96,8 +98,7 @@ namespace NaturiumMod.Content.NPCs
         }
         public class QuestResetToken : ModItem
         {
-            public override string Texture => "Terraria/Images/Item_309"; // placeholder, change if you want
-
+            public override string Texture => "NaturiumMod/Assets/Items/Cards/QuestResetToken";
             public override void SetDefaults()
             {
                 Item.width = 20;
@@ -135,14 +136,17 @@ namespace NaturiumMod.Content.NPCs
             return CardQuestWorld.questStage switch
             {
                 0 => "I sense destiny in your future... care to hear a request?",
-                1 => "Bring me 3 Celtic Guardians. They hold ancient power.",
+                1 => "Bring me 5 Warrior Cards. Easy!",
                 2 => "Bring me a Super Rare card. Show me your luck.",
-                3 => "Bring me 10 Fire cards. Surely you can do this.",
-                4 => "Now that you have the Fusion Altar, you must craft Fusion Extractors. Use Naturium to make them. They extract essence from the cards while on the table. With essences and Polymerization, you can craft powerful Fusion cards. Craft a Flame Swordsman.",
-                5 => "Bring me 3 Dragon cards. The dragons stir.",
+                3 => "Bring me 15 Fire cards. Surely you can do this.",
+                4 => "Now that you have the Fusion Altar, you must craft Fusion Extractors, you can use Naturium to make them. They extract essence from the cards while on the table. With essences and Polymerization, you can craft powerful Fusion cards. Craft a Flame Swordsman.",
+                5 => "Bring me 10 Dragon cards. A bit rarer than either Warriors or Fires.",
                 6 => "Defeat 50 enemies using only card attacks.",
                 7 => "Bring me 3 Blue-Eyes White Dragons.",
-                _ => "You have done well. The spirits smile upon you."
+                8 => "You have done well. Now bring me a Darkfire Dragon..",
+                9 => "Defeat 200 enemies with card attacks.",
+                10 => "You have completed all my tasks for now. Will you begin anew?",
+                11 => "You have completed all my tasks for now. Will you begin anew?"
             };
         }
 
@@ -154,101 +158,141 @@ namespace NaturiumMod.Content.NPCs
         {
             switch (CardQuestWorld.questStage)
             {
-                // QUEST 1 — Bring 3 Celtic Guardians
+                // QUEST 1 — Bring 5 Warrior Cards
                 case 1:
-                    if (CountItem(player, ModContent.ItemType<CelticGuardian>()) >= 3)
+                    if (CountTaggedCards(player, "Warrior") >= 5)
                     {
-                        ConsumeItem(player, ModContent.ItemType<CelticGuardian>(), 3);
+                        ConsumeTaggedCards(player, "Warrior", 5);
                         RewardPack(player);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
                         CardQuestWorld.questStage = 2;
-                        Main.npcChatText = "Well done. Now bring me a Super Rare card.";
+                        Main.npcChatText = "Now pull a Super Rare Card";
                         return true;
                     }
                     break;
 
-                // QUEST 3 — Bring 1 Super Rare card
+                // QUEST 2 — Bring 1 Super Rare card
                 case 2:
                     if (HasAnySuperRareCard(player))
                     {
                         ConsumeFirstSuperRareCard(player);
                         RewardPack(player);
                         CardQuestWorld.questStage = 3;
-                        Main.npcChatText = "A Super Rare? Impressive. Now bring me 10 Fire cards.";
+                        Main.npcChatText = "A Super Rare? Impressive. Now bring me 15 Fire cards.";
                         return true;
                     }
                     break;
 
-                // QUEST 4 — Bring 10 Fire cards
+                // QUEST 3 — Bring 15 Fire cards
                 case 3:
-                    if (CountTaggedCards(player, "Fire") >= 10)
+                    if (CountTaggedCards(player, "Fire") >= 15)
                     {
-                        ConsumeTaggedCards(player, "Fire", 10);
-                        RewardPack(player);
-                        player.QuickSpawnItem(
-                            player.GetSource_GiftOrReward(),
-                            ModContent.ItemType<FusionAltar>());
+                        ConsumeTaggedCards(player, "Fire", 15);
+                        for (int i = 0; i < 2; i++)
+                            RewardPack(player);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
                         CardQuestWorld.questStage = 4;
                         Main.npcChatText = "Ho ho, for that I will give you a Fusion Altar. Place it down and come back to me.";
                         return true;
                     }
                     break;
 
-                // QUEST 5 — Craft a Flame Swordsman
+                // QUEST 4 — Craft a Flame Swordsman
                 case 4:
                     if (player.HasItem(ModContent.ItemType<FlameSwordsman>()))
                     {
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 2; i++)
                             RewardPack(player);
 
-                        RewardPack(player);
                         CardQuestWorld.questStage = 5;
-
-                        Main.npcChatText =
-                            "Excellent work crafting a Flame Swordsman. You understand the basics of Fusion Crafting. Now bring me 10 Dragon cards";
+                        Main.npcChatText = "Excellent work crafting a Flame Swordsman. Now bring me 10 Dragon cards.";
                         return true;
                     }
                     break;
 
-
-                // QUEST 6 — Bring 10 Dragon cards
+                // QUEST 5 — Bring 10 Dragon cards
                 case 5:
                     if (CountTaggedCards(player, "Dragon") >= 10)
                     {
                         ConsumeTaggedCards(player, "Dragon", 10);
-                        RewardPack(player);
+                        for (int i = 0; i < 2; i++)
+                            RewardPack(player);
                         CardQuestWorld.questStage = 6;
-                        CardQuestWorld.cardKillsWithCardDamage = 0;
-                        Main.npcChatText = "TNow defeat 50 enemies with card attacks.";
+                        player.GetModPlayer<KillTracker>().cardDamageKills = 0;
+                        Main.npcChatText = "Now defeat 50 enemies with Card attacks.";
                         return true;
                     }
                     break;
 
-                // QUEST 8 — Kill 50 enemies with CardDamage
+                // QUEST 6 — Kill 50 enemies with CardDamage
                 case 6:
-                    if (CardQuestWorld.cardKillsWithCardDamage >= 50)
+                    if (player.GetModPlayer<KillTracker>().cardDamageKills >= 50)
                     {
-                        RewardPack(player);
+                        for (int i = 0; i < 2; i++)
+                            RewardPack(player);
                         CardQuestWorld.questStage = 7;
                         Main.npcChatText = "Impressive. Now bring me 3 Blue-Eyes White Dragons.";
                         return true;
                     }
                     break;
 
-                // QUEST 10 — Bring 3 BEWD
+                // QUEST 7 — Bring 3 BEWD
                 case 7:
                     if (CountItem(player, ModContent.ItemType<BEWD>()) >= 3)
                     {
                         ConsumeItem(player, ModContent.ItemType<BEWD>(), 3);
-                        RewardPack(player);
+                        for (int i = 0; i < 3; i++)
+                            RewardPack(player);
                         CardQuestWorld.questStage = 8;
-                        Main.npcChatText = "Three Blue-Eyes... now THAT is power.";
+                        player.GetModPlayer<KillTracker>().cardDamageKills = 0;
+                        Main.npcChatText = "Three Blue-Eyes... I remember a unfriendly young man who liked those. Now bring me a Darkfire Dragon.";
                         return true;
                     }
                     break;
+                // QUEST 8 — Bring a Darkfire Dragon
+                case 8:
+                    if (player.HasItem(ModContent.ItemType<DarkfireDragon>()))
+                    {
+                        for (int i = 0; i < 3; i++)
+                            RewardPack(player);
+                        CardQuestWorld.questStage = 9;
+                        Main.npcChatText = "A Darkfire Dragon? Magnificent. Now show your strength by killing 200 enemies.";
+                        return true;
+                    }
+                    break;
+
+
+                // QUEST 9 — Kill 200 enemies with CardDamage
+                case 9:
+                    if (player.GetModPlayer<KillTracker>().cardDamageKills >= 200)
+                    {
+                        for (int i = 0; i < 4; i++)
+                            RewardPack(player);
+                        CardQuestWorld.questStage = 10;
+                        Main.npcChatText = "Your strength is undeniable.";
+                        return true;
+                    }
+                    break;
+
+                
+                // QUEST 10 — Final quest, give QuestResetToken
+                case 10:
+                    // Final reward
+                    player.QuickSpawnItem(
+                        player.GetSource_GiftOrReward(),
+                        ModContent.ItemType<QuestResetToken>());
+
+                    for (int i = 0; i < 5; i++)
+                        RewardPack(player);
+                    CardQuestWorld.questStage = 11; // or loop back to 0 if you prefer
+
+                    Main.npcChatText = "You have completed all my tasks for now. Take this token — it will allow you to begin anew when you wish.";
+                    return true;
             }
 
             return false;
         }
+
 
         // ============================================================
         // HELPERS
@@ -256,9 +300,25 @@ namespace NaturiumMod.Content.NPCs
 
         private void RewardPack(Player player)
         {
-            player.QuickSpawnItem(NPC.GetSource_GiftOrReward(), ModContent.ItemType<PackLOB>());
+            // All LOB packs
+            int[] packs =
+            {
+        ModContent.ItemType<PackLOB_Common>(),
+        ModContent.ItemType<PackLOB_Rare>(),
+        ModContent.ItemType<PackLOB_Super>(),
+        ModContent.ItemType<PackLOB_Ultra>()
+        };
+
+            // Pick one at random
+            int chosenPack = packs[Main.rand.Next(packs.Length)];
+
+            // Give it to the player
+            player.QuickSpawnItem(NPC.GetSource_GiftOrReward(), chosenPack);
+
+            // Play sound
             SoundEngine.PlaySound(SoundID.Item37);
         }
+
 
         private int CountItem(Player player, int type)
         {
@@ -320,11 +380,6 @@ namespace NaturiumMod.Content.NPCs
             return count;
         }
 
-        private bool HasTaggedCard(Player player, string tag)
-        {
-            return CountTaggedCards(player, tag) > 0;
-        }
-
         private void ConsumeTaggedCards(Player player, string tag, int amount)
         {
             for (int i = 0; i < player.inventory.Length && amount > 0; i++)
@@ -341,7 +396,64 @@ namespace NaturiumMod.Content.NPCs
                 }
             }
         }
+        public class KillTracker : ModPlayer
+        {
+            public int cardDamageKills;
 
+            public override void Initialize()
+            {
+                cardDamageKills = 0;
+            }
+
+            public override void SaveData(TagCompound tag)
+            {
+                tag["cardDamageKills"] = cardDamageKills;
+            }
+
+            public override void LoadData(TagCompound tag)
+            {
+                if (tag.ContainsKey("cardDamageKills"))
+                    cardDamageKills = tag.GetInt("cardDamageKills");
+            }
+
+            // Projectile kills
+            public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+            {
+                if (proj.DamageType == ModContent.GetInstance<CardDamage>() &&
+                    !target.friendly &&
+                    target.lifeMax > 5 &&
+                    target.life - damageDone <= 0)
+                {
+                    cardDamageKills++;
+
+                    // Notify every 50 kills
+                    if (cardDamageKills % 50 == 0)
+                    {
+                        if (Main.netMode != NetmodeID.Server)
+                            Main.NewText($"Milestone reached: {cardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
+                    }
+                }
+            }
+
+            // Item kills
+            public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
+            {
+                if (item.DamageType == ModContent.GetInstance<CardDamage>() &&
+                    !target.friendly &&
+                    target.lifeMax > 5 &&
+                    target.life - damageDone <= 0)
+                {
+                    cardDamageKills++;
+
+                    // Notify every 50 kills
+                    if (cardDamageKills % 50 == 0)
+                    {
+                        if (Main.netMode != NetmodeID.Server)
+                            Main.NewText($"Milestone reached: {cardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
+                    }
+                }
+            }
+        }
         // ============================================================
         // SHOP + COMBAT
         // ============================================================
@@ -349,15 +461,15 @@ namespace NaturiumMod.Content.NPCs
         public override void AddShops()
         {
             var npcShop = new NPCShop(Type, ShopName)
-                .Add<PackLOB>()
-                .Add(ItemID.AcornAxe);
+                .Add<PackLOB_Common>()
+                .Add<LeftLeg>();
 
             npcShop.Register();
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB>(), 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Rare>(), 1));
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -385,7 +497,7 @@ namespace NaturiumMod.Content.NPCs
         }
 
         public override List<string> SetNPCNameList() =>
-            new() { "Mysterious", "Grandpa", "Card Collector" };
+            new() { "Card", "Collector", "Mysterious Grandpa" };
     }
 
     // ============================================================

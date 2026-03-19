@@ -57,6 +57,12 @@ Mods: {
 			DarkFireDragonHead.DisplayName: Dark Fire Dragon Head
 			DarkFireDragonBody.DisplayName: Dark Fire Dragon Body
 			DarkFireOrb.DisplayName: Dark Fire Orb
+			MetalDragonBody.DisplayName: Metal Dragon Body
+			MetalDragonHead.DisplayName: Metal Dragon Head
+			MetalDragonLaser.DisplayName: Metal Dragon Laser
+			MetalDragonExtras.DisplayName: Metal Dragon Extras
+			MetalDragonHit.DisplayName: Metal Dragon Hit
+			MetalDragonSegment.DisplayName: Metal Dragon Segment
 		}
 
 		NPCs: {
@@ -633,6 +639,7 @@ Mods: {
 				DisplayName: Blue Eyes White Dragon
 				Tooltip:
 					'''
+					Dragon, Light
 					Fire a huge lazer the damages enemies for a few seconds
 					'This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale'
 					'''
@@ -653,6 +660,7 @@ Mods: {
 				DisplayName: Flame Swordsman
 				Tooltip:
 					'''
+					Warrior, Fire, Fusion
 					Charges: 5
 					Swing a huge firey blade that can put enemies on fire
 					"Flame Swordsman, everybody!"
@@ -668,6 +676,7 @@ Mods: {
 				DisplayName: Man Eater Bug
 				Tooltip:
 					'''
+					Bug, Earth
 					Apply a buff that protects you from one hit from an enemy, and damages the enemy that hit you for 50% more
 					'Heeheehee! My insects have swarmed all over you!'
 					'''
@@ -677,15 +686,17 @@ Mods: {
 				DisplayName: Silver Fang
 				Tooltip:
 					'''
+					Beast, Earth
 					Let a roar that damages and knockbacks all enemies near you
 					'A snow wolf that's beautiful to the eye, but absolutely vicious in battle'
 					'''
 			}
 
 			AquaMador: {
-				DisplayName: Aqua Mador
+				DisplayName: Aqua Madoor
 				Tooltip:
 					'''
+					Spellcaster, Water
 					Apply a buff that gives you 50 overhealth that reduces over time, and a liquid wall that allows you to breath underwater
 					A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him''
 					'''
@@ -695,6 +706,7 @@ Mods: {
 				DisplayName: Celtic Guardian
 				Tooltip:
 					'''
+					Warrior, Earth
 					Charges: 9
 					Swing a medium sized blade that swings in a up, down, then thrust pattern
 					'An elf who learned to wield a sword, he baffles enemies with lightning-swift attacks'
@@ -705,6 +717,7 @@ Mods: {
 				DisplayName: Gaia the Fierce Knight
 				Tooltip:
 					'''
+					Warrior, Earth
 					Charges: 3
 					Send out a projectile that goes through tiles and scales up in damage the longer it travels for
 					'A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with'
@@ -720,6 +733,7 @@ Mods: {
 				DisplayName: Petite Dragon
 				Tooltip:
 					'''
+					Dragon, Wind
 					Summon a Petite Dragon that fires petite projectiles at enemies for 3 minutes
 					'A very small dragon known for its vicious attacks.'
 					'''
@@ -729,6 +743,7 @@ Mods: {
 				DisplayName: Curse of Dragon
 				Tooltip:
 					'''
+					Dragon, Dark
 					Apply a buff that increases movement speed by 50% for 30 seconds
 					'A wicked dragon that taps into dark forces to execute a powerful attack.'
 					'''
@@ -738,6 +753,7 @@ Mods: {
 				DisplayName: Masaki the Legendary Swordsman
 				Tooltip:
 					'''
+					Warrior, Earth
 					On use swing a katana, but the longer the botton is held for the stronger and faster the swing will be
 					'Legendary swordmaster Masaki is a veteran of over 100 battles.'
 					'''
@@ -745,13 +761,18 @@ Mods: {
 
 			Swords: {
 				DisplayName: Swords of Revealing Light
-				Tooltip: Spawn a holy sword on the cursor that falls downwards and damages enemies in its path, once in the ground it stops movement and damages for a short duration
+				Tooltip:
+					'''
+					Spell
+					Spawn a holy sword on the cursor that falls downwards and damages enemies in its path, once in the ground it stops movement and damages for a short duration
+					'''
 			}
 
 			LeftLeg: {
 				DisplayName: Left Leg
 				Tooltip:
 					'''
+					Spellcaster, Dark
 					No Effect
 					'A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.'
 					'''
@@ -759,7 +780,12 @@ Mods: {
 
 			DarkMagician: {
 				DisplayName: Dark Magician
-				Tooltip: "'The ultimate wizard in terms of attack and defense.'"
+				Tooltip:
+					'''
+					Spellcaster, Dark
+					Fire a burst of 3 magic orbs that get stronger the longer they are charged for
+					'The ultimate wizard in terms of attack and defense.'
+					'''
 			}
 
 			REBD: {
@@ -771,6 +797,7 @@ Mods: {
 				DisplayName: Firegrass
 				Tooltip:
 					'''
+					Plant, Fire
 					Gain the Obsidian skin buff for 30 seconds
 					'A fire-breathing plant found growing near volcanoes.'
 					'''
@@ -780,6 +807,7 @@ Mods: {
 				DisplayName: Flame Manipulator
 				Tooltip:
 					'''
+					Spellcaster, Fire
 					Gain the Fire Damage Buff, which buffs all forms of fire damage by 5% for 30 seconds
 					'This Spellcaster attacks enemies with fire-related spells such as "Sea of Flames" and "Wall of Fire"'
 					'''
@@ -789,6 +817,7 @@ Mods: {
 				DisplayName: Petite Angel
 				Tooltip:
 					'''
+					Fairy, Light
 					Apply a buff that boosts all Card damage by 5% for 40 seconds
 					'A quick-moving and tiny fairy that's very difficult to hit.'
 					'''
@@ -798,6 +827,7 @@ Mods: {
 				DisplayName: Tri-Horned Dragon
 				Tooltip:
 					'''
+					Dragon, Dark
 					Charges: 3
 					Shoot a spread of 3 projectiles that bleed enemies for 5 seconds
 					'An unworthy dragon with three sharp horns sprouting from its head.'
@@ -807,6 +837,7 @@ Mods: {
 			DarkfireDragon: {
 				Tooltip:
 					'''
+					Dragon, Fire, Fusion
 					Create a large firey orb that shoots out projectiles and summons a huge dragon the devastates enemies that stand in its path
 					'Those two creatures created this!?'
 					'''
@@ -857,6 +888,7 @@ Mods: {
 				DisplayName: Polymerization
 				Tooltip:
 					'''
+					Spell
 					No Effect
 					Used for Fusion Crafting
 					'''
@@ -864,6 +896,212 @@ Mods: {
 
 			QuestResetToken: {
 				DisplayName: Quest Reset Token
+				Tooltip: Resets the Mysterious Grandpa's quests, allowing you to complete them again for more rewards
+			}
+
+			MetalDragon: {
+				DisplayName: Metal Dragon
+				Tooltip: Machine, Wind, Fusion
+			}
+
+			Dragoness: {
+				DisplayName: Dragoness
+				Tooltip: Warrior, Earth, Fusion
+			}
+
+			FlameGhost: {
+				DisplayName: Flame Ghost
+				Tooltip: Zombie, Dark, Fusion
+			}
+
+			FlowerWolf: {
+				DisplayName: Flower Wolf
+				Tooltip: Beast, Earth, Fusion
+			}
+
+			Fusionist: {
+				DisplayName: Fusionist
+				Tooltip: Beast, Wind, Fusion
+			}
+
+			GaiaChampion: {
+				DisplayName: Gaia Champion
+				Tooltip: Dragon, Wind, Fusion
+			}
+
+			Karbonala: {
+				DisplayName: Karbonala
+				Tooltip: Warrior, Earth, Fusion
+			}
+
+			Armaill: {
+				DisplayName: Armaill
+				Tooltip:
+					'''
+					Warrior, Earth
+					'A strange warrior who manipulates three deadly blades with both hands and his tail.'
+					'''
+			}
+
+			DarkworldThorns: {
+				DisplayName: Darkworld Thorns
+				Tooltip:
+					'''
+					Plant, Dark
+					'A thorny plant found in the darklands that wraps itself around any unwary traveler.'
+					'''
+			}
+
+			Dissolverock: {
+				DisplayName: Dissolverock
+				Tooltip:
+					'''
+					Rock, Earth
+					'A monster born in the lava pits, it generates intense heat that can melt away its enemies.'
+					'''
+			}
+
+			Hinotama: {
+				DisplayName: Hinotama
+				Tooltip:
+					'''
+					Pyro, Fire
+					'An intensely hot flame creature that rams anything standing in its way.'
+					'''
+			}
+
+			LesserDragon: {
+				DisplayName: Lesser Dragon
+				Tooltip:
+					'''
+					Dragon, Wind
+					'A minor dragon incapable of breathing fire.'
+					'''
+			}
+
+			MonsterEgg: {
+				DisplayName: Monster Egg
+				Tooltip:
+					'''
+					Warrior, Earth
+					'A warrior hidden within an egg that attacks enemies by flinging eggshells.'
+					'''
+			}
+
+			MWarrior1: {
+				DisplayName: M Warrior1
+				Tooltip:
+					'''
+					Warrior, Earth
+					'Specializing in combination attacks, this warrior uses magnetism to block an enemy's escape.'
+					'''
+			}
+
+			MWarrior2: {
+				DisplayName: M Warrior2
+				Tooltip:
+					'''
+					Warrior, Earth
+					'Specializing in combination attacks, this warrior is equipped with a tough, magnetically coated armor.'
+					'''
+			}
+
+			MysticalSheep2: {
+				DisplayName: Mystical Sheep2
+				Tooltip:
+					'''
+					Beast, Earth
+					'A monstrous sheep with a long tail for hypnotizing enemies.'
+					'''
+			}
+
+			OneEyedSD: {
+				DisplayName: One Eyed S D
+				Tooltip:
+					'''
+					Dragon, Wind
+					'This dragon wears a shield not only for its own protection, but also for ramming its enemies.'
+					'''
+			}
+
+			SkullServant: {
+				DisplayName: Skull Servant
+				Tooltip:
+					'''
+					Zombie, Dark
+					'A skeletal ghost that isn't strong but can mean trouble in large numbers.'
+					'''
+			}
+
+			SteelOgre: {
+				DisplayName: Steel Ogre
+				Tooltip:
+					'''
+					Machine, Earth
+					'A steel idol worshipped in the Land of Machines.'
+					'''
+			}
+
+			PackLOB_Common: {
+				DisplayName: Legend of Blue Eyes White Dragon (Common)
+				Tooltip: Right click to open the pack to get a random card
+			}
+
+			PackLOB_Rare: {
+				DisplayName: Legend of Blue Eyes White Dragon (Rare)
+				Tooltip: Right click to open the pack to get a random card
+			}
+
+			PackLOB_Super: {
+				DisplayName: Legend of Blue Eyes White Dragon (Super Rare)
+				Tooltip: Right click to open the pack to get a random card
+			}
+
+			PackLOB_Ultra: {
+				DisplayName: Legend of Blue Eyes White Dragon (Ultra Rare)
+				Tooltip: Right click to open the pack to get a random card
+			}
+
+			Exodia: {
+				DisplayName: Exodia
+				Tooltip:
+					'''
+					Spellcaster, Dark
+					'Something happens when you assemble all 5 pieces...'
+					'''
+			}
+
+			Charubin: {
+				DisplayName: Charubin
+				Tooltip: Pyro, Fire, Fusion
+			}
+
+			GiantSoldier: {
+				DisplayName: Giant Soldier
+				Tooltip:
+					'''
+					Rock, Earth
+					'A giant warrior made of stone. A punch from this creature has earth-shaking results.'
+					'''
+			}
+
+			LeftArm: {
+				DisplayName: Left Arm
+				Tooltip: ""
+			}
+
+			RightArm: {
+				DisplayName: Right Arm
+				Tooltip: ""
+			}
+
+			RightLeg: {
+				DisplayName: Right Leg
+				Tooltip: ""
+			}
+
+			FusionistRing: {
+				DisplayName: Fusionist Ring
 				Tooltip: ""
 			}
 		}
@@ -962,6 +1200,11 @@ Mods: {
 			CurseOfDragonBuff: {
 				DisplayName: Curse Of Dragon Buff
 				Description: Increased movement speed by 50%
+			}
+
+			MetalDragonBuff: {
+				DisplayName: Metal Dragon Buff
+				Description: Mods.NaturiumMod.Buffs.MetalDragonBuff.Description
 			}
 		}
 

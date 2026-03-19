@@ -58,7 +58,7 @@ public class CardWorldDraw : GlobalItem
     {
         return entity.type == ModContent.ItemType<FlameSwordsman>()
             || entity.type == ModContent.ItemType<BEWD>()
-            || entity.type == ModContent.ItemType<PackLOB>();
+            || entity.type == ModContent.ItemType<BasePackLOB>();
     }
 
     // ⭐ Stop Terraria from drawing the original full-size sprite

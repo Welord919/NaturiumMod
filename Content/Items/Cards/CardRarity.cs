@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
@@ -112,9 +114,24 @@ namespace NaturiumMod.Content.Items.Cards
             CardRarityRegistry.Register(ModContent.ItemType<CelticGuardian>(), Rarity.Common);
             CardRarityRegistry.Register(ModContent.ItemType<SilverFang>(), Rarity.Common);
             CardRarityRegistry.Register(ModContent.ItemType<FlameManipulator>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<Armaill>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<DarkworldThorns>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<Dissolverock>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<Hinotama>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<LesserDragon>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<MonsterEgg>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<OneEyedSD>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<SkullServant>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<SteelOgre>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<MWarrior1>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<MWarrior2>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<MysticalSheep2>(), Rarity.Common);
+            CardRarityRegistry.Register(ModContent.ItemType<GiantSoldier>(), Rarity.Common);
+
 
             // Short Prints
             CardRarityRegistry.Register(ModContent.ItemType<PetiteDragon>(), Rarity.ShortPrint);
+            CardRarityRegistry.Register(ModContent.ItemType<PetiteAngel>(), Rarity.ShortPrint);
 
             // Rares
             CardRarityRegistry.Register(ModContent.ItemType<Swords>(), Rarity.Rare);
@@ -124,8 +141,12 @@ namespace NaturiumMod.Content.Items.Cards
 
             // Super Rares
             CardRarityRegistry.Register(ModContent.ItemType<TriHornedDragon>(), Rarity.SuperRare);
-            CardRarityRegistry.Register(ModContent.ItemType<LeftLeg>(), Rarity.SuperRare);
             CardRarityRegistry.Register(ModContent.ItemType<Gaia>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<LeftLeg>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<RightLeg>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<LeftArm>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<RightArm>(), Rarity.SuperRare);
+            CardRarityRegistry.Register(ModContent.ItemType<Exodia>(), Rarity.SuperRare);
 
             // Ultra Rares
             CardRarityRegistry.Register(ModContent.ItemType<BEWD>(), Rarity.UltraRare);
