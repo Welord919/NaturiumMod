@@ -1,34 +1,63 @@
-General Info:
+﻿General Info:
 
-Naturium is a content mod made that adds lots of new content to the game. Some of the new content includes: new ores, a set of armor, weapons, structures, and 2 enemies. The majority of the items in the early game rely on Barkion's Bark and Naturium Ore. You can choose to check out the desert for the custom structure and collect resources to craft Millennium Pieces, which can let you get some good early game weapons and accessories. Most of the content in this mod ranges from early game to early hard-mode. More content is planned for Naturium including a boss, many armor sets, many new structures, and of course tons of new weapons.
-
+Naturium is a mod that adds a wide variety of new materials, weapons, structures, systems, and progression paths to Terraria. Much of the early‑game revolves around gathering Barkion’s Bark and Naturium Ore, but there are other ways to progress. You can explore new structures, craft diffrent themed gear, collect Yu-Gi-Oh card packs, fuse cards into stronger forms, and interact with a new NPC who guides you through the mod’s card system.
 I will go into detail about specific parts of the mod, so if you want to remain blind you can finish reading now.
 
-Primary Materials:
+Barkion’s Bark
+A core early‑game crafting material. It can be crafted at a workbench using Wood and Acorns, and is used in many of the mod’s first‑tier weapons and tools.
 
-Barkion's Bark is one of the primary materials used in most of the early-game item recipes. You can craft Barkion's Bark at a crafting bench using wood and acorns.
+Naturium Bars
+The backbone of Naturium’s mid‑game crafting. Created using Naturium Ore combined with Crimtane or Demonite, these bars unlock most of the mod’s weapons, armor, and accessories.
 
-Naturium Bars are used in the vast majority of recipes in Naturium past the early-game. You can craft Naturium bars with crimtane or demonite, and of course Naturium Ore.
+Millennium Pieces
+You can craft these by exploring the desert and collecting Desert Fossils, Sturdy Fossils, and Gold. Millennium Pieces allow you to craft early‑game Millennium Items and Apophis‑themed weapons.
 
-Millennium Pieces are made with Desert Fossil, Sturdy Fossil, and a bit of Gold to allow the crafting of a few Millennium Items as well as Apophis weapons. The Plaguespreader will spwan in the evil desert and drop unique items, most import of which is the Plague chunks. These will craft Plague Flasks which give you a buff to inflict the decay debuff. These Plague Flasks can further be crafted into Decay items, including a bow and a magic weapon. 
+Plague Chunks & Decay Gear
+The Plaguespreader spawns in the evil desert and drops Plague Chunks, which can be crafted into Plague Flasks. These grant the ability to inflict the Decay debuff with melee weapons, but the main use is to be crafted into Decay‑themed weapons, including a bow and the Reaper's Arm.
 
-Archetype System:
+Card Packs
+Enemies and bosses drop a variety of Legend of Blue Eyes White Dragon (LOB) card packs (Common, Rare, Super, Ultra). Opening these packs grants collectible cards that can be used for crafting, fusing, or use them as weapons. Some cards include: Blue Eyes White Dragon, Red Eyes Black Dragon, Dark Magician, and many more. (Will add more cards and a good few don't have card effects currently, will add more in future updates)
 
-The Archetype system uses the name of a piece of armor or a weapon to classify it into an archetype. This classification allows the item to receive buffs when the player has the respective medallion equipped. The Druid offers the first obtainable medallion in her shop, but you can just craft it with Naturium at an anvil.
+Naturium Bags
+Bosses also drop Naturium Bags and Naturium Bar Bags, which contain bulk amounts of Naturium Ore or Bars depending on how far into progression you are. These bags help get more Naturium without needing to mine a lot if that is not for you.
 
-Structures:
+Essence Extraction & Fusion Crafting
+Cards can be broken down into Essence using the Essence Extractor item while at a Fusion Altar.
+Essence is then used to combine cards into stronger and specialized forms.
 
-With the help of Structure Helper, there are multiple structures that spawn around the world. You can find a World Tree with chests to loot and some you can unlock later. Temple-like structures found in the Jungle and Desert. And multiple living wood out coves all throughout the forest biome's underground.
-Make sure to look above one of the oceans for a roaming planet with late pre-hardmode goodies.
+Archetype System
+Weapons and armor pieces are automatically assigned an Archetype based on their name. Most of these are pretty obvious, but experiment if you are not sure.
+Equipping the corresponding Archetype Medallion/Item grants powerful bonuses to all items of that archetype.
+The Druid NPC sells the first medallion, and additional medallions can be crafted, found in chests, and the like.
 
-Editors Notes:
+Mysterious Grandpa NPC
+A new NPC, Mysterious Grandpa, appears once you have a Card Pack (Which should be pretty easy to get)
+He offers:
+- Quests that guide you through the card system
+- Rewards mostly being packs
+He serves as the player’s mentor and shop for card‑related mechanics. (The shop will be updated more in the future)
 
-I hope you enjoy our mod! Feel free to leave a comment if you encounter any issues, or have any suggestions to better the mod!
-Many of the Items are in reference to Yu-gi-oh cards, so if you are a fan of the show or card game, you may find some of the items names familiar.
+Structures
+Using Structure Helper, Naturium adds several new world‑gen structures:
+- World Tree with multiple chests, some locked until later progression
+- Jungle and Desert Temples containing themed loot
+- Living Wood Outcoves scattered throughout the forest underground
+- A floating planet above one of the oceans containing late pre‑hardmode treasures
+Exploration is heavily rewarded, and many structures contain items tied to the card or archetype systems.
 
-P.S. It should all work with calamity
+Editor’s Notes
+We hope you enjoy Naturium!
+If you encounter issues or have suggestions, feel free to leave feedback. Many items reference Yu‑Gi‑Oh!, so fans of the series may notice familiar names and themes.
+More content is planned, including:
+- A full boss
+- Multiple armor sets
+- More structures
+- Many new weapons
+- Expanded card archetypes and fusion paths
+It should all work with Calamity for those who would care.
 
 GitHub Repository: https://github.com/Welord919/NaturiumMod
 
 [quote=tModLoader NaturiumMod]Developed By Welord, I SpiTfire U[/quote][quote=tModLoader NaturiumMod]
+Developed By Welord, I SpiTfire U[/quote][quote=tModLoader NaturiumMod]
 Developed By Welord, I SpiTfire U[/quote]

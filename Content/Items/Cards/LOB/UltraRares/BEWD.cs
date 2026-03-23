@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -126,10 +125,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
         }
     }
 
-    // ============================================================
-    // BURST STREAM (BEAM)
-    // ============================================================
-
     public class BurstStream : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BurstStream";
@@ -143,31 +138,33 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 60;
-
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
-
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
+
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             var modPlayer = Main.player[Projectile.owner].GetModPlayer<WeaponBoostPlayer>();
-
-            // If Warrior tag is active, apply the boost
-            if (modPlayer.activeBoosts.TryGetValue("KaibaBoost", out bool warriorActive) && warriorActive)
-            {
-                modifiers.SourceDamage *= 1.10f; // +10% damage
-            }
+            if (modPlayer.activeBoosts.TryGetValue("KaibaBoost", out bool active) && active)
+                modifiers.SourceDamage *= 1.10f;
         }
+
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
             Projectile.Center = player.Center;
 
             float angleOffset = Projectile.ai[0];
+            float storedRot = Projectile.ai[1];
 
-            Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
+            Vector2 baseDir;
+
+            if (Projectile.timeLeft == 60)
+                baseDir = storedRot.ToRotationVector2();
+            else
+                baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
+
             Vector2 finalDir = baseDir.RotatedBy(angleOffset);
 
             Projectile.velocity = finalDir;
@@ -199,7 +196,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
-
             return Collision.CheckAABBvLineCollision(
                 targetHitbox.TopLeft(),
                 targetHitbox.Size(),
@@ -210,11 +206,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             );
         }
     }
-
-    // ============================================================
-    // DRAGON BURST CHARGE
-    // ============================================================
-
     public class DragonBurstCharge : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/General/Projectiles/Blank";
@@ -226,14 +217,13 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             Projectile.friendly = false;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ CardDamage
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
             Projectile.timeLeft = 120;
         }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
             Projectile.Center = player.Center;
 
             if (Projectile.ai[0] == 0)
@@ -276,10 +266,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
                     player.Center,
                     finalDir,
                     ModContent.ProjectileType<BurstStream>(),
-                    Projectile.damage,      // ✔ inherits BEWD damage WITH scaling
+                    Projectile.damage,
                     Projectile.knockBack,
                     player.whoAmI,
-                    angleOffset
+                    angleOffset,
+                    finalDir.ToRotation()
                 );
             }
         }

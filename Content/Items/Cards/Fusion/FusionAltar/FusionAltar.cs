@@ -1,7 +1,6 @@
 ﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System.Runtime.InteropServices.JavaScript;
 using Terraria;

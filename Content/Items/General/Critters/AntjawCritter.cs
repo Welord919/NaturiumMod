@@ -30,7 +30,7 @@ public class AntjawCritter : ModItem
         Item.noUseGraphic = true;
 
         Item.makeNPC = ModContent.NPCType<AntjawCritterNPC>();
-        Item.value += Item.buyPrice(0, 0, 30, 0);
+        Item.value += Item.buyPrice(0, 0, 77, 0);
         Item.rare = ItemRarityID.Blue;
     }
 }

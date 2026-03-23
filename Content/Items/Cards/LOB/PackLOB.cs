@@ -2,11 +2,13 @@
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.PreHardmode.Consumables;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -52,14 +54,23 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         public static readonly List<int> ShortPrints = new()
         {
             ModContent.ItemType<PetiteDragon>(),
+            ModContent.ItemType<PetiteAngel>(),
             ModContent.ItemType<Polymerization>(),
         };
 
         public static readonly List<int> SuperRares = new()
         {
             ModContent.ItemType<TriHornedDragon>(),
-            ModContent.ItemType<LeftLeg>(),
             ModContent.ItemType<Gaia>(),
+            ModContent.ItemType<Exodia>(),
+        };
+
+        public static readonly List<int> ExodiaPieces = new()
+        {
+            ModContent.ItemType<LeftLeg>(),
+            ModContent.ItemType<LeftArm>(),
+            ModContent.ItemType<RightArm>(),
+            ModContent.ItemType<RightLeg>(),
         };
 
         public static readonly List<int> UltraRares = new()
@@ -146,8 +157,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
             (1, CardPools.UltraRares, Rarity.UltraRare),       // 0.1%
-            (2000, CardPools.Rares, Rarity.Rare),              // 20%
-            (1000, CardPools.ShortPrints, Rarity.ShortPrint),  // 10%
+            (400, CardPools.ExodiaPieces, Rarity.SuperRare),   //4%
+            (800, CardPools.ShortPrints, Rarity.ShortPrint),   // 8%
+            (1800, CardPools.Rares, Rarity.Rare),              // 18%
             (6999, CardPools.Commons, Rarity.Common)           // 69.99%
         };
     }
@@ -160,8 +172,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
             (100, CardPools.UltraRares, Rarity.UltraRare),     // 1%
-            (1000, CardPools.SuperRares, Rarity.SuperRare),    // 10%
-            (1500, CardPools.ShortPrints, Rarity.ShortPrint),  // 15%
+            (400, CardPools.ExodiaPieces, Rarity.SuperRare),  //4%
+            (700, CardPools.SuperRares, Rarity.SuperRare),    // 7%
+            (1400, CardPools.ShortPrints, Rarity.ShortPrint),  // 14%
             (5000, CardPools.Rares, Rarity.Rare),              // 50%
             (2400, CardPools.Commons, Rarity.Common)           // 24%
         };
@@ -198,15 +211,215 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     // ============================================================
     public class LOBPackDrop : GlobalNPC
     {
+        public override void OnKill(NPC npc)
+        {
+            // Handle Eater of Worlds separately
+            if (npc.type == NPCID.EaterofWorldsHead ||
+                npc.type == NPCID.EaterofWorldsBody ||
+                npc.type == NPCID.EaterofWorldsTail)
+            {
+                int segmentCount =
+                    NPC.CountNPCS(NPCID.EaterofWorldsHead) +
+                    NPC.CountNPCS(NPCID.EaterofWorldsBody) +
+                    NPC.CountNPCS(NPCID.EaterofWorldsTail);
+
+                // Last segment
+                if (segmentCount == 1)
+                {
+                    // Early boss → Rare guaranteed
+                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
+                        ModContent.ItemType<PackLOB_Rare>(), 1);
+
+                    // Optional: add Super/Ultra chances
+                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
+                        ModContent.ItemType<PackLOB_Super>(), 1, false, 0, true);
+                }
+            }
+        }
+
+        public override bool InstancePerEntity => false;
+
+        // Early‑game bosses allowed to drop Rare packs
+        static readonly int[] EarlyBosses =
+        {
+        NPCID.EyeofCthulhu,
+        NPCID.BrainofCthulhu,
+        NPCID.QueenBee,
+        NPCID.SkeletronHead
+    };
+
+        // Higher‑tier bosses (SuperRare+ only)
+        static readonly int[] MidLateBosses =
+        {
+        NPCID.WallofFlesh,
+        NPCID.Retinazer,
+        NPCID.Spazmatism,
+        NPCID.TheDestroyer,
+        NPCID.SkeletronPrime,
+        NPCID.Plantera,
+        NPCID.Golem,
+        NPCID.DukeFishron,
+        NPCID.CultistBoss,
+        NPCID.MoonLordCore
+    };
+
+        bool IsBossMinion(int type)
+        {
+            return
+                // Eye of Cthulhu
+                type == NPCID.ServantofCthulhu ||
+
+                // Brain of Cthulhu
+                type == NPCID.Creeper ||
+
+                // Queen Bee
+                type == NPCID.Bee ||
+                type == NPCID.BeeSmall ||
+
+                // Skeletron
+                type == NPCID.SkeletronHand ||
+
+                // Eater of Worlds (all segments)
+                type == NPCID.EaterofWorldsHead ||
+                type == NPCID.EaterofWorldsBody ||
+                type == NPCID.EaterofWorldsTail ||
+
+                // The Destroyer (all segments)
+                type == NPCID.TheDestroyer ||
+                type == NPCID.TheDestroyerBody ||
+                type == NPCID.TheDestroyerTail ||
+                type == NPCID.Probe || // FIX: Destroyer probes
+
+                // Queen Slime minions
+                type == NPCID.QueenSlimeMinionBlue ||
+                type == NPCID.QueenSlimeMinionPink ||
+                type == NPCID.QueenSlimeMinionPurple ||
+
+                // Wall of Flesh
+                type == NPCID.TheHungry ||
+                type == NPCID.TheHungryII ||
+                type == NPCID.LeechHead ||
+                type == NPCID.LeechBody ||
+                type == NPCID.LeechTail ||
+
+                // Skeletron Prime arms
+                type == NPCID.PrimeCannon ||
+                type == NPCID.PrimeLaser ||
+                type == NPCID.PrimeSaw ||
+                type == NPCID.PrimeVice ||
+
+                // Plantera
+                type == NPCID.PlanterasTentacle ||
+
+                // Golem
+                type == NPCID.GolemFistLeft ||
+                type == NPCID.GolemFistRight ||
+
+                // Duke Fishron
+                type == NPCID.Sharkron ||
+                type == NPCID.Sharkron2 ||
+
+                // Lunatic Cultist
+                type == NPCID.CultistDragonHead ||
+                type == NPCID.CultistDragonBody1 ||
+                type == NPCID.CultistDragonBody2 ||
+                type == NPCID.CultistDragonBody3 ||
+                type == NPCID.CultistDragonTail ||
+
+                // Pumpkin Moon
+                type == NPCID.PumpkingBlade ||
+                type == NPCID.MourningWood ||
+
+                // Frost Moon
+                type == NPCID.Everscream ||
+                type == NPCID.SantaNK1 ||
+                type == NPCID.IceQueen ||
+
+                // Ancient Doom
+                type == NPCID.AncientDoom ||
+
+                //Cultist
+                type == NPCID.CultistArcherBlue||
+                type == NPCID.CultistArcherWhite ||
+                type == NPCID.CultistBossClone ||
+                type == NPCID.CultistDevote ||
+                type == NPCID.CultistDragonBody1 ||
+                type == NPCID.CultistDragonBody2 ||
+                type == NPCID.CultistDragonBody3 ||
+                type == NPCID.CultistDragonBody4 ||
+                type == NPCID.CultistDragonHead ||
+                type == NPCID.CultistDragonTail ||
+
+                // Flying Snake
+                type == NPCID.FlyingSnake;
+        }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (!npc.friendly && npc.lifeMax > 5 && npc.damage > 0 &&
-                !npc.boss && !npc.SpawnedFromStatue && npc.realLife == -1)
+            bool IsValidEnemy(NPC npc)
+            {
+                if (npc.friendly || npc.townNPC || npc.lifeMax <= 5 || npc.damage <= 0)
+                    return false;
+
+                if (npc.boss || npc.realLife != -1)
+                    return false;
+
+                if (IsBossMinion(npc.type))
+                    return false;
+
+                if (npc.SpawnedFromStatue)
+                    return false;
+
+                if (NPCID.Sets.BelongsToInvasionOldOnesArmy[npc.type])
+                    return false;
+
+
+                return true;
+            }
+
+            // NORMAL ENEMIES
+            if (IsValidEnemy(npc))
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Common>(), 20));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Rare>(), 40));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 80));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 200));
+                return;
+            }
+
+            // ------------------------------------------------------------
+            // BOSS DROPS
+            // ------------------------------------------------------------
+            if (npc.boss)
+            {
+
+
+                // -------------------------
+                // EARLY BOSSES
+                // -------------------------
+                if (EarlyBosses.Contains(npc.type))
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Rare>(), 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 5));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 15));
+                    return;
+                }
+
+                // -------------------------
+                // MID/LATE BOSSES
+                // -------------------------
+                if (MidLateBosses.Contains(npc.type))
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 10));
+                    return;
+                }
+
+                // -------------------------
+                // MODDED BOSSES (fallback)
+                // -------------------------
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 10));
             }
         }
     }

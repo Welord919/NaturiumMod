@@ -1,7 +1,7 @@
 ﻿using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +57,7 @@ public static class FusionRegistry
     public static void RegisterFusions()
     {
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<FlameSwordsman>(),
+            ModContent.ItemType<FlameSwordsman>(), //Flame Swordsman
             new int[]
             {
             ModContent.ItemType<FlameManipulator>(),
@@ -66,13 +66,13 @@ public static class FusionRegistry
             },
             new (int, int)[]
             {
-            (ModContent.ItemType<FireEssence>(), 2),
-            (ModContent.ItemType<EarthEssence>(), 2)
+            (ModContent.ItemType<FireEssence>(), 5),
+            (ModContent.ItemType<EarthEssence>(), 5)
             }
         ));
 
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<DarkfireDragon>(),
+            ModContent.ItemType<DarkfireDragon>(), //Darkfire Dragon
             new int[]
             {
             ModContent.ItemType<Firegrass>(),
@@ -81,14 +81,14 @@ public static class FusionRegistry
             },
             new (int, int)[]
             {
-            (ModContent.ItemType<FireEssence>(), 10),
-            (ModContent.ItemType<LightEssence>(), 5),
-            (ModContent.ItemType<DarkEssence>(), 5)
+            (ModContent.ItemType<FireEssence>(), 25),
+            (ModContent.ItemType<LightEssence>(), 10),
+            (ModContent.ItemType<DarkEssence>(), 10)
             }
         ));
 
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<Charubin>(),
+            ModContent.ItemType<Charubin>(), //Charubin
             new int[]
             {
             ModContent.ItemType<MonsterEgg>(),
@@ -103,7 +103,7 @@ public static class FusionRegistry
         ));
 
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<Dragoness>(),
+            ModContent.ItemType<Dragoness>(), //Dragoness
             new int[]
             {
             ModContent.ItemType<Armaill>(),
@@ -148,7 +148,7 @@ public static class FusionRegistry
         ));
 
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<Fusionist>(),
+            ModContent.ItemType<Fusionist>(), //Fusionist
             new int[]
             {
             ModContent.ItemType<PetiteAngel>(),
@@ -167,7 +167,7 @@ public static class FusionRegistry
         ));
 
         Recipes.Add(new FusionRecipe(
-            ModContent.ItemType<GaiaChampion>(),
+            ModContent.ItemType<GaiaChampion>(), //Gaia Champion
             new int[]
             {
             ModContent.ItemType<Gaia>(),

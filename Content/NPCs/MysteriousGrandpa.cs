@@ -1,13 +1,16 @@
-using Microsoft.Xna.Framework;
+Ôªøusing Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
-using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
+using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -158,7 +161,7 @@ namespace NaturiumMod.Content.NPCs
         {
             switch (CardQuestWorld.questStage)
             {
-                // QUEST 1 ó Bring 5 Warrior Cards
+                // QUEST 1 ‚Äî Bring 5 Warrior Cards
                 case 1:
                     if (CountTaggedCards(player, "Warrior") >= 5)
                     {
@@ -171,7 +174,7 @@ namespace NaturiumMod.Content.NPCs
                     }
                     break;
 
-                // QUEST 2 ó Bring 1 Super Rare card
+                // QUEST 2 ‚Äî Bring 1 Super Rare card
                 case 2:
                     if (HasAnySuperRareCard(player))
                     {
@@ -183,7 +186,7 @@ namespace NaturiumMod.Content.NPCs
                     }
                     break;
 
-                // QUEST 3 ó Bring 15 Fire cards
+                // QUEST 3 ‚Äî Bring 15 Fire cards
                 case 3:
                     if (CountTaggedCards(player, "Fire") >= 15)
                     {
@@ -197,7 +200,7 @@ namespace NaturiumMod.Content.NPCs
                     }
                     break;
 
-                // QUEST 4 ó Craft a Flame Swordsman
+                // QUEST 4 ‚Äî Craft a Flame Swordsman
                 case 4:
                     if (player.HasItem(ModContent.ItemType<FlameSwordsman>()))
                     {
@@ -210,7 +213,7 @@ namespace NaturiumMod.Content.NPCs
                     }
                     break;
 
-                // QUEST 5 ó Bring 10 Dragon cards
+                // QUEST 5 ‚Äî Bring 10 Dragon cards
                 case 5:
                     if (CountTaggedCards(player, "Dragon") >= 10)
                     {
@@ -218,15 +221,14 @@ namespace NaturiumMod.Content.NPCs
                         for (int i = 0; i < 2; i++)
                             RewardPack(player);
                         CardQuestWorld.questStage = 6;
-                        player.GetModPlayer<KillTracker>().cardDamageKills = 0;
                         Main.npcChatText = "Now defeat 50 enemies with Card attacks.";
                         return true;
                     }
                     break;
 
-                // QUEST 6 ó Kill 50 enemies with CardDamage
+                // QUEST 6 ‚Äî Kill 50 enemies with CardDamage
                 case 6:
-                    if (player.GetModPlayer<KillTracker>().cardDamageKills >= 50)
+                    if (CardQuestWorld.totalCardDamageKills >= 50)
                     {
                         for (int i = 0; i < 2; i++)
                             RewardPack(player);
@@ -236,7 +238,7 @@ namespace NaturiumMod.Content.NPCs
                     }
                     break;
 
-                // QUEST 7 ó Bring 3 BEWD
+                // QUEST 7 ‚Äî Bring 3 BEWD
                 case 7:
                     if (CountItem(player, ModContent.ItemType<BEWD>()) >= 3)
                     {
@@ -244,12 +246,11 @@ namespace NaturiumMod.Content.NPCs
                         for (int i = 0; i < 3; i++)
                             RewardPack(player);
                         CardQuestWorld.questStage = 8;
-                        player.GetModPlayer<KillTracker>().cardDamageKills = 0;
                         Main.npcChatText = "Three Blue-Eyes... I remember a unfriendly young man who liked those. Now bring me a Darkfire Dragon.";
                         return true;
                     }
                     break;
-                // QUEST 8 ó Bring a Darkfire Dragon
+                // QUEST 8 ‚Äî Bring a Darkfire Dragon
                 case 8:
                     if (player.HasItem(ModContent.ItemType<DarkfireDragon>()))
                     {
@@ -262,9 +263,9 @@ namespace NaturiumMod.Content.NPCs
                     break;
 
 
-                // QUEST 9 ó Kill 200 enemies with CardDamage
+                // QUEST 9 ‚Äî Kill 200 enemies with CardDamage
                 case 9:
-                    if (player.GetModPlayer<KillTracker>().cardDamageKills >= 200)
+                    if (CardQuestWorld.totalCardDamageKills >= 200)
                     {
                         for (int i = 0; i < 4; i++)
                             RewardPack(player);
@@ -275,7 +276,7 @@ namespace NaturiumMod.Content.NPCs
                     break;
 
                 
-                // QUEST 10 ó Final quest, give QuestResetToken
+                // QUEST 10 ‚Äî Final quest, give QuestResetToken
                 case 10:
                     // Final reward
                     player.QuickSpawnItem(
@@ -286,7 +287,7 @@ namespace NaturiumMod.Content.NPCs
                         RewardPack(player);
                     CardQuestWorld.questStage = 11; // or loop back to 0 if you prefer
 
-                    Main.npcChatText = "You have completed all my tasks for now. Take this token ó it will allow you to begin anew when you wish.";
+                    Main.npcChatText = "You have completed all my tasks for now. Take this token ‚Äî it will allow you to begin anew when you wish.";
                     return true;
             }
 
@@ -298,28 +299,35 @@ namespace NaturiumMod.Content.NPCs
         // HELPERS
         // ============================================================
 
-        private void RewardPack(Player player)
+        public static void RewardPack(Player player)
         {
-            // All LOB packs
-            int[] packs =
+            var weighted = new List<(int type, int weight)>
+    {
+        (ModContent.ItemType<PackLOB_Common>(), 45),
+        (ModContent.ItemType<PackLOB_Rare>(),   25),
+        (ModContent.ItemType<PackLOB_Super>(),  20),
+        (ModContent.ItemType<PackLOB_Ultra>(),  10)
+    };
+
+            int totalWeight = weighted.Sum(w => w.weight);
+            int roll = Main.rand.Next(totalWeight);
+
+            foreach (var entry in weighted)
             {
-        ModContent.ItemType<PackLOB_Common>(),
-        ModContent.ItemType<PackLOB_Rare>(),
-        ModContent.ItemType<PackLOB_Super>(),
-        ModContent.ItemType<PackLOB_Ultra>()
-        };
+                if (roll < entry.weight)
+                {
+                    player.QuickSpawnItem(
+                        player.GetSource_GiftOrReward(), // FIXED SOURCE
+                        entry.type
+                    );
 
-            // Pick one at random
-            int chosenPack = packs[Main.rand.Next(packs.Length)];
+                    SoundEngine.PlaySound(SoundID.Item37);
+                    return;
+                }
 
-            // Give it to the player
-            player.QuickSpawnItem(NPC.GetSource_GiftOrReward(), chosenPack);
-
-            // Play sound
-            SoundEngine.PlaySound(SoundID.Item37);
+                roll -= entry.weight;
+            }
         }
-
-
         private int CountItem(Player player, int type)
         {
             int count = 0;
@@ -347,7 +355,7 @@ namespace NaturiumMod.Content.NPCs
         private bool HasAnySuperRareCard(Player player)
         {
             foreach (var item in player.inventory)
-                if (item.rare == ItemRarityID.LightRed)
+                if (item.rare == ItemRarityID.Orange)
                     return true;
             return false;
         }
@@ -356,7 +364,7 @@ namespace NaturiumMod.Content.NPCs
         {
             for (int i = 0; i < player.inventory.Length; i++)
             {
-                if (player.inventory[i].rare == ItemRarityID.LightRed)
+                if (player.inventory[i].rare == ItemRarityID.Orange)
                 {
                     player.inventory[i].stack--;
                     if (player.inventory[i].stack <= 0)
@@ -398,25 +406,17 @@ namespace NaturiumMod.Content.NPCs
         }
         public class KillTracker : ModPlayer
         {
-            public int cardDamageKills;
-
-            public override void Initialize()
+            private void TryGiveKillReward()
             {
-                cardDamageKills = 0;
+                if (CardQuestWorld.totalCardDamageKills % 100 == 0)
+                {
+                    if (Main.netMode != NetmodeID.Server)
+                        Main.NewText("Bonus reward!", 150, 255, 150);
+
+                    RewardPack(Player);
+                }
             }
 
-            public override void SaveData(TagCompound tag)
-            {
-                tag["cardDamageKills"] = cardDamageKills;
-            }
-
-            public override void LoadData(TagCompound tag)
-            {
-                if (tag.ContainsKey("cardDamageKills"))
-                    cardDamageKills = tag.GetInt("cardDamageKills");
-            }
-
-            // Projectile kills
             public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
             {
                 if (proj.DamageType == ModContent.GetInstance<CardDamage>() &&
@@ -424,18 +424,19 @@ namespace NaturiumMod.Content.NPCs
                     target.lifeMax > 5 &&
                     target.life - damageDone <= 0)
                 {
-                    cardDamageKills++;
+                    CardQuestWorld.totalCardDamageKills++;
+                    TryReduceSickness(Player, proj);
 
-                    // Notify every 50 kills
-                    if (cardDamageKills % 50 == 0)
+                    if (CardQuestWorld.totalCardDamageKills % 50 == 0)
                     {
                         if (Main.netMode != NetmodeID.Server)
-                            Main.NewText($"Milestone reached: {cardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
+                            Main.NewText($"Milestone reached: {CardQuestWorld.totalCardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
                     }
+
+                    TryGiveKillReward();
                 }
             }
 
-            // Item kills
             public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
             {
                 if (item.DamageType == ModContent.GetInstance<CardDamage>() &&
@@ -443,16 +444,39 @@ namespace NaturiumMod.Content.NPCs
                     target.lifeMax > 5 &&
                     target.life - damageDone <= 0)
                 {
-                    cardDamageKills++;
+                    CardQuestWorld.totalCardDamageKills++;
+                    TryReduceSickness(Player, null);
 
-                    // Notify every 50 kills
-                    if (cardDamageKills % 50 == 0)
+                    if (CardQuestWorld.totalCardDamageKills % 50 == 0)
                     {
                         if (Main.netMode != NetmodeID.Server)
-                            Main.NewText($"Milestone reached: {cardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
+                            Main.NewText($"Milestone reached: {CardQuestWorld.totalCardDamageKills} enemies slain with CardDamage!", 255, 200, 50);
                     }
+
+                    TryGiveKillReward();
                 }
             }
+            //For REBD SS reducing
+            private void TryReduceSickness(Player player, Projectile proj)
+            {
+                bool isREBD = proj != null && proj.GetGlobalProjectile<REBDTag>().isREBD;
+                bool hasCharm = player.GetModPlayer<REBDRingPlayer>().rebdRingActive;
+
+                if (!isREBD && !hasCharm)
+                    return;
+
+                int buffID = ModContent.BuffType<SummoningSickness>();
+                int index = player.FindBuffIndex(buffID);
+
+                if (index == -1)
+                    return;
+
+                int current = player.buffTime[index];
+                int reduced = (int)(current * 0.90f);
+
+                player.buffTime[index] = Math.Max(1, reduced);
+            }
+
         }
         // ============================================================
         // SHOP + COMBAT
@@ -460,11 +484,31 @@ namespace NaturiumMod.Content.NPCs
 
         public override void AddShops()
         {
-            var npcShop = new NPCShop(Type, ShopName)
-                .Add<PackLOB_Common>()
-                .Add<LeftLeg>();
+            NPCShop shop = new NPCShop(Type);
 
-            npcShop.Register();
+            int stage = CardQuestWorld.questStage;
+
+            // Always available
+            shop.Add(ModContent.ItemType<PackLOB_Common>());
+
+           
+            // After Quest 4 (Flame Swordsman)
+            if (stage >= 4)
+                shop.Add(ModContent.ItemType<EssenceExtractor>());
+
+            // After Quest 5 (10 Dragons)
+            if (stage >= 5)
+                shop.Add(ModContent.ItemType<FusionAltar>());
+
+            // After Quest 8 (Darkfire Dragon)
+            if (stage >= 8)
+                shop.Add(ModContent.ItemType<PackLOB_Rare>());
+
+            // After Quest 10 (final)
+            if (stage >= 10)
+                shop.Add(ModContent.ItemType<QuestResetToken>());
+
+            shop.Register();
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -497,7 +541,17 @@ namespace NaturiumMod.Content.NPCs
         }
 
         public override List<string> SetNPCNameList() =>
-            new() { "Card", "Collector", "Mysterious Grandpa" };
+        new()
+        {
+        "Soloman",
+        "Hiriluk",
+        "Hakuro",
+        "Roshi",
+        "Edward",
+        "Rayleigh",
+        "Sorahiko"
+        };
+
     }
 
     // ============================================================
@@ -507,36 +561,33 @@ namespace NaturiumMod.Content.NPCs
     public class CardQuestWorld : ModSystem
     {
         public static int questStage = 0;
-        public static int cardKillsWithCardDamage = 0;
+
+        // ‚≠ê NEW: world‚Äëlevel kill counter
+        public static int totalCardDamageKills = 0;
 
         public override void OnWorldLoad()
         {
             questStage = 0;
-            cardKillsWithCardDamage = 0;
+            totalCardDamageKills = 0;
         }
 
         public override void OnWorldUnload()
         {
             questStage = 0;
-            cardKillsWithCardDamage = 0;
+            totalCardDamageKills = 0;
         }
 
         public override void SaveWorldData(TagCompound tag)
         {
             tag["questStage"] = questStage;
-            tag["cardKills"] = cardKillsWithCardDamage;
+            tag["totalCardDamageKills"] = totalCardDamageKills;
         }
 
         public override void LoadWorldData(TagCompound tag)
         {
             questStage = tag.GetInt("questStage");
-            cardKillsWithCardDamage = tag.GetInt("cardKills");
+            totalCardDamageKills = tag.GetInt("totalCardDamageKills");
         }
     }
 
-    // ============================================================
-    // GLOBAL KILL TRACKER
-    // ============================================================
-
-    
 }

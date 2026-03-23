@@ -32,7 +32,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
-            Item.damage = 45;
+            Item.damage = 50;
             Item.consumable = true;
             Item.maxStack = 999;
             Item.knockBack = 3.5f;
@@ -83,6 +83,13 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
             return true;
         }
     }
+    public class REBDTag : GlobalProjectile
+    {
+        public bool isREBD;
+
+        public override bool InstancePerEntity => true;
+    }
+
     public class RedEyesFireball : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/RedEyesFireball";
@@ -92,6 +99,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 
         public override void SetDefaults()
         {
+            Projectile.GetGlobalProjectile<REBDProjTag>().isREBD = true;
+
             Projectile.width = 26;
             Projectile.height = 26;
             Projectile.friendly = true;
@@ -159,13 +168,14 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
                 Projectile.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<RedEyesExplosion>(),
-                Projectile.damage,
+                Projectile.damage *2,
                 Projectile.knockBack,
                 Projectile.owner
             );
 
             Projectile.Kill();
         }
+
     }
 
     public class RedEyesExplosion : ModProjectile
@@ -174,6 +184,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 
         public override void SetDefaults()
         {
+            Projectile.GetGlobalProjectile<REBDProjTag>().isREBD = true;
+
             Projectile.width = 80;
             Projectile.height = 80;
             Projectile.friendly = true;

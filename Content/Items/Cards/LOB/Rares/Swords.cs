@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.Commons
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 {
     public class Swords : ModItem
     {
@@ -25,6 +25,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Item.maxStack = 999;
             Item.noMelee = true;
             Item.noUseGraphic = true;
+            Item.damage = 50;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.shoot = ModContent.ProjectileType<SwordsProj>();
             Item.shootSpeed = 0f;
@@ -50,14 +51,14 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 Item.stack--;
                 usesLeft = 3;
             }
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 60);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 30);
             Vector2 pos = Main.MouseWorld;
             Projectile.NewProjectile(
                 player.GetSource_ItemUse(Item),
                 pos,
                 Vector2.Zero,
                 Item.shoot,
-                30,
+                Item.damage,
                 6f,
                 player.whoAmI
             );

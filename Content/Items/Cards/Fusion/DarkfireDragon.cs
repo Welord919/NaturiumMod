@@ -29,7 +29,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.noMelee = true;
 
             Item.DamageType = ModContent.GetInstance<CardDamage>();
-            Item.damage = 100;
+            Item.damage = 80;
             Item.knockBack = 3f;
 
             // Item shoots ONLY the dragon head
@@ -55,9 +55,9 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.stack--;
 
             // Apply short cooldown
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 30);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 600);
 
-            return true; // allow default shooting (dragon head)
+            return true;
         }
     }
 
@@ -78,7 +78,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 20;
+            Projectile.localNPCHitCooldown = 60;
 
             Projectile.tileCollide = false;
             Projectile.timeLeft = 180;

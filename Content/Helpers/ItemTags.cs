@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.NoEffect;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
@@ -31,9 +31,6 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<DecayBow>(), "Apophis");
             AddTag(ModContent.ItemType<JudgementofAnubis>(), "Apophis");
             AddTag(ModContent.ItemType<MillenniumRod>(), "Apophis");
-            //AddTag(ModContent.ProjectileType<ApophisProj>(), "Apophis");
-            //AddTag(ModContent.ProjectileType<MillenniumEye>(), "Apophis");
-
 
             //Barkion weapons
             AddTag(ModContent.ItemType<BarkionsBlaster>(), "Barkion");
@@ -56,9 +53,16 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<StarsteelPickaxe>(), "Nibiru");
             AddTag(ModContent.ItemType<StarryNight>(), "Nibiru");
 
+            //Card Packs
+            AddTags(ModContent.ItemType<PackLOB_Common>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Rare>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Super>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Ultra>(), "Card");
+
+            //Dragons
             AddTags(ModContent.ItemType<BEWD>(), "Card", "Dragon", "Light");
             AddTags(ModContent.ItemType<PetiteDragon>(), "Card", "Dragon", "Wind");
-            AddTags(ModContent.ItemType<REBD>(), "Card", "Dragon", "Dark");
+            AddTags(ModContent.ItemType<REBD>(), "Card", "Dragon", "Dark", "Fire");
             AddTags(ModContent.ItemType<CurseofDragon>(), "Card", "Dragon", "Dark");
             AddTags(ModContent.ItemType<TriHornedDragon>(), "Card", "Dragon", "Dark");
             AddTags(ModContent.ItemType<LesserDragon>(), "Card", "Dragon", "Wind");
@@ -72,7 +76,7 @@ namespace NaturiumMod.Content.Helpers
             AddTags(ModContent.ItemType<MWarrior1>(), "Card", "Warrior", "Earth");
             AddTags(ModContent.ItemType<MWarrior2>(), "Card", "Warrior", "Earth");
             AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire", "Fusion");
-            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Fire", "Fusion");
+            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Dark","Fire", "Fusion");
             AddTags(ModContent.ItemType<Armaill>(), "Card", "Warrior", "Earth");
 
             //Bugs
@@ -196,21 +200,29 @@ namespace NaturiumMod.Content.Helpers
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
+            int itemType = -1;
+
+            // Covers most modded + vanilla weapons
             if (source is EntitySource_ItemUse itemSource)
+                itemType = itemSource.Item.type;
+
+            // Covers guns, bows, flamethrowers, etc.
+            else if (source is EntitySource_ItemUse_WithAmmo ammoSource)
+                itemType = ammoSource.Item.type;
+
+            if (itemType == -1)
+                return;
+
+            // Copy tags from item → projectile
+            if (WeaponTag.ItemTags.TryGetValue(itemType, out var tags))
             {
-                int itemType = itemSource.Item.type;
+                if (!ProjTags.ContainsKey(projectile.type))
+                    ProjTags[projectile.type] = new HashSet<string>();
 
-                if (WeaponTag.ItemTags.TryGetValue(itemType, out var tags))
-                {
-                    if (!ProjTags.ContainsKey(projectile.type))
-                        ProjTags[projectile.type] = new HashSet<string>();
-
-                    foreach (var t in tags)
-                        ProjTags[projectile.type].Add(t);
-                }
+                foreach (var t in tags)
+                    ProjTags[projectile.type].Add(t);
             }
         }
-
     }
     public class WeaponBoostPlayer : ModPlayer
     {
@@ -292,7 +304,8 @@ namespace NaturiumMod.Content.Helpers
                 && fusionActive
                 && PlayerHoldingTag("Fusion"))
             {
-                Player.GetDamage(ModContent.GetInstance<CardDamage>()) += 0.10f;
+                Player.GetDamage(ModContent.GetInstance<CardDamage>()) *= 1.10f;
+
             }
         }
     }

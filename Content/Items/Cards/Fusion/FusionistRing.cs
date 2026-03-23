@@ -1,4 +1,6 @@
 ﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using StructureHelper.Content.GUI;
@@ -27,41 +29,51 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modPlayer = player.GetModPlayer<FusionistRingPlayer>();
+            player.GetModPlayer<FusionistRingPlayer>().fusionistRingActive = true;
             var boost = player.GetModPlayer<WeaponBoostPlayer>();
             boost.activeBoosts["Fusion"] = true;
+        }
+        public override void UpdateInventory(Player player)
+        {
             player.blockRange += 1;
             player.moveSpeed += 0.10f;
             player.runAcceleration *= 1.03f;
         }
         public override void AddRecipes()
         {
-            CreateRecipe(15)
-                .AddIngredient(ModContent.ItemType<Fusionist>(), 1)
-                .AddIngredient(ModContent.ItemType<SunflowerPower>(), 1)
-                .AddIngredient(ModContent.ItemType<NaturiumBar>(), 8)
-                .AddTile(ModContent.TileType<FusionAltarTile>())
-                .Register();
+            Recipe recipe = CreateRecipe();
+            recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<Fusionist>(), 1),
+        new(ModContent.ItemType<NaturiumBar>(), 5),
+        new(ModContent.ItemType<CharmBase>(), 1)
+            ], TileID.TinkerersWorkbench);
+            recipe.Register();
         }
     }
 }
 public class FusionistRingPlayer : ModPlayer
-{   
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+{
+    public bool fusionistRingActive;
+
+    public override void ResetEffects()
     {
-        // Only apply to CardDamage projectiles
-        if (proj.DamageType == ModContent.GetInstance<CardDamage>())
-        {
-            modifiers.SourceDamage *= 1.05f; // +10% damage
-        }
+        fusionistRingActive = false;
     }
+
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
-        // Only apply to CardDamage items
-        if (item.DamageType == ModContent.GetInstance<CardDamage>())
+        if (fusionistRingActive && item.DamageType == ModContent.GetInstance<CardDamage>())
         {
-            damage *= 1.05f; // +10% damage
+            damage *= 1.05f; // +5% card damage
+        }
+    }
+
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+    {
+        if (fusionistRingActive && proj.DamageType == ModContent.GetInstance<CardDamage>())
+        {
+            modifiers.SourceDamage *= 1.05f; // +10% fusion monster damage
         }
     }
 }
-    
+

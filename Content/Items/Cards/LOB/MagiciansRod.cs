@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -8,11 +11,11 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
+namespace NaturiumMod.Content.Items.Cards.LOB
 {
-    public class DarkMagician : ModItem
+    public class DarkMagicianStaffWeapon : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/darkmagi";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/MagiciansRod";
 
         public override void SetStaticDefaults()
         {
@@ -23,31 +26,37 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
         {
             Item.width = 40;
             Item.height = 40;
+
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20;
             Item.useTime = 20;
+
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.channel = true;
 
-            Item.shoot = ModContent.ProjectileType<DarkMagicianStaff>();
+            Item.shoot = ModContent.ProjectileType<DarkMagicianStaffWeaponProj>();
             Item.shootSpeed = 0f;
 
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-            Item.damage = 50;
+            Item.DamageType = DamageClass.Magic;
+            Item.damage = 25;
             Item.knockBack = 2f;
+
+            Item.mana = 1; // mana cost per burst
 
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.buyPrice(gold: 1);
-
-            Item.consumable = false;
-            Item.maxStack = 999;
         }
-
-        public override bool CanUseItem(Player player)
+        public override void AddRecipes()
         {
-            // Prevent use during summoning sickness
-            return !player.HasBuff(ModContent.BuffType<SummoningSickness>());
+            Recipe recipe = CreateRecipe();
+            recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<DarkMagician>(), 1),
+            new(ModContent.ItemType<DarkEssence>(), 15),
+            new(ItemID.Hellstone, 7),
+            new(ItemID.AquaScepter, 1)
+            ], TileID.TinkerersWorkbench);
+            recipe.Register();
         }
     }
 
@@ -55,7 +64,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
     // STAFF PROJECTILE (CHARGING + BURST FIRING)
     // ============================================================
 
-    public class DarkMagicianStaff : ModProjectile
+    public class DarkMagicianStaffWeaponProj : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DMStaff";
 
@@ -145,30 +154,45 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             // Release
             if (!player.channel)
             {
-                FireBurst(player);
-
-                // Tier-based summoning sickness
-                int sickness = tier switch
+                // Mana cost per tier
+                int manaCost = tier switch
                 {
-                    1 => 10,  // base
-                    2 => 30,  // mid
-                    3 => 60,  // max
+                    1 => 10,
+                    2 => 20,
+                    3 => 35,
                     _ => 10
                 };
 
-                player.AddBuff(ModContent.BuffType<SummoningSickness>(), sickness);
-
-                // Consume 1 card
-                if (player.HeldItem.stack > 0)
+                // If not enough mana, downgrade tier
+                while (tier > 1 && player.statMana < manaCost)
                 {
-                    player.HeldItem.stack--;
-                    if (player.HeldItem.stack <= 0)
-                        player.HeldItem.TurnToAir();
+                    tier--;
+                    manaCost = tier switch
+                    {
+                        1 => 10,
+                        2 => 20,
+                        _ => 10
+                    };
                 }
+
+                // If STILL not enough mana, cancel firing
+                if (player.statMana < manaCost)
+                {
+                    // Optional: play fail sound
+                    SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+                    Projectile.Kill();
+                    return;
+                }
+
+                // Consume mana
+                player.statMana -= manaCost;
+                player.manaRegenDelay = 60;
+
+                // Fire the burst
+                FireBurst(player);
 
                 Projectile.Kill();
             }
-
         }
 
         private void FireBurst(Player player)
@@ -196,7 +220,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
 
-            // HANDLE PIVOT (left side)
             Vector2 origin = new Vector2(20f, tex.Height / 2f);
 
             Main.EntitySpriteDraw(
@@ -212,117 +235,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             );
 
             return false;
-        }
-    }
-
-    // ============================================================
-    // DELAYED SHOT (handles burst timing)
-    // ============================================================
-
-    public class DarkMagicDelayedShot : ModProjectile
-    {
-        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.None;
-
-        public override void SetDefaults()
-        {
-            Projectile.width = 2;
-            Projectile.height = 2;
-            Projectile.timeLeft = 200;
-            Projectile.tileCollide = false;
-            Projectile.hide = true;
-        }
-
-        public override void AI()
-        {
-            int tier = (int)Projectile.ai[0];
-            int delay = (int)Projectile.ai[1];
-
-            if (Projectile.timeLeft == 200 - delay)
-            {
-                FireRealProjectile(tier);
-                Projectile.Kill();
-            }
-        }
-
-        private void FireRealProjectile(int tier)
-        {
-            Player player = Main.player[Projectile.owner];
-            Vector2 direction = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
-
-            float speed = 12f + tier * 2f;
-            float scale = 1f + (tier - 1) * 0.5f;
-            int damage = player.HeldItem.damage * tier;
-
-            int proj = Projectile.NewProjectile(
-                Projectile.GetSource_FromThis(),
-                player.Center,
-                direction * speed,
-                ModContent.ProjectileType<DarkMagicBolt>(),
-                damage,
-                player.HeldItem.knockBack,
-                player.whoAmI,
-                scale
-            );
-
-            Main.projectile[proj].scale = scale;
-        }
-    }
-
-    // ============================================================
-    // DARK MAGIC BOLT (scales automatically)
-    // ============================================================
-
-    public class DarkMagicBolt : ModProjectile
-    {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DMagic";
-
-        public override void SetDefaults()
-        {
-            Projectile.width = 12;
-            Projectile.height = 12;
-            Projectile.friendly = true;
-            Projectile.tileCollide = true;
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
-
-            Projectile.penetrate = -1; // will be set on spawn
-        }
-        public override void ModifyDamageHitbox(ref Rectangle hitbox)
-        {
-            float s = Projectile.scale * 1.5f;
-
-            // Center before resizing
-            Vector2 center = hitbox.Center.ToVector2();
-
-            hitbox.Width = (int)(Projectile.width * s);
-            hitbox.Height = (int)(Projectile.height * s);
-
-            // Re-center after resizing
-            hitbox.X = (int)(center.X - hitbox.Width / 2f);
-            hitbox.Y = (int)(center.Y - hitbox.Height / 2f);
-        }
-        public override void OnSpawn(IEntitySource source)
-        {
-            int tier = (int)Projectile.ai[0];
-
-            Projectile.penetrate = tier switch
-            {
-                1 => 5,
-                2 => 4,
-                3 => 2,
-                _ => 1
-            };
-        }
-
-        public override void AI()
-        {
-            Projectile.rotation += 0.25f;
-
-            if (Projectile.scale < 1.3f)
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch);
-            else if (Projectile.scale < 1.8f)
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame);
-            else
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror);
         }
     }
 }

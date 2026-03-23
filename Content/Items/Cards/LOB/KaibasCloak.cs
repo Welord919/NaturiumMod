@@ -1,9 +1,13 @@
 ﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.PreHardmode.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards;
+namespace NaturiumMod.Content.Items.Cards.LOB;
 [AutoloadEquip(EquipType.Body)]
 
 public class KaibasCloak : ModItem
@@ -39,6 +43,17 @@ public class KaibasCloak : ModItem
         player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped = true;
         var boost = player.GetModPlayer<WeaponBoostPlayer>();
         boost.activeBoosts["Dragon"] = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+        new(ModContent.ItemType<BEWD>(), 3),
+        new(ModContent.ItemType<LightEssence>(), 15),
+        new(ModContent.ItemType<Starsteel>(), 10),
+        new(ModContent.ItemType<CharmBase>(), 1)
+        ], TileID.TinkerersWorkbench);
+        recipe.Register();
     }
 }
 public class KaibaPlayer : ModPlayer

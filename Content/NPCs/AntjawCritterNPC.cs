@@ -42,12 +42,10 @@ public class AntjawCritterNPC : ModNPC
         NPC.lifeMax = 5;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-
-        NPC.catchItem = ModContent.ItemType<AntjawCritter>();
-
         NPC.lavaImmune = false;
 
         NPC.CloneDefaults(NPCID.Butterfly);
+        NPC.catchItem = ModContent.ItemType<AntjawCritter>();
     }
 
     public override void FindFrame(int frameHeight)

@@ -23,10 +23,10 @@ namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint
             Item.consumable = true;
             Item.maxStack = 999;
             Item.noMelee = true;
-            Item.damage = 8;
             Item.knockBack = 1f;
 
             Item.buffType = ModContent.BuffType<PetiteAngelBuff>();
+            Item.buffTime = 60 * 40; // ⭐ FIX: ensures buff applies on first use
 
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(silver: 50);

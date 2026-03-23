@@ -123,7 +123,9 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 16;
-            Projectile.DamageType = DamageClass.Melee;
+
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.spriteDirection = 1;

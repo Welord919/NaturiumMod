@@ -63,6 +63,16 @@ Mods: {
 			MetalDragonExtras.DisplayName: Metal Dragon Extras
 			MetalDragonHit.DisplayName: Metal Dragon Hit
 			MetalDragonSegment.DisplayName: Metal Dragon Segment
+			DarkMagicianStaffWeaponProj.DisplayName: Dark Magician Staff Weapon Proj
+			ExodiaBeam.DisplayName: Exodia Beam
+			ExodiaFinalBlast.DisplayName: Exodia Final Blast
+			ExodiaPieceVisual.DisplayName: Exodia Piece Visual
+			ExodiaSummonSequence.DisplayName: Exodia Summon Sequence
+			ExodiaBlast.DisplayName: Exodia Blast
+			ExodiaFiringArm.DisplayName: Exodia Firing Arm
+			ExodiaFinalHand.DisplayName: Exodia Final Hand
+			CharubinMaceProj.DisplayName: Charubin Mace Proj
+			EggShellStickProj.DisplayName: Egg Shell Stick Proj
 		}
 
 		NPCs: {
@@ -548,7 +558,7 @@ Mods: {
 					'''
 					Grants immunity to knockback and gives the user the ability to dash through enemies to damage them
 					Gives 30 frames of invincibility after dashing
-					A shield with a tiny fragment of the power of the Millennium Pieces 
+					'A shield with a tiny fragment of the power of the Millennium Pieces'
 					'''
 				DisplayName: Millennium Shield
 			}
@@ -585,7 +595,11 @@ Mods: {
 
 			JudgementofAnubis: {
 				DisplayName: Judgement of Apophis
-				Tooltip: Summon Anubis Sentries that shoot Apophis projectiles at nearby enemies
+				Tooltip:
+					'''
+					Summons a Sentry
+					Summon an Anubis king that shoots Apophis projectiles at nearby enemies
+					'''
 			}
 
 			TabletoftheKings: {
@@ -650,7 +664,7 @@ Mods: {
 				Tooltip:
 					'''
 					Increase damage of all cards by 10%
-					Reduce Summonign Sickenness duration from Dragon cards by 50%
+					Reduce Summonign Sickenness duration from Blue Eyes cards by 50%
 					Uses a secret move when 3 Blue Eyes White Dragon cards are used together
 					'You fight me with fruit? Don't mock me!'
 					'''
@@ -773,7 +787,6 @@ Mods: {
 				Tooltip:
 					'''
 					Spellcaster, Dark
-					No Effect
 					'A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.'
 					'''
 			}
@@ -783,14 +796,19 @@ Mods: {
 				Tooltip:
 					'''
 					Spellcaster, Dark
-					Fire a burst of 3 magic orbs that get stronger the longer they are charged for
+					Fire a burst of 3 magic orbs that get stronger, but lose pierce, the longer they are charged for
 					'The ultimate wizard in terms of attack and defense.'
 					'''
 			}
 
 			REBD: {
 				DisplayName: Red Eyes Black Dragon
-				Tooltip: "'A ferocious dragon with a deadly attack.'"
+				Tooltip:
+					'''
+					Charges: 3
+					Shoots out 3 flame orbs that fly towards the cusror and expolde when they reach end of lifespawn that do increased damage
+					'A ferocious dragon with a deadly attack.'
+					'''
 			}
 
 			Firegrass: {
@@ -901,7 +919,11 @@ Mods: {
 
 			MetalDragon: {
 				DisplayName: Metal Dragon
-				Tooltip: Machine, Wind, Fusion
+				Tooltip:
+					'''
+					Machine, Wind, Fusion
+					Gain a Metal Dragon buff that increases defense by 5 and reduces damage taken by 5%
+					'''
 			}
 
 			Dragoness: {
@@ -911,7 +933,11 @@ Mods: {
 
 			FlameGhost: {
 				DisplayName: Flame Ghost
-				Tooltip: Zombie, Dark, Fusion
+				Tooltip:
+					'''
+					Zombie, Dark, Fusion
+					Gain Obsidian skin and Flame Ghost buffs that allow the player to swim in lava like you could as a merfolk in water
+					'''
 			}
 
 			FlowerWolf: {
@@ -989,7 +1015,7 @@ Mods: {
 			}
 
 			MWarrior1: {
-				DisplayName: M Warrior1
+				DisplayName: M-Warrior #1
 				Tooltip:
 					'''
 					Warrior, Earth
@@ -998,7 +1024,7 @@ Mods: {
 			}
 
 			MWarrior2: {
-				DisplayName: M Warrior2
+				DisplayName: M-Warrior #2
 				Tooltip:
 					'''
 					Warrior, Earth
@@ -1007,7 +1033,7 @@ Mods: {
 			}
 
 			MysticalSheep2: {
-				DisplayName: Mystical Sheep2
+				DisplayName: Mystical Sheep #2
 				Tooltip:
 					'''
 					Beast, Earth
@@ -1016,7 +1042,7 @@ Mods: {
 			}
 
 			OneEyedSD: {
-				DisplayName: One Eyed S D
+				DisplayName: One Eyed Shield Dragon
 				Tooltip:
 					'''
 					Dragon, Wind
@@ -1067,7 +1093,7 @@ Mods: {
 				Tooltip:
 					'''
 					Spellcaster, Dark
-					'Something happens when you assemble all 5 pieces...'
+					'Something great happens when you assemble all 5 pieces...'
 					'''
 			}
 
@@ -1087,21 +1113,84 @@ Mods: {
 
 			LeftArm: {
 				DisplayName: Left Arm
-				Tooltip: ""
+				Tooltip:
+					'''
+					Spellcaster, Dark
+					'A forbidden left arm sealed by magic. Whosoever breaks this seal will know infinite power.'
+					'''
 			}
 
 			RightArm: {
 				DisplayName: Right Arm
-				Tooltip: ""
+				Tooltip:
+					'''
+					Spellcaster, Dark
+					'A forbidden right arm sealed by magic. Whosoever breaks this seal will know infinite power.'
+					'''
 			}
 
 			RightLeg: {
 				DisplayName: Right Leg
-				Tooltip: ""
+				Tooltip:
+					'''
+					Spellcaster, Dark
+					'A forbidden right leg sealed by magic. Whosoever breaks this seal will know infinite power.'
+					'''
 			}
 
 			FusionistRing: {
 				DisplayName: Fusionist Ring
+				Tooltip:
+					'''
+					Increases placement range by 1
+					Increases move speed and acceleration
+					Increases Card damage by 5%
+					Increases Fusion Card damage by 10%
+					'''
+			}
+
+			REBDRing: {
+				DisplayName: Red Eyes Black Dragon Ring
+				Tooltip:
+					'''
+					Increases Fire damage by 7%
+					Increases Red Eyes Black Dragon's damage by 15%
+					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill
+					Reduces Summoning Sickness of all Cards by the 3% per kill (Max 75%)
+					'''
+			}
+
+			REBDFang: {
+				DisplayName: Red Eyes Black Dragon Fang
+				Tooltip:
+					'''
+					Increases Fire damage by 3%
+					Increases Red Eyes Black Dragon's damage by 15%
+					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill
+					'''
+			}
+
+			DarkMagicianStaffWeapon: {
+				DisplayName: Dark Magician's Rod
+				Tooltip:
+					'''
+					Fire a burst of 3 magic orbs that get stronger, but lose pierce, the longer it is charged for
+					'Does noticable less damage than the card...'
+					'''
+			}
+
+			NaturiumBag: {
+				DisplayName: Naturium Bag
+				Tooltip: Right click to gain a random ammount of Natuirum Ore
+			}
+
+			NaturiumBarBag: {
+				DisplayName: Naturium Bar Bag
+				Tooltip: Right click to gain a random ammount of Natuirum Bars
+			}
+
+			CharubinMace: {
+				DisplayName: Charubin Mace
 				Tooltip: ""
 			}
 		}
@@ -1204,7 +1293,12 @@ Mods: {
 
 			MetalDragonBuff: {
 				DisplayName: Metal Dragon Buff
-				Description: Mods.NaturiumMod.Buffs.MetalDragonBuff.Description
+				Description: Increase defense by 5 and reduce damage taken by 5%
+			}
+
+			FlameGhostBuff: {
+				DisplayName: Flame Ghost Buff
+				Description: Allows the player to swim in lava
 			}
 		}
 

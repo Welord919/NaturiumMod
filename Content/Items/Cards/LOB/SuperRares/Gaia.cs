@@ -1,13 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.Rares;
+namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 
 public class Gaia : ModItem
 {

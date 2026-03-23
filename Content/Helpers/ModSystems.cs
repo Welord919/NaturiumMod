@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
+using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
@@ -30,7 +32,19 @@ namespace NaturiumMod.Content.Helpers
 
             RecipeGroup.RegisterGroup("NaturiumMod:EvilChunks", evilChunks);
         }
-    public override void PostAddRecipes()
+        public override void PostSetupContent()
+        {
+            // Register modded fire items
+            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<FlameSwordsman>());
+            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<DarkfireDragon>());
+            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<REBD>());
+
+            // Register modded fire projectiles
+            FireWeaponRegistry.RegisterModdedFireProjectile(ModContent.ProjectileType<RedEyesFireball>());
+            FireWeaponRegistry.RegisterModdedFireProjectile(ModContent.ProjectileType<RedEyesExplosion>());
+        }
+
+        public override void PostAddRecipes()
         {
             foreach (Recipe recipe in Main.recipe)
             {
@@ -56,10 +70,10 @@ public class CardWorldDraw : GlobalItem
 {
     public override bool AppliesToEntity(Item entity, bool lateInstantiation)
     {
-        return entity.type == ModContent.ItemType<FlameSwordsman>()
-            || entity.type == ModContent.ItemType<BEWD>()
-            || entity.type == ModContent.ItemType<BasePackLOB>();
+        return WeaponTag.ItemTags.TryGetValue(entity.type, out var tags)
+            && tags.Contains("Card");
     }
+
 
     // ⭐ Stop Terraria from drawing the original full-size sprite
     public override bool PreDrawInWorld(

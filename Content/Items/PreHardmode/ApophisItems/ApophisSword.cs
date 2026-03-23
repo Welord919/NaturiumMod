@@ -16,7 +16,7 @@ public class ApophisSword : ModItem
         Item.width = 40;
         Item.height = 40;
 
-        Item.damage = 20; 
+        Item.damage = 16; 
         Item.DamageType = DamageClass.Melee;
         Item.knockBack = 4.5f;
         Item.crit = 4;

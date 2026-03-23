@@ -53,21 +53,47 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 flameManipulatorActive = false;
             }
 
+            // ------------------------------------------------------------
+            // 1. FIRE DAMAGE BOOST (ITEM DAMAGE)
+            // ------------------------------------------------------------
             public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
             {
                 if (!flameManipulatorActive)
                     return;
 
-                // Buff your custom fire-tagged cards
-                if (WeaponTag.ItemTags.TryGetValue(item.type, out var tags) && tags.Contains("Fire"))
-                {
-                    damage *= 1.10f; // +10% fire card damage
-                }
-
-                // Buff vanilla fire weapons (we detect them by checking if they apply OnFire!)
-                if (item.buffType == BuffID.OnFire || item.shoot == ProjectileID.Flames)
+                // Fire-tagged modded cards
+                if (WeaponTag.ItemTags.TryGetValue(item.type, out var tags) &&
+                    tags.Contains("Fire"))
                 {
                     damage *= 1.05f;
+                }
+
+                // Vanilla + modded fire weapons
+                if (FireWeaponRegistry.FireItems.Contains(item.type))
+                {
+                    damage *= 1.05f;
+                }
+            }
+
+            // ------------------------------------------------------------
+            // 2. FIRE DAMAGE BOOST (PROJECTILE DAMAGE)
+            // ------------------------------------------------------------
+            public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+            {
+                if (!flameManipulatorActive)
+                    return;
+
+                // Fire-tagged modded projectiles
+                if (WeaponTagProj.ProjTags.TryGetValue(proj.type, out var tags) &&
+                    tags.Contains("Fire"))
+                {
+                    modifiers.SourceDamage *= 1.05f;
+                }
+
+                // Vanilla + modded fire projectiles
+                if (FireWeaponRegistry.FireProjectiles.Contains(proj.type))
+                {
+                    modifiers.SourceDamage *= 1.05f;
                 }
             }
         }

@@ -3,8 +3,10 @@ using NaturiumMod.Content.Items.General.Placeable;
 using NaturiumMod.Content.Items.PostHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using NaturiumMod.Content.Items.PreHardmode.Consumables;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -46,25 +48,7 @@ public class ManyGlobalNPC : GlobalNPC
             _ => []
         };
     }
-    public class EoCDrops : GlobalNPC
-    {
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
-        {
-            if (npc.type != NPCID.EyeofCthulhu)
-                return;
-
-            // Classic only
-            if (!Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(
-                    ModContent.ItemType<NaturiumOre>(),
-                    1,
-                    18,
-                    36
-                ));
-            }
-        }
-    }
+    
     public class NaturesEssenceDrop : GlobalNPC
 
     {

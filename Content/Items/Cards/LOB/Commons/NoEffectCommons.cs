@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.NoEffect;
+namespace NaturiumMod.Content.Items.Cards.LOB.Commons;
 
-public abstract class Skullservant : ModItem
+public abstract class NoEffectCommon : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/LeftLeg";
     public override void SetDefaults()
@@ -17,64 +17,63 @@ public abstract class Skullservant : ModItem
         Item.rare = ItemRarityID.White;
     }
 }
-public class Armaill : Skullservant
+public class SkullServant : NoEffectCommon
+{
+    public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/SkullServant";
+}
+public class Armaill : NoEffectCommon
 {
 public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Armaill";
 }
 
-public class DarkworldThorns : Skullservant
+public class DarkworldThorns : NoEffectCommon
 {
 public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/DarkworldThorns";
 }
 
-public class Dissolverock : Skullservant
+public class Dissolverock : NoEffectCommon
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Dissolverock";
 }
 
-public class Hinotama : Skullservant
-    {
+public class Hinotama : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Hinotama";
 }
 
-public class LesserDragon : Skullservant
-    {
+public class LesserDragon : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/LesserDragon";
 }
-public class MonsterEgg : Skullservant
-    {
+public class MonsterEgg : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/MonsterEgg";
 }
-public class MWarrior1 : Skullservant
-    {
+public class MWarrior1 : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/MWarrior1";
 }
 
-public class MWarrior2 : Skullservant
-    {
+public class MWarrior2 : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/MWarrior2";
 }
 
-public class MysticalSheep2 : Skullservant
-    {
+public class MysticalSheep2 : NoEffectCommon
+{
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/MysticalSheep2";
 }
 
-public class OneEyedSD : Skullservant
+public class OneEyedSD : NoEffectCommon
     {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/OneEyedSD";
 }
 
-public class SteelOgre : Skullservant
+public class SteelOgre : NoEffectCommon
     {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/SteelOgre";
 }
-
-public class SkullServant : Skullservant
-    {
-    public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/SkullServant";
-}
-public class GiantSoldier : Skullservant
+public class GiantSoldier : NoEffectCommon
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/GiantSoldier";
 }

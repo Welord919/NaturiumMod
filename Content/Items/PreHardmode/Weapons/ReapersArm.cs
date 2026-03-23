@@ -14,7 +14,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Weapons;
         {
         Item.damage = 30;
         Item.DamageType = DamageClass.Magic;
-        Item.mana = 5;
+        Item.mana = 1;
         Item.width = 26;
         Item.height = 26;
         Item.useTime = 60;
