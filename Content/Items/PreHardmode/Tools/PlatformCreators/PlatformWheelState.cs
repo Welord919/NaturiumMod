@@ -18,8 +18,8 @@ internal class PlatformWheelState : UIState
     private UIText _CenterText;
     private bool _ReplaceMode = false;
     private int _SelectedCount = 25;
-    private readonly int[] _Counts = [ 25, 50, 100, 200, 400 ];
-    private readonly List<ClickablePanel> _OptionPanels = [];
+    private readonly int[] _Counts = new int[] { 25, 50, 100, 200, 400 };
+    private readonly List<ClickablePanel> _OptionPanels = new List<ClickablePanel>();
 
     private const float WheelSize = 260f;
     private const float OptionSize = 64f;
@@ -27,6 +27,8 @@ internal class PlatformWheelState : UIState
 
     public override void OnInitialize()
     {
+        if (Main.dedServ) return; // extra safety: don't initialize UI on server
+
         _Root = new UIElement()
         {
             Left = StyleDimension.FromPixels(0f),

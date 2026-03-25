@@ -3,8 +3,7 @@ using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
-using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.Rares;
+using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
@@ -317,7 +316,7 @@ namespace NaturiumMod.Content.NPCs
                 if (roll < entry.weight)
                 {
                     player.QuickSpawnItem(
-                        player.GetSource_GiftOrReward(), // FIXED SOURCE
+                        player.GetSource_GiftOrReward(),
                         entry.type
                     );
 
@@ -500,6 +499,10 @@ namespace NaturiumMod.Content.NPCs
             if (stage >= 5)
                 shop.Add(ModContent.ItemType<FusionAltar>());
 
+            // After Quest 6)
+            if (stage >= 6)
+                shop.Add(ModContent.ItemType<Polymerization>());
+
             // After Quest 8 (Darkfire Dragon)
             if (stage >= 8)
                 shop.Add(ModContent.ItemType<PackLOB_Rare>());
@@ -555,7 +558,7 @@ namespace NaturiumMod.Content.NPCs
     }
 
     // ============================================================
-    // WORLD QUEST SYSTEM (LIKE ANGLER)
+    // WORLD QUEST SYSTEM
     // ============================================================
 
     public class CardQuestWorld : ModSystem

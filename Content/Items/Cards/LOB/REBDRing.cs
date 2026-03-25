@@ -121,34 +121,35 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
             int buffID = ModContent.BuffType<SummoningSickness>();
             int index = Player.FindBuffIndex(buffID);
-
             if (index == -1)
                 return;
 
-            int buffType = Player.buffType[index];
             int current = Player.buffTime[index];
 
             var modPlayer = Player.GetModPlayer<SSReduction>();
+            if (!modPlayer.OriginalBuffTimes.ContainsKey(buffID))
+                modPlayer.OriginalBuffTimes[buffID] = current;
+            int original = modPlayer.OriginalBuffTimes[buffID];
 
-            // Store original buff time once
-            if (!modPlayer.OriginalBuffTimes.ContainsKey(buffType))
-                modPlayer.OriginalBuffTimes[buffType] = current;
+            // floor = half of original
+            int minAllowed = (int)(original * 0.5f);
 
-            int original = modPlayer.OriginalBuffTimes[buffType];
-            int minAllowed = (int)(original * 0.25f);
-
-            // Calculate the proposed reduction
+            // compute proposed reduction from current remaining time
             int proposed = (int)(current * 0.97f);
-
             if (killedWithREBD)
                 proposed = (int)(proposed * 0.95f);
 
-            // If the reduction would go below the 25% floor, SKIP IT
+            // clamp proposed to the floor
             if (proposed < minAllowed)
+                proposed = minAllowed;
+
+            // IMPORTANT: only shorten the timer — never increase it
+            int newTime = Math.Min(current, proposed);
+            if (newTime == current)
                 return;
 
-            // Otherwise apply it
-            Player.buffTime[index] = proposed;
+            // Apply change (see multiplayer note below)
+            Player.buffTime[index] = newTime;
         }
 
     }
@@ -158,6 +159,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override void PostUpdateBuffs()
         {
+            // Record original buff times for any active buff we haven't seen yet
             for (int i = 0; i < Player.buffTime.Length; i++)
             {
                 int type = Player.buffType[i];
@@ -167,8 +169,22 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                         OriginalBuffTimes[type] = Player.buffTime[i];
                 }
             }
+
+            // Clean up entries for buffs that are no longer present
+            // This prevents the dictionary from growing indefinitely
+            var keysToRemove = new List<int>();
+            foreach (var kvp in OriginalBuffTimes)
+            {
+                int buffType = kvp.Key;
+                if (!Player.HasBuff(buffType))
+                    keysToRemove.Add(buffType);
+            }
+
+            foreach (int k in keysToRemove)
+                OriginalBuffTimes.Remove(k);
         }
     }
+
 
     // ============================================================
     // GLOBAL PROJECTILE TAG FOR REBD

@@ -2,12 +2,13 @@
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PostHardmode.Weapons;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 using NaturiumMod.Content.Items.PreHardmode.Tools;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using System;

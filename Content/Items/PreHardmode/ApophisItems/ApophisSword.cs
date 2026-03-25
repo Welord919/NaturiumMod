@@ -1,6 +1,6 @@
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.General.Projectiles;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

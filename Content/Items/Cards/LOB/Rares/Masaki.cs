@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

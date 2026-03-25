@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using System;
 using System.Collections.Generic;
 using Terraria;

@@ -1,14 +1,5 @@
 ﻿using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
-using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
-using StructureHelper.Content.GUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

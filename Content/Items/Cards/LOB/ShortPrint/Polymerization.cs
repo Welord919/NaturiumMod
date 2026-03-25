@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.CommonShortPrint;
+namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 public class Polymerization : ModItem
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/Polymerization";

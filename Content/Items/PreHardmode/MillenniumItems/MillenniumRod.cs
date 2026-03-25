@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +12,11 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 
 public class MillenniumRod : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumRod";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumRod";
 
     public override void SetDefaults()
     {
@@ -26,11 +26,11 @@ public class MillenniumRod : ModItem
         Item.useTime = 25;
         Item.useAnimation = 25;
         Item.useStyle = ItemUseStyleID.Thrust;
-
+        Item.rare = ItemRarityID.Yellow;
         Item.noMelee = true;
         Item.DamageType = DamageClass.Summon;
         Item.mana = 10;
-
+        Item.value = Item.buyPrice(gold: 5);
         Item.damage = 10;
         Item.knockBack = 2f;
 
@@ -41,7 +41,7 @@ public class MillenniumRod : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 12),
+            new(ModContent.ItemType<MillenniumPiece>(), 25),
             new(ItemID.CrimsonRod, 1),
             new(ItemID.Amber, 10)
         ], TileID.Anvils);
@@ -121,7 +121,7 @@ public class MillenniumRod : ModItem
 }
 public class MillenniumRodBuff : ModBuff
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumRodBuff";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumRodBuff";
 
     public override void SetStaticDefaults()
     {
@@ -139,7 +139,7 @@ public class MillenniumRodBuff : ModBuff
 }
 public class MillenniumEye : ModProjectile
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumEye";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumEye";
 
     public override void SetStaticDefaults()
     {

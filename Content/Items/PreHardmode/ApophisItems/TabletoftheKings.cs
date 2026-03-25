@@ -1,5 +1,5 @@
 ﻿using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;

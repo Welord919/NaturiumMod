@@ -23,6 +23,17 @@ public class PlatformWheelSystem : ModSystem
     public override void OnModLoad()
     {
         Instance = this;
+
+        // Do not create UI on a dedicated server
+        if (Main.dedServ)
+        {
+            _UserInterface = null;
+            _WheelState = null;
+            _Visible = false;
+            BlockLeftClick = false;
+            return;
+        }
+
         _UserInterface = new UserInterface();
         _WheelState = new PlatformWheelState();
         _WheelState.Activate();
@@ -41,6 +52,7 @@ public class PlatformWheelSystem : ModSystem
     // Center the wheel using UI alignment (HAlign/VAlign).
     public void ToggleOpen()
     {
+        //The visible section was needed for it to not crash in multiplayer
         _Visible = !_Visible;
 
         if (_Visible)

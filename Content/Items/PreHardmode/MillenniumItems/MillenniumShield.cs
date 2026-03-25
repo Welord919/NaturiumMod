@@ -2,29 +2,30 @@ using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PostHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace NaturiumMod.Content.Items.PreHardmode.Accessories;
+namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 [AutoloadEquip(EquipType.Shield)]
 public class MillenniumShield : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Accessories/MillenniumShield";
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumShield";
     
     public override void SetDefaults()
     {
         Item.width = 24;
         Item.height = 28;
         Item.value = Item.buyPrice(10);
-        Item.rare = ItemRarityID.Green;
+        Item.rare = ItemRarityID.Yellow;
         Item.accessory = true;
         Item.damage = 30;
         Item.knockBack = 6f;
         Item.defense = 4;
+        Item.value = Item.buyPrice(gold: 5);
+
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
@@ -160,10 +161,10 @@ public class MillenniumShield : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 6),
+            new(ModContent.ItemType<MillenniumPiece>(), 15),
             new(ItemID.EoCShield, 1),
             new(ItemID.CobaltShield, 1),
-            new(ItemID.Amber, 3)
+            new(ItemID.Amber, 5)
         ], TileID.TinkerersWorkbench);
         recipe.Register();
     }

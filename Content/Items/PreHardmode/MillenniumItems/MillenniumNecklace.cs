@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +9,18 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
+namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
 {
 
     public class MillenniumNecklace : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumNecklace";
+        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumNecklace";
         public override void SetDefaults()
         {
             Item.width = 28;
             Item.height = 28;
             Item.accessory = true;
-            Item.rare = ItemRarityID.Green; // or whatever tier you want
+            Item.rare = ItemRarityID.Yellow;
             Item.value = Item.buyPrice(gold: 5);
         }
 
@@ -51,7 +50,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
         {
             Recipe recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
-                new(ModContent.ItemType<MillenniumPiece>(), 12),
+                new(ModContent.ItemType<MillenniumPiece>(), 20),
             new(ItemID.Vilethorn, 1),
             new(ItemID.Amber, 10)
             ], TileID.Anvils);
@@ -60,7 +59,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
     }
     public class MillenniumVileEyeBuff : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumRodBuff";
+        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumRodBuff";
         public override void SetStaticDefaults()
         {
             Main.buffNoTimeDisplay[Type] = true;
@@ -90,7 +89,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
     }
     public class MillenniumVileEye : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumEye";
+        public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumVileEye";
         private int shootCooldown = 0;
 
         public override void SetStaticDefaults()
@@ -110,6 +109,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
+
         }
 
         public override void AI()
@@ -180,7 +180,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems
         }
         public class MillenniumVilethorn : ModProjectile
         {
-            public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Apophis/MillenniumVilethorn";
+            public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumVilethorn";
             public override void SetStaticDefaults()
             {
                 Main.projFrames[Projectile.type] = 2; // 0 = tip, 1 = base

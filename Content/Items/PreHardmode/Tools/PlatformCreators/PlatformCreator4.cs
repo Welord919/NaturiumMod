@@ -11,7 +11,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Tools.PlatformCreators;
 public class PlatformCreator4 : ModItem
 {
     private bool _InReplaceMode = false;
-    private const int PlatformPlacementCount = 50;
+    private const int PlatformPlacementCount = 200;
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Tools/PlatformCreators/PlatformCreator4";
 
     public override void SetDefaults()

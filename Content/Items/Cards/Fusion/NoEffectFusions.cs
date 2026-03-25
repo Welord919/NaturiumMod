@@ -25,7 +25,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion;
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/FlowerWolf";
 }
 
-    public class Fusionist : FusionBase
+    public class Fusionist : FusionBase //Used in Crafting
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/Fusionist";
 }
@@ -38,7 +38,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion;
         {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/Karbonala";
 }
-public class Charubin : FusionBase
+public class Charubin : FusionBase //Used in Crafting
         {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/Charubin";
 }

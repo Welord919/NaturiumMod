@@ -32,7 +32,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
             Item.rare = ItemRarityID.Orange;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.damage = 200;
         }
 
         private bool Has(Player p, int type)
@@ -78,7 +77,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
             Consume(player, ll);
             Consume(player, rl);
 
-            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 60 * 1);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 60 * 20);
 
             Projectile.NewProjectile(
                 Item.GetSource_FromThis(),
@@ -406,7 +405,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
                 p.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<ExodiaBlast>(),
-                Projectile.damage,
+                300,
                 0.3f,
                 p.whoAmI,
                 -MathHelper.PiOver2
@@ -417,7 +416,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
                 p.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<ExodiaBlast>(),
-                Projectile.damage,
+                300,
                 0.3f,
                 p.whoAmI,
                 MathHelper.PiOver2

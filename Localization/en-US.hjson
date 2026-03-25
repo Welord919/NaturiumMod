@@ -1155,8 +1155,8 @@ Mods: {
 					'''
 					Increases Fire damage by 7%
 					Increases Red Eyes Black Dragon's damage by 15%
-					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill
-					Reduces Summoning Sickness of all Cards by the 3% per kill (Max 75%)
+					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill (Max 50%)
+					Reduces Summoning Sickness of all Cards by the 3% per kill (Max 50%)
 					'''
 			}
 
@@ -1166,7 +1166,7 @@ Mods: {
 					'''
 					Increases Fire damage by 3%
 					Increases Red Eyes Black Dragon's damage by 15%
-					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill
+					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill (No Max)
 					'''
 			}
 
@@ -1192,6 +1192,11 @@ Mods: {
 			CharubinMace: {
 				DisplayName: Charubin Mace
 				Tooltip: ""
+			}
+
+			MillenniumRing: {
+				Tooltip: ""
+				DisplayName: Millennium Ring
 			}
 		}
 
