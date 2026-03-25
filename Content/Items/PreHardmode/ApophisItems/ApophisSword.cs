@@ -42,9 +42,8 @@ public class ApophisSword : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 2),
             new(ItemID.GoldBroadsword, 1),
-            new(ItemID.Amber, 1)
+            new(ItemID.Amber, 15)
         ], TileID.Anvils);
         recipe.Register();
     }

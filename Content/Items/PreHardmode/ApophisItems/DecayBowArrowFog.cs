@@ -59,15 +59,13 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
             Recipe recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ItemID.TendonBow, 1),
-                new(ModContent.ItemType<PlagueResin>(), 5),
-                new(ItemID.CrimtaneBar, 8)
+                new(ModContent.ItemType<PlagueResin>(), 8)
             ], TileID.Anvils);
             recipe.Register();
             recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ItemID.DemonBow, 1),
-                new(ModContent.ItemType<PlagueResin>(), 5),
-                new(ItemID.DemoniteBar, 8)
+                new(ModContent.ItemType<PlagueResin>(), 8)
             ]);
             recipe.Register();
         }

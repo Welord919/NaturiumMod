@@ -51,8 +51,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Recipe recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ModContent.ItemType<MillenniumPiece>(), 20),
-            new(ItemID.Vilethorn, 1),
-            new(ItemID.Amber, 10)
+            new(ItemID.Vilethorn, 1)
             ], TileID.Anvils);
             recipe.Register();
         }

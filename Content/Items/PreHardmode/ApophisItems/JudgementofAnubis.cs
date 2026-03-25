@@ -57,9 +57,9 @@ namespace NaturiumMod.Content.Items.PreHardmode.ApophisItems;
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 10),
             new(ItemID.SlimeStaff, 1),
-            new(ItemID.Amber, 4)
+            new(ItemID.GoldBar, 20),
+            new(ItemID.Amber, 15)
         ], TileID.Anvils);
         recipe.Register();
     }

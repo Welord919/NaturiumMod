@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static NaturiumMod.Content.Items.Cards.LOB.Rares.CurseofDragon;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
@@ -23,11 +24,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.value = Item.buyPrice(silver: 25);
+            Item.buffType = ModContent.BuffType<FireDamageBuff>();
+            Item.buffTime = 60 * 40;
         }
-
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(ModContent.BuffType<FireDamageBuff>(), 60 * 30);
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
             return true;
         }
     }

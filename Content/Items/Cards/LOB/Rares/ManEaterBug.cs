@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.Cards;
+using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,12 +29,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
             Item.value = Item.buyPrice(silver: 50);
             Item.noUseGraphic = true;
             Item.noMelee = true;
+            Item.buffType = ModContent.BuffType<ManEaterBugGuard>();
+            Item.buffTime = 60 * 20;
         }
-
         public override bool? UseItem(Player player)
         {
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
-            player.AddBuff(ModContent.BuffType<ManEaterBugGuard>(), 60 * 60);
             return true;
         }
     }

@@ -27,6 +27,16 @@ public class MillenniumShield : ModItem
         Item.value = Item.buyPrice(gold: 5);
 
     }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<MillenniumPiece>(), 15),
+            new(ItemID.EoCShield, 1),
+            new(ItemID.CobaltShield, 1)
+        ], TileID.TinkerersWorkbench);
+        recipe.Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = true;
@@ -157,16 +167,6 @@ public class MillenniumShield : ModItem
                 && !Player.mount.Active;
         }
     }
-    public override void AddRecipes()
-    {
-        Recipe recipe = CreateRecipe();
-        recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 15),
-            new(ItemID.EoCShield, 1),
-            new(ItemID.CobaltShield, 1),
-            new(ItemID.Amber, 5)
-        ], TileID.TinkerersWorkbench);
-        recipe.Register();
-    }
+   
 }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,13 +24,15 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.value = Item.buyPrice(silver: 25);
+            Item.buffType = ModContent.BuffType<AquaMadorBuff>();
+            Item.buffType = BuffID.Gills;
+            Item.buffTime = 60 * 30;
         }
 
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(ModContent.BuffType<AquaMadorBuff>(), 60 * 20);
-            player.AddBuff(BuffID.Gills, 60 * 20);
-            var mp = player.GetModPlayer<AquaMadorPlayer>();
+        player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
+        var mp = player.GetModPlayer<AquaMadorPlayer>();
             mp.currentOverHealth = 50;
             return true;
         }

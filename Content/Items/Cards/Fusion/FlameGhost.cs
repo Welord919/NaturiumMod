@@ -27,16 +27,12 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.value = 2000;
+            Item.buffType = ModContent.BuffType<FlameGhostBuff>();
+            Item.buffTime = 60 * 60 * 4;
         }
-
         public override bool? UseItem(Player player)
         {
-            // Fire/lava immunity
-            player.AddBuff(BuffID.ObsidianSkin, 60 * 120);
-
-            // Lava swimming
-            player.AddBuff(ModContent.BuffType<FlameGhostBuff>(), 60 * 120);
-
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
             return true;
         }
     }

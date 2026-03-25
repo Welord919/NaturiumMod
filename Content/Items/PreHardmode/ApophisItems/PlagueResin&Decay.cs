@@ -107,9 +107,8 @@ public class PlagueResin : ModItem
         Item.rare = ItemRarityID.Green;
         Item.value = Item.sellPrice(silver: 5);
 
-        // Gives the buff for 5 minutes
         Item.buffType = ModContent.BuffType<PlagueInfusionBuff>();
-        Item.buffTime = 60 * 60 * 5; // 5 minutes
+        Item.buffTime = 60 * 60 * 5;
     }
     public override void AddRecipes()
     {

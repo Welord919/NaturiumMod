@@ -20,6 +20,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Items.Cards.NPCDrop;
 
 namespace NaturiumMod.Content.Helpers
 {
@@ -107,6 +108,7 @@ namespace NaturiumMod.Content.Helpers
 
             //Zombies
             AddTags(ModContent.ItemType<SkullServant>(), "Card", "Zombie", "Dark");
+            AddTags(ModContent.ItemType<PlaguespreaderCard>(), "Card", "Zombie", "Dark");
 
             //Machines
             AddTags(ModContent.ItemType<SteelOgre>(), "Card", "Machine", "Earth");

@@ -73,6 +73,8 @@ Mods: {
 			ExodiaFinalHand.DisplayName: Exodia Final Hand
 			CharubinMaceProj.DisplayName: Charubin Mace Proj
 			EggShellStickProj.DisplayName: Egg Shell Stick Proj
+			MillenniumKeyHoldout.DisplayName: Millennium Key Holdout
+			MillenniumEyeHoldout.DisplayName: Millennium Eye Holdout
 		}
 
 		NPCs: {
@@ -616,7 +618,7 @@ Mods: {
 				Tooltip:
 					'''
 					Summon rotating Millennium Eyes that shoot Apophis projectiles at nearby enemies
-					Right click to confuse all near by enemies for 3 seconds
+					Right click to confuse all near by enemies for 3 seconds on a 5 second cooldown that slows the player
 					'''
 			}
 
@@ -711,7 +713,7 @@ Mods: {
 				Tooltip:
 					'''
 					Spellcaster, Water
-					Apply a buff that gives you 50 overhealth that reduces over time, and a liquid wall that allows you to breath underwater
+					Gain 50 overhealh and breathe in water
 					A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him''
 					'''
 			}
@@ -758,7 +760,7 @@ Mods: {
 				Tooltip:
 					'''
 					Dragon, Dark
-					Apply a buff that increases movement speed by 50% for 30 seconds
+					Increases movement speed by 50%
 					'A wicked dragon that taps into dark forces to execute a powerful attack.'
 					'''
 			}
@@ -816,7 +818,7 @@ Mods: {
 				Tooltip:
 					'''
 					Plant, Fire
-					Gain the Obsidian skin buff for 30 seconds
+					Gain the Obsidian skin buff
 					'A fire-breathing plant found growing near volcanoes.'
 					'''
 			}
@@ -826,7 +828,7 @@ Mods: {
 				Tooltip:
 					'''
 					Spellcaster, Fire
-					Gain the Fire Damage Buff, which buffs all forms of fire damage by 5% for 30 seconds
+					Gain the Fire Damage Buff, which buffs all forms of fire damage by 5%
 					'This Spellcaster attacks enemies with fire-related spells such as "Sea of Flames" and "Wall of Fire"'
 					'''
 			}
@@ -936,7 +938,7 @@ Mods: {
 				Tooltip:
 					'''
 					Zombie, Dark, Fusion
-					Gain Obsidian skin and Flame Ghost buffs that allow the player to swim in lava like you could as a merfolk in water
+					Gain the Flame Ghost buff that allow the player to swim in lava like you could as a merfolk in water
 					'''
 			}
 
@@ -1191,12 +1193,49 @@ Mods: {
 
 			CharubinMace: {
 				DisplayName: Charubin Mace
-				Tooltip: ""
+				Tooltip:
+					'''
+					A flail that can apply egg shell pieces onto enemies hit that explode after 3 seconds
+					These explosions WILL hurt the player
+					'''
 			}
 
 			MillenniumRing: {
-				Tooltip: ""
+				Tooltip:
+					'''
+					Left click to either find the nearest important NPC, or the highest rarity ore around you
+					Goes on a 3 second cooldown that slows the player
+					Flip between the 2 options by right clicking
+					'''
 				DisplayName: Millennium Ring
+			}
+
+			MillenniumScale: {
+				DisplayName: Millennium Scale
+				Tooltip: Place down and right click to see your luck and Card Damage kills
+			}
+
+			MillenniumKey: {
+				Tooltip: Left click to reveal all enemies and ore around you for 10 seconds
+				DisplayName: Millennium Key
+			}
+
+			PlaguespreaderCard: {
+				DisplayName: Plaguespreader Zombie
+				Tooltip:
+					'''
+					Zombie, Dark
+					Gain the Plague Infusion Buff, which causes your melee attacks to inflict the Decay Debuff
+					'''
+			}
+
+			MillenniumEyeWeapon: {
+				DisplayName: Millennium Eye
+				Tooltip:
+					'''
+					Channel a cone that deals damage and increases the likelyhood of card drops
+					Transforms some enemies into cards on death
+					'''
 			}
 		}
 
@@ -1304,6 +1343,11 @@ Mods: {
 			FlameGhostBuff: {
 				DisplayName: Flame Ghost Buff
 				Description: Allows the player to swim in lava
+			}
+
+			MillenniumKeyBuff: {
+				Description: Reveals all enemies and ores
+				DisplayName: Millennium Key Buff
 			}
 		}
 

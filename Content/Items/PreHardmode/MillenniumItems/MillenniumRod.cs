@@ -2,10 +2,6 @@
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -37,6 +33,7 @@ public class MillenniumRod : ModItem
         Item.buffType = ModContent.BuffType<MillenniumRodBuff>();
         Item.shoot = ModContent.ProjectileType<MillenniumEye>();
     }
+
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
@@ -46,54 +43,42 @@ public class MillenniumRod : ModItem
             new(ItemID.Amber, 10)
         ], TileID.Anvils);
         recipe.Register();
-
     }
 
-    // Enable right-click
     public override bool AltFunctionUse(Player player) => true;
 
-    public override Vector2? HoldoutOffset()
-    {
-        return new Vector2(-10, 0);
-    }
+    public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
-    // This decides what happens on left vs right click
     public override bool CanUseItem(Player player)
     {
+        // RIGHT CLICK — Confusion Pulse
         if (player.altFunctionUse == 2)
         {
-            // RIGHT CLICK — confuse enemies
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            ConfuseNearbyEnemies(player);
-        }
-        else
-        {
-            // LEFT CLICK — summon
-            Item.useStyle = ItemUseStyleID.Thrust;
-            Shoot(player, null, Vector2.Zero, Vector2.Zero, 0, 0, 0); // manually call Shoot to summon without delay
-            Item.mana = 10;
-        }
-
-        return base.CanUseItem(player);
-    }
-
-    private void ConfuseNearbyEnemies(Player player)
-    {
-        // Sound effect
-        SoundEngine.PlaySound(SoundID.Item27 with { Volume = 0.8f, Pitch = -0.2f }, player.Center);
-
-        float radius = 300f;
-
-        foreach (NPC npc in Main.ActiveNPCs)
-        {
-            if (!npc.CanBeChasedBy()) continue;
-
-            if (Vector2.Distance(npc.Center, player.Center) <= radius)
+            if (player.HasBuff(BuffID.Slow))
             {
-                npc.AddBuff(BuffID.Confused, 180); // 3 seconds
+                if (Main.myPlayer == player.whoAmI)
+                    Main.NewText("The Millennium Rod needs time to recharge...", Color.Gray);
+
+                return false;
             }
+
+            Item.useStyle = ItemUseStyleID.HoldUp;
+
+            ConfuseNearbyEnemies(player);
+
+            player.AddBuff(BuffID.Slow, 300); // 5 seconds
+
+            return false;
         }
+
+        // LEFT CLICK — normal summon behavior
+        Item.useStyle = ItemUseStyleID.Thrust;
+        Item.mana = 10;
+
+        return true; // allow Shoot() to run normally
     }
+
+    // SUMMON LOGIC GOES HERE — NOT IN CanUseItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
         Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -101,11 +86,13 @@ public class MillenniumRod : ModItem
         if (player.altFunctionUse == 2)
             return false;
 
-        // LEFT CLICK — summon
+        // Play summon sound
         SoundEngine.PlaySound(SoundID.Item44 with { Volume = 0.8f, Pitch = -0.1f }, player.Center);
 
+        // Apply buff
         player.AddBuff(Item.buffType, 2);
 
+        // Spawn minion
         Projectile.NewProjectile(
             source,
             player.Center,
@@ -116,9 +103,25 @@ public class MillenniumRod : ModItem
             player.whoAmI
         );
 
-        return false;
+        return false; // prevent vanilla from spawning a second one
+    }
+
+    private void ConfuseNearbyEnemies(Player player)
+    {
+        SoundEngine.PlaySound(SoundID.Item27 with { Volume = 0.8f, Pitch = -0.2f }, player.Center);
+
+        float radius = 300f;
+
+        foreach (NPC npc in Main.ActiveNPCs)
+        {
+            if (!npc.CanBeChasedBy()) continue;
+
+            if (Vector2.Distance(npc.Center, player.Center) <= radius)
+                npc.AddBuff(BuffID.Confused, 180);
+        }
     }
 }
+
 public class MillenniumRodBuff : ModBuff
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumRodBuff";
@@ -137,6 +140,7 @@ public class MillenniumRodBuff : ModBuff
             player.DelBuff(buffIndex);
     }
 }
+
 public class MillenniumEye : ModProjectile
 {
     public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumEye";
@@ -152,7 +156,7 @@ public class MillenniumEye : ModProjectile
         Projectile.width = 20;
         Projectile.height = 20;
 
-        Projectile.friendly = false; // orbiters do NO damage
+        Projectile.friendly = false;
         Projectile.hostile = false;
 
         Projectile.minion = true;
@@ -164,24 +168,21 @@ public class MillenniumEye : ModProjectile
 
         Projectile.DamageType = DamageClass.Summon;
     }
+
     public override void AI()
     {
         Player player = Main.player[Projectile.owner];
 
-        // If the player no longer has the buff, kill the minion
         if (!player.HasBuff(ModContent.BuffType<MillenniumRodBuff>()))
         {
             Projectile.Kill();
             return;
         }
 
-        // Keep the buff alive
         player.AddBuff(ModContent.BuffType<MillenniumRodBuff>(), 2);
-
 
         Projectile.timeLeft = 2;
 
-        // --- Count all eyes ---
         int totalEyes = 0;
         foreach (Projectile p in Main.projectile)
             if (p.active && p.owner == player.whoAmI && p.type == Projectile.type)
@@ -190,7 +191,6 @@ public class MillenniumEye : ModProjectile
         if (totalEyes <= 0)
             totalEyes = 1;
 
-        // --- Get index ---
         int index = 0;
         int counter = 0;
         foreach (Projectile p in Main.projectile)
@@ -204,7 +204,6 @@ public class MillenniumEye : ModProjectile
             }
         }
 
-        // --- Orbit logic ---
         float orbitRadius = 60f;
         float angleOffset = MathHelper.TwoPi / totalEyes;
         float globalRotation = player.miscCounter / 60f;
@@ -217,13 +216,13 @@ public class MillenniumEye : ModProjectile
 
         Projectile.Center = player.Center + offset;
 
-        // --- Targeting + Firing ---
         NPC target = FindTarget(player, 500f);
         if (target != null)
             FireAtTarget(player, target);
     }
+
     private NPC FindTarget(Player player, float range)
-        {
+    {
         NPC closest = null;
         float dist = range;
 
@@ -240,7 +239,8 @@ public class MillenniumEye : ModProjectile
         }
 
         return closest;
-        }
+    }
+
     private void FireAtTarget(Player player, NPC target)
     {
         if (Projectile.localAI[0] > 0)
@@ -253,10 +253,8 @@ public class MillenniumEye : ModProjectile
 
         Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.UnitX) * 10f;
 
-        // Firing sound
         SoundEngine.PlaySound(SoundID.Item20 with { Volume = 0.7f, Pitch = -0.2f }, Projectile.Center);
 
-        // FIRE DAMAGING PROJECTILE
         Projectile.NewProjectile(
             Projectile.GetSource_FromThis(),
             Projectile.Center,
@@ -268,5 +266,3 @@ public class MillenniumEye : ModProjectile
         );
     }
 }
-
-

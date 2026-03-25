@@ -34,9 +34,10 @@ public class TabletoftheKings : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 15),
+            new(ModContent.ItemType<MillenniumPiece>(), 10),
+            new(ItemID.GoldBar, 15),
+            new(ItemID.Amber, 10),
             new(ItemID.AncientChisel, 1),
-            new(ItemID.Amber, 10)
         ], TileID.Anvils);
         recipe.Register();
 

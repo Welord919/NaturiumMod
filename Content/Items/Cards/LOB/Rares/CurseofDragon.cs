@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,11 +22,12 @@ public class CurseofDragon : ModItem
         Item.noUseGraphic = true;
         Item.noMelee = true;
         Item.value = Item.buyPrice(silver: 25);
+        Item.buffType = ModContent.BuffType<CurseOfDragonBuff>();
+        Item.buffTime = 60 * 30;
     }
-
     public override bool? UseItem(Player player)
     {
-        player.AddBuff(ModContent.BuffType<CurseOfDragonBuff>(), 60 * 30);
+        player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
         return true;
     }
     public class CurseOfDragonBuff : ModBuff

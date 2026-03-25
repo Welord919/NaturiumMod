@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaturiumMod.Content.Items.Cards.LOB.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,13 +27,12 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Item.rare = ItemRarityID.Orange;
             Item.noUseGraphic = true;
             Item.noMelee = true;
+            Item.buffType = ModContent.BuffType<MetalDragonBuff>();
+            Item.buffTime = 60 * 60 * 2;
         }
-
         public override bool? UseItem(Player player)
         {
-            // Lava swimming
-            player.AddBuff(ModContent.BuffType<MetalDragonBuff>(), 60 * 60);
-
+            player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
             return true;
         }
     }

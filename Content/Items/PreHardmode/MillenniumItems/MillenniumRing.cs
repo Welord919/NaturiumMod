@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Millennium
+namespace NaturiumMod.Content.Items.PreHardmode.Millennium
 {
     public class MillenniumRing : ModItem
     {
@@ -105,7 +105,7 @@ namespace NaturiumMod.Content.Items.Millennium
                     break;
             }
 
-            player.AddBuff(BuffID.Slow, 180); // 3 second cooldown
+            player.AddBuff(BuffID.Slow, 150); // 3 second cooldown
         }
 
         // ------------------------------
@@ -301,16 +301,22 @@ namespace NaturiumMod.Content.Items.Millennium
 
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
             {
-                // These names are correct for Calamity 1.5+
-                calamityOres.Add(calamity.Find<ModTile>("AuricOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("UelibloomOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("AstralOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("ScoriaOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("PerennialOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("CryonicOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("AerialiteOre").Type);
-                calamityOres.Add(calamity.Find<ModTile>("ExodiumOre").Type);
+                void AddOre(string name)
+                {
+                    if (calamity.TryFind(name, out ModTile tile))
+                        calamityOres.Add(tile.Type);
+                }
+                AddOre("AerialiteOre");
+                AddOre("CryonicOre");
+                AddOre("PerennialOre");
+                AddOre("ScoriaOre");
+                AddOre("AstralOre");
+                AddOre("HallowedOre");
+                AddOre("UelibloomOre");
+                AddOre("AuricOre");
+                AddOre("ExodiumOre");
             }
+
 
             // -------------------------
             // Scan tiles around player
