@@ -14,9 +14,6 @@ namespace NaturiumMod.Content.Helpers
 
         [DefaultValue(true)]
         public bool Structures { get; set; }
-
-        [DefaultValue(true)]
-        public bool CardDrops { get; set; }
     }
 
 }

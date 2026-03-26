@@ -75,6 +75,9 @@ Mods: {
 			EggShellStickProj.DisplayName: Egg Shell Stick Proj
 			MillenniumKeyHoldout.DisplayName: Millennium Key Holdout
 			MillenniumEyeHoldout.DisplayName: Millennium Eye Holdout
+			IceBarrierWhipProj.DisplayName: Ice Barrier Whip Proj
+			TrishulaBeam.DisplayName: Trishula Beam
+			TrishulaProj.DisplayName: Trishula Proj
 		}
 
 		NPCs: {
@@ -1236,6 +1239,49 @@ Mods: {
 					Channel a cone that deals damage and increases the likelyhood of card drops
 					Transforms some enemies into cards on death
 					'''
+			}
+
+			IceBarrierHood: {
+				DisplayName: Ice Barrier Hood
+				Tooltip:
+					'''
+					Increases magic damage by 4%
+					Increases max mana by 20
+					'''
+			}
+
+			IceBarrierRobe: {
+				DisplayName: Ice Barrier Robe
+				Tooltip:
+					'''
+					Increases summon damage by 4%
+					Increases max mana by 20
+					Increases your max number of minions by 1
+					'''
+			}
+
+			IceBarrierLeggings: {
+				DisplayName: Ice Barrier Leggings
+				Tooltip:
+					'''
+					Increases movement speed by 4%
+					Lets you walk normally on Ice
+					'''
+			}
+
+			IceBarrierWhip: {
+				DisplayName: Ice Barrier Whip
+				Tooltip: Apply the Frostburn debuff on enemies
+			}
+
+			IceBarrierCore: {
+				DisplayName: Ice Barrier Core
+				Tooltip: Used for Ice Barrier crafting
+			}
+
+			TrishulaWeapon: {
+				DisplayName: Trishula Weapon
+				Tooltip: Shoot 3 trishula projectiles that apply the Frostburn debuff
 			}
 		}
 

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
+using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
@@ -149,7 +150,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     //  PACK TYPES
     // ============================================================
 
-    // COMMON PACK — 0.1% Ultra
+    // COMMON PACK
     public class PackLOB_Common : BasePackLOB
     {
         public override int PackValue => 50;
@@ -164,7 +165,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         };
     }
 
-    // RARE PACK — 1% Ultra
+    // RARE PACK
     public class PackLOB_Rare : BasePackLOB
     {
         public override int PackValue => 75;
@@ -194,7 +195,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         };
     }
 
-    // ULTRA PACK — ONLY Ultra + Super
+    // ULTRA PACK
     public class PackLOB_Ultra : BasePackLOB
     {
         public override int PackValue => 300;
@@ -213,27 +214,39 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     {
         public override void OnKill(NPC npc)
         {
-            // Handle Eater of Worlds separately
+            // Handle Eater of Worlds FINAL KILL only
             if (npc.type == NPCID.EaterofWorldsHead ||
                 npc.type == NPCID.EaterofWorldsBody ||
                 npc.type == NPCID.EaterofWorldsTail)
             {
-                int segmentCount =
+                int segments =
                     NPC.CountNPCS(NPCID.EaterofWorldsHead) +
                     NPC.CountNPCS(NPCID.EaterofWorldsBody) +
                     NPC.CountNPCS(NPCID.EaterofWorldsTail);
 
-                // Last segment
-                if (segmentCount == 1)
+                // Only drop on the FINAL segment
+                if (segments == 1)
                 {
-                    // Early boss → Rare guaranteed
+                    // Rare (100%)
                     Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
                         ModContent.ItemType<PackLOB_Rare>(), 1);
 
-                    // Optional: add Super/Ultra chances
-                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
-                        ModContent.ItemType<PackLOB_Super>(), 1, false, 0, true);
+                    // Super (1/5)
+                    if (Main.rand.NextBool(5))
+                    {
+                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
+                            ModContent.ItemType<PackLOB_Super>(), 1);
+                    }
+
+                    // Ultra (1/15)
+                    if (Main.rand.NextBool(15))
+                    {
+                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
+                            ModContent.ItemType<PackLOB_Ultra>(), 1);
+                    }
                 }
+
+                return; // Prevent ModifyNPCLoot from running
             }
         }
 
@@ -356,6 +369,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            
             bool IsValidEnemy(NPC npc)
             {
                 if (npc.friendly || npc.townNPC || npc.lifeMax <= 5 || npc.damage <= 0)

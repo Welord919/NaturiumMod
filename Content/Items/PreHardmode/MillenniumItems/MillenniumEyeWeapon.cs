@@ -260,15 +260,15 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
                         }
                     }
                 }
+                var cardPlayer = player.GetModPlayer<CardDropPlayer>();
+                float baseChance = 0.04f;
+                float finalChance = baseChance + cardPlayer.CardDropBoost;
 
-            }
-            var cardPlayer = player.GetModPlayer<CardDropPlayer>();
-            float baseChance = 0.04f;
-            float finalChance = baseChance + cardPlayer.CardDropBoost;
+                if (Main.rand.NextFloat() < finalChance)
+                {
+                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Common>());
+                }
 
-            if (Main.rand.NextFloat() < finalChance)
-            {
-                Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Common>());
             }
         }
     }
