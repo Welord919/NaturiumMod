@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class DarkMagician : ModItem
+    public class DarkMagician : UltraRareCard
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/darkmagi";
 
@@ -49,6 +49,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             // Prevent use during summoning sickness
             return !player.HasBuff(ModContent.BuffType<SummoningSickness>());
         }
+
     }
 
     // ============================================================
@@ -158,15 +159,20 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 
                 player.AddBuff(ModContent.BuffType<SummoningSickness>(), sickness);
 
-                // Consume 1 card
-                if (player.HeldItem.stack > 0)
+                // Monster Reborn protection
+                if (!CardUtils.TryApplyMonsterReborn(player, ModContent.ItemType<DarkMagician>()))
                 {
-                    player.HeldItem.stack--;
-                    if (player.HeldItem.stack <= 0)
-                        player.HeldItem.TurnToAir();
+                    // Consume 1 DM
+                    if (player.HeldItem.type == ModContent.ItemType<DarkMagician>())
+                    {
+                        player.HeldItem.stack--;
+                        if (player.HeldItem.stack <= 0)
+                            player.HeldItem.TurnToAir();
+                    }
                 }
 
                 Projectile.Kill();
+
             }
 
         }

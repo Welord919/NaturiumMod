@@ -21,6 +21,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using NaturiumMod.Content.Items.Cards.NPCDrop;
+using NaturiumMod.Content.Items.Cards.PSA;
+using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 
 namespace NaturiumMod.Content.Helpers
 {
@@ -54,13 +56,7 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<StarsteelStarburst>(), "Nibiru");
             AddTag(ModContent.ItemType<StarsteelPickaxe>(), "Nibiru");
             AddTag(ModContent.ItemType<StarryNight>(), "Nibiru");
-
-            //Card Packs
-            AddTags(ModContent.ItemType<PackLOB_Common>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Rare>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Super>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Ultra>(), "Card");
-
+            
             //Dragons
             AddTags(ModContent.ItemType<BEWD>(), "Card", "Dragon", "Light");
             AddTags(ModContent.ItemType<PetiteDragon>(), "Card", "Dragon", "Wind");
@@ -109,6 +105,7 @@ namespace NaturiumMod.Content.Helpers
             //Zombies
             AddTags(ModContent.ItemType<SkullServant>(), "Card", "Zombie", "Dark");
             AddTags(ModContent.ItemType<PlaguespreaderCard>(), "Card", "Zombie", "Dark");
+            AddTags(ModContent.ItemType<SpiritReaperCard>(), "Card", "Zombie", "Dark");
 
             //Machines
             AddTags(ModContent.ItemType<SteelOgre>(), "Card", "Machine", "Earth");
@@ -132,6 +129,17 @@ namespace NaturiumMod.Content.Helpers
             //Spells
             AddTags(ModContent.ItemType<Swords>(), "Card", "Spell");
             AddTags(ModContent.ItemType<Polymerization>(), "Card", "Spell");
+            AddTags(ModContent.ItemType<PotofGreed>(), "Card", "Spell");
+            AddTags(ModContent.ItemType<MonsterReborn>(), "Card", "Spell");
+
+            //Card Packs
+            AddTags(ModContent.ItemType<PackLOB_Common>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Rare>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Super>(), "Card");
+            AddTags(ModContent.ItemType<PackLOB_Ultra>(), "Card");
+
+            //PSA Cards are dealt with in GradedCards.cs
+            AddTags(ModContent.ItemType<PSACase>(), "Card");
         }
 
         private void AddTag(int itemType, string tag)
@@ -148,6 +156,14 @@ namespace NaturiumMod.Content.Helpers
             foreach (var tag in tags)
                 AddTag(itemType, tag);
         }
+        public static void AddTagToItem(int itemType, string tag)
+        {
+            if (!WeaponTag.ItemTags.ContainsKey(itemType))
+                WeaponTag.ItemTags[itemType] = new HashSet<string>();
+
+            WeaponTag.ItemTags[itemType].Add(tag);
+        }
+
 
     }
     public static class CardTagHelper

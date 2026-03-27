@@ -24,7 +24,8 @@ namespace NaturiumMod.Content.Items.General.Placeable
 		{
 			PlagueWormHead,
 			NatSlime,
-			Plaguespreader
+			Plaguespreader,
+			SpiritReaper
 		}
 	}
 

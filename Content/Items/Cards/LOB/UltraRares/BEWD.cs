@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -10,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class BEWD : ModItem
+    public class BEWD : UltraRareCard
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BEWD";
 
@@ -25,15 +26,22 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             Item.useAnimation = 20;
             Item.useTime = 20;
             Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
+
+            // ⭐ IMPORTANT: BEWD is NEVER auto-consumed
+            Item.consumable = false;
+
             Item.maxStack = 999;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.buyPrice(gold: 3);
-            Item.shoot = ProjectileID.None;
-            Item.autoReuse = true;
+
             Item.noUseGraphic = true;
             Item.noMelee = true;
+            Item.shoot = ProjectileID.None;
         }
+
+        // ============================================================
+        //  INVENTORY HELPERS
+        // ============================================================
 
         private int CountBEWD(Player player)
         {
@@ -62,11 +70,46 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             }
         }
 
+        // ============================================================
+        //  MONSTER REBORN INTERCEPT
+        // ============================================================
+
+        private new bool TryApplyMonsterReborn(Player player)
+        {
+            int rebornBuff = ModContent.BuffType<RebornBuff>();
+
+            if (player.HasBuff(rebornBuff))
+            {
+                player.ClearBuff(rebornBuff);
+
+                // Consume Monster Reborn instead of BEWD
+                for (int i = 0; i < player.inventory.Length; i++)
+                {
+                    if (player.inventory[i].type == ModContent.ItemType<MonsterReborn>())
+                    {
+                        player.inventory[i].stack--;
+                        if (player.inventory[i].stack <= 0)
+                            player.inventory[i].TurnToAir();
+                        break;
+                    }
+                }
+
+                return true; // BEWD protected
+            }
+
+            return false;
+        }
+
+        // ============================================================
+        //  USE LOGIC
+        // ============================================================
+
         public override bool? UseItem(Player player)
         {
             bool hasCloak = player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped;
             bool isDragon = WeaponTag.ItemTags.TryGetValue(Type, out var tags) && tags.Contains("Dragon");
 
+            // Summoning sickness
             int duration = 480;
             if (hasCloak && isDragon)
                 duration = (int)(duration * 0.5);
@@ -75,10 +118,17 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 
             int bewdCount = CountBEWD(player);
 
-            // Triple-shot effect
+            // ============================================================
+            //  TRIPLE SHOT
+            // ============================================================
             if (hasCloak && bewdCount >= 3)
             {
-                ConsumeBEWD(player, 2);
+                // ⭐ Monster Reborn protection
+                if (!TryApplyMonsterReborn(player))
+                {
+                    // Consume exactly 2 BEWD
+                    ConsumeBEWD(player, 2);
+                }
 
                 Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
@@ -96,7 +146,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
                         player.Center,
                         Vector2.Zero,
                         ModContent.ProjectileType<DragonBurstCharge>(),
-                        Item.damage,        // ✔ CardDamage scaling works
+                        Item.damage,
                         Item.knockBack,
                         player.whoAmI,
                         ai0: 0,
@@ -107,7 +157,15 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
                 return true;
             }
 
-            // Single shot
+            // ============================================================
+            //  NORMAL SHOT
+            // ============================================================
+
+            if (!TryApplyMonsterReborn(player))
+            {
+                ConsumeBEWD(player, 1);
+            }
+
             if (player.whoAmI == Main.myPlayer)
             {
                 Projectile.NewProjectile(
@@ -115,7 +173,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
                     player.Center,
                     Vector2.Zero,
                     ModContent.ProjectileType<DragonBurstCharge>(),
-                    Item.damage,        // ✔ CardDamage scaling works
+                    Item.damage,
                     Item.knockBack,
                     player.whoAmI
                 );
@@ -124,6 +182,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             return true;
         }
     }
+
 
     public class BurstStream : ModProjectile
     {

@@ -78,6 +78,7 @@ Mods: {
 			IceBarrierWhipProj.DisplayName: Ice Barrier Whip Proj
 			TrishulaBeam.DisplayName: Trishula Beam
 			TrishulaProj.DisplayName: Trishula Proj
+			SpiritScytheHostile.DisplayName: Spirit Scythe Hostile
 		}
 
 		NPCs: {
@@ -102,6 +103,8 @@ Mods: {
 					Princess_LovesNPC: I like the Grandpa.
 				}
 			}
+
+			SpiritReaper.DisplayName: Spirit Reaper
 		}
 
 		Items: {
@@ -1237,7 +1240,7 @@ Mods: {
 				Tooltip:
 					'''
 					Channel a cone that deals damage and increases the likelyhood of card drops
-					Transforms some enemies into cards on death
+					Chance to transform specific enemies into cards on death
 					'''
 			}
 
@@ -1282,6 +1285,163 @@ Mods: {
 			TrishulaWeapon: {
 				DisplayName: Trishula Weapon
 				Tooltip: Shoot 3 trishula projectiles that apply the Frostburn debuff
+			}
+
+			SpiritReaperBanner: {
+				DisplayName: Spirit Reaper Banner
+				Tooltip: ""
+			}
+
+			SpiritReaperCard: {
+				DisplayName: Spirit Reaper Card
+				Tooltip:
+					'''
+					Zombie, Dark
+					Gain the Spirit Reaper Buff, which apply knockback resistance and 5% endurance
+					'''
+			}
+
+			PSACase: {
+				DisplayName: PSA Case
+				Tooltip: ""
+			}
+
+			GradedPlaguespreaderCard: {
+				DisplayName: Graded Plaguespreader Card
+				Tooltip: ""
+			}
+
+			GradedSpiritReaperCard: {
+				DisplayName: Graded Spirit Reaper Card
+				Tooltip: ""
+			}
+
+			PSAPolish: {
+				DisplayName: PSA Polish
+				Tooltip: ""
+			}
+
+			GradedCharubinCard: {
+				DisplayName: Graded Charubin Card
+				Tooltip: ""
+			}
+
+			GradedDragonessCard: {
+				DisplayName: Graded Dragoness Card
+				Tooltip: ""
+			}
+
+			GradedFlameGhostCard: {
+				DisplayName: Graded Flame Ghost Card
+				Tooltip: ""
+			}
+
+			GradedFlowerWolfCard: {
+				DisplayName: Graded Flower Wolf Card
+				Tooltip: ""
+			}
+
+			GradedFusionistCard: {
+				DisplayName: Graded Fusionist Card
+				Tooltip: ""
+			}
+
+			GradedGaiaChampionCard: {
+				DisplayName: Graded Gaia Champion Card
+				Tooltip: ""
+			}
+
+			GradedGaia: {
+				DisplayName: Graded Gaia
+				Tooltip: ""
+			}
+
+			GradedKarbonalaCard: {
+				DisplayName: Graded Karbonala Card
+				Tooltip: ""
+			}
+
+			GradedMetalDragonCard: {
+				DisplayName: Graded Metal Dragon Card
+				Tooltip: ""
+			}
+
+			MonsterReborn: {
+				DisplayName: Monster Reborn
+				Tooltip:
+					'''
+					Spell
+					The next Blue Eyes White Dragon, Dark Magician, or Red Eyes Black Dragon you use will not be
+					'''
+			}
+
+			PotofGreed: {
+				DisplayName: Pot of Greed
+				Tooltip:
+					'''
+					Spell
+					Create 2 card packs
+					'''
+			}
+
+			GradedBEWD: {
+				DisplayName: Graded Blue Eyes White Dragon
+				Tooltip: ""
+			}
+
+			GradedDarkMagician: {
+				DisplayName: Graded Dark Magician
+				Tooltip: ""
+			}
+
+			GradedExodia: {
+				DisplayName: Graded Exodia
+				Tooltip: ""
+			}
+
+			GradedLeftArm: {
+				DisplayName: Graded Left Arm
+				Tooltip: ""
+			}
+
+			GradedLeftLeg: {
+				DisplayName: Graded Left Leg
+				Tooltip: ""
+			}
+
+			GradedMonsterReborn: {
+				DisplayName: Graded Monster Reborn
+				Tooltip: ""
+			}
+
+			GradedREBD: {
+				DisplayName: Graded Red Eyes Black Dragon
+				Tooltip: ""
+			}
+
+			GradedRightArm: {
+				DisplayName: Graded Right Arm
+				Tooltip: ""
+			}
+
+			GradedRightLeg: {
+				DisplayName: Graded Right Leg
+				Tooltip: ""
+			}
+
+			GradedDarkfireDragon: {
+				DisplayName: Graded Darkfire Dragon
+				Tooltip: ""
+			}
+
+			GradedFlameSwordsman: {
+				DisplayName: Graded Flame Swordsman
+				Tooltip: ""
+			}
+
+			GradedPotofGreed: {
+				DisplayName: Graded Pot of Greed
+				Tooltip: ""
 			}
 		}
 
@@ -1394,6 +1554,16 @@ Mods: {
 			MillenniumKeyBuff: {
 				Description: Reveals all enemies and ores
 				DisplayName: Millennium Key Buff
+			}
+
+			SpiritReaperBuff: {
+				DisplayName: Spirit Reaper Buff
+				Description: Immunity to knockback and reduce damage taken by 5%
+			}
+
+			RebornBuff: {
+				DisplayName: Reborn Buff
+				Description: Mods.NaturiumMod.Buffs.RebornBuff.Description
 			}
 		}
 

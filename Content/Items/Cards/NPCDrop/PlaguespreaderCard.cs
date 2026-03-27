@@ -27,9 +27,9 @@ namespace NaturiumMod.Content.Items.Cards.NPCDrop
             Item.rare = ItemRarityID.Lime;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 8);
+            Item.value = Item.buyPrice(silver: 10);
             Item.buffType = ModContent.BuffType<PlagueInfusionBuff>();
-            Item.buffTime = 60 * 60 * 3;
+            Item.buffTime = 60 * 60 * 6;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
-using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
+using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;

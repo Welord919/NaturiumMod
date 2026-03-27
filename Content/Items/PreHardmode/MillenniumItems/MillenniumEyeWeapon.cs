@@ -4,6 +4,7 @@ using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.NPCDrop;
 using NaturiumMod.Content.Items.Weapons.Melee;
+using NaturiumMod.Content.NPCs.SpiritReaper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Item.channel = true;
 
             Item.mana = 2;
-            Item.damage = 24;
+            Item.damage = 18;
             Item.knockBack = 2f;
             Item.DamageType = DamageClass.Magic;
 
@@ -68,6 +69,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Projectile.timeLeft = 60; // keep alive while channeling
             Projectile.DamageType = DamageClass.Magic;
         }
+        private int manaTimer = 0;
 
         public override void AI()
         {
@@ -98,6 +100,28 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
 
             Lighting.AddLight(Projectile.Center, 0.6f, 0.5f, 0.9f);
 
+            // -----------------------------
+            // ⭐ MANA DRAIN (every 20 ticks)
+            // -----------------------------
+            manaTimer++;
+            if (manaTimer >= 20)
+            {
+                manaTimer = 0;
+
+                int manaCost = 2;
+
+                if (player.statMana >= manaCost)
+                {
+                    player.statMana -= manaCost;
+                    player.manaRegenDelay = 60; // prevent regen while channeling
+                }
+                else
+                {
+                    Projectile.Kill();
+                    return;
+                }
+            }
+
             // Cooldown logic (3 attacks per second)
             if (coneCooldown > 0)
                 coneCooldown--;
@@ -106,10 +130,9 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             {
                 DoConeAttack(player);
                 SpawnConeDust();
-                coneCooldown = 20; // 60 FPS → 20 ticks = 3 times per second
+                coneCooldown = 20;
             }
         }
-
         private void DoConeAttack(Player player)
         {
             int damage = Projectile.damage;
@@ -238,6 +261,29 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
 
             if (npc.GetGlobalNPC<MillenniumEyeGlobalNPC>().hitByMillenniumEye)
             {
+                //Skull Servant Card
+                if (npc.GetGlobalNPC<MillenniumEyeGlobalNPC>().hitByMillenniumEye)
+                {
+                    if (npc.type == NPCID.Skeleton ||
+                        npc.type == NPCID.HeadacheSkeleton ||
+                        npc.type == NPCID.UndeadMiner ||
+                        npc.type == NPCID.SkeletonArcher ||
+                        npc.type == NPCID.AngryBones ||
+                        npc.type == NPCID.AngryBonesBig ||
+                        npc.type == NPCID.AngryBonesBigHelmet ||
+                        npc.type == NPCID.AngryBonesBigMuscle ||
+                        npc.type == NPCID.DungeonSlime ||
+                        npc.type == NPCID.CursedSkull ||
+                        npc.type == NPCID.DarkCaster ||
+                        npc.type == NPCID.ArmoredSkeleton)
+                    {
+                        if (Main.rand.NextFloat() < 0.2f)
+                        {
+                            Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<SkullServant>());
+                        }
+                    }
+                }
+                //Plaguespreader Card
                 if (npc.type == ModContent.NPCType<Plaguespreader>())
                 {
                     if (Main.rand.NextFloat() < 0.25f)
@@ -245,19 +291,12 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
                         Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PlaguespreaderCard>());
                     }
                 }
-                // Skeleton → Skull Servant (only if killed by Millennium Eye)
-                if (npc.GetGlobalNPC<MillenniumEyeGlobalNPC>().hitByMillenniumEye)
+                //Spirit Reaper Card
+                if (npc.type == ModContent.NPCType<SpiritReaper>())
                 {
-                    if (npc.type == NPCID.Skeleton ||
-                        npc.type == NPCID.HeadacheSkeleton ||
-                        npc.type == NPCID.UndeadMiner ||
-                        npc.type == NPCID.SkeletonArcher ||
-                        npc.type == NPCID.ArmoredSkeleton)
+                    if (Main.rand.NextFloat() < 0.25f)
                     {
-                        if (Main.rand.NextFloat() < 0.8f)
-                        {
-                            Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<SkullServant>());
-                        }
+                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<SpiritReaperCard>());
                     }
                 }
                 var cardPlayer = player.GetModPlayer<CardDropPlayer>();

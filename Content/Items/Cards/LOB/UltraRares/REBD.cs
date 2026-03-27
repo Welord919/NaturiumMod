@@ -15,9 +15,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static AssGen.Assets;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
+namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class REBD : ModItem
+    public class REBD : UltraRareCard
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/rebd";
         private int burstsFired = 0;
@@ -57,13 +57,20 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
 
             burstsFired++;
+
             if (burstsFired >= 3)
             {
                 burstsFired = 0;
-                Item.stack--;
-                if (Item.stack <= 0)
-                    Item.TurnToAir();
+
+                // Monster Reborn protection
+                if (!TryApplyMonsterReborn(player))
+                {
+                    Item.stack--;
+                    if (Item.stack <= 0)
+                        Item.TurnToAir();
+                }
             }
+
 
             // Spawn 3 fireballs
             for (int i = 0; i < 3; i++)
