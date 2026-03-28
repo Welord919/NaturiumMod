@@ -1,18 +1,12 @@
-﻿using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.NPCDrop
 {
-    public class SpiritReaperCard : ModItem
+    public class BalloonLizardCard : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/NPCDrop/SpiritReaperCard";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/NPCDrop/BalloonLizardCard";
 
         public override void SetDefaults()
         {
@@ -28,29 +22,24 @@ namespace NaturiumMod.Content.Items.Cards.NPCDrop
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.value = Item.buyPrice(silver: 20);
-            Item.buffType = ModContent.BuffType<SpiritReaperBuff>();
-            Item.buffTime = 60 * 60 * 4;
+            Item.buffType = ModContent.BuffType<BalloonLizardBuff>();
+            Item.buffTime = 60 * 60 * 5;
         }
     }
-    public class SpiritReaperBuff : ModBuff
+    public class BalloonLizardBuff : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/NPCDrop/SpiritReaperBuff";
-
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/NPCDrop/BalloonLizardBuff";
         public override void SetStaticDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
-            // Immune to knockback
-            player.noKnockback = true;
-
-            // Reduce damage taken by 5%
-            player.endurance += 0.05f;
+            player.statDefense += 4;
+            player.jumpBoost = true;
+            player.jumpSpeedBoost += 1.2f;
         }
-
     }
 
 }

@@ -4,6 +4,7 @@ using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.NPCDrop;
 using NaturiumMod.Content.Items.Weapons.Melee;
+using NaturiumMod.Content.NPCs;
 using NaturiumMod.Content.NPCs.SpiritReaper;
 using System;
 using System.Collections.Generic;
@@ -297,6 +298,14 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
                     if (Main.rand.NextFloat() < 0.25f)
                     {
                         Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<SpiritReaperCard>());
+                    }
+                }
+                //Spirit Reaper Card
+                if (npc.type == ModContent.NPCType<BalloonLizard>())
+                {
+                    if (Main.rand.NextFloat() < 0.25f)
+                    {
+                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<BalloonLizardCard>());
                     }
                 }
                 var cardPlayer = player.GetModPlayer<CardDropPlayer>();

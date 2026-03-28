@@ -15,6 +15,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static NaturiumMod.Content.Items.Cards.CardRarityHelper;
+using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 
 namespace NaturiumMod.Content.Items.Cards
 {
@@ -26,6 +27,7 @@ namespace NaturiumMod.Content.Items.Cards
             Rare,
             ShortPrint,
             SuperRare,
+            SuperShortPrint,
             UltraRare
         }
 
@@ -52,6 +54,12 @@ namespace NaturiumMod.Content.Items.Cards
 
                 case Rarity.SuperRare:
                     color = Color.Orange;
+                    sound = SoundID.Item20;
+                    PlaySuperRareEffect(player);
+                    break;
+
+                case Rarity.SuperShortPrint:
+                    color = Color.DarkOrange;
                     sound = SoundID.Item20;
                     PlaySuperRareEffect(player);
                     break;
@@ -131,6 +139,11 @@ namespace NaturiumMod.Content.Items.Cards
             // Short Prints
             CardRarityRegistry.Register(ModContent.ItemType<PetiteDragon>(), Rarity.ShortPrint);
             CardRarityRegistry.Register(ModContent.ItemType<PetiteAngel>(), Rarity.ShortPrint);
+            CardRarityRegistry.Register(ModContent.ItemType<Polymerization>(), Rarity.ShortPrint);
+
+            // Super Short Prints
+            CardRarityRegistry.Register(ModContent.ItemType<PotofGreed>(), Rarity.SuperShortPrint);
+            CardRarityRegistry.Register(ModContent.ItemType<MonsterReborn>(), Rarity.SuperShortPrint);
 
             // Rares
             CardRarityRegistry.Register(ModContent.ItemType<Swords>(), Rarity.Rare);

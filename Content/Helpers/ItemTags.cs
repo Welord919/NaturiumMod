@@ -80,6 +80,9 @@ namespace NaturiumMod.Content.Helpers
             //Bugs
             AddTags(ModContent.ItemType<ManEaterBug>(), "Card", "Bug", "Earth");
 
+            //Reptiles
+            AddTags(ModContent.ItemType<BalloonLizardCard>(), "Card", "Reptile", "Earth");
+
             //Beasts
             AddTags(ModContent.ItemType<SilverFang>(), "Card", "Beast", "Earth");
             AddTags(ModContent.ItemType<MysticalSheep2>(), "Card", "Beast", "Earth");

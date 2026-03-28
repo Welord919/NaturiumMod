@@ -11,7 +11,6 @@ public class AntjawCritter : ModItem
 
     public override void SetStaticDefaults()
     {
-        ItemID.Sets.IsLavaBait[Type] = true;
     }
 
     public override void SetDefaults()

@@ -6,7 +6,7 @@ using Terraria.ID;
 
 namespace NaturiumMod.Content.Tiles;
 
-internal class NaturiumBrickTile : ModTile
+public class NaturiumBrickTile : ModTile
 {
     public override string Texture => "NaturiumMod/Assets/Tiles/NaturiumBrickTile";
 
@@ -14,7 +14,6 @@ internal class NaturiumBrickTile : ModTile
     {
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = false;
-
         DustType = DustID.Chlorophyte;
         HitSound = SoundID.Tink;
         MineResist = 1.5f;

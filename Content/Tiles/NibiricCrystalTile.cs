@@ -5,10 +5,9 @@ using Terraria.Localization;
 using Terraria.ID;
 
 namespace NaturiumMod.Content.Tiles;
-
-internal class NibiricCrystalTile : ModTile
+public class NibiricCrystalTile : ModTile
 {
-    public override string Texture => "NaturiumMod/Assets/Tiles/NibiricStoneTile";
+    public override string Texture => "NaturiumMod/Assets/Tiles/NibiricCrystalTile";
 
     public override void SetStaticDefaults()
     {
@@ -24,7 +23,7 @@ internal class NibiricCrystalTile : ModTile
 
         AddMapEntry(new Color(220, 240, 255), Language.GetText("Nibiric Crystal"));
 
-        DustType = DustID.Stone;
+        DustType = DustID.Marble;
 
         HitSound = SoundID.Tink;
 

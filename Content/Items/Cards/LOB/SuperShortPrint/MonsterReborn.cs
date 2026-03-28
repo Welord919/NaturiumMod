@@ -23,7 +23,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.consumable = false;
-            Item.value = Item.buyPrice(gold: 1);
+            Item.value = Item.buyPrice(silver: 50);
             Item.buffType = ModContent.BuffType<RebornBuff>();
             Item.buffTime = 60 * 60 * 10;
         }

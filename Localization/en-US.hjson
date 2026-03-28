@@ -105,6 +105,8 @@ Mods: {
 			}
 
 			SpiritReaper.DisplayName: Spirit Reaper
+			BalloonLizard.DisplayName: Balloon Lizard
+			DiamondCrabKing.DisplayName: Diamond Crab King
 		}
 
 		Items: {
@@ -1443,6 +1445,49 @@ Mods: {
 				DisplayName: Graded Pot of Greed
 				Tooltip: ""
 			}
+
+			LizardScale: {
+				Tooltip: Droped from Balloon Lizards
+				DisplayName: Lizard Scale
+			}
+
+			BalloonLizardBalloon: {
+				Tooltip: Increases jump height
+				DisplayName: Balloon Lizard Balloon
+			}
+
+			BalloonLizardCard: {
+				DisplayName: Balloon Lizard Card
+				Tooltip: Reptile, Earth
+			}
+
+			LizardSandstormBalloon: {
+				DisplayName: Lizard Sandstorm Balloon
+				Tooltip:
+					'''
+					Allows the user to double jump
+					Increases jump height
+					'''
+			}
+
+			LizardMegaBalloon: {
+				DisplayName: Lizard Mega Balloon
+				Tooltip:
+					'''
+					Allows the user to double jump
+					Increases jump height and negates fall damage
+					'''
+			}
+
+			NibiricBrick: {
+				Tooltip: Nice white brick for building
+				DisplayName: Nibiric Brick
+			}
+
+			DiamondCrabKingItem: {
+				DisplayName: Diamond Crab King
+				Tooltip: 'Very heavy'
+			}
 		}
 
 		Buffs: {
@@ -1563,7 +1608,12 @@ Mods: {
 
 			RebornBuff: {
 				DisplayName: Reborn Buff
-				Description: Mods.NaturiumMod.Buffs.RebornBuff.Description
+				Description: The next BEWD, Dark Magician, or REBD card will not be consumed
+			}
+
+			BalloonLizardBuff: {
+				DisplayName: Balloon Lizard Buff
+				Description: Increase jump height and increase defense by 4
 			}
 		}
 
@@ -1597,6 +1647,15 @@ Mods: {
 				CardDrops: {
 					Label: Card Drops
 					Tooltip: If diasbled, no card packs will drop from enemies.
+				}
+			}
+
+			CardCaseConfig: {
+				DisplayName: Card Case Config
+
+				SlotCount: {
+					Label: Slot Count
+					Tooltip: ""
 				}
 			}
 		}

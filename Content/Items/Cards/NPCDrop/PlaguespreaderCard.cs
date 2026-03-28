@@ -1,9 +1,4 @@
 ﻿using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +22,7 @@ namespace NaturiumMod.Content.Items.Cards.NPCDrop
             Item.rare = ItemRarityID.Lime;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 10);
+            Item.value = Item.buyPrice(silver: 20);
             Item.buffType = ModContent.BuffType<PlagueInfusionBuff>();
             Item.buffTime = 60 * 60 * 6;
         }

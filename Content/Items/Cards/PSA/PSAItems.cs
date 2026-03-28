@@ -74,6 +74,24 @@ namespace NaturiumMod.Content.Items.Cards.PSA
     // ============================================================
     public abstract class BaseGradedCard : ModItem
     {
+        public override Color? GetAlpha(Color lightColor)
+        {
+            if (grade >= 10f)
+            {
+                float time = (float)Main.timeForVisualEffects * 0.03f;
+
+                return new Color(
+                    (byte)(200 + Math.Sin(time) * 30),
+                    (byte)(200 + Math.Sin(time + 2) * 30),
+                    (byte)(200 + Math.Sin(time + 4) * 30),
+                    255
+                );
+            }
+
+            return base.GetAlpha(lightColor);
+        }
+
+
         public float grade;
         public abstract int OriginalCardType { get; }
 
@@ -409,21 +427,43 @@ namespace NaturiumMod.Content.Items.Cards.PSA
             if (grade >= 10f)
                 DrawFoil(spriteBatch, position, frame, origin, scale);
         }
-
+        
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            base.PostDrawInWorld(spriteBatch, lightColor, alphaColor, rotation, scale, whoAmI);
+            if (grade < 10f)
+                return;
 
-            if (grade >= 10f)
-            {
-                Texture2D texture = TextureAssets.Item[Item.type].Value;
-                Vector2 position = Item.Center - Main.screenPosition;
-                Rectangle frame = texture.Frame();
-                Vector2 origin = frame.Size() / 2f;
+            Texture2D texture = TextureAssets.Item[Item.type].Value;
+            Rectangle frame = texture.Frame();
 
-                DrawFoil(spriteBatch, position, frame, origin, scale);
-            }
+            Vector2 origin = frame.Size() / 2f;
+
+            Vector2 worldPos =
+                Item.position - Main.screenPosition +
+                new Vector2(Item.width / 2f, Item.height / 2f);
+
+            float time = (float)Main.timeForVisualEffects * 0.03f;
+
+            Color shine = new Color(
+                (byte)(200 + Math.Sin(time) * 30),
+                (byte)(200 + Math.Sin(time + 2) * 30),
+                (byte)(200 + Math.Sin(time + 4) * 30),
+                80 // transparency so it blends
+            );
+
+            spriteBatch.Draw(
+                texture,
+                worldPos,
+                frame,
+                shine,
+                rotation,
+                origin,
+                scale * 0.5f, // your world shrink factor
+                SpriteEffects.None,
+                0.999f // draw ABOVE the item
+            );
         }
+
         private void DrawFoil(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Vector2 origin, float scale)
         {
             Texture2D foil = ModContent.Request<Texture2D>("NaturiumMod/Assets/Items/Cards/PSA/FoilOverlay").Value;

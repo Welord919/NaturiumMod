@@ -5,6 +5,7 @@ using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.Rares;
 using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
+using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Consumables;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
@@ -64,6 +65,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             ModContent.ItemType<TriHornedDragon>(),
             ModContent.ItemType<Gaia>(),
             ModContent.ItemType<Exodia>(),
+        };
+
+        public static readonly List<int> SuperShortPrints = new()
+        {
+            ModContent.ItemType<PotofGreed>(),
+            ModContent.ItemType<MonsterReborn>(),
         };
 
         public static readonly List<int> ExodiaPieces = new()
@@ -188,10 +195,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (500, CardPools.UltraRares, Rarity.UltraRare),     // 5%
-            (6000, CardPools.SuperRares, Rarity.SuperRare),    // 60%
-            (2500, CardPools.Rares, Rarity.Rare),              // 25%
-            (1000, CardPools.ShortPrints, Rarity.ShortPrint)   // 10%
+            (500, CardPools.UltraRares, Rarity.UltraRare),         // 5%
+            (6000, CardPools.SuperRares, Rarity.SuperRare),        // 60%
+            (1500, CardPools.Rares, Rarity.Rare),                  // 15%
+            (1000, CardPools.ShortPrints, Rarity.ShortPrint),      // 10%
+            (1000, CardPools.ShortPrints, Rarity.SuperShortPrint)  // 10%
         };
     }
 
@@ -202,8 +210,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (70, CardPools.UltraRares, Rarity.UltraRare),       // 70%
-            (30, CardPools.SuperRares, Rarity.SuperRare)        // 30%
+            (75, CardPools.UltraRares, Rarity.UltraRare),       // 75%
+            (19, CardPools.SuperRares, Rarity.SuperRare),        // 19%
+            (6, CardPools.ShortPrints, Rarity.SuperShortPrint)   // 6%
         };
     }
 
