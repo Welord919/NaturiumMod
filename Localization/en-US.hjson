@@ -79,6 +79,9 @@ Mods: {
 			TrishulaBeam.DisplayName: Trishula Beam
 			TrishulaProj.DisplayName: Trishula Proj
 			SpiritScytheHostile.DisplayName: Spirit Scythe Hostile
+			SpearSharkHarpoonProj.DisplayName: Spear Shark Harpoon Proj
+			SharkFinProj.DisplayName: Shark Fin Proj
+			WindUpSharkBurst.DisplayName: Wind Up Shark Burst
 		}
 
 		NPCs: {
@@ -107,6 +110,7 @@ Mods: {
 			SpiritReaper.DisplayName: Spirit Reaper
 			BalloonLizard.DisplayName: Balloon Lizard
 			DiamondCrabKing.DisplayName: Diamond Crab King
+			RightHandSharkNPC.DisplayName: Right Hand Shark N P C
 		}
 
 		Items: {
@@ -1486,7 +1490,27 @@ Mods: {
 
 			DiamondCrabKingItem: {
 				DisplayName: Diamond Crab King
-				Tooltip: 'Very heavy'
+				Tooltip: Very heavy
+			}
+
+			SpearSharkHarpoon: {
+				Tooltip: Fires a Harpoon that will bleed enemies
+				DisplayName: Spear Shark Harpoon
+			}
+
+			HammerShark: {
+				Tooltip: Swing a hammer that will bleed enemies
+				DisplayName: Hammer Shark
+			}
+
+			WindUpShark: {
+				Tooltip: Charge up a burst of 3 shark fin projectiles
+				DisplayName: Wind Up Shark Reapeater
+			}
+
+			IceBarrierMedallion: {
+				Tooltip: Boost all Ice weapons and projectiles
+				DisplayName: Ice Barrier Medallion
 			}
 		}
 

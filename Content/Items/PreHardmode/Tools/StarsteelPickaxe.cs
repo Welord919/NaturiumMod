@@ -100,7 +100,8 @@ public class StarsteelPickaxe : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<Starsteel>(), 15),
+            new(ModContent.ItemType<NaturiumBar>(), 15),
+            new(ItemID.MeteoriteBar, 35),
             new(ItemID.MoltenPickaxe, 1)
         ], TileID.Anvils);
         recipe.Register();

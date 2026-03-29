@@ -27,7 +27,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             Item.useTime = 20;
             Item.UseSound = SoundID.Item4;
 
-            // ⭐ IMPORTANT: BEWD is NEVER auto-consumed
             Item.consumable = false;
 
             Item.maxStack = 999;

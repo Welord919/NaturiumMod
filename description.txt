@@ -1,68 +1,75 @@
-﻿General Info:
-
-Naturium is a mod that adds a wide variety of new materials, weapons, structures, systems, and progression paths to Terraria. Much of the early‑game revolves around gathering Barkion’s Bark and Naturium Ore, but there are other ways to progress. You can explore new structures, craft diffrent themed gear, collect Yu-Gi-Oh card packs, fuse cards into stronger forms, and interact with a new NPC who guides you through the mod’s card system.
-I will go into detail about specific parts of the mod, so if you want to remain blind you can finish reading now.
+﻿General Info
+Naturium is a mod that adds a wide variety of new materials, weapons, structures, systems, and progression paths to Terraria. Much of the early‑game revolves around gathering Barkion’s Bark and Naturium Ore, but there are many alternate ways to progress. You can explore new structures, craft themed gear, collect Yu‑Gi‑Oh card packs, fuse those cards into stronger forms, and interact with a new NPC who guides you through the mod’s card system.
+If you want to remain blind, you can stop reading here.
 
 Barkion’s Bark
-A core early‑game crafting material. It can be crafted at a workbench using Wood and Acorns, and is used in many of the mod’s first‑tier weapons and tools.
+A core early‑game crafting material. It can be crafted at a workbench using Wood and Acorns, and is used in many of the mod’s first‑tier weapons and tools. It is also an ammo type.
 
 Naturium Bars
 The backbone of Naturium’s mid‑game crafting. Created using Naturium Ore combined with Crimtane or Demonite, these bars unlock most of the mod’s weapons, armor, and accessories.
 
 Naturium Bags
-Bosses also drop Naturium Bags and Naturium Bar Bags, which contain bulk amounts of Naturium Ore or Bars depending on how far into progression you are. These bags help get more Naturium without needing to mine a lot if that is not for you.
+Bosses drop Naturium Bags and Naturium Bar Bags, which contain bulk amounts of Naturium Ore or Bars depending on progression. These bags help players who prefer less mining.
 
 Millennium Pieces
-You can craft these by exploring the desert and collecting Desert Fossils, Sturdy Fossils, and Gold. Millennium Pieces allow you to craft early‑game Millennium Items and Apophis‑themed weapons.
+Crafted using Desert Fossils, Sturdy Fossils, and Gold. These allow you to create early‑game Millennium Items and Apophis‑themed weapons.
 
 Plague Chunks & Decay Gear
-The Plaguespreader spawns in the evil desert and drops Plague Chunks, which can be crafted into Plague Flasks. These grant the ability to inflict the Decay debuff with melee weapons, but the main use is to be crafted into Decay‑themed weapons, including a bow and the Reaper's Arm.
+The Plaguespreader and Plague Worm spawn in the evil desert and drops Plague Chunks. These can be crafted into Plague Flasks, which allow melee weapons to inflict the Decay debuff. They are also used to craft Decay‑themed weapons such as the Decay Bow.
 
 Card Packs
-Enemies and bosses drop a variety of Legend of Blue Eyes White Dragon (LOB) card packs (Common, Rare, Super, Ultra). Opening these packs grants collectible cards that can be used for crafting, fusing, or use them as weapons. Some cards include: Blue Eyes White Dragon, Red Eyes Black Dragon, Dark Magician, and many more. (Will add more cards and a good few don't have card effects currently, will add more in future updates)
+Enemies and bosses drop a variety of Legend of Blue Eyes White Dragon (LOB) card packs (Common, Rare, Super, Ultra). Opening these packs grants collectible cards used for crafting, fusing, or even as weapons. Cards include classics like Blue‑Eyes White Dragon, Red‑Eyes Black Dragon, Dark Magician, and many more.
+About half of the cards have effects, but more will be added in future updates.
+
+PSA Grading System
+Naturium introduces a unique PSA‑style card grading system.
+Players can obtain PSA Cases, which allow them to encase their cards in protective shells and assign them a grade from PSA 0.0 to PSA 10.
+Higher‑graded cards:
+- Sell for more
+- Look visually distinct
+- Allows a zoom feature to look at the card
+This system adds collection depth for people who like to collect the cards.
 
 Essence Extraction & Fusion Crafting
-Cards can be broken down into Essence using the Essence Extractor item while at a Fusion Altar.
-Essence is then used to combine cards into stronger and specialized forms.
+Cards can be broken down into Essence using the Essence Extractor while at a Fusion Altar. Essence is then used to combine cards into stronger and more specialized forms.
 
 Archetype System
-Weapons and armor pieces are automatically assigned an Archetype based on their name. Most of these are pretty obvious, but experiment if you are not sure.
-Equipping the corresponding Archetype Medallion/Item grants powerful bonuses to all items of that archetype.
-The Druid NPC sells the first medallion, and additional medallions can be crafted, found in chests, and the like.
+Weapons and armor pieces are automatically assigned an Archetype based on their name. Equipping the corresponding Archetype Medallion grants powerful bonuses to all items of that archetype.
+The Druid NPC sells the Barkion medallion, but more can be crafted or found.
+
+Ice Barrier Archetype
+Equipping the Ice Barrier Medallion boosts all Ice‑type weapons and projectiles. There are is an armor set, magic weapon, and whip for it curretly.
 
 Mysterious Grandpa NPC
-A new NPC, Mysterious Grandpa, appears once you have a Card Pack (Which should be pretty easy to get)
+A new NPC who appears once you obtain a Card Pack.
 He offers:
 - Quests that guide you through the card system
-- Rewards mostly being packs
-He serves as the player’s mentor and shop for card‑related mechanics. (The shop will be updated more in the future)
+- Rewards (mostly packs)
+- A shop with card‑related items (expanded in future updates)
+He serves as the player’s mentor for all card mechanics.
 
 Structures
-Using Structure Helper, Naturium adds several new world‑gen structures:
+Naturium adds several new world‑gen structures using Structure Helper:
 - World Tree with multiple chests, some locked until later progression
-- Jungle and Desert Temples containing themed loot
+- Jungle and Desert Temples with themed loot
 - Living Wood Outcoves scattered throughout the forest underground
 - A floating planet above one of the oceans containing late pre‑hardmode treasures
-Exploration is heavily rewarded, and many structures contain items tied to the card or archetype systems.
+- Crashed Shark Boat — a new ocean structure submerged beneath an ocean
+Exploration is heavily rewarded, and many structures contain items tied to the card or archetype systems for an early boost.
 
 Quality of Life
-There are a few quality of life items, the most important two are the Smith's Charm and Platform Creators. The Platform Creators do what they says they do, but have different tiers you can upgrade to place more platforms down. With them you can right click to change from safe mode or replace mode to make sure you do or don't replace blocks while placing the platforms. There is a final Platform Creator the allows you to place all sizes plus another using a custom UI. 
-The Smith's Charm and its subsequent pieces give you the default buffs as an accesory. You can make the pieces out of the respective potions and a few other craft materials. You can combine these 5 pieces into the charm that gives you all the buff, but in one icon so it doesnt take up the entire screen.
+Naturium includes several QoL items, the most important being the Smith’s Charm and Platform Creators.
+- Platform Creators allow rapid placement of platforms with multiple upgrade tiers and a custom UI.
+- Smith’s Charm combines multiple potion buffs into a single accessory effect, reducing buff clutter.
 
 Editor’s Notes
 We hope you enjoy Naturium!
-If you encounter issues or have suggestions, feel free to leave feedback. Many items reference Yu‑Gi‑Oh!, so fans of the series may notice familiar names and themes.
+If you encounter issues or have suggestions, feel free to leave feedback.
+Many items reference Yu‑Gi‑Oh!, so fans may notice familiar names and themes.
 More content is planned, including:
 - A full boss
 - Multiple armor sets
 - More structures
 - Many new weapons
 - Expanded card archetypes and fusion paths
-It should all work with Calamity for those who would care.
-Multiplayer works aswell.
-
-GitHub Repository: https://github.com/Welord919/NaturiumMod
-
-[quote=tModLoader NaturiumMod]Developed By Welord, I SpiTfire U[/quote][quote=tModLoader NaturiumMod]
-Developed By Welord, I SpiTfire U[/quote][quote=tModLoader NaturiumMod]
-Developed By Welord, I SpiTfire U[/quote]
+Naturium works with Calamity and supports multiplayer.

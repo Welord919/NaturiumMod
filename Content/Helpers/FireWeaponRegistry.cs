@@ -1,6 +1,7 @@
 ﻿using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.PreHardmode.Weapons;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -68,6 +69,7 @@ namespace NaturiumMod.Content.Helpers
             FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<FlameSwordsman>());
             FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<DarkfireDragon>());
             FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<REBD>());
+            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<TripleWOS>());
 
             // Register modded fire projectiles
             FireWeaponRegistry.RegisterModdedFireProjectile(ModContent.ProjectileType<RedEyesFireball>());
