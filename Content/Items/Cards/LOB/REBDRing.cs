@@ -2,7 +2,9 @@
 using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
+using NaturiumMod.Content.Items.PreHardmode.IceBarrier;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using System.Collections.Generic;
@@ -42,6 +44,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             ], TileID.TinkerersWorkbench);
             recipe.Register();
         }
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            int fang = ModContent.ItemType<REBDFang>();
+
+            return incomingItem.type != fang;
+        }
     }
 
     // ============================================================
@@ -73,13 +81,13 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             if (WeaponTag.ItemTags.TryGetValue(item.type, out var tags) &&
                 tags.Contains("Fire"))
             {
-                damage *= 1.07f;
+                damage *= 1.05f;
             }
 
             // Vanilla + modded fire weapons
             if (FireWeaponRegistry.FireItems.Contains(item.type))
             {
-                damage *= 1.07f;
+                damage *= 1.05f;
             }
         }
 
@@ -100,14 +108,15 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             if (WeaponTagProj.ProjTags.TryGetValue(proj.type, out var tags) &&
                 tags.Contains("Fire"))
             {
-                modifiers.SourceDamage *= 1.07f;
+                modifiers.SourceDamage *= 1.05f;
             }
 
             // Vanilla + modded fire projectiles
             if (FireWeaponRegistry.FireProjectiles.Contains(proj.type))
             {
-                modifiers.SourceDamage *= 1.07f;
+                modifiers.SourceDamage *= 1.05f;
             }
+
         }
 
 
@@ -127,30 +136,38 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             int current = Player.buffTime[index];
 
             var modPlayer = Player.GetModPlayer<SSReduction>();
+
             if (!modPlayer.OriginalBuffTimes.ContainsKey(buffID))
                 modPlayer.OriginalBuffTimes[buffID] = current;
+
             int original = modPlayer.OriginalBuffTimes[buffID];
 
-            // floor = half of original
+            // ------------------------------------------------------------
+            // NEW LOGIC:
+            // If REBD killed the enemy → NO CAP
+            // ------------------------------------------------------------
+            if (killedWithREBD)
+            {
+                int newTime = (int)(current * 0.95f); // 5% reduction
+                Player.buffTime[index] = Math.Max(1, newTime);
+                return;
+            }
+
+            // ------------------------------------------------------------
+            // NORMAL LOGIC (50% cap applies)
+            // ------------------------------------------------------------
             int minAllowed = (int)(original * 0.5f);
 
-            // compute proposed reduction from current remaining time
-            int proposed = (int)(current * 0.97f);
-            if (killedWithREBD)
-                proposed = (int)(proposed * 0.95f);
+            int proposed = (int)(current * 0.97f); // 3% reduction
 
-            // clamp proposed to the floor
             if (proposed < minAllowed)
                 proposed = minAllowed;
 
-            // IMPORTANT: only shorten the timer — never increase it
-            int newTime = Math.Min(current, proposed);
-            if (newTime == current)
-                return;
+            int finalTime = Math.Min(current, proposed);
 
-            // Apply change (see multiplayer note below)
-            Player.buffTime[index] = newTime;
+            Player.buffTime[index] = finalTime;
         }
+
 
     }
     public class SSReduction : ModPlayer

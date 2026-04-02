@@ -59,34 +59,6 @@ namespace NaturiumMod.Content.Helpers
             IceProjectiles.Add(projType);
         }
     }
-    public class IceDamageGlobalItem : GlobalItem
-    {
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            if (!player.GetModPlayer<IceDamagePlayer>().iceMedallionActive)
-                return;
-
-            if (IceWeaponRegistry.IceItems.Contains(item.type))
-            {
-                damage *= 1.10f; // +10% ice damage
-            }
-        }
-    }
-    public class IceDamageGlobalProjectile : GlobalProjectile
-    {
-        public override void ModifyHitNPC(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            Player player = Main.player[proj.owner];
-
-            if (!player.GetModPlayer<IceDamagePlayer>().iceMedallionActive)
-                return;
-
-            if (IceWeaponRegistry.IceProjectiles.Contains(proj.type))
-            {
-                modifiers.SourceDamage *= 1.10f; // +10% ice damage
-            }
-        }
-    }
     public class ModdedIceWeaponSystem : ModSystem
     {
         public override void PostSetupContent()

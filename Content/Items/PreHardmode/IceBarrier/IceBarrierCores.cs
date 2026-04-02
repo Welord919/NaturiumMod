@@ -15,7 +15,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.IceBarrier
             Item.height = 20;
 
             Item.maxStack = 999;
-            Item.value = Item.buyPrice(silver: 1);
+            Item.value = Item.buyPrice(copper: 15);
             Item.rare = ItemRarityID.Blue;
 
             Item.material = true;

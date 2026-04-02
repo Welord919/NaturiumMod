@@ -1167,9 +1167,9 @@ Mods: {
 				DisplayName: Red Eyes Black Dragon Ring
 				Tooltip:
 					'''
-					Increases Fire damage by 7%
+					Increases Fire damage by 5%
 					Increases Red Eyes Black Dragon's damage by 15%
-					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill (Max 50%)
+					Reduces Summoning Sickness for Red Eyes Black Dragon by 5% per kill (No Max)
 					Reduces Summoning Sickness of all Cards by the 3% per kill (Max 50%)
 					'''
 			}
@@ -1509,8 +1509,22 @@ Mods: {
 			}
 
 			IceBarrierMedallion: {
-				Tooltip: Boost all Ice weapons and projectiles
+				Tooltip:
+					'''
+					Increases Ice damage by 5%
+					Minions and Sentries apply the Frostburn debuff
+					'''
 				DisplayName: Ice Barrier Medallion
+			}
+
+			IceBarrierIcon: {
+				DisplayName: Ice Barrier Icon
+				Tooltip: Increases Ice damage by 5%
+			}
+
+			RedBeads: {
+				DisplayName: Red Beads
+				Tooltip: Minions and Sentries apply the Frostburn debuff
 			}
 		}
 

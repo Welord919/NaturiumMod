@@ -32,17 +32,6 @@ namespace NaturiumMod.Content.Helpers
 
             RecipeGroup.RegisterGroup("NaturiumMod:EvilChunks", evilChunks);
         }
-        public override void PostSetupContent()
-        {
-            // Register modded fire items
-            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<FlameSwordsman>());
-            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<DarkfireDragon>());
-            FireWeaponRegistry.RegisterModdedFireItem(ModContent.ItemType<REBD>());
-
-            // Register modded fire projectiles
-            FireWeaponRegistry.RegisterModdedFireProjectile(ModContent.ProjectileType<RedEyesFireball>());
-            FireWeaponRegistry.RegisterModdedFireProjectile(ModContent.ProjectileType<RedEyesExplosion>());
-        }
 
         public override void PostAddRecipes()
         {
