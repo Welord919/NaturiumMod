@@ -13,7 +13,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
     using Terraria.ID;
     using Terraria.ModLoader;
 
-    namespace NaturiumMod.Content.Items.SharkWeapons
+    namespace NaturiumMod.Content.Items.PreHardmode.Shark
     {
         public class WindUpShark : ModItem
         {
@@ -49,7 +49,8 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
                 Recipe recipe = CreateRecipe();
                 recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ModContent.ItemType<NaturiumBar>(), 10),
-                new(ItemID.SharkFin, 5)
+                new(ModContent.ItemType<SharkFinBladesDamaged>(), 9),
+                new(ItemID.SharkFin, 3)
                 ], TileID.Anvils);
                 recipe.Register();
             }
@@ -62,7 +63,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
             public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)
             {
-                // Prevent default shooting
                 return false;
             }
 

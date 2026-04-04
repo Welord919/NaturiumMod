@@ -110,7 +110,7 @@ Mods: {
 			SpiritReaper.DisplayName: Spirit Reaper
 			BalloonLizard.DisplayName: Balloon Lizard
 			DiamondCrabKing.DisplayName: Diamond Crab King
-			RightHandSharkNPC.DisplayName: Right Hand Shark N P C
+			RightHandSharkNPC.DisplayName: Right Hand Shark
 		}
 
 		Items: {
@@ -1526,6 +1526,31 @@ Mods: {
 				DisplayName: Red Beads
 				Tooltip: Minions and Sentries apply the Frostburn debuff
 			}
+
+			SharkFinBladesDamaged: {
+				Tooltip: Broken blades of certin shark, still somewhat usable
+				DisplayName: Shark Fin Blades Damaged
+			}
+
+			SharkFinBlades: {
+				Tooltip: Blades made from the fins of a shark, can be used to craft some shark weapons
+				DisplayName: Shark Fin Blades
+			}
+
+			SharkDrake: {
+				Tooltip: 10% chance to save ammo
+				DisplayName: Shark Drake
+			}
+
+			AeroShark: {
+				Tooltip: 40% chance to save ammo
+				DisplayName: Aero Shark
+			}
+
+			SpiderShark: {
+				DisplayName: Spider Shark
+				Tooltip: 20% chance to save ammo
+			}
 		}
 
 		Buffs: {
@@ -1685,15 +1710,6 @@ Mods: {
 				CardDrops: {
 					Label: Card Drops
 					Tooltip: If diasbled, no card packs will drop from enemies.
-				}
-			}
-
-			CardCaseConfig: {
-				DisplayName: Card Case Config
-
-				SlotCount: {
-					Label: Slot Count
-					Tooltip: ""
 				}
 			}
 		}

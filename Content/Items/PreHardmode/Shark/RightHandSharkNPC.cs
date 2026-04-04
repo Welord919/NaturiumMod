@@ -88,8 +88,10 @@ public class RightHandSharkNPC : ModNPC
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.Common(ItemID.SharkFin, 2));
-        npcLoot.Add(ItemDropRule.Common(ItemID.Fish, 1, 1, 3));
+        npcLoot.Add(ItemDropRule.Common(ItemID.SharkFin, 1, 0, 3));
+        npcLoot.Add(ItemDropRule.Common(ItemID.Fish, 2, 0, 1));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SharkFinBladesDamaged>(), 1, 0, 3));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SharkFinBlades>(), 10, 1, 1));
     }
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry entry)
@@ -97,7 +99,7 @@ public class RightHandSharkNPC : ModNPC
         entry.Info.AddRange(new IBestiaryInfoElement[]
         {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-                new FlavorTextBestiaryInfoElement("A vicious shark-man hybrid who attacks with its oversized right arm.")
+                new FlavorTextBestiaryInfoElement("A vicious shark that attacks with its giant blades on its back.")
         });
     }
 }

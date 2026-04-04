@@ -33,14 +33,14 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
             Item.shoot = ModContent.ProjectileType<SpearSharkHarpoonProj>();
 
             Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 50);
+            Item.value = Item.buyPrice(silver: 25);
             Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.SharkFin, 7)
+                .AddIngredient(ItemID.SharkFin, 5)
                 .AddIngredient(ItemID.IronBar, 10)
                 .AddTile(TileID.Anvils)
                 .Register();
