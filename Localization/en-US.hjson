@@ -1551,6 +1551,20 @@ Mods: {
 				DisplayName: Spider Shark
 				Tooltip: 20% chance to save ammo
 			}
+
+			CorrodingShark: {
+				DisplayName: Corroding Shark
+				Description: Get me a corroding shark from the corrupted ocean
+				CatchLocation: Caught in Corrupt Ocean
+				Tooltip: The shark is rotting away
+			}
+
+			GreatWhite: {
+				Description: Get me one of the strongest sharks in the ocean
+				CatchLocation: Caught in Ocean
+				DisplayName: Great White
+				Tooltip: A Great White Shark... with arms?
+			}
 		}
 
 		Buffs: {

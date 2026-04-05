@@ -29,7 +29,13 @@ public class CharmPieceMystic : ModItem
         player.AddBuff(BuffID.Summoning, 2);
 
     }
-
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.AddBuff(BuffID.MagicPower, 2);
+        player.AddBuff(BuffID.ManaRegeneration, 2);
+        player.AddBuff(BuffID.NightOwl, 2);
+        player.AddBuff(BuffID.Summoning, 2);
+    }
 
     public override void AddRecipes()
     {

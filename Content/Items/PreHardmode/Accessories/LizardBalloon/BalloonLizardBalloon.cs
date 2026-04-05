@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces.LizardBalloon
+namespace NaturiumMod.Content.Items.PreHardmode.Accessories.LizardBalloon
 {
     [AutoloadEquip(EquipType.Balloon)]
     public class BalloonLizardBalloon : ModItem

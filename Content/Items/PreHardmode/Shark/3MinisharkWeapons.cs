@@ -36,10 +36,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
         }
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
-            float chance = 0.10f;
-            if (Main.rand.NextFloat() < chance)
-                return false; // do NOT consume ammo
-            return true;
+            return Main.rand.NextFloat() >= 0.10f;
         }
         public override void AddRecipes()
         {
@@ -91,10 +88,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
         }
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
-            float chance = 0.20f;
-            if (Main.rand.NextFloat() < chance)
-                return false; // do NOT consume ammo
-            return true;
+            return Main.rand.NextFloat() >= 0.20f;
         }
     }
     // -------------------------
@@ -126,10 +120,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.Shark
         }
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
-            float chance = 0.40f;
-            if (Main.rand.NextFloat() < chance)
-                return false; // do NOT consume ammo
-            return true;
+            return Main.rand.NextFloat() >= 0.40f;
         }
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)

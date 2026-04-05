@@ -29,7 +29,14 @@ public class CharmPieceGuardian : ModItem
         player.AddBuff(BuffID.Heartreach, 2);
         player.AddBuff(BuffID.ObsidianSkin, 2);
     }
-
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.AddBuff(BuffID.Ironskin, 2);
+        player.AddBuff(BuffID.Endurance, 2);
+        player.AddBuff(BuffID.Regeneration, 2);
+        player.AddBuff(BuffID.Heartreach, 2);
+        player.AddBuff(BuffID.ObsidianSkin, 2);
+    }
 
     public override void AddRecipes()
     {

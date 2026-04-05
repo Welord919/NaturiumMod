@@ -28,6 +28,14 @@ public class CharmPieceWarrior : ModItem
         player.AddBuff(BuffID.Hunter, 2);
         player.AddBuff(BuffID.Inferno, 2);
     }
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.AddBuff(BuffID.Rage, 2);
+        player.AddBuff(BuffID.Wrath, 2);
+        player.AddBuff(BuffID.Swiftness, 2);
+        player.AddBuff(BuffID.Hunter, 2);
+        player.AddBuff(BuffID.Inferno, 2);
+    }
 
     public override void AddRecipes()
     {

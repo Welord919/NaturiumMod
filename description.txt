@@ -40,6 +40,9 @@ The Druid NPC sells the Barkion medallion, but more can be crafted or found.
 Ice Barrier Archetype
 Equipping the Ice Barrier Medallion boosts all Ice‑type weapons and projectiles. There are is an armor set, magic weapon, and whip for it curretly.
 
+Shark Archetype
+A few ranged weapons and a melee weapon that relate to sharks and the ocean. Has 3 upgraded versions of the Minishark that boost diffrent aspects of the weapon.
+
 Mysterious Grandpa NPC
 A new NPC who appears once you obtain a Card Pack.
 He offers:
@@ -54,20 +57,21 @@ Naturium adds several new world‑gen structures using Structure Helper:
 - Jungle and Desert Temples with themed loot
 - Living Wood Outcoves scattered throughout the forest underground
 - A floating planet above one of the oceans containing late pre‑hardmode treasures
-- Crashed Shark Boat — a new ocean structure submerged beneath an ocean
-Exploration is heavily rewarded, and many structures contain items tied to the card or archetype systems for an early boost.
+- Crashed Boat — a new ocean structure submerged beneath an ocean
+The structures contain items that may be tied to the card or archetype systems for an early boost.
 
 Quality of Life
 Naturium includes several QoL items, the most important being the Smith’s Charm and Platform Creators.
 - Platform Creators allow rapid placement of platforms with multiple upgrade tiers and a custom UI.
-- Smith’s Charm combines multiple potion buffs into a single accessory effect, reducing buff clutter.
+- Charm Pieces that give buffs grouped into 5 diffrent categories.
+- Smith’s Charm combines multiple charm pieces into a single accessory, reducing buff clutter.
 
 Editor’s Notes
 We hope you enjoy Naturium!
 If you encounter issues or have suggestions, feel free to leave feedback.
 Many items reference Yu‑Gi‑Oh!, so fans may notice familiar names and themes.
 More content is planned, including:
-- A full boss
+- A boss
 - Multiple armor sets
 - More structures
 - Many new weapons

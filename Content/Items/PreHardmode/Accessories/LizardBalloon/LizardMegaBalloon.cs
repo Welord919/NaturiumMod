@@ -1,9 +1,8 @@
-﻿using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces.LizardBalloon;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.PreHardmode.Accessories
+namespace NaturiumMod.Content.Items.PreHardmode.Accessories.LizardBalloon
 {
     [AutoloadEquip(EquipType.Balloon)]
     public class LizardMegaBalloon : ModItem

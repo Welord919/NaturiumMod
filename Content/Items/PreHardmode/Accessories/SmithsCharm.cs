@@ -1,5 +1,7 @@
 ﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +29,23 @@ public class SmithsCharm : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.AddBuff(ModContent.BuffType<Buffs.SmithsBuff>(), 2);
+    }
+    public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+    {
+        int[] blocked = new[]
+        {
+        ModContent.ItemType<CharmPieceAngler>(),
+        ModContent.ItemType<CharmPieceArtisan>(),
+        ModContent.ItemType<CharmPieceGuardian>(),
+        ModContent.ItemType<CharmPieceMystic>(),
+        ModContent.ItemType<CharmPieceWarrior>()
+    };
+
+        // Reject if either the already-equipped item or the incoming item is in the blocked list
+        if (blocked.Contains(equippedItem.type) || blocked.Contains(incomingItem.type))
+            return false;
+
+        return true;
     }
 
     public override void AddRecipes()

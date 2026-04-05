@@ -28,6 +28,14 @@ public class CharmPieceAngler : ModItem
         player.AddBuff(BuffID.Gills, 2);
         player.AddBuff(BuffID.WaterWalking, 2);
     }
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.AddBuff(BuffID.Fishing, 2);
+        player.AddBuff(BuffID.Crate, 2);
+        player.AddBuff(BuffID.Sonar, 2);
+        player.AddBuff(BuffID.Gills, 2);
+        player.AddBuff(BuffID.WaterWalking, 2);
+    }
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();

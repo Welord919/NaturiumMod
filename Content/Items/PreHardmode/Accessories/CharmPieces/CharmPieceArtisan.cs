@@ -30,7 +30,14 @@ public class CharmPieceArtisan : ModItem
         player.AddBuff(BuffID.Spelunker, 2);
 
     }
-
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.AddBuff(BuffID.Builder, 2);
+        player.AddBuff(BuffID.Mining, 2);
+        player.AddBuff(BuffID.Dangersense, 2);
+        player.AddBuff(BuffID.Shine, 2);
+        player.AddBuff(BuffID.Spelunker, 2);
+    }
 
     public override void AddRecipes()
     {
