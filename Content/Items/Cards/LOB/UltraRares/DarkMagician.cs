@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class DarkMagician : UltraRareCard
+    public class DarkMagician : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/darkmagi";
 
@@ -21,27 +21,11 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
+            base.SetDefaults();
             Item.channel = true;
-
             Item.shoot = ModContent.ProjectileType<DarkMagicianStaff>();
-            Item.shootSpeed = 0f;
-
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 50;
             Item.knockBack = 2f;
-
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 1);
-
-            Item.consumable = false;
-            Item.maxStack = 999;
         }
 
         public override bool CanUseItem(Player player)

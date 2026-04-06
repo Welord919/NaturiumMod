@@ -1,15 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards.Fusion;
-using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.Rares;
-using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
-using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
-using NaturiumMod.Content.Items.PreHardmode.Consumables;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -19,75 +8,6 @@ using static NaturiumMod.Content.Items.Cards.CardRarityHelper;
 
 namespace NaturiumMod.Content.Items.Cards.LOB
 {
-    // ============================================================
-    //  CARD POOLS (ALL RARITIES)
-    // ============================================================
-    public static class CardPools
-    {
-        public static readonly List<int> Commons = new()
-        {
-            ModContent.ItemType<Firegrass>(),
-            ModContent.ItemType<AquaMador>(),
-            ModContent.ItemType<CelticGuardian>(),
-            ModContent.ItemType<SilverFang>(),
-            ModContent.ItemType<FlameManipulator>(),
-            ModContent.ItemType<Armaill>(),
-            ModContent.ItemType<DarkworldThorns>(),
-            ModContent.ItemType<Dissolverock>(),
-            ModContent.ItemType<Hinotama>(),
-            ModContent.ItemType<LesserDragon>(),
-            ModContent.ItemType<MonsterEgg>(),
-            ModContent.ItemType<OneEyedSD>(),
-            ModContent.ItemType<SkullServant>(),
-            ModContent.ItemType<SteelOgre>(),
-            ModContent.ItemType<MWarrior1>(),
-            ModContent.ItemType<MWarrior2>(),
-            ModContent.ItemType<MysticalSheep2>(),
-        };
-
-        public static readonly List<int> Rares = new()
-        {
-            ModContent.ItemType<Swords>(),
-            ModContent.ItemType<ManEaterBug>(),
-            ModContent.ItemType<Masaki>(),
-            ModContent.ItemType<CurseofDragon>(),
-        };
-
-        public static readonly List<int> ShortPrints = new()
-        {
-            ModContent.ItemType<PetiteDragon>(),
-            ModContent.ItemType<PetiteAngel>(),
-            ModContent.ItemType<Polymerization>(),
-        };
-
-        public static readonly List<int> SuperRares = new()
-        {
-            ModContent.ItemType<TriHornedDragon>(),
-            ModContent.ItemType<Gaia>(),
-            ModContent.ItemType<Exodia>(),
-        };
-
-        public static readonly List<int> SuperShortPrints = new()
-        {
-            ModContent.ItemType<PotofGreed>(),
-            ModContent.ItemType<MonsterReborn>(),
-        };
-
-        public static readonly List<int> ExodiaPieces = new()
-        {
-            ModContent.ItemType<LeftLeg>(),
-            ModContent.ItemType<LeftArm>(),
-            ModContent.ItemType<RightArm>(),
-            ModContent.ItemType<RightLeg>(),
-        };
-
-        public static readonly List<int> UltraRares = new()
-        {
-            ModContent.ItemType<BEWD>(),
-            ModContent.ItemType<REBD>(),
-            ModContent.ItemType<DarkMagician>(),
-        };
-    }
 
     // ============================================================
     //  PACK BUILDER (UNIVERSAL)
@@ -164,12 +84,13 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (1, CardPools.UltraRares, Rarity.UltraRare),       // 0.1%
-            (400, CardPools.ExodiaPieces, Rarity.SuperRare),   //4%
-            (800, CardPools.ShortPrints, Rarity.ShortPrint),   // 8%
-            (1800, CardPools.Rares, Rarity.Rare),              // 18%
-            (6999, CardPools.Commons, Rarity.Common)           // 69.99%
-        };
+        (1,    CardPools.GetPool(Rarity.UltraRare).ToList(),    Rarity.UltraRare),
+        (100,  CardPools.GetPool(Rarity.SuperRare).ToList(),    Rarity.SuperRare),
+        (400,  CardPools.GetPool(Rarity.Exodia).ToList(),       Rarity.Exodia),
+        (800,  CardPools.GetPool(Rarity.ShortPrint).ToList(),   Rarity.ShortPrint),
+        (1700, CardPools.GetPool(Rarity.Rare).ToList(),         Rarity.Rare),
+        (6999, CardPools.GetPool(Rarity.Common).ToList(),       Rarity.Common)
+    };
     }
 
     // RARE PACK
@@ -179,13 +100,13 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (100, CardPools.UltraRares, Rarity.UltraRare),     // 1%
-            (400, CardPools.ExodiaPieces, Rarity.SuperRare),  //4%
-            (700, CardPools.SuperRares, Rarity.SuperRare),    // 7%
-            (1400, CardPools.ShortPrints, Rarity.ShortPrint),  // 14%
-            (5000, CardPools.Rares, Rarity.Rare),              // 50%
-            (2400, CardPools.Commons, Rarity.Common)           // 24%
-        };
+        (100,  CardPools.GetPool(Rarity.UltraRare).ToList(),    Rarity.UltraRare),
+        (400,  CardPools.GetPool(Rarity.Exodia).ToList(),       Rarity.Exodia),
+        (700,  CardPools.GetPool(Rarity.SuperRare).ToList(),    Rarity.SuperRare),
+        (1400, CardPools.GetPool(Rarity.ShortPrint).ToList(),   Rarity.ShortPrint),
+        (5000, CardPools.GetPool(Rarity.Rare).ToList(),         Rarity.Rare),
+        (2400, CardPools.GetPool(Rarity.Common).ToList(),       Rarity.Common)
+    };
     }
 
     // SUPER PACK
@@ -195,12 +116,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (500, CardPools.UltraRares, Rarity.UltraRare),         // 5%
-            (6000, CardPools.SuperRares, Rarity.SuperRare),        // 60%
-            (1500, CardPools.Rares, Rarity.Rare),                  // 15%
-            (1000, CardPools.ShortPrints, Rarity.ShortPrint),      // 10%
-            (1000, CardPools.ShortPrints, Rarity.SuperShortPrint)  // 10%
-        };
+        (500,  CardPools.GetPool(Rarity.UltraRare).ToList(),    Rarity.UltraRare),
+        (6000, CardPools.GetPool(Rarity.SuperRare).ToList(),    Rarity.SuperRare),
+        (1500, CardPools.GetPool(Rarity.Rare).ToList(),         Rarity.Rare),
+        (1000, CardPools.GetPool(Rarity.ShortPrint).ToList(),   Rarity.ShortPrint),
+        (1000, CardPools.GetPool(Rarity.SuperShortPrint).ToList(), Rarity.SuperShortPrint)
+    };
     }
 
     // ULTRA PACK
@@ -210,11 +131,12 @@ namespace NaturiumMod.Content.Items.Cards.LOB
 
         public override (int weight, List<int> pool, Rarity rarity)[] Rolls => new[]
         {
-            (75, CardPools.UltraRares, Rarity.UltraRare),       // 75%
-            (19, CardPools.SuperRares, Rarity.SuperRare),        // 19%
-            (6, CardPools.ShortPrints, Rarity.SuperShortPrint)   // 6%
-        };
+        (75,  CardPools.GetPool(Rarity.UltraRare).ToList(),        Rarity.UltraRare),
+        (19,  CardPools.GetPool(Rarity.SuperRare).ToList(),       Rarity.SuperRare),
+        (6,   CardPools.GetPool(Rarity.SuperShortPrint).ToList(), Rarity.SuperShortPrint)
+    };
     }
+
 
     // ============================================================
     //  NPC DROP RULES (ALL PACKS)

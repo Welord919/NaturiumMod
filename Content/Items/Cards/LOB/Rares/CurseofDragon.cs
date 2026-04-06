@@ -4,24 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Rares;
-public class CurseofDragon : ModItem
+public class CurseofDragon : BaseCardRare
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/CurseofDragon";
 
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 32;
-        Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.useAnimation = 20;
-        Item.useTime = 20;
-        Item.UseSound = SoundID.Item4;
-        Item.consumable = true;
-        Item.maxStack = 999;
-        Item.rare = ItemRarityID.Green;
-        Item.noUseGraphic = true;
-        Item.noMelee = true;
-        Item.value = Item.buyPrice(silver: 25);
+        base.SetDefaults();
         Item.buffType = ModContent.BuffType<CurseOfDragonBuff>();
         Item.buffTime = 60 * 30;
     }
@@ -42,9 +31,8 @@ public class CurseofDragon : ModItem
 
         public override void Update(Player player, ref int buffIndex)
         {
-            // Triple movement speed
-            player.moveSpeed *= 1.5f;
-            player.runAcceleration *= 1.5f;
+            player.moveSpeed *= 1.1f;
+            player.runAcceleration *= 1.1f;
         }
     }
 

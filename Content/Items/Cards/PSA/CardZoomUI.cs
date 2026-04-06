@@ -4,9 +4,7 @@ using ReLogic.Content;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -20,11 +18,9 @@ namespace NaturiumMod.Content.Items.Cards.PSA
         private Texture2D cardTexture;
         private UIPanel panel;
 
-        // X button
         private Texture2D closeTexture;
         private Rectangle closeRect;
 
-        // Header info
         public string HeaderCardName = "";
         public string HeaderPSA = "";
         public string HeaderMultiplier = "";
@@ -62,21 +58,16 @@ namespace NaturiumMod.Content.Items.Cards.PSA
             if (!Visible)
                 return;
 
-            // Position the close rect before hit-testing
             Rectangle panelRect = panel.GetDimensions().ToRectangle();
             closeRect.X = panelRect.Right - closeRect.Width - 6;
             closeRect.Y = panelRect.Y + 6;
 
-            // Edge detection: true only when the left button was pressed last frame and released this frame
             bool leftDownNow = Main.mouseLeft;
             bool leftReleasedThisFrame = previousMouseLeft && !leftDownNow;
 
             if (leftReleasedThisFrame && closeRect.Contains(Main.mouseX, Main.mouseY))
             {
-                // Close the UI once on click release
                 ModContent.GetInstance<CardZoomSystem>().HideCardZoom();
-                // Optional: play a close sound
-                // SoundEngine.PlaySound(SoundID.MenuClose);
             }
 
             previousMouseLeft = leftDownNow;
@@ -92,7 +83,6 @@ namespace NaturiumMod.Content.Items.Cards.PSA
 
             Rectangle panelRect = panel.GetDimensions().ToRectangle();
 
-            // X button
             closeRect.X = panelRect.Right - closeRect.Width - 6;
             closeRect.Y = panelRect.Y + 6;
 
@@ -102,7 +92,6 @@ namespace NaturiumMod.Content.Items.Cards.PSA
 
             spriteBatch.Draw(closeTexture, closeRect, closeColor);
 
-            // Header
             int headerHeight = 40;
             Vector2 textPos = new Vector2(panelRect.X + 10, panelRect.Y + 8);
 
@@ -114,7 +103,6 @@ namespace NaturiumMod.Content.Items.Cards.PSA
                 HeaderMultiplierColor
             );
 
-            // Card image
             Rectangle paddedRect = panelRect;
             int padding = 10;
             paddedRect.Inflate(-padding, -padding);

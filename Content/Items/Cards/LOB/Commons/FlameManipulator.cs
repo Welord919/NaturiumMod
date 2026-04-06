@@ -1,36 +1,30 @@
 ﻿using NaturiumMod.Content.Helpers;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using static NaturiumMod.Content.Items.Cards.LOB.Rares.CurseofDragon;
-
 namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
-    public class FlameManipulator : ModItem
+    public class FlameManipulator : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/FlameMani";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.Blue;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 25);
+            base.SetDefaults();
             Item.buffType = ModContent.BuffType<FireDamageBuff>();
             Item.buffTime = 60 * 40;
         }
-        public override bool? UseItem(Player player)
+        protected override void OnCardUse(Player player)
         {
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 180);
-            return true;
+            player.AddBuff(ModContent.BuffType<FireDamageBuff>(), 60 * 30);
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
         }
     }
     public class FireDamageBuff : ModBuff

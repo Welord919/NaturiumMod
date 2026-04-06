@@ -17,31 +17,16 @@ using static AssGen.Assets;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class REBD : UltraRareCard
+    public class REBD : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/rebd";
         private int burstsFired = 0;
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.noMelee = true;
-            Item.noUseGraphic = true;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            base.SetDefaults();
             Item.damage = 50;
-            Item.consumable = true;
-            Item.maxStack = 999;
             Item.knockBack = 3.5f;
-            Item.shoot = ProjectileID.None;
-            Item.shootSpeed = 10f;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 1);
-            Item.autoReuse = false;
-            Item.consumable = false;
         }
 
         public override bool CanUseItem(Player player)

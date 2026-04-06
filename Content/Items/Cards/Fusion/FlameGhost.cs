@@ -9,24 +9,13 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion
 {
-    public class FlameGhost : ModItem
+    public class FlameGhost : BaseCardFusion
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/FlameGhost";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/FlameGhost";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.LightPurple;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.value = 2000;
+            base.SetDefaults();
             Item.buffType = ModContent.BuffType<FlameGhostBuff>();
             Item.buffTime = 60 * 60 * 4;
         }

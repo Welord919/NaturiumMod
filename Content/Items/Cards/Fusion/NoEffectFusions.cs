@@ -4,16 +4,13 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion;
 
-    public abstract class FusionBase : ModItem
+    public abstract class FusionBase : BaseCardFusion
     {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/FlameGhost";
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 32;
-        Item.maxStack = 999;
-        Item.rare = ItemRarityID.LightPurple;
-        Item.value = Item.buyPrice(silver:20);
+        base.SetDefaults();
+        Item.value = Item.buyPrice(silver:45);
     }
     }
     public class Dragoness : FusionBase
@@ -28,11 +25,6 @@ namespace NaturiumMod.Content.Items.Cards.Fusion;
     public class Fusionist : FusionBase //Used in Crafting
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/Fusionist";
-}
-
-    public class GaiaChampion : FusionBase
-        {
-    public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/GaiaChampion";
 }
     public class Karbonala : FusionBase
         {

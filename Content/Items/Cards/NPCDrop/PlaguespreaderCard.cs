@@ -5,24 +5,15 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.NPCDrop
 {
-    public class PlaguespreaderCard : ModItem
+    public class PlaguespreaderCard : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/NPCDrop/PlaguespreaderCard";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
+            base.SetDefaults();
             Item.rare = ItemRarityID.Lime;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.value = Item.buyPrice(silver: 20);
+            Item.value = Item.buyPrice(silver: 25);
             Item.buffType = ModContent.BuffType<PlagueInfusionBuff>();
             Item.buffTime = 60 * 60 * 6;
         }

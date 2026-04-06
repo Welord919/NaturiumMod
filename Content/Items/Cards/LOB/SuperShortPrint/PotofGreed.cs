@@ -9,36 +9,27 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint
 {
-    public class PotofGreed : ModItem
+    public class PotofGreed : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PotofGreed";
         public override void SetDefaults()
         {
-            Item.width = 26;
-            Item.height = 32;
-            Item.maxStack = 99;
-            Item.rare = ItemRarityID.Orange;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
-            Item.consumable = true;
-            Item.value = Item.buyPrice(silver: 50);
+            base.SetDefaults();
+            Item.rare = ItemRarityID.Green;
         }
 
         public override bool? UseItem(Player player)
         {
-            // Roll twice
             for (int i = 0; i < 2; i++)
             {
                 int pack = RollWeightedPack();
                 player.QuickSpawnItem(player.GetSource_FromThis(), pack);
             }
-
             return true;
         }
         private int RollWeightedPack()
         {
-            int roll = Main.rand.Next(100); // 0–99
+            int roll = Main.rand.Next(100);
 
             if (roll < 50)
                 return ModContent.ItemType<PackLOB_Common>();     // 50%
@@ -51,7 +42,5 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint
 
             return ModContent.ItemType<PackLOB_Ultra>();          // 5%
         }
-
     }
-
 }

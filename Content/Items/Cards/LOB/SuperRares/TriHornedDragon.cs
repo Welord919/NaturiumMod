@@ -1,77 +1,38 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.BuffsDebuffs;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
-using StructureHelper.Content.GUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static AssGen.Assets;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 {
-    public class TriHornedDragon : ModItem
+    public class TriHornedDragon : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/TriHornedDragon";
         private int burstsFired = 0;
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.noMelee = true;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-            Item.damage = 28;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.knockBack = 3.5f;
-            Item.shoot = ModContent.ProjectileType<DragonHorn>();
-            Item.shootSpeed = 10f;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(gold: 1);
-            Item.autoReuse = false;
+            base.SetDefaults();
             Item.consumable = false;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.damage = 28;
+            Item.knockBack = 3.5f;
+            Item.UseSound = SoundID.Item1;
         }
-
-        public override bool CanUseItem(Player player)
-        {
-            // Also block if buff is active mid-cycle
-            if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
-                return false;
-
-            return true;
-        }
-
         public override bool? UseItem(Player player)
         {
-
-            // Apply cooldown (20 frames)
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 20);
-
-            // Count bursts
             burstsFired++;
-
-            // After 3 bursts → consume 1 card
             if (burstsFired >= 3)
             {
-                burstsFired = 0; // reset burst counter
-                Item.stack--;    // consume exactly 1 stack
-
+                burstsFired = 0; 
+                Item.stack--;   
                 if (Item.stack <= 0)
                     Item.TurnToAir();
             }
 
-            // Fire 3 horns
             float baseSpeed = Item.shootSpeed == 0 ? 8f : Item.shootSpeed;
             float spread = MathHelper.ToRadians(10f);
 
@@ -92,12 +53,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
                     player.whoAmI
                 );
             }
-
             return true;
         }
-
     }
-    
     public class DragonHorn : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/TriHornedDragonHorn";

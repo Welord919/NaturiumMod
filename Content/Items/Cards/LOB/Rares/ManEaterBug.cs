@@ -11,26 +11,15 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
     // ============================
     //  MAN-EATER BUG ITEM
     // ============================
-    public class ManEaterBug : ModItem
+    public class ManEaterBug : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/ManEaterBug";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.Green;
-            Item.value = Item.buyPrice(silver: 50);
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
+            base.SetDefaults();
             Item.buffType = ModContent.BuffType<ManEaterBugGuard>();
-            Item.buffTime = 60 * 20;
+            Item.buffTime = 60 * 15;
         }
         public override bool? UseItem(Player player)
         {
@@ -38,7 +27,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
             return true;
         }
     }
-
     // ============================
     //  MAN-EATER BUG BUFF
     // ============================

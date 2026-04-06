@@ -10,61 +10,43 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
-    public class CelticGuardian : ModItem
+    public class CelticGuardian : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/CelticGuardian";
 
         private int usesLeft = 9;
         private int swingIndex = 0;
-
         public override void SetDefaults()
         {
-            Item.width = 28;
-            Item.height = 36;
+            base.SetDefaults();
+            Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 25;
             Item.useAnimation = 25;
-
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 20;
             Item.knockBack = 6f;
-
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(silver: 25);
-
             Item.UseSound = SoundID.Item1;
-
             Item.shoot = ModContent.ProjectileType<CelticGuardianSlash>();
-            Item.shootSpeed = 0f;
-
-            Item.maxStack = 999;
         }
 
         public override bool CanUseItem(Player player)
         {
             if (usesLeft <= 0)
                 return false;
-
             if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
                 return false;
-
             return true;
         }
 
         public override bool? UseItem(Player player)
         {
             usesLeft--;
-
-            // ⭐ increment swing index instead of XOR toggle
             swingIndex++;
             if (swingIndex >= 9)
             {
                 swingIndex = 0;
-                Item.stack--;     // ⭐ consume the card after 9 swings
-                usesLeft = 9;     // reset for next card
+                Item.stack--;
+                usesLeft = 9;
             }
 
             // short cooldown
@@ -85,7 +67,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                     Item.damage,
                     Item.knockBack,
                     player.whoAmI,
-                    swingIndex % 3 // ⭐ 0=up→down, 1=down→up, 2=thrust
+                    swingIndex % 3
                 );
 
                 if (proj >= 0)
@@ -98,7 +80,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            return false; // prevent double spawn
+            return false;
         }
     }
     public class CelticGuardianSlash : ModProjectile
@@ -107,8 +89,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 
         public override void SetDefaults()
         {
-            Projectile.width = 120;
-            Projectile.height = 120;
+            Projectile.width = 75;
+            Projectile.height = 16;
 
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -119,7 +101,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 
             Projectile.timeLeft = 16;
 
-            Projectile.DamageType = ModContent.GetInstance<CardDamage>(); // ✔ FIXED
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
@@ -134,11 +116,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             // If Warrior tag is active, apply the boost
             if (modPlayer.activeBoosts.TryGetValue("Warrior", out bool warriorActive) && warriorActive)
             {
-                modifiers.SourceDamage *= 1.10f; // +10% damage
+                modifiers.SourceDamage *= 1.10f;
             }
         }
-
-
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -199,7 +179,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 lightColor,
                 Projectile.rotation,
                 origin,
-                scale,
+                scale * 0.5f,
                 SpriteEffects.None,
                 0
             );

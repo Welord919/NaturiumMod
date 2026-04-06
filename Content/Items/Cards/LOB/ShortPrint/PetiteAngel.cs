@@ -8,28 +8,16 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint
 {
-    public class PetiteAngel : ModItem
+    public class PetiteAngel : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteAngel";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item44;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.noMelee = true;
+            base.SetDefaults();
             Item.knockBack = 1f;
-
             Item.buffType = ModContent.BuffType<PetiteAngelBuff>();
-            Item.buffTime = 60 * 40; // ⭐ FIX: ensures buff applies on first use
-
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(silver: 50);
+            Item.buffTime = 60 * 40;
         }
 
         public override bool? UseItem(Player player)

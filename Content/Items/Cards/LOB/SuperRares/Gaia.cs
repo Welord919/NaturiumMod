@@ -8,35 +8,19 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 
-public class Gaia : ModItem
+public class Gaia : BaseCardSuper
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Gaia";
     private int usesLeft = 3;
     public override void SetDefaults()
     {
-        Item.width = 32;
-        Item.height = 40;
-
-        Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.useTime = 20;
-        Item.useAnimation = 20;
-
-        Item.noUseGraphic = true;
-        Item.noMelee = true;
-
+        base.SetDefaults();
+        Item.consumable = false;
+        Item.useStyle = ItemUseStyleID.Shoot;
         Item.damage = 20;
         Item.knockBack = 3f;
-        Item.DamageType = ModContent.GetInstance<CardDamage>();
-
-        Item.rare = ItemRarityID.Orange;
-        Item.value = Item.buyPrice(gold: 3);
-
         Item.UseSound = SoundID.Item1;
-
         Item.shoot = ModContent.ProjectileType<GaiaChargeProjectile>();
-        Item.shootSpeed = 0f;
-
-        Item.maxStack = 999;
     }
 
     public override bool CanUseItem(Player player)
@@ -91,17 +75,17 @@ public class GaiaChargeProjectile : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 40;
-        Projectile.height = 40;
+        Projectile.width = 120;
+        Projectile.height = 18;
 
         Projectile.friendly = true;
         Projectile.hostile = false;
         Projectile.penetrate = -1;
 
-        Projectile.tileCollide = false; // ⭐ no getting stuck
+        Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
 
-        Projectile.timeLeft = 80; // ⭐ longer charge
+        Projectile.timeLeft = 80;
 
         Projectile.DamageType = DamageClass.Melee;
 

@@ -12,35 +12,17 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion
 {
-    public class DarkfireDragon : ModItem
+    public class DarkfireDragon : BaseCardFusion
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DarkfireDragon";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/DarkfireDragon";
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
-
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-
-            Item.noUseGraphic = false;
-            Item.noMelee = true;
-
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            base.SetDefaults();
             Item.damage = 80;
             Item.knockBack = 3f;
-
-            // Item shoots ONLY the dragon head
-            Item.shoot = ModContent.ProjectileType<DarkFireDragonHead>();
             Item.shootSpeed = 8f;
-
-            Item.rare = ItemRarityID.LightPurple;
-            Item.value = Item.buyPrice(silver: 80);
-
-            Item.consumable = true;
-            Item.maxStack = 999;
+            Item.shoot = ModContent.ProjectileType<DarkFireDragonHead>();
         }
 
         public override bool CanUseItem(Player player)
@@ -51,30 +33,23 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Consume card
             Item.stack--;
-
-            // Apply short cooldown
             player.AddBuff(ModContent.BuffType<SummoningSickness>(), 600);
-
             return true;
         }
     }
-
-
     // ============================================================
     // ORB — Spawns above the dragon, fires PetiteDragonShot
     // ============================================================
-
     public class DarkFireOrb : ModProjectile
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DarkfireOrb";
 
         public override void SetDefaults()
         {
-            Projectile.width = 100;   // ⭐ 25% larger hitbox
+            Projectile.width = 100;
             Projectile.height = 100;
-            Projectile.friendly = true; // ⭐ orb can hit enemies
+            Projectile.friendly = true;
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;

@@ -10,23 +10,13 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion
 {
-    public class MetalDragon : ModItem
+    public class MetalDragon : BaseCardFusion
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/NoEffects/MetalDragon";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/MetalDragon";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.Orange;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
+            base.SetDefaults();
             Item.buffType = ModContent.BuffType<MetalDragonBuff>();
             Item.buffTime = 60 * 60 * 2;
         }

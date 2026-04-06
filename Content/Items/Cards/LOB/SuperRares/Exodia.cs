@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using NaturiumMod.Content.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -15,23 +11,14 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 {
-    public class Exodia : ModItem
+    public class Exodia : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Exodia";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
-            Item.UseSound = SoundID.Item4;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.Orange;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
+            base.SetDefaults();
+            Item.value = 1500;
         }
 
         private bool Has(Player p, int type)

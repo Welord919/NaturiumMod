@@ -11,33 +11,16 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 {
-    public class BEWD : UltraRareCard
+    public class BEWD : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BEWD";
 
         public override void SetDefaults()
         {
+            base.SetDefaults();
             Item.damage = 80;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item4;
-
-            Item.consumable = false;
-
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 3);
-
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.shoot = ProjectileID.None;
         }
-
+        
         // ============================================================
         //  INVENTORY HELPERS
         // ============================================================
@@ -125,8 +108,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
                 // ⭐ Monster Reborn protection
                 if (!TryApplyMonsterReborn(player))
                 {
-                    // Consume exactly 2 BEWD
-                    ConsumeBEWD(player, 2);
+                    // Consume exactly 3 BEWD
+                    ConsumeBEWD(player, 3);
                 }
 
                 Vector2 baseDir = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX);

@@ -8,39 +8,25 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint
 {
-    public class PetiteDragon : ModItem
+    public class PetiteDragon : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragon";
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
-            Item.UseSound = SoundID.Item44;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.noMelee = true;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            base.SetDefaults();
             Item.damage = 8;
             Item.knockBack = 1f;
-
             Item.buffType = ModContent.BuffType<PetiteDragonBuff>();
             Item.shoot = ModContent.ProjectileType<PetiteDragonMinion>();
-
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(silver: 50);
+            Item.buffTime = 60 * 120;
         }
-
         public override bool? UseItem(Player player)
         {
             player.AddBuff(Item.buffType, 2);
             return true;
         }
     }
-
     public class PetiteDragonBuff : ModBuff
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragonBuff";

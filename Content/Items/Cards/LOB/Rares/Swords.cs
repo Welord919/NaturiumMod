@@ -7,39 +7,27 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 {
-    public class Swords : ModItem
+    public class Swords : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Swords";
         private int usesLeft = 3;
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
+            base.SetDefaults();
+            Item.consumable = false;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             Item.UseSound = SoundID.Item8;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.noMelee = true;
-            Item.noUseGraphic = true;
             Item.damage = 50;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.shoot = ModContent.ProjectileType<SwordsProj>();
-            Item.shootSpeed = 0f;
-
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(silver: 75);
         }
         public override bool CanUseItem(Player player)
         {
             if (usesLeft <= 0)
                 return false;
-
             if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
                 return false;
-
             return true;
         }
         public override bool? UseItem(Player player)
@@ -76,8 +64,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 
         public override void SetDefaults()
         {
-            Projectile.width = 40;
-            Projectile.height = 80;
+            Projectile.width = 13;
+            Projectile.height = 100;
             Projectile.friendly = false;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
@@ -128,7 +116,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
                 if (Main.rand.NextBool(3))
                 {
                     int d = Dust.NewDust(
-                        Projectile.position + new Vector2(-14f, 0f),
+                        Projectile.position,
                         Projectile.width,
                         Projectile.height,
                         DustID.GoldCoin

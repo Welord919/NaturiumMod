@@ -9,42 +9,25 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion
 {
-    public class FlameSwordsman : ModItem
+    public class FlameSwordsman : BaseCardFusion
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/FlameSwordsman";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/FlameSwordsman";
 
         private int usesLeft = 5;
         private int swingIndex = 0; // 0 = top→bottom, 1 = bottom→top
 
         public override void SetDefaults()
         {
-            Item.width = 28;
-            Item.height = 36;
+            base.SetDefaults();
+            Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 25;
             Item.useAnimation = 25;
-
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 50;
             Item.knockBack = 6f;
-
-            Item.rare = ItemRarityID.LightPurple;
-            Item.value = Item.buyPrice(gold: 2);
-
             Item.UseSound = SoundID.Item20;
-
-
             Item.shoot = ModContent.ProjectileType<FlameSwordsmanSlash>();
-            Item.shootSpeed = 0f;
-
-            
-            Item.maxStack = 999;
-
         }
-
         public override bool CanUseItem(Player player)
         {
             if (usesLeft <= 0)

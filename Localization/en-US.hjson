@@ -726,7 +726,7 @@ Mods: {
 					'''
 					Spellcaster, Water
 					Gain 50 overhealh and breathe in water
-					A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him''
+					'A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him'
 					'''
 			}
 
@@ -966,7 +966,11 @@ Mods: {
 
 			GaiaChampion: {
 				DisplayName: Gaia Champion
-				Tooltip: Dragon, Wind, Fusion
+				Tooltip:
+					'''
+					Dragon, Wind, Fusion
+					Increased movement speed by 50%
+					'''
 			}
 
 			Karbonala: {
@@ -1462,7 +1466,11 @@ Mods: {
 
 			BalloonLizardCard: {
 				DisplayName: Balloon Lizard Card
-				Tooltip: Reptile, Earth
+				Tooltip:
+					'''
+					Reptile, Earth
+					Apply a buff that increases jump height, allows the user to double jump, and incrases defense by 4
+					'''
 			}
 
 			LizardSandstormBalloon: {
@@ -1565,6 +1573,25 @@ Mods: {
 				DisplayName: Great White
 				Tooltip: A Great White Shark... with arms?
 			}
+
+			StimPack: {
+				Tooltip:
+					'''
+					Spell
+					Increases damage by 33% up to 15 above base damage, but damages you overtime
+					'''
+				DisplayName: Stim Pack
+			}
+
+			SpellEssence: {
+				DisplayName: Spell Essence
+				Tooltip: Used for Fusion Crafting
+			}
+
+			TrapEssence: {
+				DisplayName: Trap Essence
+				Tooltip: Used for Fusion Crafting
+			}
 		}
 
 		Buffs: {
@@ -1660,7 +1687,7 @@ Mods: {
 
 			CurseOfDragonBuff: {
 				DisplayName: Curse Of Dragon Buff
-				Description: Increased movement speed by 50%
+				Description: Increased movement speed by 10%
 			}
 
 			MetalDragonBuff: {
@@ -1690,7 +1717,17 @@ Mods: {
 
 			BalloonLizardBuff: {
 				DisplayName: Balloon Lizard Buff
-				Description: Increase jump height and increase defense by 4
+				Description: Increase jump height, gives an extra jump, and increase defense by 4
+			}
+
+			StimPackBuff: {
+				Description: Increases damage by 33% up to 15 above base damage, but damages you overtime
+				DisplayName: Stim Pack Buff
+			}
+
+			GaiaChampionBuff: {
+				Description: Increased movement speed by 50%
+				DisplayName: Gaia Champion Buff
 			}
 		}
 

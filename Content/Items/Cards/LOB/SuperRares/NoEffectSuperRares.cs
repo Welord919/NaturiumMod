@@ -9,16 +9,13 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
 {
-    public abstract class ExodiaPiece : ModItem
+    public abstract class ExodiaPiece : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Exodia";
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
-            Item.maxStack = 999;
-            Item.value = 250;
-            Item.rare = ItemRarityID.Orange;
+            base.SetDefaults();
+            Item.value = 1000;
         }
     }
     public class RightLeg : ExodiaPiece

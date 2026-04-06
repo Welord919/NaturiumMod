@@ -9,29 +9,18 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
-    public class SilverFang : ModItem
+    public class SilverFang : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Silverfang";
 
         public override void SetDefaults()
         {
+            base.SetDefaults();
             Item.damage = 2;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
-            Item.width = 32;
-            Item.height = 32;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
             Item.UseSound = SoundID.Roar;
-            Item.consumable = true;
-            Item.maxStack = 999;
-            Item.rare = ItemRarityID.Blue;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
             Item.knockBack = 7f;
             Item.shoot = ModContent.ProjectileType<SilverFangShout>();
             Item.shootSpeed = 0f;
-            Item.value = Item.buyPrice(silver: 25);
         }
 
         public override bool? UseItem(Player player)
@@ -43,17 +32,21 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 player.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<SilverFangShout>(),
-                Item.damage,                // damage
-                Item.knockBack,   // knockback
+                Item.damage,    
+                Item.knockBack,
                 player.whoAmI
             );
-
-            // Store knockback manually
             Main.projectile[proj].ai[1] = Item.knockBack;
-
             return true;
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
+        }
     }
     // ============================================================
     //  SHOUT PROJECTILE — Expanding Knockback Wave

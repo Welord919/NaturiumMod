@@ -1,18 +1,38 @@
-﻿using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
+﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards
 {
-    public abstract class UltraRareCard : ModItem
+    public abstract class MRUltra : ModItem
     {
         public override void SetDefaults()
         {
-            Item.consumable = false; // NEVER auto-consume
+            Item.UseSound = SoundID.Item4;
+            Item.width = 28;
+            Item.height = 28;
             Item.maxStack = 999;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
             Item.noUseGraphic = true;
             Item.noMelee = true;
+            Item.rare = ItemRarityID.LightRed;
+            Item.value = 2000;
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+
+            Item.consumable = false;
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.HasBuff(ModContent.BuffType<SummoningSickness>()))
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
         }
 
         // ============================================================

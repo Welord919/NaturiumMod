@@ -1,14 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Helpers;
+﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
-using NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static AssGen.Assets;
 
 namespace NaturiumMod.Content.Items.Cards.LOB
 {

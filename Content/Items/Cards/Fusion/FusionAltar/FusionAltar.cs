@@ -2,6 +2,9 @@
 using NaturiumMod.Content.Items.Cards.LOB.Commons;
 using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.ID;
@@ -123,47 +126,83 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/DarkEssence";
     }
-    //Card extraction recipes (card → essence)
+    public class SpellEssence : BaseEssence
+    {
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/SpellEssence";
+    }
+    public class TrapEssence : BaseEssence
+    {
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/TrapEssence";
+    }
+    public static class ExtractionRegistry
+    {
+        // Maps card item type -> (essenceType, amount)
+        public static readonly Dictionary<int, (int essenceType, int amount)> ExtractionMap = new();
+
+        public static void RegisterExtraction(int cardType, int essenceType, int amount)
+        {
+            ExtractionMap[cardType] = (essenceType, amount);
+        }
+
+        public static bool TryGetExtraction(int cardType, out (int essenceType, int amount) value)
+        {
+            return ExtractionMap.TryGetValue(cardType, out value);
+        }
+    }
+
     public class EssenceExtractionRecipes : ModSystem
     {
-        public override void AddRecipes()
+        public override void OnModLoad()
         {
-            foreach (var item in ModContent.GetContent<ModItem>())
+            ExtractionRegistry.ExtractionMap.Clear();
+
+            foreach (var entry in CardPools.AllCards)
             {
-                int type = item.Type;
+                int type = entry.ItemType;
 
                 // Must be a card
-                if (!WeaponTag.ItemTags.TryGetValue(type, out var tags) || !tags.Contains("Card"))
+                if (entry.Tags == null || !entry.Tags.Any(t => t.Equals("Card", StringComparison.OrdinalIgnoreCase)))
                     continue;
 
-                // Must have an attribute tag
+                // Get attribute (Fire/Water/Earth/Wind/Light/Dark/Spell/Trap)
                 string attribute = CardTagHelper.GetCardAttribute(type);
                 if (attribute == null)
                     continue;
 
-                // Must have rarity registered
-                if (!CardRarityRegistry.CardRarities.TryGetValue(type, out var rarity))
-                    continue;
+                // Use entry.Rarity (safe even if CardRarityRegistry isn't populated yet)
+                var rarity = entry.Rarity;
 
                 int essenceType = EssenceTypeHelper.GetEssenceItem(attribute);
                 int amount = EssenceYieldHelper.GetEssenceYield(rarity);
 
-                if (essenceType == 0)
+                if (essenceType == 0 || amount <= 0)
                     continue;
 
+                ExtractionRegistry.RegisterExtraction(type, essenceType, amount);
+            }
+        }
+    }
+    public class ExtractionRecipeCreator : ModSystem
+    {
+        public override void AddRecipes()
+        {
+            foreach (var kv in ExtractionRegistry.ExtractionMap)
+            {
+                int cardType = kv.Key;
+                int essenceType = kv.Value.essenceType;
+                int amount = kv.Value.amount;
+
+                // Create the recipe: card + extractor -> essence
                 Recipe recipe = Recipe.Create(essenceType, amount);
-
-                // Card being extracted
-                recipe.AddIngredient(type);
-
-                // Essence Extractor IS CONSUMED
-                recipe.AddIngredient(ModContent.ItemType<EssenceExtractor>());
-
+                recipe.AddIngredient(cardType); // card consumed
+                recipe.AddIngredient(ModContent.ItemType<EssenceExtractor>()); // extractor consumed
                 recipe.AddTile(ModContent.TileType<FusionAltarTile>());
                 recipe.Register();
             }
         }
     }
+
+
     // ---------------------------
     //  ESSENCE YIELD HELPER
     // ---------------------------
@@ -177,7 +216,11 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
                 Rarity.Rare => 2,
                 Rarity.ShortPrint => 3,
                 Rarity.SuperRare => 3,
+                Rarity.Exodia => 4,
+                Rarity.SuperShortPrint => 4,
                 Rarity.UltraRare => 5,
+                Rarity.Crafted => 5,
+                Rarity.Fusion => 7,
                 _ => 1
             };
         }
@@ -198,6 +241,8 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
                 "Wind" => ModContent.ItemType<WindEssence>(),
                 "Light" => ModContent.ItemType<LightEssence>(),
                 "Dark" => ModContent.ItemType<DarkEssence>(),
+                "Spell" => ModContent.ItemType<SpellEssence>(),
+                "Trap" => ModContent.ItemType<TrapEssence>(),
                 _ => 0
             };
         }

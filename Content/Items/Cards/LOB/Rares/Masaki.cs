@@ -7,32 +7,22 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.Commons
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 {
-    public class Masaki : ModItem
+    public class Masaki : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Masaki";
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
+            base.SetDefaults();
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 10;
             Item.useTime = 10;
             Item.channel = true;
-            Item.noUseGraphic = true;
-            Item.noMelee = true;
-            Item.DamageType = ModContent.GetInstance<CardDamage>();
             Item.damage = 20;
             Item.knockBack = 4f;
             Item.shoot = ModContent.ProjectileType<MasakiChargeProj>();
-            Item.shootSpeed = 0f;
-            Item.rare = ItemRarityID.Green;
-            Item.value = Item.buyPrice(silver: 50);
-            Item.consumable = true;
-            Item.maxStack = 999;
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
@@ -52,6 +42,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 
         private int chargeTime = 0;
         private int stage = 1;
+        private int prevStage = 0;
+
 
         private bool playedStartSound = false;
         private bool playedStage2 = false;
@@ -138,7 +130,20 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
                 stage = 1;
             }
 
+            if (stage > prevStage)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    Vector2 offset = new Vector2(Main.rand.NextFloat(-12f, 12f), Main.rand.NextFloat(-12f, 12f));
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f));
+                    var d = Dust.NewDustPerfect(player.Center + offset, DustID.Blood, vel, 150, default, 1.2f);
+                    d.noGravity = true;
+                }
+                prevStage = stage;
+            }
+
             Lighting.AddLight(player.Center, 0.3f * stage, 0.3f * stage, 0.1f);
+
         }
 
         private void ReleaseSlash(Player player)

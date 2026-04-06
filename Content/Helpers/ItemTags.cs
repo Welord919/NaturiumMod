@@ -56,93 +56,6 @@ namespace NaturiumMod.Content.Helpers
             AddTag(ModContent.ItemType<StarsteelStarburst>(), "Nibiru");
             AddTag(ModContent.ItemType<StarsteelPickaxe>(), "Nibiru");
             AddTag(ModContent.ItemType<StarryNight>(), "Nibiru");
-            
-            //Dragons
-            AddTags(ModContent.ItemType<BEWD>(), "Card", "Dragon", "Light");
-            AddTags(ModContent.ItemType<PetiteDragon>(), "Card", "Dragon", "Wind");
-            AddTags(ModContent.ItemType<REBD>(), "Card", "Dragon", "Dark", "Fire");
-            AddTags(ModContent.ItemType<CurseofDragon>(), "Card", "Dragon", "Dark");
-            AddTags(ModContent.ItemType<TriHornedDragon>(), "Card", "Dragon", "Dark");
-            AddTags(ModContent.ItemType<LesserDragon>(), "Card", "Dragon", "Wind");
-            AddTags(ModContent.ItemType<OneEyedSD>(), "Card", "Dragon", "Wind");
-
-            //Warriors
-            AddTags(ModContent.ItemType<CelticGuardian>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<Gaia>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<Masaki>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<MonsterEgg>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<MWarrior1>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<MWarrior2>(), "Card", "Warrior", "Earth");
-            AddTags(ModContent.ItemType<FlameSwordsman>(), "Card", "Warrior", "Fire", "Fusion");
-            AddTags(ModContent.ItemType<DarkfireDragon>(), "Card", "Warrior", "Dark","Fire", "Fusion");
-            AddTags(ModContent.ItemType<Armaill>(), "Card", "Warrior", "Earth");
-
-            //Bugs
-            AddTags(ModContent.ItemType<ManEaterBug>(), "Card", "Bug", "Earth");
-
-            //Reptiles
-            AddTags(ModContent.ItemType<BalloonLizardCard>(), "Card", "Reptile", "Earth");
-
-            //Beasts
-            AddTags(ModContent.ItemType<SilverFang>(), "Card", "Beast", "Earth");
-            AddTags(ModContent.ItemType<MysticalSheep2>(), "Card", "Beast", "Earth");
-
-            //Spellcasters
-            AddTags(ModContent.ItemType<DarkMagician>(), "Card", "Spellcaster", "Dark");
-            AddTags(ModContent.ItemType<FlameManipulator>(), "Card", "Spellcaster", "Fire");
-            AddTags(ModContent.ItemType<AquaMador>(), "Card", "Spellcaster", "Water");
-            AddTags(ModContent.ItemType<LeftLeg>(), "Card", "Spellcaster", "Dark");
-            AddTags(ModContent.ItemType<LeftArm>(), "Card", "Spellcaster", "Dark");
-            AddTags(ModContent.ItemType<RightLeg>(), "Card", "Spellcaster", "Dark");
-            AddTags(ModContent.ItemType<RightArm>(), "Card", "Spellcaster", "Dark");
-            AddTags(ModContent.ItemType<Exodia>(), "Card", "Spellcaster", "Dark");
-
-            //Plants
-            AddTags(ModContent.ItemType<DarkworldThorns>(), "Card", "Plant", "Dark");
-            AddTags(ModContent.ItemType<Firegrass>(), "Card", "Plant", "Fire");
-
-            //Rocks
-            AddTags(ModContent.ItemType<Dissolverock>(), "Card", "Rock", "Earth");
-            AddTags(ModContent.ItemType<GiantSoldier>(), "Card", "Rock", "Earth");
-
-            //Zombies
-            AddTags(ModContent.ItemType<SkullServant>(), "Card", "Zombie", "Dark");
-            AddTags(ModContent.ItemType<PlaguespreaderCard>(), "Card", "Zombie", "Dark");
-            AddTags(ModContent.ItemType<SpiritReaperCard>(), "Card", "Zombie", "Dark");
-
-            //Machines
-            AddTags(ModContent.ItemType<SteelOgre>(), "Card", "Machine", "Earth");
-
-            //Fairy
-            AddTags(ModContent.ItemType<PetiteAngel>(), "Card", "Fairy", "Light");
-
-            //Pyro 
-            AddTags(ModContent.ItemType<Hinotama>(), "Card", "Pyro", "Fire");
-
-            //Fusion 
-            AddTags(ModContent.ItemType<Charubin>(), "Card", "Warrior", "Fire", "Fusion");
-            AddTags(ModContent.ItemType<Dragoness>(), "Card", "Warrior", "Earth", "Fusion");
-            AddTags(ModContent.ItemType<FlameGhost>(), "Card", "Zombie", "Dark", "Fusion");
-            AddTags(ModContent.ItemType<FlowerWolf>(), "Card", "Beast", "Earth", "Fusion");
-            AddTags(ModContent.ItemType<Fusionist>(), "Card", "Beast", "Wind", "Fusion");
-            AddTags(ModContent.ItemType<GaiaChampion>(), "Card", "Dragon", "Wind", "Fusion");
-            AddTags(ModContent.ItemType<Karbonala>(), "Card", "Warrior", "Earth", "Fusion");
-            AddTags(ModContent.ItemType<MetalDragon>(), "Card", "Machine", "Wind", "Fusion");
-
-            //Spells
-            AddTags(ModContent.ItemType<Swords>(), "Card", "Spell");
-            AddTags(ModContent.ItemType<Polymerization>(), "Card", "Spell");
-            AddTags(ModContent.ItemType<PotofGreed>(), "Card", "Spell");
-            AddTags(ModContent.ItemType<MonsterReborn>(), "Card", "Spell");
-
-            //Card Packs
-            AddTags(ModContent.ItemType<PackLOB_Common>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Rare>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Super>(), "Card");
-            AddTags(ModContent.ItemType<PackLOB_Ultra>(), "Card");
-
-            //PSA Cards are dealt with in GradedCards.cs
-            AddTags(ModContent.ItemType<PSACase>(), "Card");
         }
 
         private void AddTag(int itemType, string tag)
@@ -154,11 +67,6 @@ namespace NaturiumMod.Content.Helpers
             WeaponTag.ItemTags[itemType].Add(tag);
 
         }
-        private void AddTags(int itemType, params string[] tags)
-        {
-            foreach (var tag in tags)
-                AddTag(itemType, tag);
-        }
         public static void AddTagToItem(int itemType, string tag)
         {
             if (!WeaponTag.ItemTags.ContainsKey(itemType))
@@ -169,28 +77,7 @@ namespace NaturiumMod.Content.Helpers
 
 
     }
-    public static class CardTagHelper
-    {
-        private static readonly HashSet<string> EssenceAttributes = new()
-        {
-            "Fire", "Water", "Earth", "Wind", "Light", "Dark"
-        };
-
-        public static string GetCardAttribute(int itemType)
-        {
-            if (!WeaponTag.ItemTags.TryGetValue(itemType, out var tags))
-                return null;
-
-
-            foreach (var tag in tags)
-            {
-                if (EssenceAttributes.Contains(tag))
-                    return tag;
-            }
-
-            return null;
-        }
-    }
+    
     public class WeaponTag : GlobalItem
     {
         // Static registry: itemType → set of tags
@@ -268,6 +155,8 @@ namespace NaturiumMod.Content.Helpers
 
             return false;
         }
+
+        // Boosts 
 
         public override void PostUpdateEquips()
         {
