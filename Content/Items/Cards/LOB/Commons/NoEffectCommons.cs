@@ -36,11 +36,6 @@ public class Dissolverock : NoEffectCommon
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Dissolverock";
 }
 
-public class Hinotama : NoEffectCommon
-{
-    public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Hinotama";
-}
-
 public class LesserDragon : NoEffectCommon
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/LesserDragon";

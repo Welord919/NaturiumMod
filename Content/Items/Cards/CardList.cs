@@ -29,81 +29,85 @@ namespace NaturiumMod.Content.Items.Cards
         public static readonly List<CardEntry> AllCards = new()
         {
         // Card packs and PSA case (Cases are handled in PSACase)
-        new CardEntry(ModContent.ItemType<PackLOB_Common>(), CardRarityHelper.Rarity.Common, "Card"),
-        new CardEntry(ModContent.ItemType<PackLOB_Rare>(), CardRarityHelper.Rarity.Rare, "Card"),
-        new CardEntry(ModContent.ItemType<PackLOB_Super>(), CardRarityHelper.Rarity.SuperRare, "Card"),
-        new CardEntry(ModContent.ItemType<PackLOB_Ultra>(), CardRarityHelper.Rarity.UltraRare, "Card"),
-        new CardEntry(ModContent.ItemType<PSACase>(), CardRarityHelper.Rarity.Common, "Card"),
+        new CardEntry(ModContent.ItemType<PackLOB_Common>(), Rarity.Common, "Card"),
+        new CardEntry(ModContent.ItemType<PackLOB_Rare>(), Rarity.Rare, "Card"),
+        new CardEntry(ModContent.ItemType<PackLOB_Super>(), Rarity.SuperRare, "Card"),
+        new CardEntry(ModContent.ItemType<PackLOB_Ultra>(), Rarity.UltraRare, "Card"),
+        new CardEntry(ModContent.ItemType<PSACase>(), Rarity.Common, "Card"),
+
         // Commons
-        new CardEntry(ModContent.ItemType<Firegrass>(), CardRarityHelper.Rarity.Common, "Card", "Plant", "Fire"),
-        new CardEntry(ModContent.ItemType<AquaMador>(), CardRarityHelper.Rarity.Common, "Card", "Spellcaster", "Water"),
-        new CardEntry(ModContent.ItemType<CelticGuardian>(), CardRarityHelper.Rarity.Common, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<SilverFang>(), CardRarityHelper.Rarity.Common, "Card", "Beast", "Earth"),
-        new CardEntry(ModContent.ItemType<FlameManipulator>(), CardRarityHelper.Rarity.Common, "Card", "Spellcaster", "Fire"),
-        new CardEntry(ModContent.ItemType<Armaill>(), CardRarityHelper.Rarity.Common, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<DarkworldThorns>(), CardRarityHelper.Rarity.Common, "Card", "Plant", "Dark"),
-        new CardEntry(ModContent.ItemType<Dissolverock>(), CardRarityHelper.Rarity.Common, "Card", "Rock", "Earth"),
-        new CardEntry(ModContent.ItemType<Hinotama>(), CardRarityHelper.Rarity.Common, "Card", "Pyro", "Fire"),
-        new CardEntry(ModContent.ItemType<LesserDragon>(), CardRarityHelper.Rarity.Common, "Card", "Dragon", "Wind"),
-        new CardEntry(ModContent.ItemType<MonsterEgg>(), CardRarityHelper.Rarity.Common, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<OneEyedSD>(), CardRarityHelper.Rarity.Common, "Card", "Dragon", "Wind"),
-        new CardEntry(ModContent.ItemType<SkullServant>(), CardRarityHelper.Rarity.Common, "Card", "Zombie", "Dark"),
-        new CardEntry(ModContent.ItemType<SteelOgre>(), CardRarityHelper.Rarity.Common, "Card", "Machine", "Earth"),
-        new CardEntry(ModContent.ItemType<MWarrior1>(), CardRarityHelper.Rarity.Common, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<MWarrior2>(), CardRarityHelper.Rarity.Common, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<MysticalSheep2>(), CardRarityHelper.Rarity.Common, "Card", "Beast", "Earth"),
-        new CardEntry(ModContent.ItemType<GiantSoldier>(), CardRarityHelper.Rarity.Common, "Card", "Rock", "Earth"),
+        new CardEntry(ModContent.ItemType<Firegrass>(), Rarity.Common, "Card", "Plant", "Fire"),
+        new CardEntry(ModContent.ItemType<AquaMador>(), Rarity.Common, "Card", "Spellcaster", "Water"),
+        new CardEntry(ModContent.ItemType<CelticGuardian>(), Rarity.Common, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<SilverFang>(), Rarity.Common, "Card", "Beast", "Earth"),
+        new CardEntry(ModContent.ItemType<FlameManipulator>(), Rarity.Common, "Card", "Spellcaster", "Fire"),
+        new CardEntry(ModContent.ItemType<Armaill>(), Rarity.Common, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<DarkworldThorns>(), Rarity.Common, "Card", "Plant", "Dark"),
+        new CardEntry(ModContent.ItemType<Dissolverock>(), Rarity.Common, "Card", "Rock", "Earth"),
+        new CardEntry(ModContent.ItemType<Hinotama>(), Rarity.Common, "Card", "Pyro", "Fire"),
+        new CardEntry(ModContent.ItemType<LesserDragon>(), Rarity.Common, "Card", "Dragon", "Wind"),
+        new CardEntry(ModContent.ItemType<MonsterEgg>(), Rarity.Common, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<OneEyedSD>(), Rarity.Common, "Card", "Dragon", "Wind"),
+        new CardEntry(ModContent.ItemType<SkullServant>(), Rarity.Common, "Card", "Zombie", "Dark"),
+        new CardEntry(ModContent.ItemType<SteelOgre>(), Rarity.Common, "Card", "Machine", "Earth"),
+        new CardEntry(ModContent.ItemType<MWarrior1>(), Rarity.Common, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<MWarrior2>(), Rarity.Common, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<MysticalSheep2>(), Rarity.Common, "Card", "Beast", "Earth"),
+        new CardEntry(ModContent.ItemType<GiantSoldier>(), Rarity.Common, "Card", "Rock", "Earth"),
+        new CardEntry(ModContent.ItemType<HinotamaSpell>(), Rarity.Common, "Card", "Spell"),
 
         // Rares
-        new CardEntry(ModContent.ItemType<Swords>(), CardRarityHelper.Rarity.Rare, "Card", "Spell"),
-        new CardEntry(ModContent.ItemType<ManEaterBug>(), CardRarityHelper.Rarity.Rare, "Card", "Bug", "Earth"),
-        new CardEntry(ModContent.ItemType<Masaki>(), CardRarityHelper.Rarity.Rare, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<CurseofDragon>(), CardRarityHelper.Rarity.Rare, "Card", "Dragon", "Dark"),
+        new CardEntry(ModContent.ItemType<Swords>(), Rarity.Rare, "Card", "Spell"),
+        new CardEntry(ModContent.ItemType<ManEaterBug>(), Rarity.Rare, "Card", "Bug", "Earth"),
+        new CardEntry(ModContent.ItemType<Masaki>(), Rarity.Rare, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<CurseofDragon>(), Rarity.Rare, "Card", "Dragon", "Dark"),
+        new CardEntry(ModContent.ItemType<GoblinsSecretRemedy>(), Rarity.Rare, "Card", "Spell"),
 
         // Short Prints
-        new CardEntry(ModContent.ItemType<PetiteDragon>(), CardRarityHelper.Rarity.ShortPrint, "Card", "Dragon", "Wind"),
-        new CardEntry(ModContent.ItemType<PetiteAngel>(), CardRarityHelper.Rarity.ShortPrint, "Card", "Fairy", "Light"),
-        new CardEntry(ModContent.ItemType<Polymerization>(), CardRarityHelper.Rarity.ShortPrint, "Card", "Spell", "Fusion"),
+        new CardEntry(ModContent.ItemType<PetiteDragon>(), Rarity.ShortPrint, "Card", "Dragon", "Wind"),
+        new CardEntry(ModContent.ItemType<PetiteAngel>(), Rarity.ShortPrint, "Card", "Fairy", "Light"),
+        new CardEntry(ModContent.ItemType<Polymerization>(), Rarity.ShortPrint, "Card", "Spell", "Fusion"),
 
         // Super Rares
-        new CardEntry(ModContent.ItemType<TriHornedDragon>(), CardRarityHelper.Rarity.SuperRare, "Card", "Dragon", "Dark"),
-        new CardEntry(ModContent.ItemType<Gaia>(), CardRarityHelper.Rarity.SuperRare, "Card", "Warrior", "Earth"),
-        new CardEntry(ModContent.ItemType<Exodia>(), CardRarityHelper.Rarity.SuperRare, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<TriHornedDragon>(), Rarity.SuperRare, "Card", "Dragon", "Dark"),
+        new CardEntry(ModContent.ItemType<Gaia>(), Rarity.SuperRare, "Card", "Warrior", "Earth"),
+        new CardEntry(ModContent.ItemType<Exodia>(), Rarity.SuperRare, "Card", "Spellcaster", "Dark"),
 
         // Super Short Prints
-        new CardEntry(ModContent.ItemType<PotofGreed>(), CardRarityHelper.Rarity.SuperShortPrint, "Card", "Spell"),
-        new CardEntry(ModContent.ItemType<MonsterReborn>(), CardRarityHelper.Rarity.SuperShortPrint, "Card", "Spell"),
+        new CardEntry(ModContent.ItemType<PotofGreed>(), Rarity.SuperShortPrint, "Card", "Spell"),
+        new CardEntry(ModContent.ItemType<MonsterReborn>(), Rarity.SuperShortPrint, "Card", "Spell"),
 
         // Exodia Pieces
-        new CardEntry(ModContent.ItemType<LeftLeg>(), CardRarityHelper.Rarity.Exodia, "Card", "Spellcaster", "Dark"),
-        new CardEntry(ModContent.ItemType<LeftArm>(), CardRarityHelper.Rarity.Exodia, "Card", "Spellcaster", "Dark"),
-        new CardEntry(ModContent.ItemType<RightArm>(), CardRarityHelper.Rarity.Exodia, "Card", "Spellcaster", "Dark"),
-        new CardEntry(ModContent.ItemType<RightLeg>(), CardRarityHelper.Rarity.Exodia, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<LeftLeg>(), Rarity.Exodia, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<LeftArm>(), Rarity.Exodia, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<RightArm>(), Rarity.Exodia, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<RightLeg>(), Rarity.Exodia, "Card", "Spellcaster", "Dark"),
 
         // Ultra Rares
-        new CardEntry(ModContent.ItemType<BEWD>(), CardRarityHelper.Rarity.UltraRare, "Card", "Dragon", "Light"),
-        new CardEntry(ModContent.ItemType<REBD>(), CardRarityHelper.Rarity.UltraRare, "Card", "Dragon", "Dark", "Fire"),
-        new CardEntry(ModContent.ItemType<DarkMagician>(), CardRarityHelper.Rarity.UltraRare, "Card", "Spellcaster", "Dark"),
+        new CardEntry(ModContent.ItemType<BEWD>(), Rarity.UltraRare, "Card", "Dragon", "Light"),
+        new CardEntry(ModContent.ItemType<REBD>(), Rarity.UltraRare, "Card", "Dragon", "Dark", "Fire"),
+        new CardEntry(ModContent.ItemType<DarkMagician>(), Rarity.UltraRare, "Card", "Spellcaster", "Dark"),
 
         // Fusion cards
-        new CardEntry(ModContent.ItemType<FlameSwordsman>(), CardRarityHelper.Rarity.Fusion, "Card", "Warrior", "Fire", "Fusion"),
-        new CardEntry(ModContent.ItemType<DarkfireDragon>(), CardRarityHelper.Rarity.Fusion, "Card", "Warrior", "Dark", "Fire", "Fusion"),
-        new CardEntry(ModContent.ItemType<Charubin>(), CardRarityHelper.Rarity.Fusion, "Card", "Warrior", "Fire", "Fusion"),
-        new CardEntry(ModContent.ItemType<Dragoness>(), CardRarityHelper.Rarity.Fusion, "Card", "Warrior", "Earth", "Fusion"),
-        new CardEntry(ModContent.ItemType<FlameGhost>(), CardRarityHelper.Rarity.Fusion, "Card", "Zombie", "Dark", "Fusion"),
-        new CardEntry(ModContent.ItemType<FlowerWolf>(), CardRarityHelper.Rarity.Fusion, "Card", "Beast", "Earth", "Fusion"),
-        new CardEntry(ModContent.ItemType<Fusionist>(), CardRarityHelper.Rarity.Fusion, "Card", "Beast", "Wind", "Fusion"),
-        new CardEntry(ModContent.ItemType<GaiaChampion>(), CardRarityHelper.Rarity.Fusion, "Card", "Dragon", "Wind", "Fusion"),
-        new CardEntry(ModContent.ItemType<Karbonala>(), CardRarityHelper.Rarity.Fusion, "Card", "Warrior", "Earth", "Fusion"),
-        new CardEntry(ModContent.ItemType<MetalDragon>(), CardRarityHelper.Rarity.Fusion, "Card", "Machine", "Wind", "Fusion"),
+        new CardEntry(ModContent.ItemType<FlameSwordsman>(), Rarity.Fusion, "Card", "Warrior", "Fire", "Fusion"),
+        new CardEntry(ModContent.ItemType<DarkfireDragon>(), Rarity.Fusion, "Card", "Warrior", "Dark", "Fire", "Fusion"),
+        new CardEntry(ModContent.ItemType<Charubin>(), Rarity.Fusion, "Card", "Warrior", "Fire", "Fusion"),
+        new CardEntry(ModContent.ItemType<Dragoness>(), Rarity.Fusion, "Card", "Warrior", "Earth", "Fusion"),
+        new CardEntry(ModContent.ItemType<FlameGhost>(), Rarity.Fusion, "Card", "Zombie", "Dark", "Fusion"),
+        new CardEntry(ModContent.ItemType<FlowerWolf>(), Rarity.Fusion, "Card", "Beast", "Earth", "Fusion"),
+        new CardEntry(ModContent.ItemType<Fusionist>(), Rarity.Fusion, "Card", "Beast", "Wind", "Fusion"),
+        new CardEntry(ModContent.ItemType<GaiaChampion>(), Rarity.Fusion, "Card", "Dragon", "Wind", "Fusion"),
+        new CardEntry(ModContent.ItemType<Karbonala>(), Rarity.Fusion, "Card", "Warrior", "Earth", "Fusion"),
+        new CardEntry(ModContent.ItemType<MetalDragon>(), Rarity.Fusion, "Card", "Machine", "Wind", "Fusion"),
 
         // Dropped cards
-        new CardEntry(ModContent.ItemType<BalloonLizardCard>(), CardRarityHelper.Rarity.Dropped, "Card", "Reptile", "Earth"),
-        new CardEntry(ModContent.ItemType<PlaguespreaderCard>(), CardRarityHelper.Rarity.Dropped, "Card", "Zombie", "Dark"),
-        new CardEntry(ModContent.ItemType<SpiritReaperCard>(), CardRarityHelper.Rarity.Dropped, "Card", "Zombie", "Dark"),
+        new CardEntry(ModContent.ItemType<BalloonLizardCard>(), Rarity.Dropped, "Card", "Reptile", "Earth"),
+        new CardEntry(ModContent.ItemType<PlaguespreaderCard>(), Rarity.Dropped, "Card", "Zombie", "Dark"),
+        new CardEntry(ModContent.ItemType<SpiritReaperCard>(), Rarity.Dropped, "Card", "Zombie", "Dark"),
 
         //Crafted cards
-        new CardEntry(ModContent.ItemType<StimPack>(), CardRarityHelper.Rarity.Crafted, "Card", "Spell")
+        new CardEntry(ModContent.ItemType<StimPack>(), Rarity.Crafted, "Card", "Spell"),
+        new CardEntry(ModContent.ItemType<RedMedicine>(), Rarity.Crafted, "Card", "Spell")
         };
 
         // Fast dictionary for lookups (built on first access)

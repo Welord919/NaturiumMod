@@ -30,8 +30,16 @@ namespace NaturiumMod.Content.Items.General.Critters
             Item.consumable = true;
             Item.noUseGraphic = true;
             Item.makeNPC = ModContent.NPCType<DiamondCrabKing>();
-            Item.value += Item.buyPrice(0, 0, 77, 0);
+            Item.value += Item.buyPrice(0, 1, 77, 0);
             Item.rare = ItemRarityID.Blue;
+        }
+        public override bool CanRightClick() => true;
+
+        public override void RightClick(Player player)
+        {
+            int amount = Main.rand.Next(1, 8);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type),
+                ItemID.Diamond, amount);
         }
     }
 
@@ -67,7 +75,6 @@ namespace NaturiumMod.Content.Items.General.Critters
         {
             NPC.frameCounter++;
 
-            // Same animation speed as vanilla Crab
             if (NPC.frameCounter >= 6)
             {
                 NPC.frameCounter = 0;
@@ -95,15 +102,14 @@ namespace NaturiumMod.Content.Items.General.Critters
             bool ocean = spawnInfo.Player.ZoneBeach;
 
             if (ocean)
-                return 0.005f; // 0.5% spawn chance
+                return 0.005f;
 
             return 0f;
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            // 1/10 chance to drop 3–5 diamonds
-            npcLoot.Add(ItemDropRule.Common(ItemID.Diamond, 10, 3, 5));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Diamond, 3, 1, 8));
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry entry)

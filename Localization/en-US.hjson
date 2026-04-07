@@ -82,6 +82,8 @@ Mods: {
 			SpearSharkHarpoonProj.DisplayName: Spear Shark Harpoon Proj
 			SharkFinProj.DisplayName: Shark Fin Proj
 			WindUpSharkBurst.DisplayName: Wind Up Shark Burst
+			HinotamaFireball.DisplayName: Hinotama Fireball
+			TrishulaZeroProj.DisplayName: Trishula Zero Proj
 		}
 
 		NPCs: {
@@ -1006,10 +1008,11 @@ Mods: {
 			}
 
 			Hinotama: {
-				DisplayName: Hinotama
+				DisplayName: Hinotama Fire
 				Tooltip:
 					'''
 					Pyro, Fire
+					Shoot a Hinotama Fireball that lights enemies on fire
 					'An intensely hot flame creature that rams anything standing in its way.'
 					'''
 			}
@@ -1293,7 +1296,7 @@ Mods: {
 			}
 
 			TrishulaWeapon: {
-				DisplayName: Trishula Weapon
+				DisplayName: Trishula's Frost Trident
 				Tooltip: Shoot 3 trishula projectiles that apply the Frostburn debuff
 			}
 
@@ -1498,7 +1501,7 @@ Mods: {
 
 			DiamondCrabKingItem: {
 				DisplayName: Diamond Crab King
-				Tooltip: Very heavy
+				Tooltip: Can right click to open the shell and get 1-8 diamonds
 			}
 
 			SpearSharkHarpoon: {
@@ -1591,6 +1594,38 @@ Mods: {
 			TrapEssence: {
 				DisplayName: Trap Essence
 				Tooltip: Used for Fusion Crafting
+			}
+
+			HinotamaSpell: {
+				Tooltip:
+					'''
+					Spell
+					Fires 4 Hinotama fireballs before consuming a copy
+					'''
+				DisplayName: Hinotama
+			}
+
+			GoblinsSecretRemedy: {
+				Tooltip:
+					'''
+					Spell
+					Heal 75 HP
+					'''
+				DisplayName: Goblins Secret Remedy
+			}
+
+			RedMedicine: {
+				DisplayName: Red Medicine
+				Tooltip:
+					'''
+					Spell
+					Heal 100 HP
+					'''
+			}
+
+			TrishulaZeroWeapon: {
+				Tooltip: Apply Frostburn and On fire to enemies hit, as well as lifestealing from them
+				DisplayName: Trishula's Zero Kelvin Trident
 			}
 		}
 

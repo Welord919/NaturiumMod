@@ -64,7 +64,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.IceBarrier
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<IceBarrierCore>(), 20);
             recipe.AddIngredient(ModContent.ItemType<WaterEssence>(), 8);
-            recipe.AddIngredient(ItemID.Sapphire, 3);
+            recipe.AddIngredient(ItemID.Sapphire, 9);
             recipe.AddIngredient(ModContent.ItemType<TripleWOF>(), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
