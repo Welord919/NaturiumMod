@@ -1,4 +1,5 @@
-﻿using NaturiumMod.Content.Items.Cards.Fusion;
+﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards.Fusion;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,6 +16,7 @@ public abstract class NoEffectCommon : ModItem
         Item.maxStack = 999;
         Item.value = 25;
         Item.rare = ItemRarityID.White;
+        ItemTags.AddTagToItem(Type, "Card");
     }
 }
 public class SkullServant : NoEffectCommon

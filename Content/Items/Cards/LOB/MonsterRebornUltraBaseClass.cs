@@ -23,7 +23,7 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.LightRed;
             Item.value = 2000;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
-
+            ItemTags.AddTagToItem(Type, "Card");
             Item.consumable = false;
         }
         public override bool CanUseItem(Player player)

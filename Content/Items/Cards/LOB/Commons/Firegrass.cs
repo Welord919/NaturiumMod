@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using NaturiumMod.Content.Helpers;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,6 +14,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             base.SetDefaults();
             Item.buffType = BuffID.ObsidianSkin;
             Item.buffTime = 60 * 40;
+            ItemTags.AddTagToItem(Type, "Card");
         }
         public override bool? UseItem(Player player)
         {

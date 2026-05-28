@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NaturiumMod.Content.Helpers;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -63,6 +64,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             Item.useTime = 20;
             Item.UseSound = SoundID.Grab;
             Item.value = Item.buyPrice(silver: PackValue);
+            ItemTags.AddTagToItem(Type, "Card");
         }
 
         public override bool CanRightClick() => true;

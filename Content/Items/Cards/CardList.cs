@@ -296,10 +296,6 @@ namespace NaturiumMod.Content.Items.Cards
             => ExtractionMap.TryGetValue(cardType, out value);
     }
 
-
-    // ---------------------------
-    //  RARITY REGISTRY
-    // ---------------------------
     public static class CardRarityRegistry
     {
         public static Dictionary<int, Rarity> CardRarities = new();

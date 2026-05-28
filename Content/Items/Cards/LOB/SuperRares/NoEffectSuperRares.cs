@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaturiumMod.Content.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
         {
             base.SetDefaults();
             Item.value = 1000;
+            ItemTags.AddTagToItem(Type, "Card");
         }
     }
     public class RightLeg : ExodiaPiece

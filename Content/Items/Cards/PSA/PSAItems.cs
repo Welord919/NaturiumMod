@@ -29,6 +29,7 @@ namespace NaturiumMod.Content.Items.Cards.PSA
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(silver: 1);
             Item.maxStack = 999;
+            ItemTags.AddTagToItem(Type, "Card");
         }
         public override void AddRecipes()
         {
@@ -101,7 +102,7 @@ namespace NaturiumMod.Content.Items.Cards.PSA
             Item.height = 40;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.buyPrice(silver: 10);
-
+            ItemTags.AddTagToItem(Type, "Card");
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTime = 10;

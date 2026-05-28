@@ -14,7 +14,6 @@ namespace NaturiumMod.Content.Items.Cards
     public abstract class BaseCardCommon : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
-        public virtual string[] CardTags => new[] { "Card" };
         public virtual Rarity CardRarity => Rarity.Common;
 
         public override void SetDefaults()
@@ -35,6 +34,7 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.Blue;
             Item.value = 200;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
+            ItemTags.AddTagToItem(Type, "Card");
         }
 
         public override bool CanUseItem(Player player)
@@ -59,7 +59,6 @@ namespace NaturiumMod.Content.Items.Cards
     public abstract class BaseCardRare : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
-        public virtual string[] CardTags => new[] { "Card" };
         public virtual Rarity CardRarity => Rarity.Rare;
         public override void SetDefaults()
         {
@@ -77,6 +76,7 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.Green;
             Item.value = 500;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
+            ItemTags.AddTagToItem(Type, "Card");
         }
         public override bool CanUseItem(Player player)
         {
@@ -99,7 +99,6 @@ namespace NaturiumMod.Content.Items.Cards
     public abstract class BaseCardSuper : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
-        public virtual string[] CardTags => new[] { "Card" };
         public virtual Rarity CardRarity => Rarity.SuperRare;
         public override void SetDefaults()
         {
@@ -117,6 +116,7 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.Orange;
             Item.value = 1000;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
+            ItemTags.AddTagToItem(Type, "Card");
         }
         public override bool CanUseItem(Player player)
         {
@@ -139,7 +139,6 @@ namespace NaturiumMod.Content.Items.Cards
     public abstract class BaseCardUltra : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
-        public virtual string[] CardTags => new[] { "Card" };
         public virtual Rarity CardRarity => Rarity.UltraRare;
         public override void SetDefaults()
         {
@@ -157,6 +156,7 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.LightRed;
             Item.value = 2000;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
+            ItemTags.AddTagToItem(Type, "Card");
         }
         public override bool CanUseItem(Player player)
         {
@@ -179,7 +179,6 @@ namespace NaturiumMod.Content.Items.Cards
     public abstract class BaseCardFusion : ModItem
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
-        public virtual string[] CardTags => new[] { "Card", "Fusion" };
         public virtual Rarity CardRarity => Rarity.Fusion;
         public override void SetDefaults()
         {
@@ -197,6 +196,8 @@ namespace NaturiumMod.Content.Items.Cards
             Item.rare = ItemRarityID.LightPurple;
             Item.value = 5000;
             Item.DamageType = ModContent.GetInstance<CardDamage>();
+            ItemTags.AddTagToItem(Type, "Card");
+            ItemTags.AddTagToItem(Type, "Fusion");
         }
         public override bool CanUseItem(Player player)
         {

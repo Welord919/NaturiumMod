@@ -57,13 +57,13 @@ Naturium adds several new world‑gen structures using Structure Helper:
 - Jungle and Desert Temples with themed loot
 - Living Wood Outcoves scattered throughout the forest underground
 - A floating planet above one of the oceans containing late pre‑hardmode treasures
-- Crashed Boat — a new ocean structure submerged beneath an ocean
+- Crashed Boat submerged beneath an ocean
 The structures contain items that may be tied to the card or archetype systems for an early boost.
 
 Quality of Life
 Naturium includes several QoL items, the most important being the Smith’s Charm and Platform Creators.
 - Platform Creators allow rapid placement of platforms with multiple upgrade tiers and a custom UI.
-- Charm Pieces that give buffs grouped into 5 diffrent categories.
+- Charm Pieces that give buffs grouped into 5 different categories.
 - Smith’s Charm combines multiple charm pieces into a single accessory, reducing buff clutter.
 
 Editor’s Notes
@@ -76,4 +76,5 @@ More content is planned, including:
 - More structures
 - Many new weapons
 - Expanded card archetypes and fusion paths
-Naturium works with Calamity and supports multiplayer.
+
+Naturium for the most part works with Calamity and supports multiplayer.
