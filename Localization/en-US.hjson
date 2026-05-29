@@ -1621,6 +1621,11 @@ Mods: {
 				Tooltip: Apply Frostburn and On fire to enemies hit, as well as lifestealing from them
 				DisplayName: Trishula's Zero Kelvin Trident
 			}
+
+			StopDefense: {
+				Tooltip: "Increases armor penetration by 8"
+				DisplayName: Stop Defense
+			}
 		}
 
 		Buffs: {
@@ -1757,6 +1762,11 @@ Mods: {
 			GaiaChampionBuff: {
 				Description: Increased movement speed by 50%
 				DisplayName: Gaia Champion Buff
+			}
+
+			StopDefenseBuff: {
+				Description: Mods.NaturiumMod.Buffs.StopDefenseBuff.Description
+				DisplayName: Stop Defense Buff
 			}
 		}
 
