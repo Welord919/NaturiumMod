@@ -12,6 +12,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class SilverFang : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Silverfang";
+        public override string CardSubtype => "Beast";
+        public override string CardAttribute => "Earth";
 
         public override void SetDefaults()
         {

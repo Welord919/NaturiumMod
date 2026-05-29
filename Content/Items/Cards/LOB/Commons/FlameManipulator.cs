@@ -6,7 +6,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class FlameManipulator : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/FlameMani";
-
+        public override string CardSubtype => "Spellcaster";
+        public override string CardAttribute => "Fire";
         public override void SetDefaults()
         {
             base.SetDefaults();

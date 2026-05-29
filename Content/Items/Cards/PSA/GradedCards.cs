@@ -1,5 +1,5 @@
 ﻿using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;

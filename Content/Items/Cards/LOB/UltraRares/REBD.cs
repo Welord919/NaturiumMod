@@ -20,6 +20,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
     public class REBD : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/rebd";
+        public override string CardSubtype => "Dragon";
+        public override string CardAttribute => "Dark";
         private int burstsFired = 0;
 
         public override void SetDefaults()

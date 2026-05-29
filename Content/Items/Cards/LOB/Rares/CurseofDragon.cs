@@ -7,7 +7,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares;
 public class CurseofDragon : BaseCardRare
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/CurseofDragon";
-
+    public override string CardSubtype => "Dragon";
+    public override string CardAttribute => "Dark";
     public override void SetDefaults()
     {
         base.SetDefaults();

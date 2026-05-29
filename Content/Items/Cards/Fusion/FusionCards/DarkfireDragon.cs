@@ -10,12 +10,13 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.Fusion
+namespace NaturiumMod.Content.Items.Cards.Fusion.FusionCards
 {
     public class DarkfireDragon : BaseCardFusion
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/DarkfireDragon";
-
+        public override string CardSubtype => "Dragon";
+        public override IEnumerable<string> CardAttributes => new[] { "Dark", "Fire" };
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -144,7 +145,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
 
             if (Projectile.timeLeft <= 60)
             {
-                float fade = 1f - (Projectile.timeLeft / 60f);
+                float fade = 1f - Projectile.timeLeft / 60f;
                 Projectile.alpha = (int)(fade * 255f);
             }
         }

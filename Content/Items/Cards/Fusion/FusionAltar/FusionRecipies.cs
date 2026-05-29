@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
+using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 
 namespace NaturiumMod.Content.Items.Cards.Fusion.FusionRecipies;
 

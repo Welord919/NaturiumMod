@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.Fusion
+namespace NaturiumMod.Content.Items.Cards.Fusion.FusionCards
 {
     public class FlameSwordsman : BaseCardFusion
     {

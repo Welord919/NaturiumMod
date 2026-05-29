@@ -13,7 +13,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
     public class DarkMagician : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/darkmagi";
-
+        public override string CardSubtype => "Spellcaster";
+        public override string CardAttribute => "Dark";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true; // Hold like Diamond Staff
@@ -273,7 +274,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             Projectile.friendly = true;
             Projectile.tileCollide = true;
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
-
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = -1; // will be set on spawn
         }
         public override void ModifyDamageHitbox(ref Rectangle hitbox)

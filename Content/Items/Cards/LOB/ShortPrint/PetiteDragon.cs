@@ -8,9 +8,11 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint
 {
-    public class PetiteDragon : BaseCardRare
+    public class PetiteDragon : BaseCardShortPrint
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragon";
+        public override string CardSubtype => "Dragon";
+        public override string CardAttribute => "Wind";
 
         public override void SetDefaults()
         {
@@ -158,6 +160,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint
             Projectile.friendly = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 120;
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.minion = true;
             Projectile.DamageType = DamageClass.Summon;
             Projectile.light = 0.4f;
             Projectile.ignoreWater = true;

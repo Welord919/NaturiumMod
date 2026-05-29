@@ -10,6 +10,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
     public class TriHornedDragon : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/TriHornedDragon";
+        public override string CardSubtype => "Dragon";
+        public override string CardAttribute => "Dark";
+
         private int burstsFired = 0;
 
         public override void SetDefaults()

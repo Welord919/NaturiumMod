@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static NaturiumMod.Content.Items.Cards.CardRarityHelper;
 
 namespace NaturiumMod.Content.Items.Cards.LOB
 {
@@ -19,7 +18,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         {
             int item = pool[Main.rand.Next(pool.Count)];
             player.QuickSpawnItem(player.GetSource_OpenItem(source), item);
-            AnnounceCard(player, Lang.GetItemNameValue(item), rarity);
+            CardRarityHelper.AnnounceCard(player, Lang.GetItemNameValue(item), rarity);
         }
 
         public static void RollWeighted(Player player, int source,
@@ -42,7 +41,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             }
         }
     }
-
     // ============================================================
     //  BASE PACK CLASS (ALL PACKS INHERIT THIS)
     // ============================================================
@@ -50,9 +48,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     {
         public abstract (int weight, List<int> pool, Rarity rarity)[] Rolls { get; }
         public abstract int PackValue { get; }
-
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PackLOB";
-
         public override void SetDefaults()
         {
             Item.width = 28;
@@ -60,6 +56,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             Item.maxStack = 999;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.noUseGraphic = true;
             Item.useAnimation = 20;
             Item.useTime = 20;
             Item.UseSound = SoundID.Grab;

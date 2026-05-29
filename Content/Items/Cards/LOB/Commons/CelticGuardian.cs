@@ -13,7 +13,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class CelticGuardian : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/CelticGuardian";
-
+        public override string CardSubtype => "Warrior";
+        public override string CardAttribute => "Earth";
         private int usesLeft = 9;
         private int swingIndex = 0;
         public override void SetDefaults()
@@ -102,6 +103,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Projectile.timeLeft = 16;
 
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.DamageType = DamageClass.Melee;
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;

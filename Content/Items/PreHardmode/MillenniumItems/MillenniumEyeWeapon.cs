@@ -26,9 +26,8 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Item.width = 28;
             Item.height = 28;
 
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.channel = true;
 

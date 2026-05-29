@@ -8,9 +8,11 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.ShortPrint
 {
-    public class PetiteAngel : BaseCardRare
+    public class PetiteAngel : BaseCardShortPrint
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteAngel";
+        public override string CardSubtype => "Fairy";
+        public override string CardAttribute => "Light";
 
         public override void SetDefaults()
         {

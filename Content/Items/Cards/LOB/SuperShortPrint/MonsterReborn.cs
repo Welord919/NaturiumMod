@@ -9,10 +9,10 @@ using static NaturiumMod.Content.Items.Cards.LOB.Rares.CurseofDragon;
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint
 {
 
-    public class MonsterReborn : BaseCardSuper
+    public class MonsterReborn : BaseCardSuperShortPrint
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/MonsterReborn";
-
+        public override string CardAttribute => "Spell";
         public override void SetDefaults()
         {
             base.SetDefaults();

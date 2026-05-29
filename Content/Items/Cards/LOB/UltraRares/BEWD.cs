@@ -14,7 +14,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
     public class BEWD : MRUltra
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/BEWD";
-
+        public override string CardSubtype => "Dragon";
+        public override string CardAttribute => "Light";
         public override void SetDefaults()
         {
             base.SetDefaults();

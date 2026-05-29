@@ -12,6 +12,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
     public class Masaki : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Masaki";
+        public override string CardSubtype => "Warrior";
+        public override string CardAttribute => "Earth";
 
         public override void SetDefaults()
         {
@@ -317,6 +319,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
             Projectile.timeLeft = 60;
 
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.DamageType = DamageClass.Melee;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }

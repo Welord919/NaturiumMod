@@ -10,8 +10,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
     public class Swords : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Swords";
-        private int usesLeft = 3;
+        public override string CardAttribute => "Spell";
 
+        private int usesLeft = 3;
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -64,6 +65,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 
         public override void SetDefaults()
         {
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.width = 13;
             Projectile.height = 100;
             Projectile.friendly = false;

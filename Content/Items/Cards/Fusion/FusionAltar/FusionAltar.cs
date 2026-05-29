@@ -152,7 +152,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
 
     public class EssenceExtractionRecipes : ModSystem
     {
-        public override void OnModLoad()
+        public override void PostAddRecipes()
         {
             ExtractionRegistry.ExtractionMap.Clear();
 
@@ -161,15 +161,15 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
                 int type = entry.ItemType;
 
                 // Must be a card
-                if (entry.Tags == null || !entry.Tags.Any(t => t.Equals("Card", StringComparison.OrdinalIgnoreCase)))
+                if (!entry.Category.Equals("Card", StringComparison.OrdinalIgnoreCase))
                     continue;
 
-                // Get attribute (Fire/Water/Earth/Wind/Light/Dark/Spell/Trap)
-                string attribute = CardTagHelper.GetCardAttribute(type);
-                if (attribute == null)
+                // Attribute is already stored in CardEntry
+                string attribute = entry.CardAttributesList.FirstOrDefault();
+                if (string.IsNullOrEmpty(attribute))
                     continue;
 
-                // Use entry.Rarity (safe even if CardRarityRegistry isn't populated yet)
+                // Rarity is already stored in CardEntry
                 var rarity = entry.Rarity;
 
                 int essenceType = EssenceTypeHelper.GetEssenceItem(attribute);
@@ -181,71 +181,69 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
                 ExtractionRegistry.RegisterExtraction(type, essenceType, amount);
             }
         }
-    }
-    public class ExtractionRecipeCreator : ModSystem
-    {
-        public override void AddRecipes()
+        public class ExtractionRecipeCreator : ModSystem
         {
-            foreach (var kv in ExtractionRegistry.ExtractionMap)
+            public override void PostAddRecipes()
             {
-                int cardType = kv.Key;
-                int essenceType = kv.Value.essenceType;
-                int amount = kv.Value.amount;
+                foreach (var kv in ExtractionRegistry.ExtractionMap)
+                {
+                    int cardType = kv.Key;
+                    int essenceType = kv.Value.essenceType;
+                    int amount = kv.Value.amount;
 
-                // Create the recipe: card + extractor -> essence
-                Recipe recipe = Recipe.Create(essenceType, amount);
-                recipe.AddIngredient(cardType); // card consumed
-                recipe.AddIngredient(ModContent.ItemType<EssenceExtractor>()); // extractor consumed
-                recipe.AddTile(ModContent.TileType<FusionAltarTile>());
-                recipe.Register();
+                    Recipe recipe = Recipe.Create(essenceType, amount);
+                    recipe.AddIngredient(cardType);
+                    recipe.AddIngredient(ModContent.ItemType<EssenceExtractor>());
+                    recipe.AddTile(ModContent.TileType<FusionAltarTile>());
+                    recipe.Register();
+                }
+            }
+        }
+
+
+        // ---------------------------
+        //  ESSENCE YIELD HELPER
+        // ---------------------------
+        public static class EssenceYieldHelper
+        {
+            public static int GetEssenceYield(Rarity rarity)
+            {
+                return rarity switch
+                {
+                    Rarity.Common => 1,
+                    Rarity.Rare => 2,
+                    Rarity.ShortPrint => 3,
+                    Rarity.SuperRare => 3,
+                    Rarity.Exodia => 4,
+                    Rarity.SuperShortPrint => 4,
+                    Rarity.UltraRare => 5,
+                    Rarity.Crafted => 5,
+                    Rarity.Fusion => 7,
+                    _ => 1
+                };
+            }
+        }
+
+        // ---------------------------
+        //  ESSENCE TYPE LOOKUP
+        // ---------------------------
+        public static class EssenceTypeHelper
+        {
+            public static int GetEssenceItem(string attribute)
+            {
+                return attribute switch
+                {
+                    "Fire" => ModContent.ItemType<FireEssence>(),
+                    "Water" => ModContent.ItemType<WaterEssence>(),
+                    "Earth" => ModContent.ItemType<EarthEssence>(),
+                    "Wind" => ModContent.ItemType<WindEssence>(),
+                    "Light" => ModContent.ItemType<LightEssence>(),
+                    "Dark" => ModContent.ItemType<DarkEssence>(),
+                    "Spell" => ModContent.ItemType<SpellEssence>(),
+                    "Trap" => ModContent.ItemType<TrapEssence>(),
+                    _ => 0
+                };
             }
         }
     }
-
-
-    // ---------------------------
-    //  ESSENCE YIELD HELPER
-    // ---------------------------
-    public static class EssenceYieldHelper
-    {
-        public static int GetEssenceYield(Rarity rarity)
-        {
-            return rarity switch
-            {
-                Rarity.Common => 1,
-                Rarity.Rare => 2,
-                Rarity.ShortPrint => 3,
-                Rarity.SuperRare => 3,
-                Rarity.Exodia => 4,
-                Rarity.SuperShortPrint => 4,
-                Rarity.UltraRare => 5,
-                Rarity.Crafted => 5,
-                Rarity.Fusion => 7,
-                _ => 1
-            };
-        }
-    }
-
-    // ---------------------------
-    //  ESSENCE TYPE LOOKUP
-    // ---------------------------
-    public static class EssenceTypeHelper
-    {
-        public static int GetEssenceItem(string attribute)
-        {
-            return attribute switch
-            {
-                "Fire" => ModContent.ItemType<FireEssence>(),
-                "Water" => ModContent.ItemType<WaterEssence>(),
-                "Earth" => ModContent.ItemType<EarthEssence>(),
-                "Wind" => ModContent.ItemType<WindEssence>(),
-                "Light" => ModContent.ItemType<LightEssence>(),
-                "Dark" => ModContent.ItemType<DarkEssence>(),
-                "Spell" => ModContent.ItemType<SpellEssence>(),
-                "Trap" => ModContent.ItemType<TrapEssence>(),
-                _ => 0
-            };
-        }
-    }
-    
 }

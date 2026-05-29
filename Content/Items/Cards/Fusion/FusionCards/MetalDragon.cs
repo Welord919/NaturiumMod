@@ -8,12 +8,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.Fusion
+namespace NaturiumMod.Content.Items.Cards.Fusion.FusionCards
 {
     public class MetalDragon : BaseCardFusion
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/MetalDragon";
-
+        public override string CardSubtype => "Machine";
+        public override string CardAttribute => "Wind";
         public override void SetDefaults()
         {
             base.SetDefaults();

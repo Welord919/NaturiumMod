@@ -8,9 +8,10 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.Commons
 {
-    public class RedMedicine : BaseCardRare
+    public class RedMedicine : BaseCardCrafted
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/RedMedicine";
+        public override string CardAttribute => "Spell";
         public override void SetDefaults()
         {
             base.SetDefaults();

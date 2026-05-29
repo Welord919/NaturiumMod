@@ -11,6 +11,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares;
 public class Gaia : BaseCardSuper
 {
     public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/Gaia";
+    public override string CardSubtype => "Warrior";
+    public override string CardAttribute => "Earth";
+
     private int usesLeft = 3;
     public override void SetDefaults()
     {

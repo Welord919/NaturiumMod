@@ -10,7 +10,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class AquaMador : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/aquamador";
-
+        public override string CardSubtype => "Spellcaster";
+        public override string CardAttribute => "Water";
         public override void SetDefaults()
         {
             base.SetDefaults();

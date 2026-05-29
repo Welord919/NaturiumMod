@@ -1,6 +1,8 @@
 ﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Cards;
 using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.PSA;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -104,4 +106,118 @@ public static class MGHelpers
             }
         }
     }
+    public static class CardQuery
+    {
+        public static int CountCardsWithSubtype(Player player, string subtype)
+        {
+            int count = 0;
+
+            foreach (var item in player.inventory)
+            {
+                if (item == null || item.IsAir)
+                    continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry))
+                    continue;
+
+                if (entry.Subtype == subtype)
+                    count += item.stack;
+            }
+
+            return count;
+        }
+
+        public static int CountCardsWithAttribute(Player player, string attribute)
+        {
+            int count = 0;
+
+            foreach (var item in player.inventory)
+            {
+                if (item == null || item.IsAir)
+                    continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry))
+                    continue;
+
+                if (entry.CardAttributesList.Contains(attribute))
+                    count += item.stack;
+            }
+
+            return count;
+        }
+
+        public static bool HasCardWithRarity(Player player, Rarity rarity)
+        {
+            foreach (var item in player.inventory)
+            {
+                if (item == null || item.IsAir)
+                    continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry))
+                    continue;
+
+                if (entry.Rarity == rarity)
+                    return true;
+            }
+
+            return false;
+        }
+        public static void ConsumeCardsWithSubtype(Player player, string subtype, int amount)
+        {
+            for (int i = 0; i < player.inventory.Length && amount > 0; i++)
+            {
+                var item = player.inventory[i];
+                if (item == null || item.IsAir) continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry)) continue;
+                if (entry.Subtype != subtype) continue;
+
+                int take = Math.Min(item.stack, amount);
+                item.stack -= take;
+                amount -= take;
+
+                if (item.stack <= 0)
+                    item.TurnToAir();
+            }
+        }
+
+        public static void ConsumeCardsWithAttribute(Player player, string attribute, int amount)
+        {
+            for (int i = 0; i < player.inventory.Length && amount > 0; i++)
+            {
+                var item = player.inventory[i];
+                if (item == null || item.IsAir) continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry)) continue;
+                if (!entry.CardAttributesList.Contains(attribute)) continue;
+
+                int take = Math.Min(item.stack, amount);
+                item.stack -= take;
+                amount -= take;
+
+                if (item.stack <= 0)
+                    item.TurnToAir();
+            }
+        }
+
+        public static void ConsumeCardWithRarity(Player player, Rarity rarity, int amount)
+        {
+            for (int i = 0; i < player.inventory.Length && amount > 0; i++)
+            {
+                var item = player.inventory[i];
+                if (item == null || item.IsAir) continue;
+
+                if (!CardPools.TryGetEntry(item.type, out var entry)) continue;
+                if (entry.Rarity != rarity) continue;
+
+                int take = Math.Min(item.stack, amount);
+                item.stack -= take;
+                amount -= take;
+
+                if (item.stack <= 0)
+                    item.TurnToAir();
+            }
+        }
+    }
+
 }

@@ -14,6 +14,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Rares
     public class ManEaterBug : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/ManEaterBug";
+        public override string CardSubtype => "Bug";
+        public override string CardAttribute => "Earth";
 
         public override void SetDefaults()
         {

@@ -1,4 +1,6 @@
-﻿using NaturiumMod.Content.Items.Cards.Fusion;
+﻿using NaturiumMod.Content.Items.Cards;
+using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.Cards.NPCDrop;
 using NaturiumMod.Content.Items.Cards.PSA;
@@ -6,6 +8,7 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static NaturiumMod.Content.NPCs.MGHelpers;
 using static NaturiumMod.Content.NPCs.MysteriousGrandpa;
 
 namespace NaturiumMod.Content.NPCs;
@@ -37,10 +40,13 @@ public static class MGQuests
     {
         switch (CardQuestWorld.questStage)
         {
+            // ---------------------------------------------------------
+            // QUEST 1 — 5 Warrior cards
+            // ---------------------------------------------------------
             case 1:
-                if (MGHelpers.CountTaggedCards(player, "Warrior") >= 5)
+                if (CardQuery.CountCardsWithSubtype(player, "Warrior") >= 5)
                 {
-                    MGHelpers.ConsumeTaggedCards(player, "Warrior", 5);
+                    CardQuery.ConsumeCardsWithSubtype(player, "Warrior", 5);
                     MGHelpers.RewardPack(player);
                     player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
                     CardQuestWorld.questStage = 2;
@@ -48,19 +54,13 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 2 — 1 Super Rare card
+            // ---------------------------------------------------------
             case 2:
-                if (player.inventory.Any(i => i.rare == ItemRarityID.Orange))
+                if (CardQuery.HasCardWithRarity(player, Rarity.SuperRare))
                 {
-                    for (int i = 0; i < player.inventory.Length; i++)
-                    {
-                        if (player.inventory[i].rare == ItemRarityID.Orange)
-                        {
-                            player.inventory[i].stack--;
-                            if (player.inventory[i].stack <= 0)
-                                player.inventory[i].TurnToAir();
-                            break;
-                        }
-                    }
+                    CardQuery.ConsumeCardWithRarity(player, Rarity.SuperRare, 1);
 
                     MGHelpers.RewardPack(player);
                     CardQuestWorld.questStage = 3;
@@ -68,10 +68,13 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 3 — 15 Fire cards
+            // ---------------------------------------------------------
             case 3:
-                if (MGHelpers.CountTaggedCards(player, "Fire") >= 15)
+                if (CardQuery.CountCardsWithAttribute(player, "Fire") >= 15)
                 {
-                    MGHelpers.ConsumeTaggedCards(player, "Fire", 15);
+                    CardQuery.ConsumeCardsWithAttribute(player, "Fire", 15);
                     MGHelpers.RewardPack(player);
                     MGHelpers.RewardPack(player);
                     player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
@@ -80,6 +83,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 4 — Craft Flame Swordsman
+            // ---------------------------------------------------------
             case 4:
                 if (player.HasItem(ModContent.ItemType<FlameSwordsman>()))
                 {
@@ -90,10 +96,13 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 5 — 10 Dragon cards
+            // ---------------------------------------------------------
             case 5:
-                if (MGHelpers.CountTaggedCards(player, "Dragon") >= 10)
+                if (CardQuery.CountCardsWithSubtype(player, "Dragon") >= 10)
                 {
-                    MGHelpers.ConsumeTaggedCards(player, "Dragon", 10);
+                    CardQuery.ConsumeCardsWithSubtype(player, "Dragon", 10);
                     MGHelpers.RewardPack(player);
                     MGHelpers.RewardPack(player);
                     CardQuestWorld.questStage = 6;
@@ -101,6 +110,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 6 — Kill 50 enemies with CardDamage
+            // ---------------------------------------------------------
             case 6:
                 if (CardQuestWorld.totalCardDamageKills >= 50)
                 {
@@ -111,6 +123,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 7 — Bring Plaguespreader
+            // ---------------------------------------------------------
             case 7:
                 if (player.HasItem(ModContent.ItemType<PlaguespreaderCard>()))
                 {
@@ -123,6 +138,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 8 — Bring 3 BEWD
+            // ---------------------------------------------------------
             case 8:
                 if (player.CountItem(ModContent.ItemType<BEWD>()) >= 3)
                 {
@@ -135,6 +153,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 9 — Bring Darkfire Dragon
+            // ---------------------------------------------------------
             case 9:
                 if (player.HasItem(ModContent.ItemType<DarkfireDragon>()))
                 {
@@ -146,6 +167,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 10 — Bring a PSA 10 card
+            // ---------------------------------------------------------
             case 10:
                 if (MGHelpers.HasAnyPSA10Card(player))
                 {
@@ -157,6 +181,9 @@ public static class MGQuests
                 }
                 break;
 
+            // ---------------------------------------------------------
+            // QUEST 11 — Kill 200 enemies with CardDamage
+            // ---------------------------------------------------------
             case 11:
                 if (CardQuestWorld.totalCardDamageKills >= 200)
                 {
@@ -175,4 +202,5 @@ public static class MGQuests
 
         return false;
     }
+
 }

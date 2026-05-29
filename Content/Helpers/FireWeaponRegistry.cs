@@ -1,4 +1,4 @@
-﻿using NaturiumMod.Content.Items.Cards.Fusion;
+﻿using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.PreHardmode.Materials;
 using NaturiumMod.Content.Items.PreHardmode.Weapons;

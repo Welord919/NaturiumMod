@@ -13,7 +13,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class Hinotama : BaseCardCommon
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Hinotama";
-
+        public override string CardSubtype => "Pyro";
+        public override string CardAttribute => "Fire";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -59,7 +60,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
     public class HinotamaSpell : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/HinotamaSpell";
-
+        public override string CardAttribute => "Spell";
         private int usesLeft = 4;
         public override void SetDefaults()
         {
@@ -134,6 +135,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB.Commons
             Projectile.penetrate = 2;
             Projectile.timeLeft = 80;
             Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
         }

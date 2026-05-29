@@ -17,10 +17,10 @@ using static AssGen.Assets;
 
 namespace NaturiumMod.Content.Items.Cards.Crafted
 {
-    public class StimPack : BaseCardSuper
+    public class StimPack : BaseCardCrafted
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack"; 
-
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/StimPack";
+        public override string CardAttribute => "Spell";
         public override void SetDefaults()
         {
             base.SetDefaults();

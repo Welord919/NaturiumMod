@@ -1,14 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Cards;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Cards.LOB.Commons
+namespace NaturiumMod.Content.Items.Cards.LOB.Rares
 {
     public class GoblinsSecretRemedy : BaseCardRare
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/GoblinsSecretRemedy";
+        public override string CardAttribute => "Spell";
+
         public override void SetDefaults()
         {
             base.SetDefaults();

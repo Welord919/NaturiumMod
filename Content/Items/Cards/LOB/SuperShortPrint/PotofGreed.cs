@@ -9,9 +9,10 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint
 {
-    public class PotofGreed : BaseCardSuper
+    public class PotofGreed : BaseCardSuperShortPrint
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PotofGreed";
+        public override string CardAttribute => "Spell";
         public override void SetDefaults()
         {
             base.SetDefaults();

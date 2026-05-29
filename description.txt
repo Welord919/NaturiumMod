@@ -18,17 +18,19 @@ Plague Chunks & Decay Gear
 The Plaguespreader and Plague Worm spawn in the evil desert and drops Plague Chunks. These can be crafted into Plague Flasks, which allow melee weapons to inflict the Decay debuff. They are also used to craft Decay‑themed weapons such as the Decay Bow.
 
 Card Packs
-Enemies and bosses drop a variety of Legend of Blue Eyes White Dragon (LOB) card packs (Common, Rare, Super, Ultra). Opening these packs grants collectible cards used for crafting, fusing, or even as weapons. Cards include classics like Blue‑Eyes White Dragon, Red‑Eyes Black Dragon, Dark Magician, and many more.
+Enemies and bosses drop a variety of Legend of Blue Eyes White Dragon (LOB) card packs (Common, Rare, Super, Ultra). Opening these packs grants collectible cards used for crafting, fusing, or even as weapons. Cards include all LOB cards like Blue‑Eyes White Dragon, Red‑Eyes Black Dragon, Dark Magician, and many more.
 About half of the cards have effects, but more will be added in future updates.
+
+Card Properties
+Cards that do have effects will explain their effect in the description of the card. All damaging cards use Card Damage as their damage type, which has unique interactions with certain items and buffs. Some cards have dual properties, such as having both card and magic damage. Cards can also have various effects, such as inflicting debuffs, summoning minions, or applying buffs. 
 
 PSA Grading System
 Naturium introduces a unique PSA‑style card grading system.
 Players can obtain PSA Cases, which allow them to encase their cards in protective shells and assign them a grade from PSA 0.0 to PSA 10.
 Higher‑graded cards:
 - Sell for more
-- Look visually distinct
 - Allows a zoom feature to look at the card
-This system adds collection depth for people who like to collect the cards.
+- PSA 10s give a rainbow glow effect
 
 Essence Extraction & Fusion Crafting
 Cards can be broken down into Essence using the Essence Extractor while at a Fusion Altar. Essence is then used to combine cards into stronger and more specialized forms.
@@ -48,8 +50,8 @@ A new NPC who appears once you obtain a Card Pack.
 He offers:
 - Quests that guide you through the card system
 - Rewards (mostly packs)
-- A shop with card‑related items (expanded in future updates)
-He serves as the player’s mentor for all card mechanics.
+- A shop with card‑related items (expands as you progress quests)
+He serves as the player’s mentor for most card mechanics.
 
 Structures
 Naturium adds several new world‑gen structures using Structure Helper:
@@ -64,7 +66,7 @@ Quality of Life
 Naturium includes several QoL items, the most important being the Smith’s Charm and Platform Creators.
 - Platform Creators allow rapid placement of platforms with multiple upgrade tiers and a custom UI.
 - Charm Pieces that give buffs grouped into 5 different categories.
-- Smith’s Charm combines multiple charm pieces into a single accessory, reducing buff clutter.
+- Smith’s Charm combines multiple charm pieces into a single accessory, reducing the buff clutter.
 
 Editor’s Notes
 We hope you enjoy Naturium!

@@ -14,6 +14,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.SuperRares
     public class Exodia : BaseCardSuper
     {
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/NoEffects/Exodia";
+        public override string CardSubtype => "Spellcaster";
+        public override string CardAttribute => "Dark";
 
         public override void SetDefaults()
         {
