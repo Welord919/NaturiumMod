@@ -13,9 +13,9 @@ using Terraria.ModLoader;
 
 namespace NaturiumMod.Content.Items.Cards.LOB
 {
-    public class DarkMagicianStaffWeapon : ModItem
+    public class TrueMagiciansRod : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/MagiciansRod";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/TrueMagiciansRod";
 
         public override void SetStaticDefaults()
         {
@@ -35,26 +35,27 @@ namespace NaturiumMod.Content.Items.Cards.LOB
             Item.noMelee = true;
             Item.channel = true;
 
-            Item.shoot = ModContent.ProjectileType<DarkMagicianStaffWeaponProj>();
+            Item.shoot = ModContent.ProjectileType<TrueMagiciansRodProj>();
             Item.shootSpeed = 0f;
 
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 25;
+            Item.damage = 50;
             Item.knockBack = 2f;
 
-            Item.mana = 1; // Ignore; Actual mana cost, handled in projectile
+            Item.mana = 1;
 
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(gold: 1);
+            Item.rare = ItemRarityID.Master;
+            Item.value = Item.buyPrice(gold: 50);
         }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<DarkMagician>(), 1),
-            new(ModContent.ItemType<DarkEssence>(), 15),
-            new(ItemID.Hellstone, 7),
-            new(ItemID.AquaScepter, 1)
+            new(ModContent.ItemType<DarkMagicianStaffWeapon>(), 1),
+            new(ModContent.ItemType<DarkEssence>(), 30),
+            new(ItemID.LunarBar, 10),
+            new(ItemID.FragmentNebula, 15)
+
             ], TileID.TinkerersWorkbench);
             recipe.Register();
         }
@@ -64,9 +65,9 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     // STAFF PROJECTILE (CHARGING + BURST FIRING)
     // ============================================================
 
-    public class DarkMagicianStaffWeaponProj : ModProjectile
+    public class TrueMagiciansRodProj : ModProjectile
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DMStaff";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/TrueDMStaff";
 
         private int chargeTime = 0;
         private int tier = 0;
@@ -158,8 +159,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                 int manaCost = tier switch
                 {
                     1 => 10,
-                    2 => 20,
-                    3 => 35,
+                    2 => 30,
+                    3 => 60,
                     _ => 10
                 };
 
@@ -170,7 +171,7 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                     manaCost = tier switch
                     {
                         1 => 10,
-                        2 => 20,
+                        2 => 30,
                         _ => 10
                     };
                 }

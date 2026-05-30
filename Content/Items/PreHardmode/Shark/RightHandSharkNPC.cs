@@ -36,7 +36,7 @@ public class RightHandSharkNPC : ModNPC
 
         NPC.knockBackResist = 0.7f;
 
-        NPC.aiStyle = 16;
+        NPC.aiStyle = NPCAIStyleID.Piranha;
         AIType = NPCID.Shark;
 
         NPC.noGravity = true;

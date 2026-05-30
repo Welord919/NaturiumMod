@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Cards.LOB;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +16,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Item.width = 28;
             Item.height = 28;
 
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useAnimation = 20;
             Item.useTime = 20;
 
@@ -31,24 +28,47 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             Item.shootSpeed = 0f;
         }
 
+        // IMPORTANT: Enables right-click functionality
+        public override bool AltFunctionUse(Player player) => true;
+
         public override bool CanUseItem(Player player)
         {
-            // Left click = buff
-            if (player.altFunctionUse != 2)
+            // RIGHT CLICK = SHOW DROP CHANCES
+            if (player.altFunctionUse == 2)
             {
-                player.AddBuff(ModContent.BuffType<MillenniumKeyBuff>(), 600);
-                Terraria.Audio.SoundEngine.PlaySound(SoundID.Item100, player.Center);
+                if (Main.myPlayer == player.whoAmI)
+                {
+                    float boost = player.GetModPlayer<CardDropPlayer>().CardDropBoost;
 
-                return true;
+                    float commonChance = MathHelper.Clamp(PackDropConstants.CommonBase * (1f + boost), 0f, 1f);
+                    float rareChance = MathHelper.Clamp(PackDropConstants.RareBase * (1f + boost), 0f, 1f);
+                    float superChance = MathHelper.Clamp(PackDropConstants.SuperBase * (1f + boost), 0f, 1f);
+                    float ultraChance = MathHelper.Clamp(PackDropConstants.UltraBase * (1f + boost), 0f, 1f);
+
+                    Main.NewText($"Common Pack Chance: {commonChance * 100f:0.00}%", Color.LightGreen);
+                    Main.NewText($"Rare Pack Chance: {rareChance * 100f:0.00}%", Color.CornflowerBlue);
+                    Main.NewText($"Super Pack Chance: {superChance * 100f:0.00}%", Color.Gold);
+                    Main.NewText($"Ultra Pack Chance: {ultraChance * 100f:0.00}%", Color.MediumPurple);
+                }
+
+                return false; // don't consume mana or play animation
             }
 
-            return false;
+            // LEFT CLICK = BUFF
+            player.AddBuff(ModContent.BuffType<MillenniumKeyBuff>(), 600);
+            Terraria.Audio.SoundEngine.PlaySound(SoundID.Item100, player.Center);
+            return true;
         }
 
+        public override bool CanRightClick() => true;
+
+        
     }
+
     public class MillenniumKeyBuff : ModBuff
     {
         public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Millennium/MillenniumKeyBuff";
+
         public override void SetStaticDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;

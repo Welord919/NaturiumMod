@@ -9,6 +9,7 @@
       <None Include="Content\Tiles\NibiricCrystalTile.cs" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Aspose.PDF" Version="26.5.0" />
         <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     </ItemGroup>
     <ItemGroup>

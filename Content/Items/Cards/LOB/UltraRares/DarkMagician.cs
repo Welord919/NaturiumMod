@@ -25,6 +25,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
             base.SetDefaults();
             Item.channel = true;
             Item.shoot = ModContent.ProjectileType<DarkMagicianStaff>();
+            Item.DamageType = ModContent.GetInstance<CardDamage>();
+            Item.DamageType = DamageClass.Magic;
             Item.damage = 50;
             Item.knockBack = 2f;
         }
@@ -216,6 +218,8 @@ namespace NaturiumMod.Content.Items.Cards.LOB.UltraRares
 
         public override void SetDefaults()
         {
+            Projectile.DamageType = ModContent.GetInstance<CardDamage>();
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.width = 2;
             Projectile.height = 2;
             Projectile.timeLeft = 200;

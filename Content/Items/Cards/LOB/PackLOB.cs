@@ -1,4 +1,6 @@
-﻿using NaturiumMod.Content.Helpers;
+﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -142,47 +144,87 @@ namespace NaturiumMod.Content.Items.Cards.LOB
     // ============================================================
     public class LOBPackDrop : GlobalNPC
     {
-        public override void OnKill(NPC npc)
-        {
-            // Handle Eater of Worlds FINAL KILL only
-            if (npc.type == NPCID.EaterofWorldsHead ||
-                npc.type == NPCID.EaterofWorldsBody ||
-                npc.type == NPCID.EaterofWorldsTail)
-            {
-                int segments =
-                    NPC.CountNPCS(NPCID.EaterofWorldsHead) +
-                    NPC.CountNPCS(NPCID.EaterofWorldsBody) +
-                    NPC.CountNPCS(NPCID.EaterofWorldsTail);
-
-                // Only drop on the FINAL segment
-                if (segments == 1)
-                {
-                    // Rare (100%)
-                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
-                        ModContent.ItemType<PackLOB_Rare>(), 1);
-
-                    // Super (1/5)
-                    if (Main.rand.NextBool(5))
-                    {
-                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
-                            ModContent.ItemType<PackLOB_Super>(), 1);
-                    }
-
-                    // Ultra (1/15)
-                    if (Main.rand.NextBool(15))
-                    {
-                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(),
-                            ModContent.ItemType<PackLOB_Ultra>(), 1);
-                    }
-                }
-
-                return; // Prevent ModifyNPCLoot from running
-            }
-        }
-
         public override bool InstancePerEntity => false;
 
-        // Early‑game bosses allowed to drop Rare packs
+        // ============================================================
+        // VALID ENEMY CHECK (must be OUTSIDE any method)
+        // ============================================================
+        private bool IsValidEnemy(NPC npc)
+        {
+            if (npc.friendly || npc.townNPC || npc.lifeMax <= 5 || npc.damage <= 0)
+                return false;
+
+            if (npc.boss || npc.realLife != -1)
+                return false;
+
+            if (IsBossMinion(npc.type))
+                return false;
+
+            if (npc.SpawnedFromStatue)
+                return false;
+
+            if (NPCID.Sets.BelongsToInvasionOldOnesArmy[npc.type])
+                return false;
+
+            return true;
+        }
+
+        // ============================================================
+        // BOSS MINION CHECK (must be OUTSIDE any method)
+        // ============================================================
+        private bool IsBossMinion(int type)
+        {
+            return
+                type == NPCID.ServantofCthulhu ||
+                type == NPCID.Creeper ||
+                type == NPCID.Bee ||
+                type == NPCID.BeeSmall ||
+                type == NPCID.SkeletronHand ||
+                type == NPCID.EaterofWorldsHead ||
+                type == NPCID.EaterofWorldsBody ||
+                type == NPCID.EaterofWorldsTail ||
+                type == NPCID.TheDestroyer ||
+                type == NPCID.TheDestroyerBody ||
+                type == NPCID.TheDestroyerTail ||
+                type == NPCID.Probe ||
+                type == NPCID.QueenSlimeMinionBlue ||
+                type == NPCID.QueenSlimeMinionPink ||
+                type == NPCID.QueenSlimeMinionPurple ||
+                type == NPCID.TheHungry ||
+                type == NPCID.TheHungryII ||
+                type == NPCID.LeechHead ||
+                type == NPCID.LeechBody ||
+                type == NPCID.LeechTail ||
+                type == NPCID.PrimeCannon ||
+                type == NPCID.PrimeLaser ||
+                type == NPCID.PrimeSaw ||
+                type == NPCID.PrimeVice ||
+                type == NPCID.PlanterasTentacle ||
+                type == NPCID.GolemFistLeft ||
+                type == NPCID.GolemFistRight ||
+                type == NPCID.Sharkron ||
+                type == NPCID.Sharkron2 ||
+                type == NPCID.CultistDragonHead ||
+                type == NPCID.CultistDragonBody1 ||
+                type == NPCID.CultistDragonBody2 ||
+                type == NPCID.CultistDragonBody3 ||
+                type == NPCID.CultistDragonTail ||
+                type == NPCID.PumpkingBlade ||
+                type == NPCID.MourningWood ||
+                type == NPCID.Everscream ||
+                type == NPCID.SantaNK1 ||
+                type == NPCID.IceQueen ||
+                type == NPCID.AncientDoom ||
+                type == NPCID.CultistArcherBlue ||
+                type == NPCID.CultistArcherWhite ||
+                type == NPCID.CultistBossClone ||
+                type == NPCID.CultistDevote ||
+                type == NPCID.FlyingSnake;
+        }
+
+        // ============================================================
+        // BOSS DROPS (ModifyNPCLoot)
+        // ============================================================
         static readonly int[] EarlyBosses =
         {
         NPCID.EyeofCthulhu,
@@ -191,7 +233,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         NPCID.SkeletronHead
     };
 
-        // Higher‑tier bosses (SuperRare+ only)
         static readonly int[] MidLateBosses =
         {
         NPCID.WallofFlesh,
@@ -206,141 +247,10 @@ namespace NaturiumMod.Content.Items.Cards.LOB
         NPCID.MoonLordCore
     };
 
-        bool IsBossMinion(int type)
-        {
-            return
-                // Eye of Cthulhu
-                type == NPCID.ServantofCthulhu ||
-
-                // Brain of Cthulhu
-                type == NPCID.Creeper ||
-
-                // Queen Bee
-                type == NPCID.Bee ||
-                type == NPCID.BeeSmall ||
-
-                // Skeletron
-                type == NPCID.SkeletronHand ||
-
-                // Eater of Worlds (all segments)
-                type == NPCID.EaterofWorldsHead ||
-                type == NPCID.EaterofWorldsBody ||
-                type == NPCID.EaterofWorldsTail ||
-
-                // The Destroyer (all segments)
-                type == NPCID.TheDestroyer ||
-                type == NPCID.TheDestroyerBody ||
-                type == NPCID.TheDestroyerTail ||
-                type == NPCID.Probe || // FIX: Destroyer probes
-
-                // Queen Slime minions
-                type == NPCID.QueenSlimeMinionBlue ||
-                type == NPCID.QueenSlimeMinionPink ||
-                type == NPCID.QueenSlimeMinionPurple ||
-
-                // Wall of Flesh
-                type == NPCID.TheHungry ||
-                type == NPCID.TheHungryII ||
-                type == NPCID.LeechHead ||
-                type == NPCID.LeechBody ||
-                type == NPCID.LeechTail ||
-
-                // Skeletron Prime arms
-                type == NPCID.PrimeCannon ||
-                type == NPCID.PrimeLaser ||
-                type == NPCID.PrimeSaw ||
-                type == NPCID.PrimeVice ||
-
-                // Plantera
-                type == NPCID.PlanterasTentacle ||
-
-                // Golem
-                type == NPCID.GolemFistLeft ||
-                type == NPCID.GolemFistRight ||
-
-                // Duke Fishron
-                type == NPCID.Sharkron ||
-                type == NPCID.Sharkron2 ||
-
-                // Lunatic Cultist
-                type == NPCID.CultistDragonHead ||
-                type == NPCID.CultistDragonBody1 ||
-                type == NPCID.CultistDragonBody2 ||
-                type == NPCID.CultistDragonBody3 ||
-                type == NPCID.CultistDragonTail ||
-
-                // Pumpkin Moon
-                type == NPCID.PumpkingBlade ||
-                type == NPCID.MourningWood ||
-
-                // Frost Moon
-                type == NPCID.Everscream ||
-                type == NPCID.SantaNK1 ||
-                type == NPCID.IceQueen ||
-
-                // Ancient Doom
-                type == NPCID.AncientDoom ||
-
-                //Cultist
-                type == NPCID.CultistArcherBlue||
-                type == NPCID.CultistArcherWhite ||
-                type == NPCID.CultistBossClone ||
-                type == NPCID.CultistDevote ||
-                type == NPCID.CultistDragonBody1 ||
-                type == NPCID.CultistDragonBody2 ||
-                type == NPCID.CultistDragonBody3 ||
-                type == NPCID.CultistDragonBody4 ||
-                type == NPCID.CultistDragonHead ||
-                type == NPCID.CultistDragonTail ||
-
-                // Flying Snake
-                type == NPCID.FlyingSnake;
-        }
-
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            
-            bool IsValidEnemy(NPC npc)
-            {
-                if (npc.friendly || npc.townNPC || npc.lifeMax <= 5 || npc.damage <= 0)
-                    return false;
-
-                if (npc.boss || npc.realLife != -1)
-                    return false;
-
-                if (IsBossMinion(npc.type))
-                    return false;
-
-                if (npc.SpawnedFromStatue)
-                    return false;
-
-                if (NPCID.Sets.BelongsToInvasionOldOnesArmy[npc.type])
-                    return false;
-
-
-                return true;
-            }
-
-            // NORMAL ENEMIES
-            if (IsValidEnemy(npc))
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Common>(), 20));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Rare>(), 40));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 80));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 200));
-                return;
-            }
-
-            // ------------------------------------------------------------
-            // BOSS DROPS
-            // ------------------------------------------------------------
             if (npc.boss)
             {
-
-
-                // -------------------------
-                // EARLY BOSSES
-                // -------------------------
                 if (EarlyBosses.Contains(npc.type))
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Rare>(), 1));
@@ -349,9 +259,6 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                     return;
                 }
 
-                // -------------------------
-                // MID/LATE BOSSES
-                // -------------------------
                 if (MidLateBosses.Contains(npc.type))
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 1));
@@ -359,12 +266,54 @@ namespace NaturiumMod.Content.Items.Cards.LOB
                     return;
                 }
 
-                // -------------------------
-                // MODDED BOSSES (fallback)
-                // -------------------------
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Super>(), 1));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PackLOB_Ultra>(), 10));
             }
+        }
+
+        // ============================================================
+        // NORMAL ENEMY PACK DROPS (OnKill)
+        // ============================================================
+        public override void OnKill(NPC npc)
+        {
+            if (!IsValidEnemy(npc))
+                return;
+
+            Player player = Main.player[npc.lastInteraction];
+            float boost = player.GetModPlayer<CardDropPlayer>().CardDropBoost;
+
+            float commonChance = MathHelper.Clamp(PackDropConstants.CommonBase * (1f + boost), 0f, 1f);
+            float rareChance = MathHelper.Clamp(PackDropConstants.RareBase * (1f + boost), 0f, 1f);
+            float superChance = MathHelper.Clamp(PackDropConstants.SuperBase * (1f + boost), 0f, 1f);
+            float ultraChance = MathHelper.Clamp(PackDropConstants.UltraBase * (1f + boost), 0f, 1f);
+
+            if (Main.rand.NextFloat() < commonChance)
+                Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Common>());
+
+            if (Main.rand.NextFloat() < rareChance)
+                Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Rare>());
+
+            if (Main.rand.NextFloat() < superChance)
+                Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Super>());
+
+            if (Main.rand.NextFloat() < ultraChance)
+                Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Ultra>());
+        }
+    }
+    public static class PackDropConstants
+    {
+        public const float CommonBase = 1f / 20f;
+        public const float RareBase = 1f / 40f;
+        public const float SuperBase = 1f / 80f;
+        public const float UltraBase = 1f / 200f;
+    }
+    public class CardDropPlayer : ModPlayer
+    {
+        public float CardDropBoost;
+
+        public override void ResetEffects()
+        {
+            CardDropBoost = 0f; // reset every tick
         }
     }
 }

@@ -56,7 +56,7 @@ public class FusionistRingPlayer : ModPlayer
     {
         if (fusionistRingActive && item.DamageType == ModContent.GetInstance<CardDamage>())
         {
-            damage *= 1.05f; // +5% card damage
+            damage *= 1.05f;
         }
     }
 
@@ -64,7 +64,7 @@ public class FusionistRingPlayer : ModPlayer
     {
         if (fusionistRingActive && proj.DamageType == ModContent.GetInstance<CardDamage>())
         {
-            modifiers.SourceDamage *= 1.05f; // +10% fusion monster damage
+            modifiers.SourceDamage *= 1.05f;
         }
     }
 }

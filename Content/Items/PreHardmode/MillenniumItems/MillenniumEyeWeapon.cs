@@ -48,7 +48,10 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             // Just channel the holdout
             return true;
         }
-
+        public override void HoldItem(Player player)
+        {
+            player.GetModPlayer<CardDropPlayer>().CardDropBoost += 0.05f;
+        }
     }
 
     public class MillenniumEyeHoldout : ModProjectile
@@ -185,10 +188,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
                         npc.active = false;
                     }
                 }
-                else
-                {
-                    cardPlayer.CardDropBoost += 0.05f;
-                }
             }
         }
 
@@ -230,15 +229,7 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
             return cardMap.TryGetValue(npcType, out cardNPCType);
         }
     }
-    public class CardDropPlayer : ModPlayer
-    {
-        public float CardDropBoost;
-
-        public override void ResetEffects()
-        {
-            CardDropBoost = 0f;
-        }
-    }
+    
     public class MillenniumEyeGlobalNPC : GlobalNPC
     {
         public bool hitByMillenniumEye;
@@ -307,15 +298,6 @@ namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems
                         Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<BalloonLizardCard>());
                     }
                 }
-                var cardPlayer = player.GetModPlayer<CardDropPlayer>();
-                float baseChance = 0.04f;
-                float finalChance = baseChance + cardPlayer.CardDropBoost;
-
-                if (Main.rand.NextFloat() < finalChance)
-                {
-                    Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<PackLOB_Common>());
-                }
-
             }
         }
     }

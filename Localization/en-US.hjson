@@ -78,6 +78,7 @@ Mods: {
 			WindUpSharkBurst.DisplayName: Wind Up Shark Burst
 			HinotamaFireball.DisplayName: Hinotama Fireball
 			TrishulaZeroProj.DisplayName: Trishula Zero Proj
+			TrueMagiciansRodProj.DisplayName: True Magicians Rod Proj
 		}
 
 		NPCs: {
@@ -1229,7 +1230,11 @@ Mods: {
 			}
 
 			MillenniumKey: {
-				Tooltip: Left click to reveal all enemies and ore around you for 10 seconds
+				Tooltip:
+					'''
+					Left click to reveal all enemies and ore around you for 10 seconds
+					Right click to reveal your card pack drop chances
+					'''
 				DisplayName: Millennium Key
 			}
 
@@ -1246,7 +1251,7 @@ Mods: {
 				DisplayName: Millennium Eye
 				Tooltip:
 					'''
-					Channel a cone that deals damage and increases the likelyhood of card drops
+					Channel a cone that deals damage and increases the likelyhood of card pack drops by 5%
 					Chance to transform specific enemies into cards on death
 					'''
 			}
@@ -1623,8 +1628,57 @@ Mods: {
 			}
 
 			StopDefense: {
-				Tooltip: "Increases armor penetration by 8"
+				Tooltip: Increases armor penetration by 8
 				DisplayName: Stop Defense
+			}
+
+			TrueMagiciansRod: {
+				Tooltip: ""
+				DisplayName: True Magicians Rod
+			}
+
+			DuelistHat: {
+				DisplayName: Duelist Hat
+				Tooltip: Increases card pack drop chance by 5%
+			}
+
+			PoisonBulb: {
+				DisplayName: Poison Bulb
+				Tooltip: ""
+			}
+
+			VenomRing: {
+				DisplayName: Venom Ring
+				Tooltip: Apply Venom debuff to enemies on hit with Melee
+			}
+
+			VenomFusionDragonRing: {
+				Tooltip:
+					'''
+					Apply Venom debuff to enemies on hit with Venom Mode that is changed by right clicking in inventory (not equiped)
+					Every hit applies a Predator Counter that stacks up to 10. Each counter increases damage by 3% on the target.
+					Increases placement range by 2
+					Increases move speed and acceleration
+					Increases Card damage by 5%
+					Increases Fusion Card damage by 10%
+					'''
+				DisplayName: Venom Fusion Dragon Ring
+			}
+
+			GreedyVenomFusionDragonRing: {
+				DisplayName: Greedy Venom Fusion Dragon Ring
+				Tooltip:
+					'''
+					Apply Venom debuff to enemies on hit with Venom Mode that is changed by right clicking in inventory (not equiped) now with more options.
+					Every hit applies a Predator Counter that stacks up to 10. Each counter increases damage by 5% on the target.
+					Increases placement range by 3
+					Increases move speed and acceleration
+					Increases Card damage by 5%
+					Increases Fusion Card damage by 10%
+					Increases luck by 5%
+					20% discount off at any NPC shop
+					Chance to spawn more coins on enemy death
+					'''
 			}
 		}
 
