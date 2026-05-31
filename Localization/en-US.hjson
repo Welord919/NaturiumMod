@@ -79,6 +79,7 @@ Mods: {
 			HinotamaFireball.DisplayName: Hinotama Fireball
 			TrishulaZeroProj.DisplayName: Trishula Zero Proj
 			TrueMagiciansRodProj.DisplayName: True Magicians Rod Proj
+			SalamandraFireProj.DisplayName: Salamandra Fire Proj
 		}
 
 		NPCs: {
@@ -567,9 +568,8 @@ Mods: {
 			MillenniumShield: {
 				Tooltip:
 					'''
-					Grants immunity to knockback and gives the user the ability to dash through enemies to damage them
-					Gives 30 frames of invincibility after dashing
-					'A shield with a tiny fragment of the power of the Millennium Pieces'
+					Grants immunity to knockback
+					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility
 					'''
 				DisplayName: Millennium Shield
 			}
@@ -1678,6 +1678,69 @@ Mods: {
 					Increases luck by 5%
 					20% discount off at any NPC shop
 					Chance to spawn more coins on enemy death
+					'''
+			}
+
+			MillenniumShieldPlated: {
+				DisplayName: Millennium Shield Plated
+				Tooltip:
+					'''
+					Grants immunity to knockback and fire blocks
+					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility
+					Increases Apophis, Decay, and Millennium items, as well as summon damage, by 10%
+					Increases mining speed by 25%
+					Increases you max number of sentries by 1
+					'''
+			}
+
+			UnboundMillenniumShield: {
+				Tooltip:
+					'''
+					Grants immunity to knockback and fire blocks
+					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility
+					When below 50% HP, reduces damage taken by 25%
+					Redirects 25% of damage from nearby allies to the wearer
+					Grants immunity to most debuffs
+					Enemies are more likey to target you.
+					Increases Apophis, Decay, and Millennium items by 10%
+					Increases summon damage by 20%
+					Increases mining speed by 25%
+					Increases you max number of sentries by 2
+					'''
+				DisplayName: Unbound Millennium Shield
+			}
+
+			HeroicTundraShield: {
+				Tooltip:
+					'''
+					Grants immunity to knockback
+					When below 50% HP, reduces damage taken by 25%
+					Redirects 25% of damage from nearby allies to the wearer
+					Enemies are more likey to target you.
+					Increases endurance by 15%
+					Increases max turrets by 1
+					Increases summon damage by 10%
+					'''
+				DisplayName: Heroic Tundra Shield
+			}
+
+			BladeofFightingFlame: {
+				DisplayName: Blade of Fighting Flame
+				Tooltip: Gains a special attack when you also have Salamandra's Gauntlet equipped.
+			}
+
+			SalamandrasGauntlet: {
+				DisplayName: Salamandras Gauntlet
+				Tooltip:
+					'''
+					10% increased melee damage
+					25% increased melee speed
+					5% increased melee critical strike chance
+					Enables auto swing for melee weapons
+					Increases the size of all melee weapons
+					Enemies are more likey to target you.
+					Special Ability: Flaming Fury - when 50% health or lower, gain a large buff to all melee stats and increased endurance.
+					Gain a special attack when you use Blade of Fighting Flame.
 					'''
 			}
 		}

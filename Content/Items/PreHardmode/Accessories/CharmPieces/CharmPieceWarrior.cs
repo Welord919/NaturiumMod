@@ -11,7 +11,8 @@ namespace NaturiumMod.Content.Items.PreHardmode.Accessories.CharmPieces;
 
 public class CharmPieceWarrior : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Accessories/CharmPiece"; public override void SetDefaults()
+    public override string Texture => "NaturiumMod/Assets/Items/PreHardmode/Accessories/CharmPieceWarrior"; 
+    public override void SetDefaults()
     {
         Item.Size = new(20, 26);
         Item.rare = ItemRarityID.Green;

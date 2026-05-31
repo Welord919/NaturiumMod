@@ -1,13 +1,10 @@
 using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
-using NaturiumMod.Content.Items.PostHardmode.Materials;
-using NaturiumMod.Content.Items.PreHardmode.Consumables;
-using NaturiumMod.Content.Items.PreHardmode.Weapons;
+using NaturiumMod.Content.Items.PostHardmode.Accessories;
+using NaturiumMod.Content.Items.PreHardmode.Accessories;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-
 namespace NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
 [AutoloadEquip(EquipType.Shield)]
 public class MillenniumShield : ModItem
@@ -37,26 +34,55 @@ public class MillenniumShield : ModItem
         ], TileID.TinkerersWorkbench);
         recipe.Register();
     }
+    public override bool CanEquipAccessory(Player player, int slot, bool modded)
+    {
+        for (int i = 0; i < player.armor.Length; i++)
+        {
+            Item item = player.armor[i];
+            if (item != null && !item.IsAir)
+            {
+                if ( item.type == ModContent.ItemType<UnboundMillenniumShield>() || item.type == ModContent.ItemType<MillenniumShieldPlated>() || item.type == ModContent.ItemType<MillenniumShield>())
+                {
+                    return false;
+                }
+            }
+        }
+
+        return base.CanEquipAccessory(player, slot, modded);
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExampleDashPlayer>().DashAccessoryEquipped = true;
+        var dash = player.GetModPlayer<MillenniumDash>();
+
+        dash.DashAccessoryEquipped = true;
+        dash.DashCooldown = 60;
+        dash.DashDuration = 30;
+        dash.DashVelocity = 10f;
+        dash.DashDamage = 30;
+        dash.DashKnockback = 6f;
+        dash.DashIFrames = 30;
+
         player.noKnockback = true;
-
-
     }
-    public class ExampleDashPlayer : ModPlayer
+    public class MillenniumDash : ModPlayer
     {
+        // Direction constants
         public const int DashDown = 0;
         public const int DashUp = 1;
         public const int DashRight = 2;
         public const int DashLeft = 3;
 
-        public const int DashCooldown = 60;
-        public const int DashDuration = 30;
-        public const float DashVelocity = 10f;
-
-        public int DashDir = -1;
+        // PARAMETERS (set by shields)
         public bool DashAccessoryEquipped;
+        public int DashCooldown = 60;
+        public int DashDuration = 30;
+        public float DashVelocity = 10f;
+        public int DashDamage = 30;
+        public float DashKnockback = 6f;
+        public int DashIFrames = 30;
+
+        // Runtime state
+        public int DashDir = -1;
         public int DashDelay = 0;
         public int DashTimer = 0;
 
@@ -66,6 +92,7 @@ public class MillenniumShield : ModItem
         {
             DashAccessoryEquipped = false;
 
+            // Reset direction detection
             if (Player.controlDown && Player.releaseDown && Player.doubleTapCardinalTimer[DashDown] < 15)
                 DashDir = DashDown;
             else if (Player.controlUp && Player.releaseUp && Player.doubleTapCardinalTimer[DashUp] < 15)
@@ -110,7 +137,7 @@ public class MillenniumShield : ModItem
                     npcHitThisDash[i] = false;
 
                 Player.immune = true;
-                Player.immuneTime = 30;
+                Player.immuneTime = DashIFrames;
                 Player.immuneNoBlink = true;
             }
 
@@ -151,14 +178,12 @@ public class MillenniumShield : ModItem
 
                 if (hitbox.Intersects(npc.Hitbox))
                 {
-                    int damage = 30;
-                    float knockback = 6f;
-
-                    Player.ApplyDamageToNPC(npc, damage, knockback, Player.direction, false);
+                    Player.ApplyDamageToNPC(npc, DashDamage, DashKnockback, Player.direction, false);
                     npcHitThisDash[i] = true;
                 }
             }
         }
+
         private bool CanUseDash()
         {
             return DashAccessoryEquipped
@@ -167,6 +192,6 @@ public class MillenniumShield : ModItem
                 && !Player.mount.Active;
         }
     }
-   
+
 }
 

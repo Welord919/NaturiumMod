@@ -17,7 +17,7 @@ public class HiveKeeper : ModItem
         Item.knockBack = 5f;            
         Item.crit = 4;                   
         Item.width = 33;
-        Item.height = 53;
+        Item.height = 530;
 
         Item.useTime = 28;                
         Item.useAnimation = 28;

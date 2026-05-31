@@ -180,6 +180,8 @@ namespace NaturiumMod.Content.Items.Cards.Fusion.FusionCards
 
     public class DarkFireDragonHead : ModProjectile
     {
+        public bool spawnedBySword = false;
+
         public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/DarkfireDragonHead";
 
         private float waveCounter;
