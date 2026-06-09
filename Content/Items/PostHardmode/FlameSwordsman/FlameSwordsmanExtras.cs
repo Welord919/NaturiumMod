@@ -69,6 +69,11 @@ public class FlameSwordsmanPlayer : ModPlayer
     // ============================================================
     public void AddFlameToken()
     {
+        // ❌ No gauntlet = no tokens
+        if (!salamandraGauntletEquipped)
+            return;
+
+        // ✔ Build tokens only when gauntlet is equipped
         if (flameTokens < MaxFlameTokens)
             flameTokens++;
 

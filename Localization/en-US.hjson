@@ -80,6 +80,10 @@ Mods: {
 			TrishulaZeroProj.DisplayName: Trishula Zero Proj
 			TrueMagiciansRodProj.DisplayName: True Magicians Rod Proj
 			SalamandraFireProj.DisplayName: Salamandra Fire Proj
+			ApophisFangProj.DisplayName: Apophis Fang Proj
+			ApophisSerpentProj.DisplayName: Apophis Serpent Proj
+			ApophisTwinSerpentineHeldProj.DisplayName: Apophis Twin Serpentine Held Proj
+			HydrojetBeam.DisplayName: Hydrojet Beam
 		}
 
 		NPCs: {
@@ -1742,6 +1746,26 @@ Mods: {
 					Special Ability: Flaming Fury - when 50% health or lower, gain a large buff to all melee stats and increased endurance.
 					Gain a special attack when you use Blade of Fighting Flame.
 					'''
+			}
+
+			ApophisTwinSerpentineBlade: {
+				Tooltip: ""
+				DisplayName: Apophis Twin Serpentine Blade
+			}
+
+			ApophisFangblade: {
+				Tooltip: ""
+				DisplayName: Apophis Fangblade
+			}
+
+			HydrojetHarpooner: {
+				DisplayName: Hydrojet Harpooner
+				Tooltip: ""
+			}
+
+			HydrojetSharpshooter: {
+				Tooltip: ""
+				DisplayName: Hydrojet Sharpshooter
 			}
 		}
 

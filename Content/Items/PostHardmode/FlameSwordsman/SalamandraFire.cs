@@ -40,7 +40,7 @@ public class SalamandraFireProj : ModProjectile
 
         Dust d = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Lava);
         d.noGravity = true;
-        d.scale = 1.0f;
+        d.scale = 0.5f;
         d.velocity *= 0.5f;
     }
 

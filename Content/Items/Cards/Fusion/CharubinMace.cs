@@ -57,7 +57,7 @@ namespace NaturiumMod.Content.Items.Cards.Fusion
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.aiStyle = ProjAIStyleID.Flail; // REAL flail physics
+            Projectile.aiStyle = ProjAIStyleID.Flail;
             Projectile.tileCollide = true;
             Projectile.noDropItem = true;
         }

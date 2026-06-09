@@ -21,7 +21,7 @@ public class BladeofFightingFlame : ModItem
         Item.useAnimation = 33;
         Item.knockBack = 8f;
         Item.crit = 10;
-        Item.UseSound = SoundID.Item20; // flame swing
+        Item.UseSound = SoundID.Item20;
         Item.useStyle = ItemUseStyleID.Swing;
 
         Item.value = Item.buyPrice(0, 25, 0, 0);
@@ -97,7 +97,7 @@ public class BladeofFightingFlame : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.TerraBlade);
-        recipe.AddIngredient(ModContent.ItemType<FlameSwordsman>());
+        recipe.AddIngredient(ModContent.ItemType<FlameSwordsman>(), 5);
         recipe.AddIngredient(ItemID.HallowedBar, 15);
         recipe.AddIngredient(ItemID.SoulofFright, 10);
         recipe.AddTile(TileID.MythrilAnvil);

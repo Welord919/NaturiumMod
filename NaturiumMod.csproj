@@ -20,5 +20,8 @@
             <HintPath>libs/StructureHelper_v3.1.0.dll</HintPath>
         </Reference>
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Assets\Items\PostHardmode\Shark\" />
+    </ItemGroup>
     <!-- References -->
 </Project>

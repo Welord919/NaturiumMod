@@ -36,7 +36,8 @@ namespace NaturiumMod.Content.Items.PostHardmode.Accessories
             Item.height = 28;
             Item.accessory = true;
             Item.rare = ItemRarityID.Red;
-            Item.value = Item.buyPrice(gold: 20);
+            Item.value = Item.buyPrice(1, 0, 0, 0);
+
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {

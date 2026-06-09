@@ -19,7 +19,7 @@ namespace NaturiumMod.Content.Items.PostHardmode.Accessories
             Item.height = 34;
             Item.accessory = true;
             Item.rare = ItemRarityID.Red;
-            Item.value = Item.buyPrice(gold: 25);
+            Item.value = Item.buyPrice(0, 50, 0, 0);
 
             Item.defense = 15;
             Item.damage = 60;

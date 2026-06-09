@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 //[AutoloadEquip(EquipType.HandsOn)]
 public class SalamandrasGauntlet : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/Cards/Fusion/FlameSwordsman";
+    public override string Texture => "NaturiumMod/Assets/Items/PostHardmode/FlameSwordsman/SalamandraGauntlet";
 
     public override void SetDefaults()
     {
@@ -15,7 +15,7 @@ public class SalamandrasGauntlet : ModItem
         Item.height = 30;
         Item.accessory = true;
         Item.rare = ItemRarityID.Yellow;
-        Item.value = Item.buyPrice(gold: 20);
+        Item.value = Item.buyPrice(gold: 80);
         Item.defense = 8;
     }
     public override bool CanEquipAccessory(Player player, int slot, bool modded)
