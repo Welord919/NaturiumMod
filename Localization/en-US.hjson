@@ -1767,6 +1767,26 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Hydrojet Sharpshooter
 			}
+
+			HelixRifle: {
+				Tooltip: ""
+				DisplayName: Helix Rifle
+			}
+
+			EclipseTwinShooter: {
+				DisplayName: Eclipse Twin Shooter
+				Tooltip: ""
+			}
+
+			AndwraithsBlade: {
+				DisplayName: Andwraiths Blade
+				Tooltip: ""
+			}
+
+			LeviathansBlade: {
+				DisplayName: Leviathans Blade
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
