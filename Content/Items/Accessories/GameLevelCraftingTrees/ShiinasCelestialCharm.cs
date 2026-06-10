@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NaturiumMod.Content.Items.Accessories
+namespace NaturiumMod.Content.Items.Accessories.GameLevelCraftingTrees
 {
     internal class ShiinasCelestialCharm
     {

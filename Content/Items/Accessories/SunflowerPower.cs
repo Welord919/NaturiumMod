@@ -9,7 +9,7 @@ namespace NaturiumMod.Content.Items.Accessories;
 
 public class SunflowerPower : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/Accessories/SunflowerPower2";
+    public override string Texture => "NaturiumMod/Assets/Items/Accessories/SunflowerPower";
     public override void SetDefaults()
     {
         Item.Size = new(20, 26);

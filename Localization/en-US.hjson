@@ -86,6 +86,7 @@ Mods: {
 			HydrojetBeam.DisplayName: Hydrojet Beam
 			LeviathanSlash.DisplayName: Leviathan Slash
 			ApophisProjPlus.DisplayName: Apophis Proj Plus
+			BlackGaleSlash.DisplayName: Black Gale Slash
 		}
 
 		NPCs: {
@@ -1529,6 +1530,7 @@ Mods: {
 					'''
 					Increases Ice damage by 5%
 					Minions and Sentries apply the Frostburn debuff
+					Displays number of minions you can have.
 					'''
 				DisplayName: Ice Barrier Medallion
 			}
@@ -1783,6 +1785,44 @@ Mods: {
 				DisplayName: Leviathans Blade
 				Tooltip: Gain a greater damage boost when you defeat an enemy, this effect can stack up to 15%, but is lost when you get hit
 			}
+
+			BlackWingedWings: {
+				Tooltip: Fire a gale slash projectile when below 50% health.
+				DisplayName: Black Winged Wings
+			}
+
+			CelestialArcanaCore: {
+				Tooltip:
+					'''
+					Boosts mana flow, magical potency, and potion channeling.
+					Draws in stars from farther away and restores mana automatically.
+					'''
+				DisplayName: Celestial Arcana Core
+			}
+
+			CelestialVitalityCore: {
+				DisplayName: Celestial Vitality Core
+				Tooltip:
+					'''
+					Greatly enhances vitality and physical prowess.
+					Grants the regenerative and transformative powers of moon and sea.
+					'''
+			}
+
+			UmiAbyssalCore: {
+				DisplayName: Umi Abyssal Core
+				Tooltip:
+					'''
+					Grants increased mobility on land, sea, lava, and ice.
+					Enhances fishing skill, underwater vision, and evasive agility.
+					Negates fall damage.
+					'''
+			}
+
+			TitanociderEmblem: {
+				DisplayName: Titanocider Emblem
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -1967,5 +2007,10 @@ Mods: {
 		}
 
 		DamageClasses.CardDamage.DisplayName: Card Damage
+
+		InfoDisplays: {
+			UmiMinionInfoDisplay.DisplayName: Umi Minion Info Display
+			MinionInfoDisplay.DisplayName: Minion Info Display
+		}
 	}
 }

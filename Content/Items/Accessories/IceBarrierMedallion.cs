@@ -25,6 +25,7 @@ namespace NaturiumMod.Content.Items.Accessories
         {
             player.GetModPlayer<IceDamagePlayer>().iceMedallionActive = true;
             player.GetModPlayer<FrostburnMinionPlayer>().frostburnMinions = true;
+            player.GetModPlayer<MinionInfoPlayer>().minionDisplayEquipped = true;
         }
         public override void AddRecipes()
         {
@@ -44,6 +45,6 @@ namespace NaturiumMod.Content.Items.Accessories
 
             return incomingItem.type != ice && incomingItem.type != beads;
         }
-
     }
+
 }
