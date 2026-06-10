@@ -1,12 +1,6 @@
-﻿using NaturiumMod.Content.Items.PreHardmode.Accessories;
-using NaturiumMod.Content.Items.PreHardmode.IceBarrier;
-using NaturiumMod.Content.Items.PreHardmode.Weapons;
-using System;
+﻿using NaturiumMod.Content.Items.Weapons.Magic;
+using NaturiumMod.Content.Items.Weapons.Summoner;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

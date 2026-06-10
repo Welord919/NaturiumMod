@@ -12,7 +12,7 @@ namespace NaturiumMod.Content.BuffsDebuffs
 {
     public class BleedDebuff : ModBuff
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/LOB/PetiteDragonBuff";
+        public override string Texture => "NaturiumMod/Assets/BuffsDebuffs/DecayDebuff";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true;          // It's a debuff

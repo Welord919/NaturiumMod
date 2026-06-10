@@ -1,7 +1,6 @@
 ﻿using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
-using NaturiumMod.Content.Items.PreHardmode.Weapons;
+using NaturiumMod.Content.Items.Weapons.Magic;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;

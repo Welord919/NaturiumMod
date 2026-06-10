@@ -7,7 +7,7 @@ namespace NaturiumMod.Content.Buffs;
 public class SmithsBuff : ModBuff
 {
     public float MultiplicativeDamageBonus { get; init; }
-    public override string Texture => "NaturiumMod/Assets/Buffs/SmithsCharmBuff";
+    public override string Texture => "NaturiumMod/Assets/BuffsDebuffs/SmithsCharmBuff";
 
     public override void SetStaticDefaults()
     {

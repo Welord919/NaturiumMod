@@ -1,3 +1,4 @@
+using NaturiumMod.Content.Tiles.Ores;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
@@ -18,7 +19,7 @@ public class NaturiumOrePass(string name, float loadWeight) : GenPass(name, load
             int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY);
 
             // Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place. // Feel free to experiment with strength and step to see the shape they generate.
-            WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Content.Tiles.NaturiumOreTile>());
+            WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<NaturiumOreTile>()); 
 
             // Alternately, we could check the tile already present in the coordinate we are interested.
             // Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.

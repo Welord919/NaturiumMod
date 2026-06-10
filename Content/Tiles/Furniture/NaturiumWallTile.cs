@@ -1,0 +1,17 @@
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace NaturiumMod.Content.Tiles.Furniture;
+
+public class NaturiumWallTile : ModWall
+	{
+    public override string Texture => "NaturiumMod/Assets/Tiles/NaturiumWallTile";
+    public override void SetStaticDefaults() {
+		Main.wallHouse[Type] = true;
+		VanillaFallbackOnModDeletion = WallID.DiamondGemspark;
+        DustType = DustID.Chlorophyte;
+        AddMapEntry(new Color(75, 170, 30));
+		}
+	}

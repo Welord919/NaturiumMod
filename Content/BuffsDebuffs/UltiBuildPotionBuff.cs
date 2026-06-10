@@ -5,7 +5,7 @@ namespace NaturiumMod.Content.Buffs;
 
 public class MktPotionBuff : ModBuff
 {
-    public override string Texture => "NaturiumMod/Assets/Buffs/UltiBuildPotionBuff";
+    public override string Texture => "NaturiumMod/Assets/BuffsDebuffs/UltiBuildPotionBuff";
 
     public override void Update(Player player, ref int buffIndex)
     {

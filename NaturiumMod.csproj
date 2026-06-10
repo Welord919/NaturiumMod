@@ -5,8 +5,8 @@
     <!-- General -->
     <PropertyGroup />
     <ItemGroup>
-      <None Include="Content\Items\PreHardmode\Tools\StarsteelPickaxe.cs" />
-      <None Include="Content\Tiles\NibiricCrystalTile.cs" />
+      <None Include="Content\Items\Tools\StarsteelPickaxe.cs" />
+      <None Include="Content\Tiles\Ores\NibiricCrystalTile.cs" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Aspose.PDF" Version="26.5.0" />
@@ -21,7 +21,8 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Assets\Items\PostHardmode\Shark\" />
+      <Folder Include="Content\Items\Weapons\Special\" />
+      <Folder Include="Content\Tiles\CraftingStations\" />
     </ItemGroup>
     <!-- References -->
 </Project>

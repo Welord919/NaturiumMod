@@ -1,28 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.Cards.Fusion;
-using NaturiumMod.Content.Items.Cards.LOB;
-using NaturiumMod.Content.Items.Cards.LOB.Commons;
-using NaturiumMod.Content.Items.Cards.LOB.ShortPrint;
-using NaturiumMod.Content.Items.Cards.LOB.Rares;
-using NaturiumMod.Content.Items.Cards.LOB.SuperRares;
-using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
-using NaturiumMod.Content.Items.PostHardmode.Weapons;
-using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
-using NaturiumMod.Content.Items.PreHardmode.MillenniumItems;
-using NaturiumMod.Content.Items.PreHardmode.Tools;
-using NaturiumMod.Content.Items.PreHardmode.Weapons;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using NaturiumMod.Content.Items.Cards.NPCDrop;
-using NaturiumMod.Content.Items.Cards.PSA;
-using NaturiumMod.Content.Items.Cards.LOB.SuperShortPrint;
+using NaturiumMod.Content.Items.Weapons.Magic;
+using NaturiumMod.Content.Items.Weapons.Melee;
+using NaturiumMod.Content.Items.Weapons.Ranged;
+using NaturiumMod.Content.Items.Weapons.Summoner;
+using NaturiumMod.Content.Items.Tools;
 
 namespace NaturiumMod.Content.Helpers
 {

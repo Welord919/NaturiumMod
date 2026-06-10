@@ -4,7 +4,7 @@ using static NaturiumMod.Content.NPCs.ManyGlobalNPC;
 
 public class AntiGravDebuff : ModBuff
 {
-    public override string Texture => "NaturiumMod/Assets/Buffs/BarkionsBuff";
+    public override string Texture => "NaturiumMod/Assets/BuffsDebuffs/CosmoMinionBuff";
     public override void SetStaticDefaults()
     {
         Main.debuff[Type] = true;

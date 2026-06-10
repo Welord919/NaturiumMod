@@ -1,0 +1,47 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Materials;
+using NaturiumMod.Content.Projectiles.Summoner;
+
+namespace NaturiumMod.Content.Items.Weapons.Summoner;
+
+public class RoseWhip : ModItem
+{
+    public override string Texture => "NaturiumMod/Assets/Items/Weapons/RoseWhip";
+
+    public override void SetDefaults()
+    {
+        Item.DefaultToWhip(ModContent.ProjectileType<RoseWhipProj>(), 30, 3.5f, 5);
+        Item.shootSpeed = 4;
+        Item.rare = ItemRarityID.Green;
+        Item.channel = true;
+
+        Item.DamageType = DamageClass.Summon;
+        Item.width = 32;
+        Item.height = 32;
+
+        Item.value = Item.buyPrice(0, 5, 0, 0);
+        Item.rare = ItemRarityID.Green;
+
+    }
+    public override void HoldItem(Player player)
+    {
+        player.thorns += 0.15f; // 15% return damage
+    }
+
+
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe = RecipeHelper.GetNewRecipe(recipe, [
+            new(ModContent.ItemType<NaturiumBar>(), 20),
+            new(ModContent.ItemType<RoseIcon>(), 3),
+            new(ItemID.IvyWhip, 1)
+        ], TileID.Anvils);
+        recipe.Register();
+    }
+
+    public override bool MeleePrefix() => true;
+}

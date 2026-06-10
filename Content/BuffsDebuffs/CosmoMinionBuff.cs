@@ -1,12 +1,12 @@
 using Terraria;
 using Terraria.ModLoader;
-using NaturiumMod.Content.Items.General.Projectiles;
+using NaturiumMod.Content.Projectiles.Summoner;
 
 namespace NaturiumMod.Content.Buffs;
 
 public class CosmoMinionBuff : ModBuff
 {
-    public override string Texture => "NaturiumMod/Assets/Buffs/CosmoMinionBuff";
+    public override string Texture => "NaturiumMod/Assets/BuffsDebuffs/CosmoMinionBuff";
 
     public override void SetStaticDefaults()
     {

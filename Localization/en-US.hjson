@@ -84,6 +84,8 @@ Mods: {
 			ApophisSerpentProj.DisplayName: Apophis Serpent Proj
 			ApophisTwinSerpentineHeldProj.DisplayName: Apophis Twin Serpentine Held Proj
 			HydrojetBeam.DisplayName: Hydrojet Beam
+			LeviathanSlash.DisplayName: Leviathan Slash
+			ApophisProjPlus.DisplayName: Apophis Proj Plus
 		}
 
 		NPCs: {
@@ -1749,43 +1751,37 @@ Mods: {
 			}
 
 			ApophisTwinSerpentineBlade: {
-				Tooltip: ""
+				Tooltip: Fire a twin pair of even more powerful Apophis projectiles.
 				DisplayName: Apophis Twin Serpentine Blade
 			}
 
 			ApophisFangblade: {
-				Tooltip: ""
+				Tooltip: Fire a more powerful Apophis projectile.
 				DisplayName: Apophis Fangblade
 			}
 
-			HydrojetHarpooner: {
-				DisplayName: Hydrojet Harpooner
-				Tooltip: ""
-			}
-
 			HydrojetSharpshooter: {
-				Tooltip: ""
+				Tooltip: Almost hitscan projectile
 				DisplayName: Hydrojet Sharpshooter
-			}
-
-			HelixRifle: {
-				Tooltip: ""
-				DisplayName: Helix Rifle
 			}
 
 			EclipseTwinShooter: {
 				DisplayName: Eclipse Twin Shooter
-				Tooltip: ""
+				Tooltip:
+					'''
+					22% chance to save ammo.
+					Shoots 2 bullets at once in an spread pattern that sways back and forth until it condenses into a fast stream of bullets.
+					'''
 			}
 
 			AndwraithsBlade: {
 				DisplayName: Andwraiths Blade
-				Tooltip: ""
+				Tooltip: Gain a small damage boost when you defeat an enemy, this effect can stack up to 10%, but is lost when you get hit
 			}
 
 			LeviathansBlade: {
 				DisplayName: Leviathans Blade
-				Tooltip: ""
+				Tooltip: Gain a greater damage boost when you defeat an enemy, this effect can stack up to 15%, but is lost when you get hit
 			}
 		}
 

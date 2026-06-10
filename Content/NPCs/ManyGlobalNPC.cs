@@ -1,14 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using NaturiumMod.Content.Items.General.Placeable;
-using NaturiumMod.Content.Items.PostHardmode.Materials;
-using NaturiumMod.Content.Items.PreHardmode.Accessories;
-using NaturiumMod.Content.Items.PreHardmode.ApophisItems;
-using NaturiumMod.Content.Items.PreHardmode.Consumables;
-using NaturiumMod.Content.Items.PreHardmode.Materials;
-using System;
-using System.Linq;
+﻿using NaturiumMod.Content.Items.Accessories;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
