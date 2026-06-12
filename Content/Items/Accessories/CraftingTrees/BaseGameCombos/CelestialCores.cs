@@ -1,8 +1,10 @@
-﻿using Terraria;
+﻿using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Accessories.GameLevelCraftingTrees.BaseGameCombos
+namespace NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos
 {
     // ===========================
     // Celestial Vitality Core
@@ -56,6 +58,16 @@ namespace NaturiumMod.Content.Items.Accessories.GameLevelCraftingTrees.BaseGameC
                 .AddIngredient(ItemID.MoonStone)
                 .AddIngredient(ItemID.MoonCharm)
                 .AddIngredient(ItemID.NeptunesShell)
+                .AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 10)
+                .AddIngredient(ModContent.ItemType<DarkEssence>(), 15)
+                .AddTile(TileID.TinkerersWorkbench)
+                .Register();
+
+            CreateRecipe()
+                .AddIngredient(ItemID.CharmofMyths)
+                .AddIngredient(ItemID.CelestialShell)
+                .AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 10)
+                .AddIngredient(ModContent.ItemType<DarkEssence>(), 15)
                 .AddTile(TileID.TinkerersWorkbench)
                 .Register();
         }
@@ -101,7 +113,19 @@ namespace NaturiumMod.Content.Items.Accessories.GameLevelCraftingTrees.BaseGameC
                 .AddIngredient(ItemID.ManaFlower)
                 .AddIngredient(ItemID.PutridScent)
                 .AddIngredient(ItemID.SorcererEmblem)
+                .AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 10)
+                .AddIngredient(ModContent.ItemType<DarkEssence>(), 15)
                 .AddTile(TileID.TinkerersWorkbench)
+                .Register();
+
+            CreateRecipe()
+            .AddIngredient(ItemID.BandofStarpower)
+            .AddIngredient(ItemID.ArcaneFlower)
+            .AddIngredient(ItemID.CelestialMagnet)
+            .AddIngredient(ItemID.SorcererEmblem)
+            .AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 10)
+            .AddIngredient(ModContent.ItemType<DarkEssence>(), 15)
+            .AddTile(TileID.TinkerersWorkbench)
                 .Register();
         }
     }

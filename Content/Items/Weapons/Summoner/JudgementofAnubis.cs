@@ -31,22 +31,50 @@ namespace NaturiumMod.Content.Items.Weapons.Summoner;
             Item.sentry = true;
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            // Place the sentry at the mouse cursor
-            player.UpdateMaxTurrets();
-            Projectile.NewProjectile(
-                source,
-                Main.MouseWorld,
-                Vector2.Zero,
-                type,
-                damage,
-                knockback,
-                player.whoAmI
-            );
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        // Count existing sentries
+        int sentryCount = 0;
+        int oldestIndex = -1;
+        int oldestTimeLeft = int.MaxValue;
 
-            return false;
+        for (int i = 0; i < Main.maxProjectiles; i++)
+        {
+            Projectile proj = Main.projectile[i];
+
+            if (proj.active && proj.owner == player.whoAmI && proj.sentry)
+            {
+                sentryCount++;
+
+                // Track oldest sentry so we can replace it
+                if (proj.timeLeft < oldestTimeLeft)
+                {
+                    oldestTimeLeft = proj.timeLeft;
+                    oldestIndex = i;
+                }
+            }
         }
+
+        // If at max, kill the oldest sentry (vanilla behavior)
+        if (sentryCount >= player.maxTurrets && oldestIndex != -1)
+        {
+            Main.projectile[oldestIndex].Kill();
+        }
+
+        // Now safely spawn the new sentry
+        Projectile.NewProjectile(
+            source,
+            Main.MouseWorld,
+            Vector2.Zero,
+            type,
+            damage,
+            knockback,
+            player.whoAmI
+        );
+
+        return false;
+    }
+
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();

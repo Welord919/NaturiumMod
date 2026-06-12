@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Accessories
+namespace NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos
 {
     [AutoloadEquip(EquipType.Shield)]
     public class HeroicTundraShield : ModItem

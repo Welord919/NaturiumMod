@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos;
 using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;

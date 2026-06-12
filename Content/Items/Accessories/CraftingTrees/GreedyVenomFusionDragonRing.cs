@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
 using System;
 
-namespace NaturiumMod.Content.Items.Accessories
+namespace NaturiumMod.Content.Items.Accessories.CraftingTrees
 {
     // ============================================================
     //  ENUM — GREEDY VENOM MODES

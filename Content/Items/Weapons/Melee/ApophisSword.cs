@@ -29,7 +29,7 @@ public class ApophisSword : ModItem
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item20; 
 
-        Item.shoot = ModContent.ProjectileType<ApophisProjPlus>();
+        Item.shoot = ModContent.ProjectileType<ApophisProj>();
         Item.shootSpeed = 8f;
 
         Item.value = Item.buyPrice(0, 0, 80, 0);

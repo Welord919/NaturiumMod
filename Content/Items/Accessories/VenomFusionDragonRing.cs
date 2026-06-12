@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Accessories.CraftingTrees;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Consumables;
 using System;

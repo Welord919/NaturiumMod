@@ -87,6 +87,11 @@ Mods: {
 			LeviathanSlash.DisplayName: Leviathan Slash
 			ApophisProjPlus.DisplayName: Apophis Proj Plus
 			BlackGaleSlash.DisplayName: Black Gale Slash
+			GoddessJudgementProj.DisplayName: Goddess Judgement Proj
+			GoddessArrowProj.DisplayName: Goddess Arrow Proj
+			GoddessBarrageController.DisplayName: Goddess Barrage Controller
+			ApophisEyeMinion.DisplayName: Apophis Eye Minion
+			ApophisObeliskSentry.DisplayName: Apophis Obelisk Sentry
 		}
 
 		NPCs: {
@@ -682,7 +687,7 @@ Mods: {
 				Tooltip:
 					'''
 					Increase damage of all cards by 10%
-					Reduce Summonign Sickenness duration from Blue Eyes cards by 50%
+					Reduce Summoning Sickenness duration from Blue Eyes cards by 50%
 					Uses a secret move when 3 Blue Eyes White Dragon cards are used together
 					'You fight me with fruit? Don't mock me!'
 					'''
@@ -1663,12 +1668,11 @@ Mods: {
 			VenomFusionDragonRing: {
 				Tooltip:
 					'''
-					Apply Venom debuff to enemies on hit with Venom Mode that is changed by right clicking in inventory (not equiped)
-					Every hit applies a Predator Counter that stacks up to 10. Each counter increases damage by 3% on the target.
-					Increases placement range by 2
-					Increases move speed and acceleration
-					Increases Card damage by 5%
-					Increases Fusion Card damage by 10%
+					Applies Venom on hit while in Venom Mode (swap by right‑clicking in inventory).  
+					Each hit adds a Predator Counter (up to 10), increasing damage on that target by 3% per stack.  
+					Increases placement range by 2. 
+					Increased movement speed and acceleration.  
+					+5% Card damage +10% Fusion Card damage.
 					'''
 				DisplayName: Venom Fusion Dragon Ring
 			}
@@ -1677,15 +1681,12 @@ Mods: {
 				DisplayName: Greedy Venom Fusion Dragon Ring
 				Tooltip:
 					'''
-					Apply Venom debuff to enemies on hit with Venom Mode that is changed by right clicking in inventory (not equiped) now with more options.
-					Every hit applies a Predator Counter that stacks up to 10. Each counter increases damage by 5% on the target.
-					Increases placement range by 3
-					Increases move speed and acceleration
-					Increases Card damage by 5%
-					Increases Fusion Card damage by 10%
-					Increases luck by 5%
-					20% discount off at any NPC shop
-					Chance to spawn more coins on enemy death
+					Applies Venom on hit while in Venom Mode (swap by right‑clicking in inventory), now with extra modes.  
+					Each hit adds a Predator Counter (up to 10), increasing damage on that target by 5% per stack.  
+					Increases placement range by 3.
+					Increased movement speed and acceleration.  
+					+5% Card damage, +10% Fusion Card damage, +5% luck, and 20% shop discount.  
+					Enemies drop more coins.
 					'''
 			}
 
@@ -1693,27 +1694,24 @@ Mods: {
 				DisplayName: Millennium Shield Plated
 				Tooltip:
 					'''
-					Grants immunity to knockback and fire blocks
-					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility
-					Increases Apophis, Decay, and Millennium items, as well as summon damage, by 10%
-					Increases mining speed by 25%
-					Increases you max number of sentries by 1
+					Grants immunity to knockback and fire blocks.
+					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility.
+					Increases Apophis, Decay, and Millennium items, as well as summon damage, by 10%.
+					Increases mining speed by 25%.
+					Increases you max number of sentries by 1.
 					'''
 			}
 
 			UnboundMillenniumShield: {
 				Tooltip:
 					'''
-					Grants immunity to knockback and fire blocks
-					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility
-					When below 50% HP, reduces damage taken by 25%
-					Redirects 25% of damage from nearby allies to the wearer
-					Grants immunity to most debuffs
+					Grants immunity to knockback and fire blocks.
+					Grants the user the ability to dash through enemies to damage them gaining half a second of invincibility.
+					When below 50% HP, reduces damage taken by 25%.
+					Redirects 25% of damage from nearby allies to the wearer.
+					Grants immunity to most debuffs.
 					Enemies are more likey to target you.
-					Increases Apophis, Decay, and Millennium items by 10%
-					Increases summon damage by 20%
-					Increases mining speed by 25%
-					Increases you max number of sentries by 2
+					+10% Apophis, Decay, and Millennium damage, +20% summon damage, +25% mining speed, and +2 max sentries.
 					'''
 				DisplayName: Unbound Millennium Shield
 			}
@@ -1721,13 +1719,11 @@ Mods: {
 			HeroicTundraShield: {
 				Tooltip:
 					'''
-					Grants immunity to knockback
-					When below 50% HP, reduces damage taken by 25%
-					Redirects 25% of damage from nearby allies to the wearer
+					Grants immunity to knockback.
+					When below 50% HP, reduces damage taken by 25%.
+					Redirects 25% of damage from nearby allies to the wearer.
 					Enemies are more likey to target you.
-					Increases endurance by 15%
-					Increases max turrets by 1
-					Increases summon damage by 10%
+					+15% endurance, +10% summon damage, and +10% minion damage.
 					'''
 				DisplayName: Heroic Tundra Shield
 			}
@@ -1741,14 +1737,11 @@ Mods: {
 				DisplayName: Salamandras Gauntlet
 				Tooltip:
 					'''
-					10% increased melee damage
-					25% increased melee speed
-					5% increased melee critical strike chance
-					Enables auto swing for melee weapons
-					Increases the size of all melee weapons
-					Enemies are more likey to target you.
-					Special Ability: Flaming Fury - when 50% health or lower, gain a large buff to all melee stats and increased endurance.
-					Gain a special attack when you use Blade of Fighting Flame.
+					Enables autoswing and increases melee weapon size.
+					Enemies target you more often.
+					At 50% life or below, massively boosts melee stats and endurance.
+					Grants a special attack when wielding the Blade of Fighting Flame.
+					+10% melee damage, +25% melee speed, +5% melee crit.
 					'''
 			}
 
@@ -1794,8 +1787,11 @@ Mods: {
 			CelestialArcanaCore: {
 				Tooltip:
 					'''
-					Boosts mana flow, magical potency, and potion channeling.
-					Draws in stars from farther away and restores mana automatically.
+					Greatly increased mana regeneration.  
+					Increased mana/star pickup range.  
+					Automatically use mana potions.  
+					+10% magic damage, +5% magic crit, +5% generic damage, +40 max mana, +12% reduced mana cost.  
+					Reduced aggro.
 					'''
 				DisplayName: Celestial Arcana Core
 			}
@@ -1804,24 +1800,120 @@ Mods: {
 				DisplayName: Celestial Vitality Core
 				Tooltip:
 					'''
-					Greatly enhances vitality and physical prowess.
-					Grants the regenerative and transformative powers of moon and sea.
-					'''
-			}
-
-			UmiAbyssalCore: {
-				DisplayName: Umi Abyssal Core
-				Tooltip:
-					'''
-					Grants increased mobility on land, sea, lava, and ice.
-					Enhances fishing skill, underwater vision, and evasive agility.
-					Negates fall damage.
+					+4 defense, +1 life regen, +15% mining speed.
+					+0.5 summon knockback.
+					Reduces potion sickness.
+					Become a Werewolf at night (while dry)  
+					Become a Merfolk in water (gills + flippers)
+					+10% melee speed, +10% all damage, and +2% crit.
 					'''
 			}
 
 			TitanociderEmblem: {
 				DisplayName: Titanocider Emblem
-				Tooltip: ""
+				Tooltip:
+					'''
+					+25% ranged damage, +15% ranged crit, and +5% extra crit at night.
+					Grants scope zoom and reduces aggro.
+					+10% arrow damage and Molten Quiver effects.
+					20% chance not to consume ammo plus extra ammo conservation.
+					Slightly increased movement speed.
+					Increases the attack of Apollousa, Bow of the Goddess.
+					'''
+			}
+
+			UmiCore: {
+				DisplayName: Umi Core
+				Tooltip:
+					'''
+					Allows auto jump, increased jump speed + movement speed, and no fall damage
+					Improved traction and wall‑cling
+					Swim, breathe underwater, ignore water slowdown, and iceskates
+					Full Arctic Diving Gear effects
+					Lava immunity, water-walking, lava fishing, +10 fishing skill, and sonar effect
+					Fishing power increases further at night
+					Tabi dash and dodge chance
+					Emits bright light while wet
+					'''
+			}
+
+			ApollousaBow: {
+				Tooltip:
+					'''
+					Right click to fire a powerful arrow that deals 300% damage and pierces through enemies.
+					Gain a better attack when you also have Titanocider Emblem equipped.
+					'''
+				DisplayName: Apollousa, Bow of the Goddess
+			}
+
+			TreeMedallion: {
+				DisplayName: Tree Medallion
+				Tooltip: Combines all natural medallion effects (Barkion, Exterio, Leodrake, Nibiru, and Ice Barrier)
+			}
+
+			VanitySwitch: {
+				Tooltip: Not working correctly
+				DisplayName: Vanity Switch
+			}
+
+			SteamedCloak: {
+				Tooltip:
+					'''
+					Realease an attack on hit of multiple projectiles that increases the ammount if you reach a -25% health threshold 'stage'.
+					Damage increased by 10% for each stage reached.
+					Immune to shimmer
+					Increased immunity time after being hit.
+					Increased move speed and acceleration by 10%.
+					'''
+				DisplayName: Steamed Cloak
+			}
+
+			MillenniumScarab: {
+				Tooltip:
+					'''
+					Increases Summon and Sentry damage, knockback, and attack speed.
+					Increases number of Summons by 3 and Sentries by 1.
+					Reveals all ores and enemies.
+					Gain a golden boost for the Apophis Dominion weapon.
+					'''
+				DisplayName: Millennium Scarab
+			}
+
+			ApophisDominion: {
+				Tooltip:
+					'''
+					Left click to gain rotating Apophis Eyes that shoot projectiles at nearby enemies. Right click to summon an Anubis Judge.
+					Gain a golden boost if you also have the Millennium Scarab equipped.
+					'''
+				DisplayName: Anubis' Dominion
+			}
+
+			UtopianHelm: {
+				DisplayName: Utopian Helm
+				Tooltip:
+					'''
+					Massively increases minion and turret capacity.
+					Enhances crit chance, attack speed, knockback, and movement.
+					Improves mana, life regen, defense, and mining speed.
+					Grants Werewolf and Merfolk forms when appropriate.
+					Provides auto-paint, extended placement range, and faster building.
+					Enables scope zoom with right-click toggle.
+					Activates all special weapon synergies.
+					'''
+			}
+
+			WickedWindWings: {
+				Tooltip:
+					'''
+					5 jumps with increased jump speed and immunity time.
+					Fire-walk, lava immunity, and hyper movement.
+					Full Water and Lava mobility/immunity, breathing, and fishing bonuses.
+					Shimmer immunity, full cardinal directional dash, and almost full debuff immunity.
+					No fall damage, auto-jump, and enhanced pickup range.
+					Realease an attack on hit of multiple projectiles that increases the ammount if you reach a -25% health threshold 'stage'.
+					Damage increased by 10% for each stage reached.
+					'''
+				DisplayName: Wicked WindWings
 			}
 		}
 
@@ -1965,6 +2057,21 @@ Mods: {
 				Description: Mods.NaturiumMod.Buffs.StopDefenseBuff.Description
 				DisplayName: Stop Defense Buff
 			}
+
+			ApophisDominionBuff: {
+				Description: Mods.NaturiumMod.Buffs.ApophisDominionBuff.Description
+				DisplayName: Apophis Dominion Buff
+			}
+
+			ApophisEyeBuff: {
+				Description: Mods.NaturiumMod.Buffs.ApophisEyeBuff.Description
+				DisplayName: Apophis Eye Buff
+			}
+
+			AnubisJudgeBuff: {
+				Description: Mods.NaturiumMod.Buffs.AnubisJudgeBuff.Description
+				DisplayName: Anubis Judge Buff
+			}
 		}
 
 		WorldGen.ExampleOrePassMessage: Naturium Ore
@@ -2011,6 +2118,9 @@ Mods: {
 		InfoDisplays: {
 			UmiMinionInfoDisplay.DisplayName: Umi Minion Info Display
 			MinionInfoDisplay.DisplayName: Minion Info Display
+			MillenniumScarabInfo_CardKills.DisplayName: Millennium Scarab Info_ Card Kills
+			MillenniumScarabInfo_CardBoost.DisplayName: Millennium Scarab Info_ Card Boost
+			MillenniumScarabInfo_Minions.DisplayName: Millennium Scarab Info_ Minions
 		}
 	}
 }

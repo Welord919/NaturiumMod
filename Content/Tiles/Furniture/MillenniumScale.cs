@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.Materials;
 using NaturiumMod.Content.NPCs.TownNPCS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -58,29 +53,19 @@ namespace NaturiumMod.Content.Tiles.Furniture
             Main.tileLavaDeath[Type] = false;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-
-            TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-            TileObjectData.newTile.CoordinatePadding = 0;
-
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(90, 180, 80), Language.GetText("Millennium Scale"));
         }
 
-
-
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
 
-            // Player luck
             float luck = player.luck;
-
-            // Your mod’s kill tracker (from Mysterious Grandpa / KillTracker)
             int kills = CardQuestWorld.totalCardDamageKills;
 
-            // Message
             Main.NewText(
                 $"The Millennium Scale judges your soul...\n" +
                 $"Luck: {luck:F2}\n" +
@@ -88,11 +73,8 @@ namespace NaturiumMod.Content.Tiles.Furniture
                 new Color(255, 230, 120)
             );
 
-            // Optional sound
             Terraria.Audio.SoundEngine.PlaySound(SoundID.Item29, player.Center);
-
             return true;
         }
     }
-
 }

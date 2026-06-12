@@ -52,7 +52,7 @@ internal class NaturiumSlime : ModNPC
         }
 
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaturiumOre>(), 1, 4, 7));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 1000, 1, 1));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DaltonPainting>(), 500, 1, 1));
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>

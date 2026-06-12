@@ -1,4 +1,4 @@
-﻿namespace NaturiumMod.Content.Items.Accessories.GameLevelCraftingTrees.BaseGameCombos
+﻿namespace NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos
 {
     using global::NaturiumMod.Content.Items.Cards.Fusion;
     using global::NaturiumMod.Content.Items.Materials;
@@ -8,9 +8,9 @@
 
     namespace NaturiumMod.Content.Items.Accessories.ShiinaCharms
     {
-        public class UmiAbyssalCore : ModItem
+        public class UmiCore : ModItem
         {
-            public override string Texture => "NaturiumMod/Assets/Items/Accessories/UmiAbyssalCore";
+            public override string Texture => "NaturiumMod/Assets/Items/Accessories/UmiCore";
 
             public override void SetDefaults()
             {

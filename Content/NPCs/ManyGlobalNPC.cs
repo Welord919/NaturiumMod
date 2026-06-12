@@ -1,6 +1,7 @@
 ﻿using NaturiumMod.Content.Items.Accessories;
 using NaturiumMod.Content.Items.Materials;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -89,7 +90,18 @@ public class ManyGlobalNPC : GlobalNPC
             }
         }
     }
-    
+    public class DuelistHatGlobalNPC : GlobalNPC
+    {
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            // Exclude town NPCs, critters, statues, and dummies
+            if (npc.friendly || npc.lifeMax <= 5 || npc.SpawnedFromStatue)
+                return;
+
+            // 1/1000 drop chance for all valid enemies
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DuelistHat>(), 1000));
+        }
+    }
 
 
 

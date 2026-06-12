@@ -1,11 +1,12 @@
 ﻿using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static NaturiumMod.Content.Items.Accessories.HeroicTundraShield;
+using static NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos.HeroicTundraShield;
 using static NaturiumMod.Content.Items.Accessories.MillenniumShield;
 
-namespace NaturiumMod.Content.Items.Accessories
+namespace NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos
 {
     [AutoloadEquip(EquipType.Shield)]
     public class UnboundMillenniumShield : ModItem
@@ -32,6 +33,7 @@ namespace NaturiumMod.Content.Items.Accessories
             recipe.AddIngredient(ModContent.ItemType<HeroicTundraShield>(), 1);
             recipe.AddIngredient(ItemID.AnkhCharm, 1);
             recipe.AddIngredient(ItemID.ObsidianShield, 1);
+            recipe.AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 20);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.Register();
 
@@ -39,6 +41,7 @@ namespace NaturiumMod.Content.Items.Accessories
             recipe2.AddIngredient(ModContent.ItemType<MillenniumShieldPlated>(), 1);
             recipe2.AddIngredient(ModContent.ItemType<HeroicTundraShield>(), 1);
             recipe2.AddIngredient(ItemID.AnkhShield, 1);
+            recipe2.AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 20);
             recipe2.AddTile(TileID.TinkerersWorkbench);
             recipe2.Register();
         }

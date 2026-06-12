@@ -1,4 +1,5 @@
 using NaturiumMod.Content.Helpers;
+using NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

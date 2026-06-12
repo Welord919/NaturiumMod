@@ -1,4 +1,5 @@
-﻿using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
+﻿using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.Fusion.FusionCards;
 using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -40,7 +41,7 @@ public class SalamandrasGauntlet : ModItem
         fs.salamandraGauntletEquipped = true;
 
         // Base melee boosts
-        player.GetDamage(DamageClass.Melee) += 0.10f;
+        player.GetDamage(DamageClass.Melee) += 0.15f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.25f;
         player.GetCritChance(DamageClass.Melee) += 5;
         player.autoReuseGlove = true;
@@ -53,7 +54,7 @@ public class SalamandrasGauntlet : ModItem
         {
             player.endurance += 0.10f;
             player.GetDamage(DamageClass.Melee) += 0.10f;
-            player.GetAttackSpeed(DamageClass.Melee) += 0.15f;
+            player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
             player.GetCritChance(DamageClass.Melee) += 5;
         }
     }
@@ -64,10 +65,8 @@ public class SalamandrasGauntlet : ModItem
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.FireGauntlet);
         recipe.AddIngredient(ItemID.BerserkerGlove);
-        recipe.AddIngredient(ModContent.ItemType<FlameSwordsman>(), 5);
-        recipe.AddIngredient(ItemID.SoulofLight, 10);
-        recipe.AddIngredient(ItemID.SoulofNight, 10);
-        recipe.AddIngredient(ModContent.ItemType<NaturesEssence>(), 10);
+        recipe.AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 30);
+        recipe.AddIngredient(ModContent.ItemType<FireEssence>(), 50);
         recipe.AddTile(TileID.TinkerersWorkbench);
         recipe.Register();
     }
