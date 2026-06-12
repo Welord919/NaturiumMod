@@ -31,7 +31,6 @@ namespace NaturiumMod.Content.Items.Accessories
             recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ModContent.ItemType<CharmBase>(), 1),
                 new(ModContent.ItemType<PoisonBulb>(), 3),
-            new(ItemID.FlaskofVenom, 5)
             ], TileID.TinkerersWorkbench);
             recipe.Register();
 

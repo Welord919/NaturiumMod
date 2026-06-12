@@ -4,7 +4,6 @@ using NaturiumMod.Content.Items.Accessories.CraftingTrees;
 using NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos;
 using NaturiumMod.Content.Items.Accessories.NaturiumMod.Content.Items.Accessories;
 using NaturiumMod.Content.Items.Cards.LOB;
-using NaturiumMod.Content.Items.Materials;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;

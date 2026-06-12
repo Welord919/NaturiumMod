@@ -45,7 +45,7 @@ namespace NaturiumMod.Content.Items.Tools
             Recipe recipe = CreateRecipe();
             recipe = RecipeHelper.GetNewRecipe(recipe, [
                 new(ModContent.ItemType<MillenniumPiece>(), 25),
-            new(ItemID.LifeformAnalyzer, 1),
+            new(ItemID.LifeformAnalyzer, 5),
             new(ItemID.SpelunkerPotion, 5)
             ], TileID.Anvils);
             recipe.Register();

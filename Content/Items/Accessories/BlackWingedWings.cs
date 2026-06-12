@@ -34,7 +34,7 @@
                 .AddIngredient(ItemID.SoulofNight, 8)
                 .AddIngredient(ItemID.GiantHarpyFeather, 1)
                 .AddIngredient(ItemID.DarkShard, 1)
-                .AddTile(TileID.MythrilAnvil)
+                .AddTile(TileID.TinkerersWorkbench)
                 .Register();
         }
     }

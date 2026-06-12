@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.LOB;
+using NaturiumMod.Content.Items.Materials;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -27,7 +29,16 @@ namespace NaturiumMod.Content.Items.Tools
             Item.value = Item.buyPrice(gold: 3);
             Item.shootSpeed = 0f;
         }
-
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe = RecipeHelper.GetNewRecipe(recipe, [
+                new(ModContent.ItemType<MillenniumPiece>(), 25),
+            new(ItemID.BattlePotion, 1),
+            new(ItemID.SpelunkerPotion, 5)
+            ], TileID.Anvils);
+            recipe.Register();
+        }
         // IMPORTANT: Enables right-click functionality
         public override bool AltFunctionUse(Player player) => true;
 

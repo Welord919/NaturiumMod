@@ -1,11 +1,12 @@
 ﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NaturiumMod.Content.Items.Materials
+namespace NaturiumMod.Content.Items.Accessories
 {
     public class IceBarrierIcon : ModItem
     {
