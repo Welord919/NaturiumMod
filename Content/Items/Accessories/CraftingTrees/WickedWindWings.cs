@@ -27,42 +27,36 @@ namespace NaturiumMod.Content.Items.Accessories
             Item.rare = ItemRarityID.Red;
             Item.value = Item.buyPrice(0, 80, 0, 0);
 
-            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(150, 8f, 2f);
+            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(200, 8f, 2f);
         }
 
+        // ============================================================
+        // ACCESSORY EFFECTS
+        // ============================================================
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            // ============================================
-            // STEAMED CLOAK EFFECTS
-            // ============================================
+            // STEAMED CLOAK
             player.longInvince = true;
             player.shimmerImmune = true;
             player.moveSpeed += 0.10f;
-            player.wingRunAccelerationMult += 0.10f;
             player.GetModPlayer<SteamedCloakPlayer>().steamedCloakEquipped = true;
 
-            // ============================================
-            // LIZARD MEGA BALLOON EFFECTS
-            // ============================================
+            // LIZARD MEGA BALLOON
             player.GetJumpState<LizardSandstormJump>().Enable();
             player.noFallDmg = true;
             player.jumpSpeedBoost += 1.2f;
 
-            // ============================================
-            // UMI CORE EFFECTS
-            // ============================================
+            // UMI CORE
             player.autoJump = true;
             player.jumpSpeedBoost += 2f;
             player.moveSpeed += 0.08f;
             player.noFallDmg = true;
             player.spikedBoots = 2;
-
             player.accFlipper = true;
             player.ignoreWater = true;
             player.gills = true;
             player.iceSkate = true;
             player.arcticDivingGear = true;
-
             player.lavaImmune = true;
             player.waterWalk = true;
             player.waterWalk2 = true;
@@ -71,18 +65,14 @@ namespace NaturiumMod.Content.Items.Accessories
             player.accLavaFishing = true;
             player.fishingSkill += 10;
             player.sonarPotion = true;
-
             player.blackBelt = true;
 
             if (player.wet)
                 Lighting.AddLight(player.Center, 3f, 3f, 3f);
-
             if (!Main.dayTime)
                 player.fishingSkill += 15;
 
-            // ============================================
-            // UNBOUND MILLENNIUM SHIELD EFFECTS
-            // ============================================
+            // UNBOUND MILLENNIUM SHIELD
             player.noKnockback = true;
             player.maxTurrets += 2;
             player.GetDamage(DamageClass.Summon) += 0.20f;
@@ -92,6 +82,7 @@ namespace NaturiumMod.Content.Items.Accessories
             player.iceBarrier = true;
             player.endurance += 0.15f;
             player.GetModPlayer<FrozenShieldPlayer>().frozenShieldActive = true;
+
             int[] debuffs =
             {
                 BuffID.Poisoned, BuffID.Darkness, BuffID.Cursed, BuffID.Silenced,
@@ -100,18 +91,17 @@ namespace NaturiumMod.Content.Items.Accessories
             };
             foreach (int debuff in debuffs)
                 player.buffImmune[debuff] = true;
+
             var dash = player.GetModPlayer<MillenniumDash>();
             dash.DashAccessoryEquipped = true;
             dash.DashCooldown = 30;
             dash.DashDuration = 60;
             dash.DashVelocity = 15f;
             dash.DashDamage = 150;
-            dash.DashKnockback = 8f;
-            dash.DashIFrames = 50;
+            dash.DashKnockback = 9f;
+            dash.DashIFrames = 60;
 
-            // ============================================
-            // TERRASPARK BOOTS EFFECTS
-            // ============================================
+            // TERRASPARK BOOTS
             player.fireWalk = true;
             player.lavaImmune = true;
             player.iceSkate = true;
@@ -122,17 +112,18 @@ namespace NaturiumMod.Content.Items.Accessories
             player.accRunSpeed = 8f;
             player.vanityRocketBoots = 4;
 
-
-            // ============================================
-            // BUNDLE OF BALLOONS EFFECTS
-            // ============================================
+            // BUNDLE OF BALLOONS
             player.jumpBoost = true;
             player.jumpSpeedBoost += 2.4f;
             player.GetJumpState<WickedWindJump>().Enable();
 
-            //Extra
+            // EXTRA
             player.maxRunSpeed += 0.3f;
         }
+
+        // ============================================================
+        // EQUIP CONFLICTS (CANNOT EQUIP PREVIOUS ITEMS)
+        // ============================================================
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
         {
             int wickedWind = ModContent.ItemType<WickedWindWings>();
@@ -144,35 +135,38 @@ namespace NaturiumMod.Content.Items.Accessories
             int unboundMillenniumShield = ModContent.ItemType<UnboundMillenniumShield>();
             int terraspark = ItemID.TerrasparkBoots;
             int bundleOfBalloons = ItemID.BundleofBalloons;
+            int rainbowTrail = ItemID.LongRainbowTrailWings;
 
-            bool IsWickedWindComponent(int type) =>
+            bool IsComponent(int type) =>
                 type == lizardMegaBalloon ||
                 type == umiCore ||
                 type == steamedCloak ||
                 type == unboundMillenniumShield ||
                 type == terraspark ||
-                type == bundleOfBalloons;
+                type == bundleOfBalloons ||
+                type == rainbowTrail;
 
-            // If equipping Wicked Wind, block if any component is already equipped
-            if (incomingItem.type == wickedWind)
-            {
-                if (IsWickedWindComponent(equippedItem.type))
-                    return false;
-            }
+            bool incomingIsWicked = incomingItem.type == wickedWind;
+            bool equippedIsWicked = equippedItem.type == wickedWind;
 
-            // If equipping a component, block if Wicked Wind is already equipped
-            if (IsWickedWindComponent(incomingItem.type))
-            {
-                if (equippedItem.type == wickedWind)
-                    return false;
-            }
+            // Equipping Wicked Wind → block if any component is equipped
+            if (incomingIsWicked && IsComponent(equippedItem.type))
+                return false;
+
+            // Equipping a component → block if Wicked Wind is equipped
+            if (IsComponent(incomingItem.type) && equippedIsWicked)
+                return false;
 
             // Prevent equipping two Wicked Winds
-            if (incomingItem.type == wickedWind && equippedItem.type == wickedWind)
+            if (incomingIsWicked && equippedIsWicked)
                 return false;
 
             return base.CanAccessoryBeEquippedWith(equippedItem, incomingItem, player);
         }
+
+        // ============================================================
+        // RECIPE
+        // ============================================================
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -182,10 +176,15 @@ namespace NaturiumMod.Content.Items.Accessories
                 .AddIngredient(ModContent.ItemType<UmiCore>())
                 .AddIngredient(ItemID.TerrasparkBoots)
                 .AddIngredient(ItemID.BundleofBalloons)
+                .AddIngredient(ItemID.LongRainbowTrailWings)
                 .AddTile(TileID.TinkerersWorkbench)
                 .Register();
         }
     }
+
+    // ============================================================
+    // JUMP LOGIC
+    // ============================================================
     public class WickedWindJump : ExtraJump
     {
         public override Position GetDefaultPosition() => new After(BlizzardInABottle);
@@ -212,15 +211,11 @@ namespace NaturiumMod.Content.Items.Accessories
         {
             ref int jumps = ref player.GetModPlayer<WickedWindJumpPlayer>().jumpsRemaining;
 
-            // Dust ring center
-            int offsetY = player.height;
-            if (player.gravDir == -1f)
-                offsetY = 0;
+            int offsetY = player.gravDir == -1f ? 0 : player.height;
             offsetY -= 16;
 
             Vector2 center = player.Top + new Vector2(0, offsetY);
 
-            // Dust count scales with jump number
             int dustCount = jumps switch
             {
                 5 => 40,
@@ -241,7 +236,7 @@ namespace NaturiumMod.Content.Items.Accessories
 
                 Dust d = Dust.NewDustPerfect(
                     center + new Vector2(ampX, ampY),
-                    DustID.Smoke,                          // BLACK dust
+                    DustID.Smoke,
                     -player.velocity * (0.15f + jumps * 0.05f),
                     0,
                     Color.Black,
@@ -250,7 +245,6 @@ namespace NaturiumMod.Content.Items.Accessories
                 d.noGravity = true;
             }
 
-            // Custom sound pitch
             playSound = false;
             float pitch = jumps switch
             {
@@ -263,22 +257,20 @@ namespace NaturiumMod.Content.Items.Accessories
 
             SoundEngine.PlaySound(SoundID.Item20 with { Pitch = pitch, PitchVariance = 0.05f }, player.Bottom);
 
-            // Decrement jump counter
             jumps--;
 
-            // Allow more jumps if remaining
             if (jumps > 0)
                 player.GetJumpState(this).Available = true;
         }
     }
 
-        public class WickedWindJumpPlayer : ModPlayer
+    public class WickedWindJumpPlayer : ModPlayer
     {
         public int jumpsRemaining;
 
         public override void ResetEffects()
         {
-            // Do nothing — jumps reset only when touching ground (OnRefreshed)
+            // Jumps reset only when touching ground (OnRefreshed)
         }
     }
 }

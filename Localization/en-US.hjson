@@ -689,6 +689,7 @@ Mods: {
 					Increase damage of all cards by 10%
 					Reduce Summoning Sickenness duration from Blue Eyes cards by 50%
 					Uses a secret move when 3 Blue Eyes White Dragon cards are used together
+					Increases card pack drop chance by 5%
 					'You fight me with fruit? Don't mock me!'
 					'''
 			}
@@ -1681,7 +1682,7 @@ Mods: {
 				DisplayName: Greedy Venom Fusion Dragon Ring
 				Tooltip:
 					'''
-					Applies Venom on hit while in Venom Mode (swap by right‑clicking in inventory), now with extra modes.  
+					Applies Venom on hit while in Venom Mode (swap by right-clicking in inventory), now with extra modes.  
 					Each hit adds a Predator Counter (up to 10), increasing damage on that target by 5% per stack.  
 					Increases placement range by 3.
 					Increased movement speed and acceleration.  
@@ -1875,6 +1876,7 @@ Mods: {
 					Increases number of Summons by 3 and Sentries by 1.
 					Reveals all ores and enemies.
 					Gain a golden boost for the Apophis Dominion weapon.
+					Discovers more info statistics
 					'''
 				DisplayName: Millennium Scarab
 			}
@@ -1899,6 +1901,7 @@ Mods: {
 					Provides auto-paint, extended placement range, and faster building.
 					Enables scope zoom with right-click toggle.
 					Activates all special weapon synergies.
+					Discovers more info statistics
 					'''
 			}
 
@@ -1913,7 +1916,7 @@ Mods: {
 					Realease an attack on hit of multiple projectiles that increases the ammount if you reach a -25% health threshold 'stage'.
 					Damage increased by 10% for each stage reached.
 					'''
-				DisplayName: Wicked WindWings
+				DisplayName: Wicked Wind Wings
 			}
 		}
 

@@ -1,5 +1,6 @@
 ﻿using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Cards.LOB;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.Materials;
 using Terraria;
@@ -42,6 +43,8 @@ public class KaibasCloak : ModItem
         player.GetModPlayer<KaibaPlayer>().KaibasCloakEquipped = true;
         var boost = player.GetModPlayer<WeaponBoostPlayer>();
         boost.activeBoosts["Dragon"] = true;
+        player.GetModPlayer<CardDropPlayer>().CardDropBoost += 0.05f;
+
     }
     public override void AddRecipes()
     {
