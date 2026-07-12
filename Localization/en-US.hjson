@@ -1918,6 +1918,26 @@ Mods: {
 					'''
 				DisplayName: Wicked Wind Wings
 			}
+
+			DragonScale: {
+				Tooltip: ""
+				DisplayName: Dragon Scale
+			}
+
+			GenomeExtractor: {
+				Tooltip: ""
+				DisplayName: Genome Extractor
+			}
+
+			EssenceExItems: {
+				DisplayName: Essence Ex Items
+				Tooltip: ""
+			}
+
+			ShardofGreed: {
+				DisplayName: Shardof Greed
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {

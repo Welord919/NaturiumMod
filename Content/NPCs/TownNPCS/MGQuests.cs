@@ -48,7 +48,7 @@ public static class MGQuests
                 {
                     CardQuery.ConsumeCardsWithSubtype(player, "Warrior", 5);
                     RewardPack(player);
-                    player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
+                    player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<EssenceExItems>());
                     CardQuestWorld.questStage = 2;
                     return true;
                 }
@@ -77,7 +77,7 @@ public static class MGQuests
                     CardQuery.ConsumeCardsWithAttribute(player, "Fire", 15);
                     RewardPack(player);
                     RewardPack(player);
-                    player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<FusionAltar>());
+                    player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<EssenceExItems>());
                     CardQuestWorld.questStage = 4;
                     return true;
                 }
