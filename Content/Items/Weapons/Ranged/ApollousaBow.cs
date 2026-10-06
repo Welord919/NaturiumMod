@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NaturiumMod.Content.Items.Accessories.CraftingTrees.BaseGameCombos;
 using NaturiumMod.Content.Items.Cards.Fusion;
+using NaturiumMod.Content.Items.Materials;
 using NaturiumMod.Content.Projectiles.Ranged;
 using Terraria;
 using Terraria.Audio;
@@ -122,8 +123,7 @@ namespace NaturiumMod.Content.Items.Weapons.Ranged
         {
             CreateRecipe()
                 .AddIngredient(ItemID.FairyQueenRangedItem)
-                .AddIngredient(ItemID.HallowedBar, 33)
-                .AddIngredient(ItemID.Ectoplasm, 22)
+                .AddIngredient(ModContent.ItemType<Apoqliphophase>(), 10)
                 .AddIngredient(ItemID.SoulofLight, 11)
                 .AddIngredient(ModContent.ItemType<WindEssence>(), 50)
                 .AddTile(TileID.MythrilAnvil)

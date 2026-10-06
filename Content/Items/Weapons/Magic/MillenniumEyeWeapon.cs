@@ -51,6 +51,7 @@ namespace NaturiumMod.Content.Items.Weapons.Magic
         {
             player.GetModPlayer<CardDropPlayer>().CardDropBoost += 0.05f;
         }
+        
     }
 
     public class MillenniumEyeHoldout : ModProjectile

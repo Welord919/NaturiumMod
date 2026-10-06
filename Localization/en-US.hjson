@@ -1527,7 +1527,11 @@ Mods: {
 			}
 
 			WindUpShark: {
-				Tooltip: Charge up a burst of 3 shark fin projectiles
+				Tooltip:
+					'''
+					Charge up a burst of 3 shark fin projectiles
+					If charge is released early, fire a faster moving projectile.
+					'''
 				DisplayName: Wind Up Shark Reapeater
 			}
 
@@ -1925,18 +1929,86 @@ Mods: {
 			}
 
 			GenomeExtractor: {
-				Tooltip: ""
+				Tooltip: Used on certain cards to extract certain items.
 				DisplayName: Genome Extractor
 			}
 
 			EssenceExItems: {
 				DisplayName: Essence Ex Items
-				Tooltip: ""
+				Tooltip: Contains various essence items used for crafting and upgrades.
 			}
 
 			ShardofGreed: {
-				DisplayName: Shardof Greed
+				DisplayName: Shard of Greed
+				Tooltip: Spell
+			}
+
+			BorrelRocketLauncher: {
+				DisplayName: Borrel Rocket Launcher
+				Tooltip: Shoots rockets!
+			}
+
+			Helshadium: {
+				DisplayName: Helshadium
+				Tooltip: A fiery hot metal that is held together by unknown shadow energy.
+			}
+
+			Apoqliphophase: {
+				Tooltip: The energies of life, death, and rebirth are combined into one bar, evolving the shadow energy, making it eager to creep into anything that could host it.
+				DisplayName: Apoqliphophase
+			}
+
+			Apoqliphite: {
+				Tooltip: The life energy of the Jungle has been fused with the metal, keeping the shadow energy binded to the bar.
+				DisplayName: Apoqliphite
+			}
+
+			Qliphite: {
+				DisplayName: Qliphite
+				Tooltip: The trio of evil earth metals that got mixed with the heat of Helshadium metal that now is surrounded by mysterious shadow energy.
+			}
+
+			SiegerDiscs: {
+				DisplayName: Sieger Discs
 				Tooltip: ""
+			}
+
+			ShardofGreedAcc: {
+				DisplayName: The Shard of Greed
+				Tooltip:
+					'''
+					Increases your card pack drop chance by 7%
+					Increases your luck and coin luck by 5%
+					'''
+			}
+
+			HelshadiumChestplate: {
+				DisplayName: Helshadium Chestplate
+				Tooltip:
+					'''
+					4% Increased Melee damage
+					8% Increased Melee knockback
+					Grants immunity to the On Fire! debuff
+					'''
+			}
+
+			HelshadiumHelmet: {
+				DisplayName: Helshadium Helmet
+				Tooltip:
+					'''
+					4% Increased Melee damage
+					8% Increased Melee critical strike chance
+					'''
+			}
+
+			HelshadiumLeggings: {
+				DisplayName: Helshadium Leggings
+				Tooltip:
+					'''
+					4% Increased Melee damage
+					8% Increased Melee attack speed
+					Grants immunity to fire blocks
+					'''
 			}
 		}
 

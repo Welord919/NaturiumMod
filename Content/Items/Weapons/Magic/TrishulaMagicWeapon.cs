@@ -26,7 +26,7 @@ namespace NaturiumMod.Content.Items.Weapons.Magic
             Item.DamageType = DamageClass.Magic;
             Item.damage = 33;
             Item.knockBack = 3f;
-            Item.mana = 12;
+            Item.mana = 13;
 
             Item.shoot = ModContent.ProjectileType<TrishulaProj>();
             Item.shootSpeed = 16f;

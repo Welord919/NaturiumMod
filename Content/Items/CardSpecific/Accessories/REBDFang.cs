@@ -3,6 +3,7 @@ using NaturiumMod.Content.Items.Cards;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
 using NaturiumMod.Content.Items.Materials;
+using NaturiumMod.Content.Items.Weapons.Magic;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -31,13 +32,11 @@ namespace NaturiumMod.Content.Items.CardSpecific.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<REBD>(), 1),
-        new(ModContent.ItemType<FireEssence>(), 3),
-        new(ModContent.ItemType<DarkEssence>(), 3),
-        new(ModContent.ItemType<NaturiumBar>(), 5),
-        new(ModContent.ItemType<CharmBase>(), 1)
-            ], TileID.TinkerersWorkbench);
+            recipe.AddIngredient(ModContent.ItemType<REBD>(), 3);
+            recipe.AddIngredient(ModContent.ItemType<FireEssence>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<DarkEssence>(), 5);
+            recipe.AddIngredient(ItemID.HellstoneBar, 5);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.Register();
         }
     }

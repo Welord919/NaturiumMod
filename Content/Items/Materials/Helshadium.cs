@@ -7,9 +7,9 @@ using NaturiumMod.Content.Tiles.Ores;
 
 namespace NaturiumMod.Content.Items.Materials;
 
-public class Starsteel : ModItem
+public class Helshadium : ModItem
 {
-    public override string Texture => "NaturiumMod/Assets/Items/Materials/NibiricStarsteel";
+    public override string Texture => "NaturiumMod/Assets/Items/Materials/Helshadium";
 
     public override void SetStaticDefaults()
     {
@@ -21,7 +21,7 @@ public class Starsteel : ModItem
         Item.Size = new(20, 20);
         Item.maxStack = 99;
         Item.consumable = true;
-        Item.value = Item.buyPrice(0, 0, 1, 75);
+        Item.value = Item.buyPrice(silver: 20);
         Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;
@@ -29,17 +29,17 @@ public class Starsteel : ModItem
         Item.useTime = 10;
         Item.autoReuse = true;
 
-        Item.createTile = ModContent.TileType<StarsteelTile>();
-        Item.placeStyle = 1;
+        //Item.createTile = ModContent.TileType<StarsteelTile>();
+        //Item.placeStyle = 1;
     }
 
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe(1);
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<NibiricCrystal>(), 5),
-            new(ItemID.MeteoriteBar, 10),
-            new(ItemID.FallenStar, 1)
+            new(ModContent.ItemType<InfusedNaturiumBar>(), 5),
+            new(ModContent.ItemType<Starsteel>(), 3),
+            new(ItemID.Hellstone, 7)
         ], TileID.Hellforge);
         recipe.Register();
     }

@@ -11,30 +11,30 @@ internal class NaturesEssence : ModItem
     public override string Texture => "NaturiumMod/Assets/Items/Materials/NaturesEssence";
     public override void SetStaticDefaults()
     {
-        // Registers a vertical animation with 4 frames and each one will last 5 ticks (1/12 second)
         Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 4));
         ItemID.Sets.AnimatesAsSoul[Type] = true; // Makes the item have an animation while in world (not held.). Use in combination with RegisterItemAnimation
-
         ItemID.Sets.ItemIconPulse[Type] = true; // The item pulses while in the player's inventory
         ItemID.Sets.ItemNoGravity[Type] = true; // Makes the item have no gravity
 
-        Item.ResearchUnlockCount = 25; // Configure the amount of this item that's needed to research it in Journey mode.
+        Item.ResearchUnlockCount = 25;
     }
 
     public override void SetDefaults()
     {
-        Item.width = 18;
-        Item.height = 18;
-        Item.maxStack = Item.CommonMaxStack;
-        Item.value = Item.buyPrice(0, 1, 0, 0);
-        Item.rare = ItemRarityID.LightRed;
-    }
+        Item refItem = new Item();
+        refItem.SetDefaults(ItemID.SoulofSight);
 
+        Item.width = refItem.width;
+        Item.height = refItem.height;
+
+        Item.rare = ItemRarityID.Lime;
+        Item.value = Item.sellPrice(gold: 1);
+
+        Item.maxStack = 9999;
+    }
     public override void PostUpdate()
-    {
-        Lighting.AddLight(Item.Center, Color.WhiteSmoke.ToVector3() * 0.55f * Main.essScale); // Makes this item glow when thrown out of inventory.
-    }
+           => Lighting.AddLight(Item.Center, Color.Yellow.ToVector3() * 0.45f * Main.essScale);
+    public override Color? GetAlpha(Color lightColor)
+        => Color.Green;
 
-    public override Color? GetAlpha(Color lightColor) =>
-        new Color(255, 255, 255, 50);
 }

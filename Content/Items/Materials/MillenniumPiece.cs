@@ -12,7 +12,7 @@ public class MillenniumPiece : ModItem
 
     public override void SetStaticDefaults()
     {
-        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 15;
     }
 
     public override void SetDefaults()
@@ -20,7 +20,7 @@ public class MillenniumPiece : ModItem
         Item.Size = new(12, 12);
         Item.rare = ItemRarityID.Yellow;
         Item.maxStack = 999;
-        Item.value = Item.buyPrice(0, 0, 30, 0);
+        Item.value = Item.buyPrice(0, 0, 6, 0);
     }
     public override void AddRecipes()
     {

@@ -14,7 +14,7 @@ namespace NaturiumMod.Content.Items.CardSpecific.Fusion.FusionAltar
 {
     public class ShardofGreed : ModItem
     {
-        public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/ShardofGreed";
+        public override string Texture => "NaturiumMod/Assets/Items/Cards/Crafted/ShardOfGreed";
 
         public override void SetDefaults()
         {

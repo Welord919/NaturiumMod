@@ -28,14 +28,14 @@ public class ExteriosFang : ModItem
 
         Item.ammo = Item.type;
         Item.shoot = Mod.Find<ModProjectile>("ExteriosFangProj").Type;
-        Item.value = Item.buyPrice(0, 0, 80, 0);
+        Item.value = Item.buyPrice(0, 0, 2, 0);
     }
 
     public override void AddRecipes()
     {
-        Recipe recipe = CreateRecipe(10);
+        Recipe recipe = CreateRecipe(25);
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<InfusedNaturiumBar>(), 1),
+            new(ModContent.ItemType<Apoqliphite>(), 1),
         ], TileID.MythrilAnvil);
         recipe.Register();
     }

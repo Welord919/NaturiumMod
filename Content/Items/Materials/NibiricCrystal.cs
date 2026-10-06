@@ -19,7 +19,7 @@ public class NibiricCrystal : ModItem
         Item.Size = new(12, 12);
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.value = Item.buyPrice(0, 0, 1, 50);
+        Item.value = Item.buyPrice(0, 0, 3, 50);
         Item.rare = ItemRarityID.Orange;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;

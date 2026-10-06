@@ -1,6 +1,8 @@
-﻿using NaturiumMod.Content.Helpers;
+﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Helpers;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB;
+using NaturiumMod.Content.Items.CardSpecific.Accessories;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,12 +20,12 @@ namespace NaturiumMod.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.buyPrice(gold: 2);
+            Item.defense = 2;
         }
-
-        public override void UpdateAccessory(Player player, bool hideVisual)
+        public override void UpdateEquip(Player player)
         {
-            player.statDefense += 2;
             player.GetModPlayer<CardDropPlayer>().CardDropBoost += 0.05f;
+
         }
         public override void AddRecipes()
         {

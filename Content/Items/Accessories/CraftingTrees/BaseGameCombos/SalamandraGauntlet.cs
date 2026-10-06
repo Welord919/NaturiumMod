@@ -65,7 +65,7 @@ public class SalamandrasGauntlet : ModItem
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.FireGauntlet);
         recipe.AddIngredient(ItemID.BerserkerGlove);
-        recipe.AddIngredient(ModContent.ItemType<InfusedNaturiumBar>(), 30);
+        recipe.AddIngredient(ModContent.ItemType<Helshadium>(), 20);
         recipe.AddIngredient(ModContent.ItemType<FireEssence>(), 50);
         recipe.AddTile(TileID.TinkerersWorkbench);
         recipe.Register();

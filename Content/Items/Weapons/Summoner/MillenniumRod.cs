@@ -23,78 +23,118 @@ namespace NaturiumMod.Content.Items.Weapons.Summoner
 
             Item.useTime = 25;
             Item.useAnimation = 25;
-            Item.useStyle = ItemUseStyleID.Thrust;
+
+            // Shoot style allows HoldoutOffset() to work.
+            Item.useStyle = ItemUseStyleID.Shoot;
+
             Item.rare = ItemRarityID.Yellow;
             Item.noMelee = true;
             Item.DamageType = DamageClass.Summon;
+
             Item.mana = 10;
             Item.value = Item.buyPrice(gold: 5);
+
             Item.damage = 10;
             Item.knockBack = 2f;
 
             Item.buffType = ModContent.BuffType<MillenniumRodBuff>();
             Item.shoot = ModContent.ProjectileType<MillenniumEye>();
+
+            // We handle the projectile/summon ourselves in Shoot().
+            Item.shootSpeed = 0f;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
+
             recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<MillenniumPiece>(), 15),
+                new(ModContent.ItemType<MillenniumPiece>(), 15),
             new(ItemID.CrimsonRod, 1),
             new(ItemID.Amber, 10),
-            ], TileID.Anvils);
+        ], TileID.Anvils);
+
             recipe.Register();
         }
 
         public override bool AltFunctionUse(Player player) => true;
 
-        public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-6f, 0f);
+        }
 
         public override bool CanUseItem(Player player)
         {
+            // Don't perform the right-click effect here.
+            // We still want Terraria to actually use the item so
+            // the rod is displayed during the use animation.
+            return true;
+        }
+
+        public override bool Shoot(
+            Player player,
+            EntitySource_ItemUse_WithAmmo source,
+            Vector2 position,
+            Vector2 velocity,
+            int type,
+            int damage,
+            float knockback)
+        {
+            // =========================================================
             // RIGHT CLICK — Confusion Pulse
+            // =========================================================
             if (player.altFunctionUse == 2)
             {
                 if (player.HasBuff(BuffID.Slow))
                 {
                     if (Main.myPlayer == player.whoAmI)
-                        Main.NewText("The Millennium Rod needs time to recharge...", Color.Gray);
+                    {
+                        Main.NewText(
+                            "The Millennium Rod needs time to recharge...",
+                            Color.Gray
+                        );
+                    }
 
                     return false;
                 }
 
-                Item.useStyle = ItemUseStyleID.HoldUp;
+                SoundEngine.PlaySound(
+                    SoundID.Item27 with
+                    {
+                        Volume = 0.8f,
+                        Pitch = -0.2f
+                    },
+                    player.Center
+                );
 
                 ConfuseNearbyEnemies(player);
 
-                player.AddBuff(BuffID.Slow, 300); // 5 seconds
+                // 5 second recharge.
+                player.AddBuff(BuffID.Slow, 300);
 
+                // We don't want to actually fire MillenniumEye
+                // on right-click.
                 return false;
             }
 
-            // LEFT CLICK — normal summon behavior
-            Item.useStyle = ItemUseStyleID.Thrust;
-            Item.mana = 10;
+            // =========================================================
+            // LEFT CLICK — Summon Millennium Eye
+            // =========================================================
 
-            return true; // allow Shoot() to run normally
-        }
+            SoundEngine.PlaySound(
+                SoundID.Item44 with
+                {
+                    Volume = 0.8f,
+                    Pitch = -0.1f
+                },
+                player.Center
+            );
 
-        // SUMMON LOGIC GOES HERE — NOT IN CanUseItem
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
-            Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            // Prevent summoning on right-click
-            if (player.altFunctionUse == 2)
-                return false;
-
-            // Play summon sound
-            SoundEngine.PlaySound(SoundID.Item44 with { Volume = 0.8f, Pitch = -0.1f }, player.Center);
-
-            // Apply buff
+            // Apply the summon buff.
             player.AddBuff(Item.buffType, 2);
 
-            // Spawn minion
+            // Spawn the minion.
             Projectile.NewProjectile(
                 source,
                 player.Center,
@@ -105,21 +145,23 @@ namespace NaturiumMod.Content.Items.Weapons.Summoner
                 player.whoAmI
             );
 
-            return false; // prevent vanilla from spawning a second one
+            // We manually created the projectile.
+            return false;
         }
 
         private void ConfuseNearbyEnemies(Player player)
         {
-            SoundEngine.PlaySound(SoundID.Item27 with { Volume = 0.8f, Pitch = -0.2f }, player.Center);
-
             float radius = 300f;
 
             foreach (NPC npc in Main.ActiveNPCs)
             {
-                if (!npc.CanBeChasedBy()) continue;
+                if (!npc.CanBeChasedBy())
+                    continue;
 
                 if (Vector2.Distance(npc.Center, player.Center) <= radius)
+                {
                     npc.AddBuff(BuffID.Confused, 180);
+                }
             }
         }
     }

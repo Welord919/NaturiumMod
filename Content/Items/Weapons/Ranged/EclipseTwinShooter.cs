@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using NaturiumMod.Content.Items.Materials;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -95,9 +96,10 @@ public class EclipseTwinShooter : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.AdamantiteBar, 18);
-        recipe.AddIngredient(ItemID.IllegalGunParts, 2);
+        recipe.AddIngredient(ModContent.ItemType<Helshadium>(), 5);
+        recipe.AddIngredient(ModContent.ItemType<InfusedNaturiumGunParts>(), 1);
         recipe.AddIngredient(ItemID.SoulofLight, 10);
+        recipe.AddIngredient(ItemID.SoulofNight, 10);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }

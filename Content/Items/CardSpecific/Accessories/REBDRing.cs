@@ -2,6 +2,7 @@
 using NaturiumMod.Content.Items.Cards;
 using NaturiumMod.Content.Items.Cards.Fusion;
 using NaturiumMod.Content.Items.Cards.LOB.UltraRares;
+using NaturiumMod.Content.Items.Materials;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -31,12 +32,11 @@ namespace NaturiumMod.Content.Items.CardSpecific.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<REBDFang>(), 1),
-        new(ModContent.ItemType<FireEssence>(), 5),
-        new(ModContent.ItemType<DarkEssence>(), 5),
-        new(ItemID.Meteorite, 10)
-            ], TileID.TinkerersWorkbench);
+            recipe.AddIngredient(ModContent.ItemType<REBDFang>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<FireEssence>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<DarkEssence>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<Helshadium>(), 5);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.Register();
         }
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)

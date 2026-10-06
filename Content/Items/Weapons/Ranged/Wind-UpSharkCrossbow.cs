@@ -10,7 +10,7 @@ namespace NaturiumMod.Content.Items.Weapons.Ranged
     {
         public class WindUpShark : ModItem
         {
-            public override string Texture => "NaturiumMod/Assets/Items/Shark/WindUpShark";
+        public override string Texture => "NaturiumMod/Assets/Items/Shark/WindUpShark";
 
             public override void SetDefaults()
             {
@@ -58,9 +58,10 @@ namespace NaturiumMod.Content.Items.Weapons.Ranged
             {
                 return false;
             }
+        public override Vector2? HoldoutOffset()
+            => new Vector2(-5, 0);
 
-
-            public override void HoldItem(Player player)
+        public override void HoldItem(Player player)
             {
                 var modPlayer = player.GetModPlayer<WindUpSharkPlayer>();
 

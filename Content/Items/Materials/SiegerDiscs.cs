@@ -1,0 +1,26 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.GameContent.Creative;
+using NaturiumMod.Content.Helpers;
+
+namespace NaturiumMod.Content.Items.Materials;
+
+public class SiegerDiscs : ModItem
+{
+    //These were supossed to be gotton by Ocram but connecting Consolaria is not working correctly currently so will hold off for now.
+    public override string Texture => "NaturiumMod/Assets/Items/Materials/SiegerDiscs";
+
+    public override void SetStaticDefaults()
+    {
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+    }
+   
+    public override void SetDefaults()
+    {
+        Item.Size = new(12, 12);
+        Item.rare = ItemRarityID.Orange;
+        Item.maxStack = 999;
+        Item.value = Item.buyPrice(0, 0, 30, 0);
+    }
+}

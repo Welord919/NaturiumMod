@@ -103,9 +103,8 @@ namespace NaturiumMod.Content.Items.Accessories
             player.GetAttackSpeed(DamageClass.Melee) += 0.10f;
             player.GetDamage(DamageClass.Generic) += 0.10f;
             player.GetCritChance(DamageClass.Generic) += 2;
-            player.lifeRegen += 1;
-            player.statDefense += 4;
-            player.pickSpeed -= 0.15f;
+            player.lifeRegen += 2;
+            player.statDefense += 5;
             player.GetKnockback(DamageClass.Summon) += 0.5f;
             player.pStone = true;
             if (!Main.dayTime && !player.wet)
@@ -145,7 +144,7 @@ namespace NaturiumMod.Content.Items.Accessories
             player.equippedAnyWallSpeedAcc = true;
             player.equippedAnyTileSpeedAcc = true;
             player.equippedAnyTileRangeAcc = true;
-            player.pickSpeed -= 0.25f;
+            player.pickSpeed -= 0.4f;
             player.treasureMagnet = true;
         }
 

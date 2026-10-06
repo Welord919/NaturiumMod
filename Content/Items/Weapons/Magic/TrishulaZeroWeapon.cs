@@ -28,9 +28,9 @@ namespace NaturiumMod.Content.Items.Weapons.Magic
             Item.UseSound = SoundID.Item20;
 
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 52;
+            Item.damage = 53;
             Item.knockBack = 3.5f;
-            Item.mana = 10;
+            Item.mana = 13;
 
             Item.shoot = ModContent.ProjectileType<TrishulaZeroProj>();
             Item.shootSpeed = 20f;

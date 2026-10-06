@@ -21,7 +21,7 @@ public class InfusedNaturiumBar : ModItem
         Item.Size = new(20, 20);
         Item.maxStack = 99;
         Item.consumable = true;
-        Item.value = Item.buyPrice(0, 0, 75, 0);
+        Item.value = Item.buyPrice(0, 0, 15, 0);
         Item.rare = ItemRarityID.LightRed;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTurn = true;

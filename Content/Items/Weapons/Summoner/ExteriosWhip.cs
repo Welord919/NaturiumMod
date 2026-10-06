@@ -13,7 +13,7 @@ public class ExteriosWhip : ModItem
 
     public override void SetDefaults()
     {
-        Item.DefaultToWhip(ModContent.ProjectileType<ExteriosWhipProj>(), 60, 5f, 5);
+        Item.DefaultToWhip(ModContent.ProjectileType<ExteriosWhipProj>(), 75, 5f, 5);
         Item.shootSpeed = 4;
         Item.rare = ItemRarityID.LightRed;
         Item.channel = true;
@@ -23,9 +23,8 @@ public class ExteriosWhip : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe = RecipeHelper.GetNewRecipe(recipe, [
-            new(ModContent.ItemType<BarkionsBark>(), 25),
-            new(ModContent.ItemType<ExteriosFang>(), 1),
-            new(ModContent.ItemType<NaturiumBar>(), 15)
+            new(ModContent.ItemType<ExteriosFang>(), 8),
+            new(ModContent.ItemType<Apoqliphite>(), 15)
         ], TileID.MythrilAnvil);
         recipe.Register();
     }
